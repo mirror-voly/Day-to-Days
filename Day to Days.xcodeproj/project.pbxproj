@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		516CBE432C87247000202B93 /* Day_to_DaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE422C87247000202B93 /* Day_to_DaysApp.swift */; };
-		516CBE452C87247000202B93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE442C87247000202B93 /* ContentView.swift */; };
+		516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE422C87247000202B93 /* DaytoDaysApp.swift */; };
+		516CBE452C87247000202B93 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE442C87247000202B93 /* MainScreen.swift */; };
 		516CBE472C87247100202B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516CBE462C87247100202B93 /* Assets.xcassets */; };
 		516CBE4A2C87247100202B93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516CBE492C87247100202B93 /* Preview Assets.xcassets */; };
+		516CBE542C87296400202B93 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE532C87296400202B93 /* Day.swift */; };
+		516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
+		516CBE592C87339F00202B93 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* DataStore.swift */; };
+		516CBE5D2C87403600202B93 /* ContersListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* ContersListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		516CBE3F2C87247000202B93 /* Day to Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Day to Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		516CBE422C87247000202B93 /* Day_to_DaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_to_DaysApp.swift; sourceTree = "<group>"; };
-		516CBE442C87247000202B93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		516CBE422C87247000202B93 /* DaytoDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaytoDaysApp.swift; sourceTree = "<group>"; };
+		516CBE442C87247000202B93 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		516CBE462C87247100202B93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		516CBE492C87247100202B93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		516CBE532C87296400202B93 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		516CBE562C872FAA00202B93 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
+		516CBE582C87339F00202B93 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		516CBE5C2C87403600202B93 /* ContersListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContersListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +59,10 @@
 		516CBE412C87247000202B93 /* Day to Days */ = {
 			isa = PBXGroup;
 			children = (
-				516CBE422C87247000202B93 /* Day_to_DaysApp.swift */,
-				516CBE442C87247000202B93 /* ContentView.swift */,
+				516CBE422C87247000202B93 /* DaytoDaysApp.swift */,
+				516CBE552C87296E00202B93 /* Models */,
+				516CBE5B2C8733E000202B93 /* Views */,
+				516CBE5A2C8733D500202B93 /* ViewModel */,
 				516CBE462C87247100202B93 /* Assets.xcassets */,
 				516CBE482C87247100202B93 /* Preview Content */,
 			);
@@ -65,6 +75,32 @@
 				516CBE492C87247100202B93 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		516CBE552C87296E00202B93 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				516CBE532C87296400202B93 /* Day.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		516CBE5A2C8733D500202B93 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				516CBE562C872FAA00202B93 /* DateCalculator.swift */,
+				516CBE582C87339F00202B93 /* DataStore.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		516CBE5B2C8733E000202B93 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				516CBE442C87247000202B93 /* MainScreen.swift */,
+				516CBE5C2C87403600202B93 /* ContersListItem.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -81,6 +117,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				516CBE522C87275900202B93 /* PBXTargetDependency */,
 			);
 			name = "Day to Days";
 			productName = "Day to Days";
@@ -111,6 +148,9 @@
 				Base,
 			);
 			mainGroup = 516CBE362C87247000202B93;
+			packageReferences = (
+				516CBE502C87254A00202B93 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
 			productRefGroup = 516CBE402C87247000202B93 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,12 +177,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				516CBE452C87247000202B93 /* ContentView.swift in Sources */,
-				516CBE432C87247000202B93 /* Day_to_DaysApp.swift in Sources */,
+				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,
+				516CBE5D2C87403600202B93 /* ContersListItem.swift in Sources */,
+				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
+				516CBE542C87296400202B93 /* Day.swift in Sources */,
+				516CBE592C87339F00202B93 /* DataStore.swift in Sources */,
+				516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		516CBE522C87275900202B93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 516CBE512C87275900202B93 /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		516CBE4B2C87247100202B93 /* Debug */ = {
@@ -342,6 +393,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		516CBE502C87254A00202B93 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.56.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		516CBE512C87275900202B93 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 516CBE502C87254A00202B93 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 516CBE372C87247000202B93 /* Project object */;
 }
