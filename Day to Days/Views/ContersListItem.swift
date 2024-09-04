@@ -13,8 +13,8 @@ struct ContersListItem: View {
     var body: some View {
         HStack {
             Circle()
-                .fill(day.color.opacity(0.3))
-                .overlay(Ellipse()
+                .fill(day.color)
+                .overlay(Circle()
                     .fill(day.color)
                     .frame(width: 20, height: 10))
                 .opacity(0.6)
@@ -23,12 +23,13 @@ struct ContersListItem: View {
                 .font(.title2)
             Spacer()
             VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                Text(dateCalculator.daysFrom(thisDate: day.date))
+                let dateData = dateCalculator.daysFrom(thisDate: day.date)
+                Text(dateData.days)
                     .foregroundStyle(day.color)
                     .bold()
                 Group {
                     Text("days")
-                    Text("gone")
+                    Text(dateData.description)
                 }
                 .italic()
                 .font(.footnote)

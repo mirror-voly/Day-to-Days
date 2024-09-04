@@ -8,11 +8,13 @@
 import Foundation
 
 final class DateCalculator {
-    func daysFrom(thisDate: Date) -> String {
+    func daysFrom(thisDate: Date) -> (days: String, description: String) {
         let currentDate = Date()
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: thisDate, to: currentDate)
-        let daysString = String(components.day ?? 0)
-        return daysString
+        let daysCounter = components.day ?? 0
+        let daysString = String(daysCounter).replacingOccurrences(of: "-", with: "")
+        let description = daysCounter > 0 ? "gone" : "left"
+        return (daysString, description)
     }
 }
