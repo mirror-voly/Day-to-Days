@@ -8,9 +8,9 @@
 import Foundation
 let isoFormatter = ISO8601DateFormatter()
 final class DataStore {
-    let listOfDays: [Day] = [Day(date: isoFormatter.date(from: "2023-03-15T14:30:00Z")!, title: "My first try", color: .red),
+    let listOfDays: [Day] = [Day(date: isoFormatter.date(from: "2025-03-15T14:30:00Z")!, title: "My first try", color: .red),
                              Day(date: isoFormatter.date(from: "2024-03-11T14:30:00Z")!, title: "Meeting", color: .teal),
-                             Day(date: isoFormatter.date(from: "2022-03-15T14:30:00Z")!, title: "Guitar trin", color: .black),
+                             Day(date: Date(), title: "Guitar trin", color: .black),
                              Day(date: isoFormatter.date(from: "2023-03-16T14:30:00Z")!, title: "Paiment for rent", color: .purple),
                              Day(date: isoFormatter.date(from: "2022-03-15T14:30:00Z")!, title: "Shooping", color: .blue),
                              Day(date: isoFormatter.date(from: "2022-02-15T14:30:00Z")!, title: "Alcohol", color: .gray),
