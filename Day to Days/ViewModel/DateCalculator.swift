@@ -8,7 +8,7 @@
 import Foundation
 
 final class DateCalculator {
-    func daysFrom(thisDate: Date) -> (days: String, description: String) {
+    static func daysFrom(thisDate: Date) -> (days: String, description: String) {
         let currentDate = Date()
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: thisDate, to: currentDate)
