@@ -16,7 +16,7 @@ struct MainScreen: View {
                         ContersListItem(day: day)
                     }
             }
-            .navigationTitle("Day to Days")
+            .navigationTitle("Counters")
         }
     }
 }

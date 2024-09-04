@@ -13,11 +13,10 @@ struct ContersListItem: View {
     var body: some View {
         HStack {
             Circle()
-                .fill(day.color)
+                .fill(day.color.opacity(0.9))
                 .overlay(Circle()
-                    .fill(day.color)
+                    .fill(.white)
                     .frame(width: 20, height: 10))
-                .opacity(0.6)
                 .frame(width: 20, height: 20)
             Text(day.title)
                 .font(.title2)
