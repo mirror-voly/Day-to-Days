@@ -8,6 +8,12 @@
 import Foundation
 
 final class DateCalculator {
+    enum DateTypes: String, CaseIterable {
+        case day = "Days"
+        case weak = "Days and Weaks"
+        case month = "Days, Weaks, Months"
+        case year = "All"
+    }
     static func daysFrom(thisDate: Date) -> (days: String, description: String) {
         let currentDate = Date()
         let calendar = Calendar.current

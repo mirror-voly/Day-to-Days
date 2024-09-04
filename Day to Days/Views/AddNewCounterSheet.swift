@@ -13,6 +13,8 @@ struct AddNewCounterSheet: View {
     @State var date = Date()
     @State var color = Color(.white)
     @State var titleSet = false
+    @State var sliderValue: Int = 0
+    @State var dateType: DateCalculator.DateTypes = .day
     @Binding var sheetIsOpened: Bool
     @Binding var canDismiss: Bool
     var body: some View {
@@ -44,9 +46,32 @@ struct AddNewCounterSheet: View {
                     ColorPicker("Color", selection: $color)
                 }
                 .padding(.bottom)
+                GroupBox {
+                    HStack(alignment: .center, content: {
+                        Text("Сount")
+                        Spacer()
+                        Text(dateType.rawValue)
+                    })
+                    Slider(value: Binding(
+                                    get: { Double(sliderValue) },
+                                    set: { newValue in
+                                        sliderValue = Int(newValue)
+                                        dateType = .allCases[sliderValue]
+                                    }
+                    ), in: 0...Double(DateCalculator.DateTypes.allCases.count - 1), step: 1)
+                    HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+                        Group {
+                            Text("Day")
+                            Text("Weak")
+                            Text("Month")
+                            Text("Year")
+                        }
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity)
+                    })
+                }
             }
             Spacer()
-
             Button(action: {
                 sheetIsOpened = false
                 canDismiss = true
@@ -56,7 +81,6 @@ struct AddNewCounterSheet: View {
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
             })
-            
             .disabled(!titleSet)
             .buttonStyle(BorderedProminentButtonStyle())
         })
