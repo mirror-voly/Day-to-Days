@@ -60,3 +60,5 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+Day to Days.xcodeproj/xcuserdata
+Day to Days.xcodeproj/xcshareddata
