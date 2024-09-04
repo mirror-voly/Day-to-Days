@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddNewCounterSheet: View {
     @State var title = ""
+    @State var description = ""
     @State var date = Date()
     @State var color = Color(.white)
     @State var titleSet = false
@@ -19,11 +20,11 @@ struct AddNewCounterSheet: View {
                     TextField(text: $title) {
                         Text("Title")
                     }
-                    .padding(.bottom)
+                    Divider()
                     .onChange(of: title) {
                         titleSet = title != "" ? true : false
                     }
-                    TextField(text: $title) {
+                    TextField(text: $description) {
                         Text("Description")
                     }
                 }
@@ -34,6 +35,7 @@ struct AddNewCounterSheet: View {
                 GroupBox {
                     DatePicker("Date", selection: $date, displayedComponents: .date)
                         .datePickerStyle(.compact)
+                    Divider()
                     ColorPicker("Color", selection: $color)
                 }
                 .padding(.bottom)
