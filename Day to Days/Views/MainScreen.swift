@@ -9,14 +9,32 @@ import SwiftUI
 
 struct MainScreen: View {
     let dataStore = DataStore()
+    @State var addNewSheetIsOpened = false
     var body: some View {
         NavigationView {
-                VStack {
-                    List(dataStore.listOfDays) { day in
-                        ContersListItem(day: day)
+            ScrollView(.vertical) {
+                VStack(content: {
+                    ForEach(dataStore.listOfDays, id: \.id) { day in
+                        ContersListItemView(day: day)
+                        Divider()
+                    }
+                })
+                .padding(.horizontal)
+            }
+            .navigationTitle("Events")
+            .sheet(isPresented: $addNewSheetIsOpened, content: {
+                AddNewCounterSheet()
+            })
+            .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            addNewSheetIsOpened = true
+                        }) {
+                            Image(systemName: "plus.circle")
+                                .foregroundStyle(.gray)
+                        }
                     }
             }
-            .navigationTitle("Counters")
         }
     }
 }

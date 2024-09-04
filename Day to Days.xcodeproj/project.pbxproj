@@ -14,7 +14,9 @@
 		516CBE542C87296400202B93 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE532C87296400202B93 /* Day.swift */; };
 		516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		516CBE592C87339F00202B93 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* DataStore.swift */; };
-		516CBE5D2C87403600202B93 /* ContersListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* ContersListItem.swift */; };
+		516CBE5D2C87403600202B93 /* ContersListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* ContersListItemView.swift */; };
+		5182890F2C883CC000676F0E /* AddNewCounterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182890E2C883CC000676F0E /* AddNewCounterSheet.swift */; };
+		518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518289102C8849AB00676F0E /* View+HideKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +28,9 @@
 		516CBE532C87296400202B93 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		516CBE562C872FAA00202B93 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		516CBE582C87339F00202B93 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
-		516CBE5C2C87403600202B93 /* ContersListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContersListItem.swift; sourceTree = "<group>"; };
+		516CBE5C2C87403600202B93 /* ContersListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContersListItemView.swift; sourceTree = "<group>"; };
+		5182890E2C883CC000676F0E /* AddNewCounterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCounterSheet.swift; sourceTree = "<group>"; };
+		518289102C8849AB00676F0E /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				516CBE442C87247000202B93 /* MainScreen.swift */,
-				516CBE5C2C87403600202B93 /* ContersListItem.swift */,
+				5182890E2C883CC000676F0E /* AddNewCounterSheet.swift */,
+				516CBE5C2C87403600202B93 /* ContersListItemView.swift */,
+				518289102C8849AB00676F0E /* View+HideKeyboard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,7 +184,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,
-				516CBE5D2C87403600202B93 /* ContersListItem.swift in Sources */,
+				5182890F2C883CC000676F0E /* AddNewCounterSheet.swift in Sources */,
+				516CBE5D2C87403600202B93 /* ContersListItemView.swift in Sources */,
+				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
 				516CBE542C87296400202B93 /* Day.swift in Sources */,
 				516CBE592C87339F00202B93 /* DataStore.swift in Sources */,
