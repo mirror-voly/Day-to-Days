@@ -12,7 +12,7 @@ final class DataStore {
                              Day(date: isoFormatter.date(from: "2024-03-11T14:30:00Z")!, title: "Meeting", color: .teal),
                              Day(date: Date(), title: "Guitar trin", color: .black),
                              Day(date: isoFormatter.date(from: "2023-03-16T14:30:00Z")!, title: "Paiment for rent", color: .purple),
-                             Day(date: isoFormatter.date(from: "2022-03-15T14:30:00Z")!, title: "Shooping", color: .blue),
+                             Day(date: isoFormatter.date(from: "2002-03-15T14:30:00Z")!, title: "Shooping", color: .blue),
                              Day(date: isoFormatter.date(from: "2022-02-15T14:30:00Z")!, title: "Alcohol", color: .gray),
                              Day(date: isoFormatter.date(from: "2023-12-15T14:30:00Z")!, title: "Car driving", color: .mint),
                              Day(date: isoFormatter.date(from: "2023-03-15T14:30:00Z")!, title: "Walk on the street sdfsd gsdfgsdf s   gsdfgs dfgsf sdfg sdf gf gfg fd fgd gdtr t r tr", color: .green),
