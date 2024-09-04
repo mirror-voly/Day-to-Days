@@ -13,6 +13,8 @@ struct AddNewCounterSheet: View {
     @State var date = Date()
     @State var color = Color(.white)
     @State var titleSet = false
+    @Binding var sheetIsOpened: Bool
+    @Binding var canDismiss: Bool
     var body: some View {
         VStack(content: {
             GroupBox("New Event") {
@@ -23,6 +25,9 @@ struct AddNewCounterSheet: View {
                     Divider()
                     .onChange(of: title) {
                         titleSet = title != "" ? true : false
+                    }
+                    .onChange(of: titleSet) {
+                        canDismiss = !titleSet
                     }
                     TextField(text: $description) {
                         Text("Description")
@@ -41,14 +46,17 @@ struct AddNewCounterSheet: View {
                 .padding(.bottom)
             }
             Spacer()
+
             Button(action: {
-                print("done")
+                sheetIsOpened = false
+                canDismiss = true
             }, label: {
                 Text("Done")
                     .font(.title2)
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
             })
+            
             .disabled(!titleSet)
             .buttonStyle(BorderedProminentButtonStyle())
         })
@@ -57,5 +65,5 @@ struct AddNewCounterSheet: View {
 }
 
 #Preview {
-    AddNewCounterSheet()
+    AddNewCounterSheet( sheetIsOpened: .constant(true), canDismiss: .constant(true))
 }
