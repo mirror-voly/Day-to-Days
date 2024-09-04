@@ -15,7 +15,7 @@ struct MainScreen: View {
             ScrollView(.vertical) {
                 VStack(content: {
                     ForEach(dataStore.listOfDays, id: \.id) { day in
-                        ContersListItemView(day: day)
+                        EventsItemView(day: day)
                         Divider()
                     }
                 })
