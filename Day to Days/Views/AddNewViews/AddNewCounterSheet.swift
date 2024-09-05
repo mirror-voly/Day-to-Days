@@ -8,15 +8,23 @@
 import SwiftUI
 
 struct AddNewCounterSheet: View {
+    @Environment(DataStore.self) private var dataStore
     @State var title = ""
     @State var description = ""
     @State var date = Date()
     @State var color = Color(.white)
     @State var titleSet = false
     @State var sliderValue: Int = 0
-    @State var dateType: DateCalculator.DateTypes = .day
+    @State var dateType: Event.DateType = .day
     @Binding var sheetIsOpened: Bool
     @Binding var canDismiss: Bool
+    private func makeNewEvent() -> Event {
+        let event = Event(title: title, description: description, date: date, dateType: dateType, color: color)
+        return event
+    }
+    private func addEvent() {
+        dataStore.allEvents.append(makeNewEvent())
+    }
     var body: some View {
         VStack(content: {
             GroupBox("New Event") {
@@ -46,35 +54,13 @@ struct AddNewCounterSheet: View {
                     ColorPicker("Color", selection: $color)
                 }
                 .padding(.bottom)
-                GroupBox {
-                    HStack(alignment: .center, content: {
-                        Text("Сount")
-                        Spacer()
-                        Text(dateType.rawValue)
-                    })
-                    Slider(value: Binding(
-                                    get: { Double(sliderValue) },
-                                    set: { newValue in
-                                        sliderValue = Int(newValue)
-                                        dateType = .allCases[sliderValue]
-                                    }
-                    ), in: 0...Double(DateCalculator.DateTypes.allCases.count - 1), step: 1)
-                    HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                        Group {
-                            Text("Day")
-                            Text("Weak")
-                            Text("Month")
-                            Text("Year")
-                        }
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity)
-                    })
-                }
+                DateTypeSlider(sliderValue: $sliderValue, dateType: $dateType)
             }
             Spacer()
             Button(action: {
-                sheetIsOpened = false
+                addEvent()
                 canDismiss = true
+                sheetIsOpened = false
             }, label: {
                 Text("Done")
                     .font(.title2)

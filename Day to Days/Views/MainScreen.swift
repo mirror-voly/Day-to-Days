@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainScreen: View {
-    let dataStore = DataStore()
+    @Environment(DataStore.self) private var dataStore
     @State var addNewSheetIsOpened = false
     @State var sheetCanDismiss = true
     @State var alertIsPresented = false
@@ -16,7 +16,7 @@ struct MainScreen: View {
         NavigationView {
             ScrollView(.vertical) {
                 VStack(content: {
-                    ForEach(dataStore.listOfDays, id: \.id) { day in
+                    ForEach(dataStore.allEvents) { day in
                         EventsItemView(day: day)
                         Divider()
                     }

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct DaytoDaysApp: App {
+    @State private var dataStore = DataStore()
     var body: some Scene {
         WindowGroup {
             MainScreen()
+                .environment(dataStore)
         }
     }
 }

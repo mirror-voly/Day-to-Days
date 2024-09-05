@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168C42A2C898095002CEAAC /* DateTypeSlider.swift */; };
 		516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE422C87247000202B93 /* DaytoDaysApp.swift */; };
 		516CBE452C87247000202B93 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE442C87247000202B93 /* MainScreen.swift */; };
 		516CBE472C87247100202B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516CBE462C87247100202B93 /* Assets.xcassets */; };
 		516CBE4A2C87247100202B93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516CBE492C87247100202B93 /* Preview Assets.xcassets */; };
-		516CBE542C87296400202B93 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE532C87296400202B93 /* Day.swift */; };
+		516CBE542C87296400202B93 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE532C87296400202B93 /* Event.swift */; };
 		516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		516CBE592C87339F00202B93 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* DataStore.swift */; };
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
@@ -20,12 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5168C42A2C898095002CEAAC /* DateTypeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTypeSlider.swift; sourceTree = "<group>"; };
 		516CBE3F2C87247000202B93 /* Day to Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Day to Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		516CBE422C87247000202B93 /* DaytoDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaytoDaysApp.swift; sourceTree = "<group>"; };
 		516CBE442C87247000202B93 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		516CBE462C87247100202B93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		516CBE492C87247100202B93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		516CBE532C87296400202B93 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		516CBE532C87296400202B93 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		516CBE562C872FAA00202B93 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		516CBE582C87339F00202B93 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		516CBE5C2C87403600202B93 /* EventsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemView.swift; sourceTree = "<group>"; };
@@ -44,6 +46,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5168C4292C898037002CEAAC /* AddNewViews */ = {
+			isa = PBXGroup;
+			children = (
+				5182890E2C883CC000676F0E /* AddNewCounterSheet.swift */,
+				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
+			);
+			path = AddNewViews;
+			sourceTree = "<group>";
+		};
 		516CBE362C87247000202B93 = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +95,7 @@
 		516CBE552C87296E00202B93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				516CBE532C87296400202B93 /* Day.swift */,
+				516CBE532C87296400202B93 /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -102,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				516CBE442C87247000202B93 /* MainScreen.swift */,
-				5182890E2C883CC000676F0E /* AddNewCounterSheet.swift */,
+				5168C4292C898037002CEAAC /* AddNewViews */,
 				516CBE5C2C87403600202B93 /* EventsItemView.swift */,
 				518289102C8849AB00676F0E /* View+HideKeyboard.swift */,
 			);
@@ -186,9 +197,10 @@
 				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,
 				5182890F2C883CC000676F0E /* AddNewCounterSheet.swift in Sources */,
 				516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */,
+				5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
-				516CBE542C87296400202B93 /* Day.swift in Sources */,
+				516CBE542C87296400202B93 /* Event.swift in Sources */,
 				516CBE592C87339F00202B93 /* DataStore.swift in Sources */,
 				516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */,
 			);

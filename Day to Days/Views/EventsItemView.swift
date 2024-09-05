@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventsItemView: View {
-    let day: Day
+    let day: Event
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         let haloColor: Color = colorScheme == .light ? .white : .black
