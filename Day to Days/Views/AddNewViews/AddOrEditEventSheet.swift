@@ -16,23 +16,17 @@ struct AddOrEditEventSheet: View {
     @State private var titleSet = false
     @State private var sliderValue: Int = 0
     @State private var dateType: Event.DateType = .day
+    @State var canDismiss = true
     @Binding var isOpened: Bool
-    @Binding var canDismiss: Bool
-    var event: Event?
-    let isEditMode: Bool
+    @Binding var showAlert: Bool
 
     // MARK: - Functions
     private func createEvent() -> Event {
         return Event(title: title, description: description, date: date, dateType: dateType, color: color)
     }
 
-    private func isEventNotNill() {
-        guard let event = event else { return }
-        dataStore.editEvent(oldEvent: event, newEvent: createEvent())
-    }
-
     private func extractEventData() {
-        guard let event = event else { return }
+        guard let event = dataStore.currentEvent else { return }
         title = event.title
         description = event.description
         date = event.date
@@ -46,7 +40,7 @@ struct AddOrEditEventSheet: View {
 
     // MARK: - View
     var body: some View {
-        let sheetTitle = isEditMode ? "Edit Event": "New Event"
+        let sheetTitle = dataStore.screenMode == .edit ? "Edit Event": "New Event"
         VStack(content: {
             GroupBox(sheetTitle) {
                 // MARK: - Text group boxes
@@ -66,7 +60,7 @@ struct AddOrEditEventSheet: View {
                     }
                 }
                 .onAppear(perform: {
-                    if isEditMode { extractEventData() }
+                    extractEventData()
                 })
                 .padding(.bottom)
                 .onTapGesture(perform: {
@@ -85,11 +79,12 @@ struct AddOrEditEventSheet: View {
             }
             Spacer()
             Button(action: {
-                if isEditMode {
-                    isEventNotNill()
+                if dataStore.screenMode == .edit {
+                    dataStore.editEvent(newEvent: createEvent())
                 } else {
                     dataStore.addEvent(event: createEvent())
                 }
+                dataStore.currentEvent = nil
                 closeSheet()
             }, label: {
                 Text("Done")
@@ -101,9 +96,20 @@ struct AddOrEditEventSheet: View {
             .buttonStyle(BorderedProminentButtonStyle())
         })
         .padding()
+        .onDisappear(perform: {
+            if !canDismiss {
+                if dataStore.screenMode == .edit {
+                    guard let id = dataStore.currentEvent?.id else { return }
+                    dataStore.currentEvent = Event(id: id, title: title, description: description, date: date, dateType: dateType, color: color)
+                } else {
+                    dataStore.currentEvent = createEvent()
+                }
+                showAlert = true
+            }
+        })
     }
 }
 
-#Preview {
-    AddOrEditEventSheet( isOpened: .constant(true), canDismiss: .constant(true), event: Event(title: "", description: "", date: Date(), dateType: .day, color: .blue), isEditMode: true)
-}
+//#Preview {
+//    AddOrEditEventSheet( isOpened: .constant(true), canDismiss: .constant(true), event: Event(title: "", description: "", date: Date(), dateType: .day, color: .blue), isEditMode: true)
+//}

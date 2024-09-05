@@ -9,17 +9,9 @@ import SwiftUI
 
 struct MainScreen: View {
     @Environment(DataStore.self) private var dataStore
-    @State var editEventSheet = false
-    @State var addNewSheetIsOpened = false
-    @State var sheetCanDismiss = true
+    @State var sheetIsOpened = false
     @State var alertIsPresented = false
-    @State var correntEvent: Event?
-    private func checkIsSheetCanDismiss() {
-        if !sheetCanDismiss {
-            alertIsPresented = true
-            sheetCanDismiss = true
-        }
-    }
+
     // MARK: - View
     var body: some View {
         NavigationView {
@@ -30,35 +22,25 @@ struct MainScreen: View {
                         EventsItemView(day: event)
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                correntEvent = event
+                                dataStore.screenMode = .edit
+                                dataStore.currentEvent = event
+                                sheetIsOpened = true
                             }
                     }
                 })
                 .padding(.horizontal)
             }
             .navigationTitle("Events")
-            .onChange(of: correntEvent, {
-                editEventSheet = true
-            })
-            .sheet(isPresented: $addNewSheetIsOpened, onDismiss: {
-                checkIsSheetCanDismiss()
+            .sheet(isPresented: $sheetIsOpened, onDismiss: {
             }, content: {
-                AddOrEditEventSheet(isOpened: $addNewSheetIsOpened, 
-                                    canDismiss: $sheetCanDismiss,
-                                    isEditMode: false)
-            })
-            .sheet(isPresented: $editEventSheet, onDismiss: {
-                checkIsSheetCanDismiss()
-            }, content: {
-                AddOrEditEventSheet(isOpened: $editEventSheet,
-                                    canDismiss: $sheetCanDismiss,
-                                    event: correntEvent,
-                                    isEditMode: true)
+                AddOrEditEventSheet(isOpened: $sheetIsOpened,
+                                    showAlert: $alertIsPresented)
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        addNewSheetIsOpened = true
+                        dataStore.screenMode = .add
+                        sheetIsOpened = true
                     }) {
                         Image(systemName: "plus.circle")
                             .foregroundStyle(.gray)
@@ -66,7 +48,16 @@ struct MainScreen: View {
                 }
             }
             .alert(isPresented: $alertIsPresented, content: {
-                Alert(title: Text("hi"))
+                Alert(
+                                title: Text("New event is not saved"),
+                                message: Text("Are you shure that you mant to erese it"),
+                                primaryButton: .destructive(Text("Yes")) {
+                                    dataStore.screenMode = nil
+                                },
+                                secondaryButton: .default(Text("Cancel")) {
+                                        sheetIsOpened = true
+                                }
+                            )
             })
         }
     }
