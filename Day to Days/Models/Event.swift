@@ -14,7 +14,7 @@ struct Event: Identifiable, Equatable {
         case month = "Days, Weaks, Months"
         case year = "All"
     }
-    let id: UUID = UUID()
+    var id: UUID = UUID()
     let title: String
     let description: String
     let date: Date

@@ -12,11 +12,13 @@ struct DateTypeSlider: View {
     @Binding var dateType: Event.DateType
     var body: some View {
         GroupBox {
+            // MARK: - Counter Hstack
             HStack(alignment: .center, content: {
                 Text("Сount")
                 Spacer()
                 Text(dateType.rawValue)
             })
+            // MARK: - Slider
             Slider(value: Binding(
                             get: { Double(sliderValue) },
                             set: { newValue in
@@ -24,6 +26,7 @@ struct DateTypeSlider: View {
                                 dateType = .allCases[sliderValue]
                             }
             ), in: 0...Double(Event.DateType.allCases.count - 1), step: 1)
+            // MARK: - Underline text
             HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
                 Group {
                     Text("Day")
