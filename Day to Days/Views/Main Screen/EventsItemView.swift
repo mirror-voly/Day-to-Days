@@ -13,6 +13,7 @@ struct EventsItemView: View {
     var body: some View {
         let haloColor: Color = colorScheme == .light ? .white : .black
         HStack {
+            // MARK: - Circle Zstack
             ZStack(alignment: .center, content: {
                 Circle()
                     .fill(Color.white.opacity(0.5))
@@ -27,9 +28,11 @@ struct EventsItemView: View {
             })
             .frame(width: 25)
             .padding()
+            // MARK: - Title
                 Text(day.title)
                     .font(.title2)
             Spacer()
+            // MARK: - Day counter
             GroupBox {
                 VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
                     let dateData = DateCalculator.daysFrom(thisDate: day.date)
@@ -49,6 +52,7 @@ struct EventsItemView: View {
                         .frame(width: 40, height: 40)
                     }
                     Group {
+                        // TODO: add weaks, months, yars
                         Text("days")
                         Text(dateData.description)
                     }
@@ -59,5 +63,6 @@ struct EventsItemView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
+        .containerShape(Rectangle())
     }
 }

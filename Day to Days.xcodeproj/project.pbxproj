@@ -16,7 +16,7 @@
 		516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		516CBE592C87339F00202B93 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* DataStore.swift */; };
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
-		5182890F2C883CC000676F0E /* AddNewCounterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182890E2C883CC000676F0E /* AddNewCounterSheet.swift */; };
+		5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */; };
 		518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518289102C8849AB00676F0E /* View+HideKeyboard.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +31,7 @@
 		516CBE562C872FAA00202B93 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		516CBE582C87339F00202B93 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		516CBE5C2C87403600202B93 /* EventsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemView.swift; sourceTree = "<group>"; };
-		5182890E2C883CC000676F0E /* AddNewCounterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCounterSheet.swift; sourceTree = "<group>"; };
+		5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheet.swift; sourceTree = "<group>"; };
 		518289102C8849AB00676F0E /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,10 +49,19 @@
 		5168C4292C898037002CEAAC /* AddNewViews */ = {
 			isa = PBXGroup;
 			children = (
-				5182890E2C883CC000676F0E /* AddNewCounterSheet.swift */,
+				5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */,
 				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
 			);
 			path = AddNewViews;
+			sourceTree = "<group>";
+		};
+		5168C42C2C899024002CEAAC /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				516CBE442C87247000202B93 /* MainScreen.swift */,
+				516CBE5C2C87403600202B93 /* EventsItemView.swift */,
+			);
+			path = "Main Screen";
 			sourceTree = "<group>";
 		};
 		516CBE362C87247000202B93 = {
@@ -112,9 +121,8 @@
 		516CBE5B2C8733E000202B93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				516CBE442C87247000202B93 /* MainScreen.swift */,
+				5168C42C2C899024002CEAAC /* Main Screen */,
 				5168C4292C898037002CEAAC /* AddNewViews */,
-				516CBE5C2C87403600202B93 /* EventsItemView.swift */,
 				518289102C8849AB00676F0E /* View+HideKeyboard.swift */,
 			);
 			path = Views;
@@ -195,7 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,
-				5182890F2C883CC000676F0E /* AddNewCounterSheet.swift in Sources */,
+				5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */,
 				516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */,
 				5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
