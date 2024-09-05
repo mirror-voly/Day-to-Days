@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Event: Identifiable {
+struct Event: Identifiable, Equatable {
     enum DateType: String, CaseIterable {
         case day = "Days"
         case weak = "Days and Weaks"
@@ -15,9 +15,9 @@ struct Event: Identifiable {
         case year = "All"
     }
     let id: UUID = UUID()
-    var title: String
-    var description: String
-    var date: Date
-    var dateType: DateType
-    var color: Color
+    let title: String
+    let description: String
+    let date: Date
+    let dateType: DateType
+    let color: Color
 }
