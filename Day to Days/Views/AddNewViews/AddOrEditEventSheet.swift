@@ -17,7 +17,7 @@ struct AddOrEditEventSheet: View {
     @State var canDismiss = true
     @Binding var isOpened: Bool
     @Binding var showAlert: Bool
-    
+
     @State private var title = ""
     @State private var description = ""
     @State private var date = Date()
