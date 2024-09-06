@@ -122,7 +122,7 @@ struct AddOrEditEventSheet: View {
         })
         // MARK: - Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
-            buttonSpaser = 100
+            buttonSpaser = 130
         }
         .onReceive(Publishers.keyboardWillHide) { _ in
             buttonSpaser = 50

@@ -15,16 +15,12 @@ struct EventsItemView: View {
         HStack {
             // MARK: - Circle Zstack
             ZStack(alignment: .center, content: {
-                Circle()
-                    .fill(Color.white.opacity(0.5))
-                    .frame(width: 22, height: 22)
                     Circle()
-                        .fill(day.color)
+                    .fill(day.color.gradient.shadow(ShadowStyle.drop(radius: 4)))
                         .overlay(
                             Circle()
                             .fill(haloColor)
-                            .frame(width: 20, height: 15))
-                        .frame(width: 20, height: 20)
+                            .frame(width: 20, height: 11))
             })
             .frame(width: 25)
             .padding()
@@ -42,7 +38,7 @@ struct EventsItemView: View {
                                 .fill(Color.white)
                                 .frame(width: 50, height: 50)
                             Text(dateData.days)
-                                .foregroundStyle(day.color)
+                                .foregroundStyle(day.color.shadow(ShadowStyle.drop(radius: 4)))
                                 .bold()
                                 .font(.title3)
                                 .frame(width: 40)
