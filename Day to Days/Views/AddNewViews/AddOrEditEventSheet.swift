@@ -6,15 +6,18 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddOrEditEventSheet: View {
     @Environment(DataStore.self) private var dataStore
+    // TODO: add constats to the enum
     @State private var title = ""
     @State private var description = ""
     @State private var date = Date()
     @State private var color = Color(.gray)
     @State private var titleSet = false
     @State private var sliderValue: Int = 0
+    @State private var buttonSpaser: Int = 0
     @State private var dateType: Event.DateType = .day
     @State var canDismiss = true
     @Binding var isOpened: Bool
@@ -77,24 +80,31 @@ struct AddOrEditEventSheet: View {
                 .padding(.bottom)
                 // MARK: - Date type slider
                 DateTypeSlider(sliderValue: $sliderValue, dateType: $dateType)
+                    .onTapGesture(perform: {
+                        hideKeyboard()
+                    })
             }
             Spacer()
-            Button(action: {
-                if dataStore.screenMode == .edit {
-                    dataStore.editEvent(newEvent: createEvent())
-                } else {
-                    dataStore.addEvent(event: createEvent())
-                }
-                dataStore.currentEvent = nil
-                closeSheet()
-            }, label: {
-                Text("Done")
-                    .font(.title2)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
+            VStack(content: {
+                Button(action: {
+                    if dataStore.screenMode == .edit {
+                        dataStore.editEvent(newEvent: createEvent())
+                    } else {
+                        dataStore.addEvent(event: createEvent())
+                    }
+                    dataStore.currentEvent = nil
+                    closeSheet()
+                }, label: {
+                        Text("Done")
+                            .font(.title2)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                })
+                .disabled(!titleSet)
+                .buttonStyle(BorderedProminentButtonStyle())
+                Spacer()
             })
-            .disabled(!titleSet)
-            .buttonStyle(BorderedProminentButtonStyle())
+            .frame(height: CGFloat(buttonSpaser))
         })
         .padding()
         .onDisappear(perform: {
@@ -108,9 +118,25 @@ struct AddOrEditEventSheet: View {
                 showAlert = true
             }
         })
+        .onReceive(Publishers.keyboardWillShow) { _ in
+            buttonSpaser = 130
+        }
+        .onReceive(Publishers.keyboardWillHide) { _ in
+            buttonSpaser = 50
+        }
     }
 }
 
-//#Preview {
-//    AddOrEditEventSheet( isOpened: .constant(true), canDismiss: .constant(true), event: Event(title: "", description: "", date: Date(), dateType: .day, color: .blue), isEditMode: true)
-//}
+extension Publishers {
+    static var keyboardWillShow: AnyPublisher<Void, Never> {
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
+            .map { _ in }
+            .eraseToAnyPublisher()
+    }
+
+    static var keyboardWillHide: AnyPublisher<Void, Never> {
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
+            .map { _ in }
+            .eraseToAnyPublisher()
+    }
+}
