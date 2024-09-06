@@ -66,3 +66,6 @@ struct EventsItemView: View {
         .containerShape(Rectangle())
     }
 }
+#Preview {
+    EventsItemView(day: .dummy)
+}

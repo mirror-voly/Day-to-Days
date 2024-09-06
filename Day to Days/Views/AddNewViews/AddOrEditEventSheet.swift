@@ -53,6 +53,7 @@ struct AddOrEditEventSheet: View {
                         titleSet = title != "" ? true : false
                     }
                     .onChange(of: titleSet) {
+                        // TODO: canDismiss should react to all fields
                         canDismiss = !titleSet
                     }
                     TextField(text: $description) {
