@@ -11,15 +11,15 @@ struct EventsItemView: View {
     let day: Event
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        let haloColor: Color = colorScheme == .light ? .white : .black
+        let reversedSchemeColor = ColorCalculator.oppositeToTheColorScheme(colorScheme: colorScheme)
         HStack {
             // MARK: - Circle Zstack
             ZStack(alignment: .center, content: {
                     Circle()
-                    .fill(day.color.gradient.shadow(ShadowStyle.drop(radius: 4)))
+                    .fill(day.color)
                         .overlay(
                             Circle()
-                            .fill(haloColor)
+                                .fill(reversedSchemeColor.inverted())
                             .frame(width: 20, height: 11))
             })
             .frame(width: 25)
@@ -38,7 +38,7 @@ struct EventsItemView: View {
                                 .fill(Color.white)
                                 .frame(width: 50, height: 50)
                             Text(dateData.days)
-                                .foregroundStyle(day.color.shadow(ShadowStyle.drop(radius: 4)))
+                                .foregroundStyle(day.color)
                                 .bold()
                                 .font(.title3)
                                 .frame(width: 40)

@@ -14,25 +14,27 @@ struct MainScreen: View {
 
     // MARK: - View
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView(.vertical) {
                 VStack(content: {
                     ForEach(dataStore.allEvents) { event in
-                        Divider()
-                        EventsItemView(day: event)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                dataStore.screenMode = .edit
-                                dataStore.currentEvent = event
-                                sheetIsOpened = true
-                            }
+                        NavigationLink(value: event) {
+                            Divider()
+                            EventsItemView(day: event)
+                        }
+                        .navigationDestination(for: Event.self) { event in
+                            EventInfoScreen(event: event)
+                                .navigationTitle(event.title)
+                                .toolbarBackground(event.color.opacity(0.5), for: .navigationBar)
+                                .toolbarBackground(.visible, for: .navigationBar)
+                                .navigationBarBackButtonHidden()
+                        }
                     }
                 })
                 .padding(.horizontal)
             }
             .navigationTitle("Events")
-            .sheet(isPresented: $sheetIsOpened, onDismiss: {
-            }, content: {
+            .sheet(isPresented: $sheetIsOpened, content: {
                 AddOrEditEventSheet(isOpened: $sheetIsOpened,
                                     showAlert: $alertIsPresented)
             })
@@ -49,15 +51,16 @@ struct MainScreen: View {
             }
             .alert(isPresented: $alertIsPresented, content: {
                 Alert(
-                                title: Text("New event is not saved"),
-                                message: Text("Are you shure that you mant to erese it"),
-                                primaryButton: .destructive(Text("Yes")) {
-                                    dataStore.screenMode = nil
-                                },
-                                secondaryButton: .default(Text("Cancel")) {
-                                        sheetIsOpened = true
-                                }
-                            )
+                    title: Text("Event is not saved"),
+                    message: Text("Are you shure that you mant to erese it?"),
+                    primaryButton: .destructive(Text("Yes")) {
+                        dataStore.screenMode = nil
+                        dataStore.currentEvent = nil
+                    },
+                    secondaryButton: .default(Text("Cancel")) {
+                        sheetIsOpened = true
+                    }
+                )
             })
         }
     }

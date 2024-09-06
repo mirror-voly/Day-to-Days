@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 @Observable
 final class DataStore {
     enum EditModeType {
