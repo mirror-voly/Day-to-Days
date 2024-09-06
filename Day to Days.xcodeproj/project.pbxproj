@@ -16,6 +16,7 @@
 		516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		516CBE592C87339F00202B93 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* DataStore.swift */; };
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
+		5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */; };
 		5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */; };
 		518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518289102C8849AB00676F0E /* View+HideKeyboard.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		516CBE562C872FAA00202B93 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		516CBE582C87339F00202B93 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		516CBE5C2C87403600202B93 /* EventsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemView.swift; sourceTree = "<group>"; };
+		5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+KeyboardIsActive.swift"; sourceTree = "<group>"; };
 		5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheet.swift; sourceTree = "<group>"; };
 		518289102C8849AB00676F0E /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 				516CBE552C87296E00202B93 /* Models */,
 				516CBE5B2C8733E000202B93 /* Views */,
 				516CBE5A2C8733D500202B93 /* ViewModel */,
+				5178F4952C8AE70700DF45D4 /* Helpers */,
 				516CBE462C87247100202B93 /* Assets.xcassets */,
 				516CBE482C87247100202B93 /* Preview Content */,
 			);
@@ -123,9 +126,17 @@
 			children = (
 				5168C42C2C899024002CEAAC /* Main Screen */,
 				5168C4292C898037002CEAAC /* AddNewViews */,
-				518289102C8849AB00676F0E /* View+HideKeyboard.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5178F4952C8AE70700DF45D4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				518289102C8849AB00676F0E /* View+HideKeyboard.swift */,
+				5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +220,7 @@
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
+				5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */,
 				516CBE592C87339F00202B93 /* DataStore.swift in Sources */,
 				516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */,
 			);

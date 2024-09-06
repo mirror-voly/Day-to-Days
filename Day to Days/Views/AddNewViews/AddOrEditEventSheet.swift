@@ -9,19 +9,20 @@ import SwiftUI
 import Combine
 
 struct AddOrEditEventSheet: View {
-    @Environment(DataStore.self) private var dataStore
     // TODO: add constats to the enum
+    @Environment(DataStore.self) private var dataStore
+    @State private var titleSet = false
+    @State private var sliderValue: Int = 0
+    @State private var buttonSpaser: Int = 0
+    @State var canDismiss = true
+    @Binding var isOpened: Bool
+    @Binding var showAlert: Bool
+    
     @State private var title = ""
     @State private var description = ""
     @State private var date = Date()
     @State private var color = Color(.gray)
-    @State private var titleSet = false
-    @State private var sliderValue: Int = 0
-    @State private var buttonSpaser: Int = 0
     @State private var dateType: Event.DateType = .day
-    @State var canDismiss = true
-    @Binding var isOpened: Bool
-    @Binding var showAlert: Bool
 
     // MARK: - Functions
     private func createEvent() -> Event {
@@ -107,6 +108,7 @@ struct AddOrEditEventSheet: View {
             .frame(height: CGFloat(buttonSpaser))
         })
         .padding()
+        // MARK: - Try to save data and show alert if sheet is not properly closed
         .onDisappear(perform: {
             if !canDismiss {
                 if dataStore.screenMode == .edit {
@@ -118,25 +120,12 @@ struct AddOrEditEventSheet: View {
                 showAlert = true
             }
         })
+        // MARK: - Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
-            buttonSpaser = 130
+            buttonSpaser = 100
         }
         .onReceive(Publishers.keyboardWillHide) { _ in
             buttonSpaser = 50
         }
-    }
-}
-
-extension Publishers {
-    static var keyboardWillShow: AnyPublisher<Void, Never> {
-        NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
-            .map { _ in }
-            .eraseToAnyPublisher()
-    }
-
-    static var keyboardWillHide: AnyPublisher<Void, Never> {
-        NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
-            .map { _ in }
-            .eraseToAnyPublisher()
     }
 }
