@@ -9,19 +9,24 @@ import SwiftUI
 import Combine
 
 struct AddOrEditEventSheet: View {
-    // TODO: add constats to the enum
+    enum Constants {
+        static let buttonSpaserMinimize: Int = 50
+        static let buttonSpaserMaximize: Int = 130
+        static let fixedDate = Date()
+    }
     @Environment(DataStore.self) private var dataStore
-    @State private var titleSet = false
+    @State private var fieldsAreNotEmpy = false
+    @State private var canDismiss = true
     @State private var sliderValue: Int = 0
     @State private var buttonSpaser: Int = 0
-    @State var canDismiss = true
+
     @Binding var isOpened: Bool
     @Binding var showAlert: Bool
 
     @State private var title = ""
     @State private var description = ""
-    @State private var date = Date()
-    @State private var color = Color(.gray)
+    @State private var date = Constants.fixedDate
+    @State private var color = Color.gray
     @State private var dateType: Event.DateType = .day
 
     // MARK: - Functions
@@ -42,36 +47,55 @@ struct AddOrEditEventSheet: View {
         isOpened = false
     }
 
+    private func prepareForDismiss() {
+        if !canDismiss {
+            if dataStore.screenMode == .edit {
+                guard let id = dataStore.currentEvent?.id else { return }
+                dataStore.currentEvent = Event(id: id, title: title, description: description, date: date, dateType: dateType, color: color)
+            } else {
+                dataStore.currentEvent = createEvent()
+            }
+            showAlert = true
+        }
+    }
+
+    private func buttonAction() {
+        if dataStore.screenMode == .edit {
+            dataStore.editEvent(newEvent: createEvent())
+        } else {
+            dataStore.addEvent(event: createEvent())
+        }
+        dataStore.currentEvent = nil
+    }
+
+    private func isFieldsAreNotEmpty() -> Bool {
+        if title != "" || description != "" || color != Color.gray || dateType != .day || date != Constants.fixedDate {
+            return true
+        } else {
+            return false
+        }
+    }
+
     // MARK: - View
     var body: some View {
         let sheetTitle = dataStore.screenMode == .edit ? "Edit Event": "New Event"
         VStack(content: {
             GroupBox(sheetTitle) {
-                // MARK: - Text group boxes
+                // MARK: Text group boxes
                 GroupBox {
                     TextField(text: $title) {
                         Text("Title")
                     }
                     Divider()
-                    .onChange(of: title) {
-                        titleSet = title != "" ? true : false
-                    }
-                    .onChange(of: titleSet) {
-                        // TODO: canDismiss should react to all fields
-                        canDismiss = !titleSet
-                    }
                     TextField(text: $description) {
                         Text("Description")
                     }
                 }
-                .onAppear(perform: {
-                    extractEventData()
-                })
                 .padding(.bottom)
                 .onTapGesture(perform: {
                     hideKeyboard()
                 })
-                // MARK: - Date and color pickers
+                // MARK: Date and color pickers
                 GroupBox {
                     DatePicker("Date", selection: $date, displayedComponents: .date)
                         .datePickerStyle(.compact)
@@ -79,7 +103,7 @@ struct AddOrEditEventSheet: View {
                     ColorPicker("Color", selection: $color)
                 }
                 .padding(.bottom)
-                // MARK: - Date type slider
+                // MARK: Date type slider
                 DateTypeSlider(sliderValue: $sliderValue, dateType: $dateType)
                     .onTapGesture(perform: {
                         hideKeyboard()
@@ -88,44 +112,53 @@ struct AddOrEditEventSheet: View {
             Spacer()
             VStack(content: {
                 Button(action: {
-                    if dataStore.screenMode == .edit {
-                        dataStore.editEvent(newEvent: createEvent())
-                    } else {
-                        dataStore.addEvent(event: createEvent())
-                    }
-                    dataStore.currentEvent = nil
+                    buttonAction()
                     closeSheet()
                 }, label: {
                         Text("Done")
                             .font(.title2)
                             .frame(maxWidth: .infinity)
-                            .frame(height: 50)
+                            .frame(height: CGFloat(Constants.buttonSpaserMinimize))
                 })
-                .disabled(!titleSet)
+                .disabled(!fieldsAreNotEmpy)
                 .buttonStyle(BorderedProminentButtonStyle())
                 Spacer()
             })
             .frame(height: CGFloat(buttonSpaser))
         })
         .padding()
-        // MARK: - Try to save data and show alert if sheet is not properly closed
+
+        // MARK: - View actions
+        .onAppear(perform: {
+            extractEventData()
+        })
+        .onChange(of: title) {
+            fieldsAreNotEmpy = isFieldsAreNotEmpty()
+        }
+        .onChange(of: description) {
+            fieldsAreNotEmpy = isFieldsAreNotEmpty()
+        }
+        .onChange(of: color) {
+            fieldsAreNotEmpy = isFieldsAreNotEmpty()
+        }
+        .onChange(of: dateType) {
+            fieldsAreNotEmpy = isFieldsAreNotEmpty()
+        }
+        .onChange(of: date) {
+            fieldsAreNotEmpy = isFieldsAreNotEmpty()
+        }
+        .onChange(of: fieldsAreNotEmpy) {
+            canDismiss = !fieldsAreNotEmpy
+        }
         .onDisappear(perform: {
-            if !canDismiss {
-                if dataStore.screenMode == .edit {
-                    guard let id = dataStore.currentEvent?.id else { return }
-                    dataStore.currentEvent = Event(id: id, title: title, description: description, date: date, dateType: dateType, color: color)
-                } else {
-                    dataStore.currentEvent = createEvent()
-                }
-                showAlert = true
-            }
+            prepareForDismiss()
         })
         // MARK: - Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
-            buttonSpaser = 130
+            buttonSpaser = Constants.buttonSpaserMaximize
         }
         .onReceive(Publishers.keyboardWillHide) { _ in
-            buttonSpaser = 50
+            buttonSpaser = Constants.buttonSpaserMinimize
         }
     }
 }
