@@ -29,6 +29,11 @@ final class DataStore {
         }
     }
 
+    func makeCurrentEventNil() {
+        screenMode = nil
+        currentEvent = nil
+    }
+
     private func addUITestData() {
         allEvents.append(contentsOf: [Event(title: "My first try", description: "", date: ISO8601DateFormatter().date(from: "2025-03-15T14:30:00Z")!, dateType: .day, color: .red),
                                       Event(title: "Meeting", description: "well it something", date: ISO8601DateFormatter().date(from: "2024-03-11T14:30:00Z")!, dateType: .day, color: .teal),

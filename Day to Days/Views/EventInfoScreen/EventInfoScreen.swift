@@ -48,17 +48,11 @@ struct EventInfoScreen: View {
                                 showAlert: $alertIsPresented)
         })
         .alert(isPresented: $alertIsPresented, content: {
-            Alert(
-                title: Text("Event is not saved"),
-                message: Text("Are you shure that you mant to erese it?"),
-                primaryButton: .destructive(Text("Yes")) {
-                    dataStore.screenMode = nil
-                    dataStore.currentEvent = nil
-                },
-                secondaryButton: .default(Text("Cancel")) {
-                    sheetIsOpened = true
-                }
-            )
+            NewAlert.showAlert {
+                dataStore.makeCurrentEventNil()
+            } onCancel: {
+                sheetIsOpened = true
+            }
         })
         .toolbar(content: {
             ToolbarItem(placement: .topBarLeading) {
