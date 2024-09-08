@@ -21,26 +21,11 @@ struct MainScreen: View {
         NavigationStack {
             VStack(alignment: .center) {
                 if !dataStore.allEvents.isEmpty {
-                    List {
-                        ForEach(dataStore.allEvents) { event in
-                            NavigationLink(value: event) {
-                                Divider()
-                                EventsItemView(day: event)
-                            }
-                            .navigationDestination(for: Event.self) { event in
-                                EventInfoScreen(event: event)
-                                    .navigationTitle(event.title)
-                                    .toolbarBackground(event.color.opacity(0.5), for: .navigationBar)
-                                    .toolbarBackground(.visible, for: .navigationBar)
-                                    .navigationBarBackButtonHidden()
-                            }
-                        }.onDelete { index in
-                            dataStore.deleteEventAt(index)
-                        }
-                    }
-                    .listStyle(.plain)
+                    EventsList()
                 } else {
-
+                    EventsListIsEmpyView {
+                        startAddNewEvent()
+                    }
                 }
             }
             .navigationTitle("Events")

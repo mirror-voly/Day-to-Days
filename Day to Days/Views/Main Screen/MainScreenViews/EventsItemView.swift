@@ -13,7 +13,7 @@ struct EventsItemView: View {
     var body: some View {
         let reversedSchemeColor = ColorCalculator.oppositeToTheColorScheme(colorScheme: colorScheme)
         HStack {
-            // MARK: - Circle Zstack
+            // MARK: - Circle
             ZStack(alignment: .center, content: {
                     Circle()
                     .fill(day.color)
