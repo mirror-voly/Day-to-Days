@@ -19,7 +19,7 @@ struct EventsList: View {
                 .navigationDestination(for: Event.self) { event in
                     EventInfoScreen(event: event)
                         .navigationTitle(event.title)
-                        .toolbarBackground(event.color.opacity(0.8), for: .navigationBar)
+                        .toolbarBackground(event.color, for: .navigationBar)
                         .toolbarBackground(.visible, for: .navigationBar)
                         .navigationBarBackButtonHidden()
                 }

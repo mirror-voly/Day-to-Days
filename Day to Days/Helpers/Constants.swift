@@ -13,6 +13,7 @@ struct Constants {
         static let buttonSpaсerMaximize: CGFloat = 130
         static let sliderCircleSize: CGFloat = 15
         static let sliderTextPadding: CGFloat = 7
+        static let eventInfoButtonSize: CGFloat = 35
     }
 
     enum AllowedColor: String, CaseIterable {
@@ -25,10 +26,10 @@ struct Constants {
         case purple = "Purple"
         case pink = "Pink"
         case brown = "Brown"
-        case gray = "Gray"
         case mint = "Mint"
         case teal = "Teal"
         case indigo = "Indigo"
+        case gray = "Gray"
 
         var setColor: Color {
             switch self {

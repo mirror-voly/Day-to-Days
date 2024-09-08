@@ -13,6 +13,7 @@ struct EventInfoScreen: View {
     @State var alertIsPresented = false
     @Environment(DataStore.self) private var dataStore
     @Environment(\.dismiss) private var dismis
+    let circleButtonSize = Constants.Сonstraints.eventInfoButtonSize
 
     var body: some View {
         Divider()
@@ -61,7 +62,7 @@ struct EventInfoScreen: View {
                 ZStack(alignment: .center, content: {
                     Circle()
                         .fill(.white)
-                        .frame(width: 35, height: 35)
+                        .frame(width: circleButtonSize, height: circleButtonSize)
                     Image(systemName: "chevron.backward")
                         .fontWeight(.semibold)
                 })
@@ -77,7 +78,7 @@ struct EventInfoScreen: View {
                 ZStack(alignment: .center, content: {
                     Circle()
                         .fill(.white)
-                        .frame(width: 35, height: 35)
+                        .frame(width: circleButtonSize, height: circleButtonSize)
                     Image(systemName: "pencil")
                         .fontWeight(.semibold)
                 })
