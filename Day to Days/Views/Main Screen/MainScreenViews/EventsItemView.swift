@@ -11,7 +11,6 @@ struct EventsItemView: View {
     let day: Event
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        let reversedSchemeColor = ColorCalculator.oppositeToTheColorScheme(colorScheme: colorScheme)
         HStack {
             // MARK: - Circle
             ZStack(alignment: .center, content: {
@@ -19,7 +18,7 @@ struct EventsItemView: View {
                     .fill(day.color)
                         .overlay(
                             Circle()
-                                .fill(reversedSchemeColor.inverted())
+                                .fill(Color.primary.inverted())
                             .frame(width: 20, height: 11))
             })
             .frame(width: 25)

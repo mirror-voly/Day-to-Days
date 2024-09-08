@@ -13,11 +13,8 @@ struct EventInfoScreen: View {
     @State var alertIsPresented = false
     @Environment(DataStore.self) private var dataStore
     @Environment(\.dismiss) private var dismis
-    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        let reversedSchemeColor = ColorCalculator.oppositeToTheColorScheme(colorScheme: colorScheme)
-        let tintColor = ColorCalculator.makeVisibleIfNot(firstColor: reversedSchemeColor, secondColor: event.color)
         Divider()
         VStack(alignment: .leading, content: {
             GroupBox {
@@ -63,7 +60,7 @@ struct EventInfoScreen: View {
             label: {
                 ZStack(alignment: .center, content: {
                     Circle()
-                        .fill(reversedSchemeColor)
+                        .fill(.white)
                         .frame(width: 35, height: 35)
                     Image(systemName: "chevron.backward")
                         .fontWeight(.semibold)
@@ -79,7 +76,7 @@ struct EventInfoScreen: View {
             label: {
                 ZStack(alignment: .center, content: {
                     Circle()
-                        .fill(reversedSchemeColor)
+                        .fill(.white)
                         .frame(width: 35, height: 35)
                     Image(systemName: "pencil")
                         .fontWeight(.semibold)
@@ -87,7 +84,7 @@ struct EventInfoScreen: View {
             }
             }
         })
-        .tint(tintColor)
+        .tint(event.color)
     }
 }
 
