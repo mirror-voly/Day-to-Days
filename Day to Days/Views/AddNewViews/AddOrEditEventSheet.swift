@@ -9,16 +9,12 @@ import SwiftUI
 import Combine
 
 struct AddOrEditEventSheet: View {
-    enum Constants {
-        static let buttonSpaserMinimize: Int = 50
-        static let buttonSpaserMaximize: Int = 130
-        static let fixedDate = Date()
-    }
+
     @Environment(DataStore.self) private var dataStore
     @State private var fieldsAreNotEmpy = false
     @State private var canDismiss = true
     @State private var sliderValue: Int = 0
-    @State private var buttonSpaser: Int = 0
+    @State private var buttonSpacer: CGFloat = 0
 
     @Binding var isOpened: Bool
     @Binding var showAlert: Bool
@@ -79,52 +75,21 @@ struct AddOrEditEventSheet: View {
     // MARK: - View
     var body: some View {
         let sheetTitle = dataStore.screenMode == .edit ? "Edit Event": "New Event"
+
         VStack(content: {
             GroupBox(sheetTitle) {
-                // MARK: Text group boxes
-                GroupBox {
-                    TextField(text: $title) {
-                        Text("Title")
-                    }
-                    Divider()
-                    TextField(text: $description) {
-                        Text("Description")
-                    }
-                }
-                .padding(.bottom)
-                .onTapGesture(perform: {
-                    hideKeyboard()
-                })
-                // MARK: Date and color pickers
-                GroupBox {
-                    DatePicker("Date", selection: $date, displayedComponents: .date)
-                        .datePickerStyle(.compact)
-                    Divider()
-                    ColorPicker("Color", selection: $color)
-                }
-                .padding(.bottom)
-                // MARK: Date type slider
-                DateTypeSlider(sliderValue: $sliderValue, dateType: $dateType)
+                AddEventFields(title: $title, description: $description, date: $date, color: $color)
+                DateTypeSlider(sliderValue: $sliderValue, dateType: $dateType, sliderColor: $color)
                     .onTapGesture(perform: {
                         hideKeyboard()
                     })
             }
             Spacer()
-            VStack(content: {
-                Button(action: {
-                    buttonAction()
-                    closeSheet()
-                }, label: {
-                        Text("Done")
-                            .font(.title2)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: CGFloat(Constants.buttonSpaserMinimize))
-                })
-                .disabled(!fieldsAreNotEmpy)
-                .buttonStyle(BorderedProminentButtonStyle())
-                Spacer()
-            })
-            .frame(height: CGFloat(buttonSpaser))
+            AddEventButton(onAddNew: {
+                buttonAction()
+                closeSheet()
+            }, fieldsAreNotEmpy: $fieldsAreNotEmpy)
+            .frame(height: buttonSpacer)
         })
         .padding()
 
@@ -155,10 +120,10 @@ struct AddOrEditEventSheet: View {
         })
         // MARK: - Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
-            buttonSpaser = Constants.buttonSpaserMaximize
+            buttonSpacer = Constants.Сonstraints.buttonSpaсerMaximize
         }
         .onReceive(Publishers.keyboardWillHide) { _ in
-            buttonSpaser = Constants.buttonSpaserMinimize
+            buttonSpacer = Constants.Сonstraints.buttonSpaсerMinimize
         }
     }
 }

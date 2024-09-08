@@ -25,6 +25,9 @@
 		5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */; };
 		518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518289102C8849AB00676F0E /* View+HideKeyboard.swift */; };
 		519195012C8CA6AA00F29C1B /* NewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519195002C8CA6AA00F29C1B /* NewAlert.swift */; };
+		519FF10A2C8D9E84002FA63A /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF1092C8D9E84002FA63A /* AddEventButton.swift */; };
+		519FF10C2C8D9F46002FA63A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Constants.swift */; };
+		519FF10E2C8DA4A4002FA63A /* AddEventFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheet.swift; sourceTree = "<group>"; };
 		518289102C8849AB00676F0E /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 		519195002C8CA6AA00F29C1B /* NewAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlert.swift; sourceTree = "<group>"; };
+		519FF1092C8D9E84002FA63A /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
+		519FF10B2C8D9F46002FA63A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventFields.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */,
-				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
+				519FF10F2C8DA7D0002FA63A /* AddEventViews */,
 			);
 			path = AddNewViews;
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 				519195002C8CA6AA00F29C1B /* NewAlert.swift */,
 				5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */,
 				5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */,
+				519FF10B2C8D9F46002FA63A /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -171,6 +178,16 @@
 				5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */,
 			);
 			path = EventInfoScreen;
+			sourceTree = "<group>";
+		};
+		519FF10F2C8DA7D0002FA63A /* AddEventViews */ = {
+			isa = PBXGroup;
+			children = (
+				519FF1092C8D9E84002FA63A /* AddEventButton.swift */,
+				519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */,
+				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
+			);
+			path = AddEventViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,9 +268,11 @@
 				5178F49E2C8B40C700DF45D4 /* ColorCalculator.swift in Sources */,
 				5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */,
 				516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */,
+				519FF10E2C8DA4A4002FA63A /* AddEventFields.swift in Sources */,
 				516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */,
 				5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
+				519FF10A2C8D9E84002FA63A /* AddEventButton.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
 				5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */,
@@ -263,6 +282,7 @@
 				516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */,
 				519195012C8CA6AA00F29C1B /* NewAlert.swift in Sources */,
 				5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */,
+				519FF10C2C8D9F46002FA63A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
