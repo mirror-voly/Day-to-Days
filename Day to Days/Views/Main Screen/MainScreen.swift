@@ -12,26 +12,36 @@ struct MainScreen: View {
     @State var sheetIsOpened = false
     @State var alertIsPresented = false
 
+    private func startAddNewEvent() {
+        dataStore.screenMode = .add
+        sheetIsOpened = true
+    }
     // MARK: - View
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical) {
-                VStack(content: {
-                    ForEach(dataStore.allEvents) { event in
-                        NavigationLink(value: event) {
-                            Divider()
-                            EventsItemView(day: event)
-                        }
-                        .navigationDestination(for: Event.self) { event in
-                            EventInfoScreen(event: event)
-                                .navigationTitle(event.title)
-                                .toolbarBackground(event.color.opacity(0.5), for: .navigationBar)
-                                .toolbarBackground(.visible, for: .navigationBar)
-                                .navigationBarBackButtonHidden()
+            VStack(alignment: .center) {
+                if !dataStore.allEvents.isEmpty {
+                    List {
+                        ForEach(dataStore.allEvents) { event in
+                            NavigationLink(value: event) {
+                                Divider()
+                                EventsItemView(day: event)
+                            }
+                            .navigationDestination(for: Event.self) { event in
+                                EventInfoScreen(event: event)
+                                    .navigationTitle(event.title)
+                                    .toolbarBackground(event.color.opacity(0.5), for: .navigationBar)
+                                    .toolbarBackground(.visible, for: .navigationBar)
+                                    .navigationBarBackButtonHidden()
+                            }
+                        }.onDelete { index in
+                            dataStore.deleteEventAt(index)
                         }
                     }
-                })
-                .padding(.horizontal)
+                    .listStyle(.plain)
+                } else {
+
+                }
             }
             .navigationTitle("Events")
             .sheet(isPresented: $sheetIsOpened, content: {
@@ -41,8 +51,7 @@ struct MainScreen: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        dataStore.screenMode = .add
-                        sheetIsOpened = true
+                        startAddNewEvent()
                     }) {
                         Image(systemName: "plus.circle")
                             .foregroundStyle(.gray)
@@ -55,7 +64,6 @@ struct MainScreen: View {
                 } onCancel: {
                     sheetIsOpened = true
                 }
-
             })
         }
     }

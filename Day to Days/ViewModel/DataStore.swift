@@ -29,6 +29,10 @@ final class DataStore {
         }
     }
 
+    func deleteEventAt(_ index: IndexSet) {
+        allEvents.remove(atOffsets: index)
+    }
+
     func makeCurrentEventNil() {
         screenMode = nil
         currentEvent = nil

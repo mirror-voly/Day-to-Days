@@ -85,19 +85,6 @@ struct EventInfoScreen: View {
                 })
             }
             }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                }
-            label: {
-                ZStack(alignment: .center, content: {
-                    Circle()
-                        .fill(reversedSchemeColor)
-                        .frame(width: 35, height: 35)
-                    Image(systemName: "trash")
-                        .fontWeight(.semibold)
-                })
-            }
-            }
         })
         .tint(tintColor)
     }
