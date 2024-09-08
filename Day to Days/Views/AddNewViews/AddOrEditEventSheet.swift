@@ -14,8 +14,8 @@ struct AddOrEditEventSheet: View {
     @State private var fieldsAreNotEmpy = false
     @State private var addButtonIsVisible = false
     @State private var canDismiss = true
-    
-    @State private var sliderValue: Int = 0
+
+    @State private var sliderValue: Double = 0
     @State private var buttonSpacer: CGFloat = 0
 
     @Binding var isOpened: Bool

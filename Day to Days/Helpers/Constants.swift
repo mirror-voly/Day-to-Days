@@ -11,7 +11,8 @@ struct Constants {
     enum Сonstraints {
         static let buttonSpaсerMinimize: CGFloat = 50
         static let buttonSpaсerMaximize: CGFloat = 130
-        static let sliderCircleSize: CGFloat = 15
+        static let sliderCircleSizeNornmal: CGFloat = 15
+        static let sliderCircleSizeMaximazed: CGFloat = 25
         static let sliderTextPadding: CGFloat = 7
         static let eventInfoButtonSize: CGFloat = 35
     }
