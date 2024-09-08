@@ -12,6 +12,7 @@ struct Constants {
         static let buttonSpaсerMinimize: CGFloat = 50
         static let buttonSpaсerMaximize: CGFloat = 130
         static let sliderCircleSize: CGFloat = 15
+        static let sliderTextPadding: CGFloat = 7
     }
     static let fixedDate = Date()
 }

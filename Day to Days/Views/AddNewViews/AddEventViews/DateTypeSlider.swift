@@ -57,16 +57,17 @@ struct DateTypeSlider: View {
                     Spacer()
                     Text("Weak")
                         .fixedSize()
+                        .padding(.leading, Constants.Сonstraints.sliderTextPadding)
                     Spacer()
                     Text("Month")
                         .fixedSize()
+                        .padding(.leading, Constants.Сonstraints.sliderTextPadding)
                     Spacer()
                     Text("Year")
                         .fixedSize()
                 }
                 .lineLimit(1)
                 .foregroundStyle(.secondary)
-                
             })
             .frame(maxWidth: .infinity)
         }
