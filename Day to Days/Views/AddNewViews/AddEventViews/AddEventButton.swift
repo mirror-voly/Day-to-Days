@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddEventButton: View {
     var onAddNew: () -> Void
-    @Binding var fieldsAreNotEmpy: Bool
+    @Binding var addButtonIsVisible: Bool
 
     var body: some View {
         VStack(content: {
@@ -21,7 +21,7 @@ struct AddEventButton: View {
                         .frame(maxWidth: .infinity)
                         .frame(height: Constants.Сonstraints.buttonSpaсerMinimize)
             })
-            .disabled(!fieldsAreNotEmpy)
+            .disabled(!addButtonIsVisible)
             .buttonStyle(BorderedProminentButtonStyle())
             Spacer()
         })

@@ -22,14 +22,6 @@ struct DateTypeSlider: View {
             })
             // MARK: - Slider
             ZStack(alignment: .center) {
-                Slider(value: Binding(
-                                get: { Double(sliderValue) },
-                                set: { newValue in
-                                    sliderValue = Int(newValue)
-                                    dateType = .allCases[sliderValue]
-                                }
-                ), in: 0...Double(Event.DateType.allCases.count - 1), step: 1)
-                .tint(sliderColor)
                 HStack(content: {
                     Group {
                         Circle()
@@ -44,9 +36,18 @@ struct DateTypeSlider: View {
                         Circle()
                             .frame(width: circleSize, height: circleSize)
                     }
+                    .foregroundStyle(.gray)
                 })
                 .disabled(true)
                 .frame(maxWidth: .infinity)
+                Slider(value: Binding(
+                                get: { Double(sliderValue) },
+                                set: { newValue in
+                                    sliderValue = Int(newValue)
+                                    dateType = .allCases[sliderValue]
+                                }
+                ), in: 0...Double(Event.DateType.allCases.count - 1), step: 1)
+                .tint(sliderColor)
             }
             // MARK: - Underline text
             HStack(content: {

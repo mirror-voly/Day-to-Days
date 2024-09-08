@@ -32,6 +32,7 @@ struct EventInfoScreen: View {
                     })
                     Spacer()
                     GroupBox {
+                        // TODO: add weaks, months, yars
                         Text(DateCalculator.daysFrom(thisDate: event.date).days)
                             .font(.title)
                             .bold()

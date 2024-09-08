@@ -12,7 +12,9 @@ struct AddOrEditEventSheet: View {
 
     @Environment(DataStore.self) private var dataStore
     @State private var fieldsAreNotEmpy = false
+    @State private var addButtonIsVisible = false
     @State private var canDismiss = true
+    
     @State private var sliderValue: Int = 0
     @State private var buttonSpacer: CGFloat = 0
 
@@ -88,7 +90,7 @@ struct AddOrEditEventSheet: View {
             AddEventButton(onAddNew: {
                 buttonAction()
                 closeSheet()
-            }, fieldsAreNotEmpy: $fieldsAreNotEmpy)
+            }, addButtonIsVisible: $addButtonIsVisible)
             .frame(height: buttonSpacer)
         })
         .padding()
@@ -99,6 +101,7 @@ struct AddOrEditEventSheet: View {
         })
         .onChange(of: title) {
             fieldsAreNotEmpy = isFieldsAreNotEmpty()
+            addButtonIsVisible = title != "" ? true: false
         }
         .onChange(of: description) {
             fieldsAreNotEmpy = isFieldsAreNotEmpty()
