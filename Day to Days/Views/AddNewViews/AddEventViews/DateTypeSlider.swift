@@ -14,7 +14,7 @@ struct DateTypeSlider: View {
     private let circleSizeNormal = Constants.Сonstraints.sliderCircleSizeNornmal
     private let circleSizeMaximized = Constants.Сonstraints.sliderCircleSizeMaximazed
 
-    private func fillCircles(step: Int, sum: Int) -> some View {
+    private func fillSliderCircles(step: Int, sum: Int) -> some View {
             HStack {
                 ForEach(0..<sum, id: \.self) { index in
                     VStack {
@@ -50,13 +50,13 @@ struct DateTypeSlider: View {
                 .tint(sliderColor)
                 .allowsHitTesting(false)
 
-                fillCircles(step: Int(sliderValue), sum: Event.DateType.allCases.count)
+                fillSliderCircles(step: Int(sliderValue), sum: Event.DateType.allCases.count)
                     .frame(maxWidth: .infinity)
             }
             .onAppear {
                 sliderValue = DateCalculator.findDateType(dateType) ?? 0
             }
-            // MARK: - Underline text
+            // MARK: Underline slider text
             HStack(content: {
                 Group {
                     Text("Day")
