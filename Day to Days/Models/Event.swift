@@ -13,7 +13,17 @@ struct Event: Identifiable, Equatable, Hashable {
         case weak = "Days and Weaks"
         case month = "Days, Weaks, Months"
         case year = "All"
+
+        var label: String {
+            switch self {
+            case .year: return "years"
+            case .month: return "months"
+            case .weak: return "weeks"
+            case .day: return "days"
+            }
+        }
     }
+
     var id: UUID = UUID()
     let title: String
     let description: String

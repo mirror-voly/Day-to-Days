@@ -28,12 +28,13 @@ struct DateTypeSlider: View {
                         })
                         .containerShape(Rectangle())
                     }
-                    .frame(width: circleSizeMaximized)
+                    .frame(width: circleSizeMaximized - 5)
                     if index < sum - 1 {
                         Spacer()
                     }
                 }
             }
+            .frame(maxWidth: .infinity)
         }
 
     var body: some View {

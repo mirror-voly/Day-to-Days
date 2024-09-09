@@ -29,7 +29,3 @@ struct EventsListIsEmpyView: View {
         }
     }
 }
-
-//#Preview {
-//    EventsListIsEmpyView()
-//}

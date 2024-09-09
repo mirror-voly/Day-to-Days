@@ -19,7 +19,7 @@ struct EventInfoScreen: View {
         guard let editedEvent = dataStore.editedEvent else { return }
         self.event = editedEvent
     }
-
+    // MARK: - View
     var body: some View {
         VStack(alignment: .leading, content: {
             GroupBox {
@@ -33,17 +33,35 @@ struct EventInfoScreen: View {
                         Text(description)
                     })
                     Spacer()
+                    // MARK: Date presenter
                     GroupBox {
-                        // TODO: add weaks, months, yars
-                        Text(DateCalculator.daysFrom(this: event.date))
-                            .font(.title)
-                            .bold()
-                        Text("days")
+                        let currentDate = DateCalculator.presentInfoFor(chosenDate: event.date, dateType: event.dateType)
+                            let allDateTypes = (Event.DateType.allCases).reversed()
+                        ForEach(allDateTypes, id: \.self) { component in
+                                if let value = currentDate[component] {
+                                    VStack {
+                                        Text(value)
+                                            .font(.title)
+                                        Text(component.label)
+                                            .italic()
+                                            .font(.footnote)
+                                            .foregroundStyle(Color.secondary)
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                }
+                        }
+                        Divider()
+                        HStack(alignment: .center) {
+                            Text(DateCalculator.determineFutureOrPast(this: event.date))
+                                .font(.subheadline)
+                        }
                     }
+                    .frame(width: Constants.Сonstraints.eventDateTableSize)
                 })
             }
             Spacer()
         })
+        // MARK: - View settings
         .padding()
         .navigationTitle(event.title)
         .toolbarBackground(event.color, for: .navigationBar)

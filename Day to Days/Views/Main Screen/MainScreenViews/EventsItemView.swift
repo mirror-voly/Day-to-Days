@@ -10,6 +10,7 @@ import SwiftUI
 struct EventsItemView: View {
     let event: Event
     @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         HStack {
             // MARK: - Circle
@@ -35,19 +36,22 @@ struct EventsItemView: View {
                             Circle()
                                 .fill(Color.white)
                                 .frame(width: 50, height: 50)
-                            Text(String(DateCalculator.daysFrom(date: event.date)))
-                                .foregroundStyle(event.color)
-                                .bold()
-                                .font(.title3)
-                                .frame(width: 40)
-                                .minimumScaleFactor(0.5)
-                                .lineLimit(1)
+
+                                        VStack {
+                                            Text(DateCalculator.findBiggestAllowedDateFor(event: event))
+                                                .foregroundStyle(event.color)
+                                                .bold()
+                                                .font(.title3)
+                                                .frame(maxWidth: .infinity)
+                                                .minimumScaleFactor(0.6)
+                                                .lineLimit(1)
+                                        }
+                                        .frame(maxWidth: .infinity)
                         })
                         .frame(width: 40, height: 40)
                     }
                     Group {
-                        // TODO: add weaks, months, yars
-                        Text("days")
+                        Text(event.dateType.label)
                         Text(DateCalculator.determineFutureOrPast(this: event.date))
                     }
                     .italic()
