@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct EventsItemView: View {
-    let day: Event
+    let event: Event
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         HStack {
             // MARK: - Circle
             ZStack(alignment: .center, content: {
                     Circle()
-                    .fill(day.color)
+                    .fill(event.color)
                         .overlay(
                             Circle()
                                 .fill(Color.primary.inverted())
@@ -24,20 +24,19 @@ struct EventsItemView: View {
             .frame(width: 25)
             .padding()
             // MARK: - Title
-                Text(day.title)
+                Text(event.title)
                     .font(.title2)
             Spacer()
             // MARK: - Day counter
             GroupBox {
                 VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                    let dateData = DateCalculator.daysFrom(thisDate: day.date)
                     GroupBox {
                         ZStack(alignment: .center, content: {
                             Circle()
                                 .fill(Color.white)
                                 .frame(width: 50, height: 50)
-                            Text(dateData.days)
-                                .foregroundStyle(day.color)
+                            Text(DateCalculator.daysFrom(this: event.date))
+                                .foregroundStyle(event.color)
                                 .bold()
                                 .font(.title3)
                                 .frame(width: 40)
@@ -49,7 +48,7 @@ struct EventsItemView: View {
                     Group {
                         // TODO: add weaks, months, yars
                         Text("days")
-                        Text(dateData.description)
+                        Text(DateCalculator.determineFutureOrPast(this: event.date))
                     }
                     .italic()
                     .font(.footnote)
@@ -62,5 +61,5 @@ struct EventsItemView: View {
     }
 }
 #Preview {
-    EventsItemView(day: .dummy)
+    EventsItemView(event: .dummy)
 }

@@ -14,7 +14,7 @@ struct EventsList: View {
             ForEach(dataStore.allEvents) { event in
                 NavigationLink(value: event) {
                     Divider()
-                    EventsItemView(day: event)
+                    EventsItemView(event: event)
                 }
                 .navigationDestination(for: Event.self) { event in
                     EventInfoScreen(event: event)

@@ -8,14 +8,18 @@
 import Foundation
 
 final class DateCalculator {
-    static func daysFrom(thisDate: Date) -> (days: String, description: String) {
+    static func daysFrom(this: Date) -> String {
         let currentDate = Date()
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: thisDate, to: currentDate)
+        let components = calendar.dateComponents([.day], from: this, to: currentDate)
         let daysCounter = components.day ?? 0
-        let daysString = String(daysCounter).replacingOccurrences(of: "-", with: "")
-        let description = daysCounter > 0 ? "gone" : "left"
-        return (daysString, description)
+        return String(abs(daysCounter))
+    }
+
+    static func determineFutureOrPast(this: Date) -> String {
+        let currentDate = Date()
+        let description = this < currentDate ? "gone" : "left"
+        return description
     }
 
     static func findDateType(_ dateType: Event.DateType) -> Double? {
