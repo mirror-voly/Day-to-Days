@@ -10,21 +10,23 @@ import SwiftUI
 struct EventsList: View {
     @Environment(DataStore.self) private var dataStore
     var body: some View {
-        List {
-            ForEach(dataStore.allEvents) { event in
-                NavigationLink(value: event) {
-                    Divider()
-                    EventsItemView(event: event)
+        VStack {
+            List {
+                ForEach(dataStore.allEvents) { event in
+                    NavigationLink(value: event) {
+                        Divider()
+                        EventsItemView(event: event)
+                    }
                 }
-                .navigationDestination(for: Event.self) { event in
-                    EventInfoScreen(event: event)
+                .onDelete { index in
+                    dataStore.deleteEventAt(index)
                 }
             }
-            .onDelete { index in
-                dataStore.deleteEventAt(index)
-            }
+            .listStyle(.plain)
         }
-        .listStyle(.plain)
+        .navigationDestination(for: Event.self) { event in
+            EventInfoScreen(event: event)
+        }
     }
 }
 
