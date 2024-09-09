@@ -53,6 +53,9 @@ struct DateTypeSlider: View {
                 fillCircles(step: Int(sliderValue), sum: 4)
                     .frame(maxWidth: .infinity)
             }
+            .onAppear {
+                sliderValue = DateCalculator.findDateType(dateType) ?? 0
+            }
             // MARK: - Underline text
             HStack(content: {
                 Group {

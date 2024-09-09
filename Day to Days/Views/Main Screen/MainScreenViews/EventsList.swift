@@ -23,7 +23,8 @@ struct EventsList: View {
                         .toolbarBackground(.visible, for: .navigationBar)
                         .navigationBarBackButtonHidden()
                 }
-            }.onDelete { index in
+            }
+            .onDelete { index in
                 dataStore.deleteEventAt(index)
             }
         }

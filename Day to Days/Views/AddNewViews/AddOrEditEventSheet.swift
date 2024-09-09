@@ -38,6 +38,7 @@ struct AddOrEditEventSheet: View {
         description = event.description
         date = event.date
         color = event.color
+        dateType = event.dateType
     }
 
     private func closeSheet() {
@@ -46,15 +47,14 @@ struct AddOrEditEventSheet: View {
     }
 
     private func prepareForDismiss() {
-        if !canDismiss {
-            if dataStore.screenMode == .edit {
-                guard let id = dataStore.currentEvent?.id else { return }
-                dataStore.currentEvent = Event(id: id, title: title, description: description, date: date, dateType: dateType, color: color)
-            } else {
-                dataStore.currentEvent = createEvent()
-            }
-            showAlert = true
+        guard !canDismiss else { return }
+        if dataStore.screenMode == .edit {
+            guard let id = dataStore.currentEvent?.id else { return }
+            dataStore.currentEvent = Event(id: id, title: title, description: description, date: date, dateType: dateType, color: color)
+        } else {
+            dataStore.currentEvent = createEvent()
         }
+        showAlert = true
     }
 
     private func buttonAction() {

@@ -17,4 +17,9 @@ final class DateCalculator {
         let description = daysCounter > 0 ? "gone" : "left"
         return (daysString, description)
     }
+
+    static func findDateType(_ dateType: Event.DateType) -> Double? {
+        guard let index = Event.DateType.allCases.firstIndex(of: dateType) else { return nil }
+        return Double(index)
+    }
 }
