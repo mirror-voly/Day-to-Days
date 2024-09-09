@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct EventsItemView: View {
-    let event: Event
     @Environment(\.colorScheme) var colorScheme
-
+    let event: Event
+    private let circleHoleSize = Constants.Сonstraints.eventsItemViewCicleHoleSize
+    private let circleSize = Constants.Сonstraints.eventsItemViewCicleSize
+    private let bigCircleSize = Constants.Сonstraints.eventsItemViewBigCicleSize
+    private let dateFrameSize = Constants.Сonstraints.eventsItemViewDateFrameSize
+    private let scaleFactor = Constants.Сonstraints.eventsItemViewDateTextMinimumScaleFactor
     var body: some View {
         HStack {
             // MARK: - Circle
@@ -20,9 +24,9 @@ struct EventsItemView: View {
                         .overlay(
                             Circle()
                                 .fill(colorScheme == .light ? .white : .black)
-                            .frame(width: 20, height: 11))
+                            .frame(width: circleHoleSize, height: circleHoleSize))
             })
-            .frame(width: 25)
+            .frame(width: circleSize)
             .padding()
             // MARK: - Title
                 Text(event.title)
@@ -35,7 +39,7 @@ struct EventsItemView: View {
                         ZStack(alignment: .center, content: {
                             Circle()
                                 .fill(Color.white)
-                                .frame(width: 50, height: 50)
+                                .frame(width: bigCircleSize, height: bigCircleSize)
 
                                         VStack {
                                             Text(DateCalculator.findBiggestAllowedDateFor(event: event))
@@ -43,12 +47,12 @@ struct EventsItemView: View {
                                                 .bold()
                                                 .font(.title3)
                                                 .frame(maxWidth: .infinity)
-                                                .minimumScaleFactor(0.6)
+                                                .minimumScaleFactor(scaleFactor)
                                                 .lineLimit(1)
                                         }
                                         .frame(maxWidth: .infinity)
                         })
-                        .frame(width: 40, height: 40)
+                        .frame(width: dateFrameSize, height: dateFrameSize)
                     }
                     Group {
                         Text(event.dateType.label)
@@ -59,7 +63,6 @@ struct EventsItemView: View {
                     .foregroundStyle(.gray)
                 })
             }
-            .clipShape(RoundedRectangle(cornerRadius: 10))
         }
         .containerShape(Rectangle())
     }

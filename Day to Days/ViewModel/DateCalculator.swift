@@ -8,6 +8,7 @@
 import Foundation
 
 final class DateCalculator {
+
     static func daysFrom(date: Date) -> Int {
         let currentDate = Date()
         let calendar = Calendar.current
@@ -16,7 +17,7 @@ final class DateCalculator {
         return abs(daysCounter)
     }
 
-    static func weaksFrom(date: Date) -> [Event.DateType: String] {
+    static func weeksFrom(date: Date) -> [Event.DateType: String] {
         let days = daysFrom(date: date)
         let weakCounter = days / 7
         let daysCounter = days % 7
@@ -50,7 +51,7 @@ final class DateCalculator {
         case .day:
             date = [.day: String(daysFrom(date: chosenDate))]
         case .weak:
-            date = weaksFrom(date: chosenDate)
+            date = weeksFrom(date: chosenDate)
         case .month:
             date = monthsFrom(from: chosenDate)
         case .year:
@@ -60,7 +61,7 @@ final class DateCalculator {
     }
 
     static func findBiggestAllowedDateFor(event: Event) -> String {
-        let currentDate = DateCalculator.presentInfoFor(chosenDate: event.date, dateType: event.dateType)
+        let currentDate = presentInfoFor(chosenDate: event.date, dateType: event.dateType)
         if let value = currentDate[event.dateType] {
             return value
         }

@@ -16,6 +16,11 @@ struct Constants {
         static let sliderTextPadding: CGFloat = 7
         static let eventInfoButtonSize: CGFloat = 35
         static let eventDateTableSize: CGFloat = 100
+        static let eventsItemViewCicleSize: CGFloat = 25
+        static let eventsItemViewBigCicleSize: CGFloat = 50
+        static let eventsItemViewCicleHoleSize: CGFloat = 10
+        static let eventsItemViewDateFrameSize: CGFloat = 40
+        static let eventsItemViewDateTextMinimumScaleFactor: CGFloat = 0.6
     }
 
     enum AllowedColor: String, CaseIterable {
