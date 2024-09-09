@@ -18,10 +18,6 @@ struct EventsList: View {
                 }
                 .navigationDestination(for: Event.self) { event in
                     EventInfoScreen(event: event)
-                        .navigationTitle(event.title)
-                        .toolbarBackground(event.color, for: .navigationBar)
-                        .toolbarBackground(.visible, for: .navigationBar)
-                        .navigationBarBackButtonHidden()
                 }
             }
             .onDelete { index in

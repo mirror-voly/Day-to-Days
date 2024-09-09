@@ -13,10 +13,18 @@ final class DataStore {
         case edit
         case add
     }
-    var screenMode: EditModeType?
-    var currentEvent: Event?
-
+    private (set) var screenMode: EditModeType?
+    private (set) var currentEvent: Event?
+    private (set) var editedEvent: Event?
     private (set) var allEvents: [Event] = []
+
+    func setCurrentEvent(event: Event) {
+        currentEvent = event
+    }
+
+    func setScreenMode(mode: EditModeType) {
+        screenMode = mode
+    }
 
     func addEvent(event: Event) {
         allEvents.append(event)
@@ -26,6 +34,7 @@ final class DataStore {
         guard let currentEvent = currentEvent else { return }
         if let index = allEvents.firstIndex(where: { $0.id == currentEvent.id }) {
             allEvents[index] = newEvent
+            editedEvent = newEvent
         }
     }
 
@@ -36,6 +45,10 @@ final class DataStore {
     func makeCurrentEventNil() {
         screenMode = nil
         currentEvent = nil
+    }
+
+    func makeEditedEventNil() {
+        editedEvent = nil
     }
 
     private func addUITestData() {

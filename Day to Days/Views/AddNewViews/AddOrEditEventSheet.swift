@@ -50,20 +50,22 @@ struct AddOrEditEventSheet: View {
         guard !canDismiss else { return }
         if dataStore.screenMode == .edit {
             guard let id = dataStore.currentEvent?.id else { return }
-            dataStore.currentEvent = Event(id: id, title: title, description: description, date: date, dateType: dateType, color: color)
+            let currentEvent = Event(id: id, title: title, description: description, date: date, dateType: dateType, color: color)
+            dataStore.setCurrentEvent(event: currentEvent)
         } else {
-            dataStore.currentEvent = createEvent()
+            dataStore.setCurrentEvent(event: createEvent())
         }
         showAlert = true
     }
 
     private func buttonAction() {
         if dataStore.screenMode == .edit {
-            dataStore.editEvent(newEvent: createEvent())
+            let editedEvent = createEvent()
+            dataStore.editEvent(newEvent: editedEvent)
         } else {
             dataStore.addEvent(event: createEvent())
         }
-        dataStore.currentEvent = nil
+        dataStore.makeCurrentEventNil()
     }
 
     private func isFieldsAreNotEmpty() -> Bool {

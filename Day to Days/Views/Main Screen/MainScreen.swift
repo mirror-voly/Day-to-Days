@@ -13,9 +13,10 @@ struct MainScreen: View {
     @State var alertIsPresented = false
 
     private func startAddNewEvent() {
-        dataStore.screenMode = .add
+        dataStore.setScreenMode(mode: .add)
         sheetIsOpened = true
     }
+
     // MARK: - View
     var body: some View {
         NavigationStack {

@@ -13,10 +13,14 @@ struct EventInfoScreen: View {
     @State var alertIsPresented = false
     @Environment(DataStore.self) private var dataStore
     @Environment(\.dismiss) private var dismis
-    let circleButtonSize = Constants.Сonstraints.eventInfoButtonSize
+    private let circleButtonSize = Constants.Сonstraints.eventInfoButtonSize
+
+    private func setEditedEvent() {
+        guard let editedEvent = dataStore.editedEvent else { return }
+        self.event = editedEvent
+    }
 
     var body: some View {
-        Divider()
         VStack(alignment: .leading, content: {
             GroupBox {
                 HStack(alignment: .top, content: {
@@ -41,7 +45,12 @@ struct EventInfoScreen: View {
             Spacer()
         })
         .padding()
+        .navigationTitle(event.title)
+        .toolbarBackground(event.color, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .navigationBarBackButtonHidden()
         .sheet(isPresented: $sheetIsOpened, onDismiss: {
+            setEditedEvent()
         }, content: {
             AddOrEditEventSheet(isOpened: $sheetIsOpened,
                                 showAlert: $alertIsPresented)
@@ -70,8 +79,8 @@ struct EventInfoScreen: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    dataStore.screenMode = .edit
-                    dataStore.currentEvent = event
+                    dataStore.setScreenMode(mode: .edit)
+                    dataStore.setCurrentEvent(event: event)
                     sheetIsOpened = true
                 }
             label: {
@@ -86,6 +95,9 @@ struct EventInfoScreen: View {
             }
         })
         .tint(event.color)
+        .onDisappear {
+            dataStore.makeEditedEventNil()
+        }
     }
 }
 
