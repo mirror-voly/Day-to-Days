@@ -12,7 +12,7 @@ struct NewAlert {
     static func showAlert(onConfirm: @escaping () -> Void, onCancel: @escaping () -> Void) -> Alert {
             Alert(
                 title: Text("Event is not saved"),
-                message: Text("Are you sure that you want to erase it?"),
+                message: Text("Are you sure that you want to quit?"),
                 primaryButton: .destructive(Text("Yes"), action: onConfirm),
                 secondaryButton: .default(Text("Cancel"), action: onCancel)
             )
