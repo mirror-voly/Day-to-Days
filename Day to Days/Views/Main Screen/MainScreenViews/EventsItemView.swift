@@ -18,7 +18,7 @@ struct EventsItemView: View {
                     .fill(event.color)
                         .overlay(
                             Circle()
-                                .fill(Color.primary.inverted())
+                                .fill(colorScheme == .light ? .white : .black)
                             .frame(width: 20, height: 11))
             })
             .frame(width: 25)
@@ -35,7 +35,7 @@ struct EventsItemView: View {
                             Circle()
                                 .fill(Color.white)
                                 .frame(width: 50, height: 50)
-                            Text(DateCalculator.daysFrom(this: event.date))
+                            Text(String(DateCalculator.daysFrom(date: event.date)))
                                 .foregroundStyle(event.color)
                                 .bold()
                                 .font(.title3)
