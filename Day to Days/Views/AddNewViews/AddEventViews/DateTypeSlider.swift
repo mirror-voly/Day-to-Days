@@ -16,7 +16,7 @@ struct DateTypeSlider: View {
 
     private func fillCircles(step: Int, sum: Int) -> some View {
             HStack {
-                ForEach(0..<sum) { index in
+                ForEach(0..<sum, id: \.self) { index in
                     VStack {
                         Button(action: {
                             sliderValue = Double(index)
@@ -28,7 +28,7 @@ struct DateTypeSlider: View {
                         })
                         .containerShape(Rectangle())
                     }
-                    .frame(width: 25)
+                    .frame(width: circleSizeMaximized)
                     if index < sum - 1 {
                         Spacer()
                     }
@@ -50,7 +50,7 @@ struct DateTypeSlider: View {
                 .tint(sliderColor)
                 .allowsHitTesting(false)
 
-                fillCircles(step: Int(sliderValue), sum: 4)
+                fillCircles(step: Int(sliderValue), sum: Event.DateType.allCases.count)
                     .frame(maxWidth: .infinity)
             }
             .onAppear {
