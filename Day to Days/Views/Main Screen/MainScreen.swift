@@ -9,8 +9,8 @@ import SwiftUI
 
 struct MainScreen: View {
     @Environment(DataStore.self) private var dataStore
-    @State var sheetIsOpened = false
-    @State var alertIsPresented = false
+    @State private var sheetIsOpened = false
+    @State private var alertIsPresented = false
 
     private func startAddNewEvent() {
         dataStore.setScreenMode(mode: .add)
