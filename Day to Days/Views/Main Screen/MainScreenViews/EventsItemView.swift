@@ -42,7 +42,7 @@ struct EventsItemView: View {
                                 .frame(width: bigCircleSize, height: bigCircleSize)
 
                                         VStack {
-                                            Text(DateCalculator.findBiggestAllowedDateFor(event: event))
+                                            Text(DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType))
                                                 .foregroundStyle(event.color)
                                                 .bold()
                                                 .font(.title3)
@@ -56,7 +56,7 @@ struct EventsItemView: View {
                     }
                     Group {
                         Text(event.dateType.label)
-                        Text(DateCalculator.determineFutureOrPast(this: event.date))
+                        Text(DateCalculator.determineFutureOrPastForThis(event.date))
                     }
                     .italic()
                     .font(.footnote)

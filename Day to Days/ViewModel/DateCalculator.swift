@@ -24,20 +24,20 @@ final class DateCalculator {
         return [.weak: String(weakCounter), .day: String(daysCounter)]
     }
 
-    static func monthsFrom(from: Date) -> [Event.DateType: String] {
+    static func monthsFrom(date: Date) -> [Event.DateType: String] {
         let calendar = Calendar.current
         let today = Date()
-        let components = calendar.dateComponents([.month, .day], from: from, to: today)
+        let components = calendar.dateComponents([.month, .day], from: date, to: today)
         let months = abs(components.month ?? 0)
         let days = abs(components.day ?? 0)
         let weeks = abs(days / 7)
         return [.month: String(months), .weak: String(weeks), .day: String(days)]
     }
 
-    static func allTimeInfoUntilToday(from: Date) -> [Event.DateType: String] {
+    static func allTimeInfoFor(date: Date) -> [Event.DateType: String] {
         let calendar = Calendar.current
         let today = Date()
-        let components = calendar.dateComponents([.year, .month, .day], from: from, to: today)
+        let components = calendar.dateComponents([.year, .month, .day], from: date, to: today)
         let years = abs(components.year ?? 0)
         let months = abs(components.month ?? 0)
         let days = abs(components.day ?? 0)
@@ -45,36 +45,40 @@ final class DateCalculator {
         return [.year: String(years), .month: String(months), .weak: String(weeks), .day: String(days)]
     }
 
-    static func presentInfoFor(chosenDate: Date, dateType: Event.DateType) -> [Event.DateType: String] {
-        let date: [Event.DateType: String]
+    static func dateInfoForThis(date: Date, dateType: Event.DateType) -> [Event.DateType: String] {
+        let returnDate: [Event.DateType: String]
         switch dateType {
         case .day:
-            date = [.day: String(daysFrom(date: chosenDate))]
+            returnDate = [.day: String(daysFrom(date: date))]
         case .weak:
-            date = weeksFrom(date: chosenDate)
+            returnDate = weeksFrom(date: date)
         case .month:
-            date = monthsFrom(from: chosenDate)
+            returnDate = monthsFrom(date: date)
         case .year:
-            date = allTimeInfoUntilToday(from: chosenDate)
+            returnDate = allTimeInfoFor(date: date)
         }
-        return date
+        return returnDate
     }
 
-    static func findBiggestAllowedDateFor(event: Event) -> String {
-        let currentDate = presentInfoFor(chosenDate: event.date, dateType: event.dateType)
-        if let value = currentDate[event.dateType] {
+    static func findFirstDateFromTheTopFor(date: Date, dateType: Event.DateType) -> String {
+        let currentDate = dateInfoForThis(date: date, dateType: dateType)
+        if let value = currentDate[dateType] {
             return value
         }
         return ""
     }
 
-    static func determineFutureOrPast(this: Date) -> String {
+    static func determineFutureOrPastForThis(_ date: Date) -> String {
         let currentDate = Date()
-        let description = this < currentDate ? "passed" : "left"
-        return description
+        let calendar = Calendar.current
+        if calendar.isDate(date, inSameDayAs: currentDate) {
+            return "today"
+        } else {
+            return date < currentDate ? "passed" : "left"
+        }
     }
 
-    static func findDateType(_ dateType: Event.DateType) -> Double? {
+    static func findIndexForThis(_ dateType: Event.DateType) -> Double? {
         guard let index = Event.DateType.allCases.firstIndex(of: dateType) else { return nil }
         return Double(index)
     }

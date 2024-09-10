@@ -21,7 +21,7 @@ struct EventInfoScreen: View {
     }
 
     private var currentDateAllInfo: [Event.DateType: String] {
-        DateCalculator.presentInfoFor(chosenDate: event.date, dateType: event.dateType)
+        DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
     }
 
     private func updateEditedEvent() {
@@ -51,7 +51,7 @@ struct EventInfoScreen: View {
                             }
                         }
                         Divider()
-                        Text(DateCalculator.determineFutureOrPast(this: event.date))
+                        Text(DateCalculator.determineFutureOrPastForThis(event.date))
                             .font(.subheadline)
                     }
                     .frame(width: Constants.Сonstraints.eventDateTableSize)
