@@ -22,7 +22,7 @@ struct AddOrEditEventSheet: View {
     @Binding var showAlert: Bool
 
     @State private var title = ""
-    @State private var description = ""
+    @State private var info = ""
     @State private var date = Constants.fixedDate
     @State private var color = Color.gray
     @State private var dateType: DateType = .day
@@ -33,13 +33,13 @@ struct AddOrEditEventSheet: View {
 
     // MARK: - Functions
     private func createEvent() -> Event {
-        return Event(title: title, description: description, date: date, dateType: dateType, color: color)
+        return Event(title: title, info: info, date: date, dateType: dateType, color: color)
     }
 
     private func extractEventData() {
         guard let event = dataStore.currentEvent else { return }
         title = event.title
-        description = event.description
+        info = event.info
         date = event.date
         color = event.color
         dateType = event.dateType
@@ -54,7 +54,7 @@ struct AddOrEditEventSheet: View {
         guard !canDismiss else { return }
         if dataStore.screenMode == .edit {
             guard let id = dataStore.currentEvent?.id else { return }
-            let currentEvent = Event(id: id, title: title, description: description, date: date, dateType: dateType, color: color)
+            let currentEvent = Event(id: id, title: title, info: info, date: date, dateType: dateType, color: color)
             dataStore.setCurrentEvent(event: currentEvent)
         } else {
             dataStore.setCurrentEvent(event: createEvent())
@@ -73,7 +73,7 @@ struct AddOrEditEventSheet: View {
     }
 
     private func isFieldsAreNotEmpty() -> Bool {
-        if title != "" || description != "" || color != Color.gray || dateType != .day || date != Constants.fixedDate {
+        if title != "" || info != "" || color != Color.gray || dateType != .day || date != Constants.fixedDate {
             return true
         } else {
             return false
@@ -84,7 +84,7 @@ struct AddOrEditEventSheet: View {
     var body: some View {
         VStack(content: {
             GroupBox(sheetTitle) {
-                AddEventFields(title: $title, description: $description, date: $date, color: $color)
+                AddEventFields(title: $title, description: $info, date: $date, color: $color)
                 DateTypeSlider(sliderValue: $sliderValue, dateType: $dateType, sliderColor: $color)
                     .onTapGesture(perform: {
                         hideKeyboard()
@@ -105,7 +105,7 @@ struct AddOrEditEventSheet: View {
             fieldsAreNotEmpy = isFieldsAreNotEmpty()
             addButtonIsVisible = title.isEmpty ? false : true
         }
-        .onChange(of: description) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
+        .onChange(of: info) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
         .onChange(of: color) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
         .onChange(of: dateType) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
         .onChange(of: date) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }

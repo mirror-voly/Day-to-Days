@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DateType: String, CaseIterable {
+enum DateType: String, CaseIterable, Codable {
     case day = "Days"
     case weak = "Days and Weaks"
     case month = "Days, Weaks, Months"

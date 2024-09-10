@@ -7,18 +7,39 @@
 
 import SwiftUI
 
-struct Event: Identifiable, Equatable, Hashable {
+struct Event: Identifiable, Equatable, Hashable, Codable {
 
     var id: UUID = UUID()
     let title: String
-    let description: String
+    let info: String
     let date: Date
     let dateType: DateType
-    let color: Color
-}
+    var colorType: ColorType
 
-extension Event {
-    static var dummy: Event {
-        .init(title: "My first try", description: "Do not know what to say", date: ISO8601DateFormatter().date(from: "2023-01-12T19:30:00Z")!, dateType: .day, color: .white)
+    var color: Color {
+        get {
+            colorType.getColor
+        }
+        set {
+            colorType = newValue.getColorType
+        }
+    }
+
+    init(id: UUID = UUID(), title: String, info: String, date: Date, dateType: DateType, color: Color) {
+        self.id = id
+        self.title = title
+        self.info = info
+        self.date = date
+        self.dateType = dateType
+        self.colorType = color.getColorType
+    }
+
+    // Инициализатор без id
+    init(title: String, info: String, date: Date, dateType: DateType, color: Color) {
+        self.title = title
+        self.info = info
+        self.date = date
+        self.dateType = dateType
+        self.colorType = color.getColorType
     }
 }

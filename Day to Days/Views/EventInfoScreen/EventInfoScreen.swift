@@ -17,7 +17,7 @@ struct EventInfoScreen: View {
     private let allDateTypes = (DateType.allCases).reversed()
 
     private var description: String {
-        event.description.isEmpty ? "No description" : event.description
+        event.info.isEmpty ? "No description" : event.info
     }
 
     private var currentDateAllInfo: [DateType: String] {
@@ -111,8 +111,4 @@ struct EventInfoScreen: View {
             dataStore.makeEditedEventNil()
         }
     }
-}
-
-#Preview {
-    EventInfoScreen(event: Event.dummy)
 }

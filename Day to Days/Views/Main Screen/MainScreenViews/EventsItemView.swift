@@ -67,6 +67,3 @@ struct EventsItemView: View {
         .containerShape(Rectangle())
     }
 }
-#Preview {
-    EventsItemView(event: .dummy)
-}
