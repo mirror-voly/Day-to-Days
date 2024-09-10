@@ -10,6 +10,7 @@ import SwiftUI
 struct ColorPickerPopover: View {
     @Binding var popoverIsPresented: Bool
     @Binding var color: Color
+
     var body: some View {
         HStack(content: {
             Text("Color")
@@ -25,7 +26,7 @@ struct ColorPickerPopover: View {
                 VStack {
                     VStack(alignment: .trailing, content: {
                         ForEach(Constants.AllowedColor.allCases, id: \.self) { currentColor in
-                            let backgroundColor: Color = color == currentColor.setColor ? .secondary : .clear
+                            let isSelected = color == currentColor.setColor
                             Button(action: {
                                 color = currentColor.setColor
                                 popoverIsPresented = false
@@ -39,7 +40,7 @@ struct ColorPickerPopover: View {
                                 }
                             })
                             .frame(maxWidth: .infinity, alignment: .trailing)
-                            .background(backgroundColor)
+                            .background(isSelected ? Color.secondary : Color.clear)
                             Divider()
                         }
                     })
