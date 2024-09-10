@@ -27,6 +27,10 @@ struct AddOrEditEventSheet: View {
     @State private var color = Color.gray
     @State private var dateType: Event.DateType = .day
 
+    var sheetTitle: String {
+        dataStore.screenMode == .edit ? "Edit Event": "New Event"
+    }
+
     // MARK: - Functions
     private func createEvent() -> Event {
         return Event(title: title, description: description, date: date, dateType: dateType, color: color)
@@ -59,11 +63,11 @@ struct AddOrEditEventSheet: View {
     }
 
     private func buttonAction() {
+        let event = createEvent()
         if dataStore.screenMode == .edit {
-            let editedEvent = createEvent()
-            dataStore.editEvent(newEvent: editedEvent)
+            dataStore.editEvent(newEvent: event)
         } else {
-            dataStore.addEvent(event: createEvent())
+            dataStore.addEvent(event: event)
         }
         dataStore.makeCurrentEventNil()
     }
@@ -78,8 +82,6 @@ struct AddOrEditEventSheet: View {
 
     // MARK: - View
     var body: some View {
-        let sheetTitle = dataStore.screenMode == .edit ? "Edit Event": "New Event"
-
         VStack(content: {
             GroupBox(sheetTitle) {
                 AddEventFields(title: $title, description: $description, date: $date, color: $color)
@@ -98,31 +100,17 @@ struct AddOrEditEventSheet: View {
         .padding()
 
         // MARK: - View actions
-        .onAppear(perform: {
-            extractEventData()
-        })
+        .onAppear(perform: { extractEventData() })
         .onChange(of: title) {
             fieldsAreNotEmpy = isFieldsAreNotEmpty()
-            addButtonIsVisible = title != "" ? true: false
+            addButtonIsVisible = title.isEmpty ? false : true
         }
-        .onChange(of: description) {
-            fieldsAreNotEmpy = isFieldsAreNotEmpty()
-        }
-        .onChange(of: color) {
-            fieldsAreNotEmpy = isFieldsAreNotEmpty()
-        }
-        .onChange(of: dateType) {
-            fieldsAreNotEmpy = isFieldsAreNotEmpty()
-        }
-        .onChange(of: date) {
-            fieldsAreNotEmpy = isFieldsAreNotEmpty()
-        }
-        .onChange(of: fieldsAreNotEmpy) {
-            canDismiss = !fieldsAreNotEmpy
-        }
-        .onDisappear(perform: {
-            prepareForDismiss()
-        })
+        .onChange(of: description) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
+        .onChange(of: color) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
+        .onChange(of: dateType) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
+        .onChange(of: date) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
+        .onChange(of: fieldsAreNotEmpy) { canDismiss = !fieldsAreNotEmpy }
+        .onDisappear(perform: { prepareForDismiss() })
         // MARK: - Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
             buttonSpacer = Constants.Сonstraints.buttonSpaсerMaximize
