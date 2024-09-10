@@ -34,7 +34,6 @@ struct Event: Identifiable, Equatable, Hashable, Codable {
         self.colorType = color.getColorType
     }
 
-    // Инициализатор без id
     init(title: String, info: String, date: Date, dateType: DateType, color: Color) {
         self.title = title
         self.info = info

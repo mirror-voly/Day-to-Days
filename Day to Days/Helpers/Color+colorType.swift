@@ -37,7 +37,7 @@ extension Color {
         case Color.teal:
             return .teal
         default:
-            fatalError("Color error")
+            return .gray
         }
     }
 }
