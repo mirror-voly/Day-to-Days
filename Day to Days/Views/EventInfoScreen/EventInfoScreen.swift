@@ -9,18 +9,18 @@ import SwiftUI
 
 struct EventInfoScreen: View {
     @State var event: Event
-    @State var sheetIsOpened = false
-    @State var alertIsPresented = false
+    @State private var sheetIsOpened = false
+    @State private var alertIsPresented = false
     @Environment(DataStore.self) private var dataStore
     @Environment(\.dismiss) private var dismis
     private let circleButtonSize = Constants.Сonstraints.eventInfoButtonSize
     private let allDateTypes = (Event.DateType.allCases).reversed()
 
-    var description: String {
+    private var description: String {
         event.description.isEmpty ? "No description" : event.description
     }
 
-    var currentDateAllInfo: [Event.DateType: String] {
+    private var currentDateAllInfo: [Event.DateType: String] {
         DateCalculator.presentInfoFor(chosenDate: event.date, dateType: event.dateType)
     }
 
