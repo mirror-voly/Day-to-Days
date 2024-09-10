@@ -25,7 +25,7 @@ struct AddOrEditEventSheet: View {
     @State private var description = ""
     @State private var date = Constants.fixedDate
     @State private var color = Color.gray
-    @State private var dateType: Event.DateType = .day
+    @State private var dateType: DateType = .day
 
     var sheetTitle: String {
         dataStore.screenMode == .edit ? "Edit Event": "New Event"

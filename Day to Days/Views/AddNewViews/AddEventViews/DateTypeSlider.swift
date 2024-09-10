@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DateTypeSlider: View {
     @Binding var sliderValue: Double
-    @Binding var dateType: Event.DateType
+    @Binding var dateType: DateType
     @Binding var sliderColor: Color
     private let circleSizeNormal = Constants.Сonstraints.sliderCircleSizeNornmal
     private let circleSizeMaximized = Constants.Сonstraints.sliderCircleSizeMaximazed
@@ -47,11 +47,11 @@ struct DateTypeSlider: View {
             })
             // MARK: - Slider
             ZStack(alignment: .center) {
-                Slider(value: $sliderValue, in: 0...Double(Event.DateType.allCases.count - 1), step: 1)
+                Slider(value: $sliderValue, in: 0...Double(DateType.allCases.count - 1), step: 1)
                 .tint(sliderColor)
                 .allowsHitTesting(false)
 
-                fillSliderCircles(step: Int(sliderValue), sum: Event.DateType.allCases.count)
+                fillSliderCircles(step: Int(sliderValue), sum: DateType.allCases.count)
                     .frame(maxWidth: .infinity)
             }
             .onAppear {

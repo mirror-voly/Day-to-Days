@@ -17,14 +17,14 @@ final class DateCalculator {
         return abs(daysCounter)
     }
 
-    static func weeksFrom(date: Date) -> [Event.DateType: String] {
+    static func weeksFrom(date: Date) -> [DateType: String] {
         let days = daysFrom(date: date)
         let weakCounter = days / 7
         let daysCounter = days % 7
         return [.weak: String(weakCounter), .day: String(daysCounter)]
     }
 
-    static func monthsFrom(date: Date) -> [Event.DateType: String] {
+    static func monthsFrom(date: Date) -> [DateType: String] {
         let calendar = Calendar.current
         let today = Date()
         let components = calendar.dateComponents([.month, .day], from: date, to: today)
@@ -34,7 +34,7 @@ final class DateCalculator {
         return [.month: String(months), .weak: String(weeks), .day: String(days)]
     }
 
-    static func allTimeInfoFor(date: Date) -> [Event.DateType: String] {
+    static func allTimeInfoFor(date: Date) -> [DateType: String] {
         let calendar = Calendar.current
         let today = Date()
         let components = calendar.dateComponents([.year, .month, .day], from: date, to: today)
@@ -45,8 +45,8 @@ final class DateCalculator {
         return [.year: String(years), .month: String(months), .weak: String(weeks), .day: String(days)]
     }
 
-    static func dateInfoForThis(date: Date, dateType: Event.DateType) -> [Event.DateType: String] {
-        let returnDate: [Event.DateType: String]
+    static func dateInfoForThis(date: Date, dateType: DateType) -> [DateType: String] {
+        let returnDate: [DateType: String]
         switch dateType {
         case .day:
             returnDate = [.day: String(daysFrom(date: date))]
@@ -60,7 +60,7 @@ final class DateCalculator {
         return returnDate
     }
 
-    static func findFirstDateFromTheTopFor(date: Date, dateType: Event.DateType) -> String {
+    static func findFirstDateFromTheTopFor(date: Date, dateType: DateType) -> String {
         let currentDate = dateInfoForThis(date: date, dateType: dateType)
         if let value = currentDate[dateType] {
             return value
@@ -78,8 +78,8 @@ final class DateCalculator {
         }
     }
 
-    static func findIndexForThis(_ dateType: Event.DateType) -> Double? {
-        guard let index = Event.DateType.allCases.firstIndex(of: dateType) else { return nil }
+    static func findIndexForThis(_ dateType: DateType) -> Double? {
+        guard let index = DateType.allCases.firstIndex(of: dateType) else { return nil }
         return Double(index)
     }
 }

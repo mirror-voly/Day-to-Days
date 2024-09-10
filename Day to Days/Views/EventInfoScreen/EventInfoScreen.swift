@@ -14,13 +14,13 @@ struct EventInfoScreen: View {
     @Environment(DataStore.self) private var dataStore
     @Environment(\.dismiss) private var dismis
     private let circleButtonSize = Constants.Сonstraints.eventInfoButtonSize
-    private let allDateTypes = (Event.DateType.allCases).reversed()
+    private let allDateTypes = (DateType.allCases).reversed()
 
     private var description: String {
         event.description.isEmpty ? "No description" : event.description
     }
 
-    private var currentDateAllInfo: [Event.DateType: String] {
+    private var currentDateAllInfo: [DateType: String] {
         DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
     }
 
