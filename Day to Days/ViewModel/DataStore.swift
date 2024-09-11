@@ -4,20 +4,20 @@
 //
 //  Created by mix on 03.09.2024.
 //
-
-import Foundation
+import RealmSwift
+import SwiftUI
 
 @Observable
 final class DataStore {
+
     enum EditModeType {
         case edit
         case add
     }
+    // MARK: - Private variables
     private (set) var screenMode: EditModeType?
     private (set) var currentEvent: Event?
-    private (set) var editedEvent: Event?
-    private (set) var allEvents: [Event] = []
-
+    // MARK: - Functions for changing local variables
     func setCurrentEvent(event: Event) {
         currentEvent = event
     }
@@ -26,41 +26,49 @@ final class DataStore {
         screenMode = mode
     }
 
-    func addEvent(event: Event) {
-        allEvents.append(event)
-    }
-
-    func editEvent(newEvent: Event) {
-        guard let currentEvent = currentEvent else { return }
-        if let index = allEvents.firstIndex(where: { $0.id == currentEvent.id }) {
-            allEvents[index] = newEvent
-            editedEvent = newEvent
-        }
-    }
-
-    func deleteEventAt(_ index: IndexSet) {
-        allEvents.remove(atOffsets: index)
-    }
-
     func makeCurrentEventNil() {
         screenMode = nil
         currentEvent = nil
     }
 
-    func makeEditedEventNil() {
-        editedEvent = nil
+    func addAndSaveEvent(event: Event) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(event)
+            }
+        } catch {
+            print("Adding error occurred: \(error.localizedDescription)")
+        }
     }
 
-    private func addUITestData() {
-        allEvents.append(contentsOf: [Event(title: "My first try", description: "", date: ISO8601DateFormatter().date(from: "2025-03-15T14:30:00Z")!, dateType: .day, color: .red),
-                                      Event(title: "Meeting", description: "well it something", date: ISO8601DateFormatter().date(from: "2020-03-11T14:30:00Z")!, dateType: .year, color: .teal),
-                                      Event(title: "Meeting", description: "well it something", date: ISO8601DateFormatter().date(from: "2024-03-11T14:30:00Z")!, dateType: .day, color: .indigo),
-                                      Event(title: "Meeting", description: "well it something", date: ISO8601DateFormatter().date(from: "2022-01-11T14:30:00Z")!, dateType: .month, color: .brown),
-                                      Event(title: "Meeting", description: "well it something", date: ISO8601DateFormatter().date(from: "2027-06-11T14:30:00Z")!, dateType: .weak, color: .blue),
-                                      Event(title: "Paiment for rent", description: "best day", date: ISO8601DateFormatter().date(from: "2021-03-15T14:30:00Z")!, dateType: .day, color: .pink)])
+    func findEventBy(id: UUID) -> Event? {
+        do {
+            let realm = try Realm()
+            if let event = realm.object(ofType: Event.self, forPrimaryKey: id) {
+                return event
+            }
+        } catch {
+            print("Finding error occurred: \(error.localizedDescription)")
+        }
+        return nil
     }
 
-    init() {
-        addUITestData()
+    func editEvent(oldEventID: UUID, newEvent: Event) {
+        do {
+            let realm = try Realm()
+            if let eventToUpdate = realm.object(ofType: Event.self, forPrimaryKey: oldEventID) {
+                try realm.write {
+                    eventToUpdate.title = newEvent.title
+                    eventToUpdate.info = newEvent.info
+                    eventToUpdate.date = newEvent.date
+                    eventToUpdate.dateType = newEvent.dateType
+                    eventToUpdate.color = newEvent.color
+                }
+            }
+        } catch {
+            print("Editing error occurred: \(error.localizedDescription)")
+        }
     }
+
 }

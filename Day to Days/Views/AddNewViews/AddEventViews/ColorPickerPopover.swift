@@ -18,17 +18,18 @@ struct ColorPickerPopover: View {
             Button(action: {
                 popoverIsPresented.toggle()
             }, label: {
-                Text(color.description.capitalized)
+                Text(color.getColorType.rawValue)
                 Image(systemName: "pencil.tip.crop.circle.fill")
             })
             .foregroundStyle(color)
+            // MARK: Color popover
             .popover(isPresented: $popoverIsPresented, content: {
                 VStack {
                     VStack(alignment: .trailing, content: {
-                        ForEach(Constants.AllowedColor.allCases, id: \.self) { currentColor in
-                            let isSelected = color == currentColor.setColor
+                        ForEach(ColorType.allCases, id: \.self) { currentColor in
+                            let isSelected = color.getColorType == currentColor
                             Button(action: {
-                                color = currentColor.setColor
+                                color = currentColor.getColor
                                 popoverIsPresented = false
                             }, label: {
                                 HStack(alignment: .center) {
@@ -36,7 +37,7 @@ struct ColorPickerPopover: View {
                                         Text(currentColor.rawValue)
                                         Image(systemName: "pencil.tip.crop.circle.fill")
                                     }
-                                    .foregroundStyle(currentColor.setColor)
+                                    .foregroundStyle(currentColor.getColor)
                                 }
                             })
                             .frame(maxWidth: .infinity, alignment: .trailing)

@@ -6,27 +6,25 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct EventInfoScreen: View {
-    @State var event: Event
-    @State private var sheetIsOpened = false
-    @State private var alertIsPresented = false
     @Environment(DataStore.self) private var dataStore
     @Environment(\.dismiss) private var dismis
+    @State private var sheetIsOpened = false
+    @State private var alertIsPresented = false
+    @State var event: Event
     private let circleButtonSize = Constants.Сonstraints.eventInfoButtonSize
     private let allDateTypes = (DateType.allCases).reversed()
-
-    private var description: String {
-        event.description.isEmpty ? "No description" : event.description
+    private var info: String {
+        event.info.isEmpty ? "No description" : event.info
     }
-
     private var currentDateAllInfo: [DateType: String] {
         DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
     }
-
     private func updateEditedEvent() {
-        guard let editedEvent = dataStore.editedEvent else { return }
-        self.event = editedEvent
+        guard let finded = dataStore.findEventBy(id: event.id) else { return }
+        self.event = finded
     }
     // MARK: - View
     var body: some View {
@@ -38,7 +36,7 @@ struct EventInfoScreen: View {
                             .font(.callout)
                             .foregroundStyle(.secondary)
                             .padding(.bottom)
-                        Text(description)
+                        Text(info)
                     })
                     Spacer()
                     // MARK: Date presenter
@@ -51,7 +49,7 @@ struct EventInfoScreen: View {
                             }
                         }
                         Divider()
-                        Text(DateCalculator.determineFutureOrPastForThis(event.date))
+                        Text(DateCalculator.determineFutureOrPastForThis(date: event.date))
                             .font(.subheadline)
                     }
                     .frame(width: Constants.Сonstraints.eventDateTableSize)
@@ -68,8 +66,7 @@ struct EventInfoScreen: View {
         .sheet(isPresented: $sheetIsOpened, onDismiss: {
             updateEditedEvent()
         }, content: {
-            AddOrEditEventSheet(isOpened: $sheetIsOpened,
-                                showAlert: $alertIsPresented)
+            AddOrEditEventSheet(isOpened: $sheetIsOpened, showAlert: $alertIsPresented, event: event)
         })
         .alert(isPresented: $alertIsPresented, content: {
             NewAlert.showAlert {
@@ -94,7 +91,6 @@ struct EventInfoScreen: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     dataStore.setScreenMode(mode: .edit)
-                    dataStore.setCurrentEvent(event: event)
                     sheetIsOpened = true
                 }
             label: {
@@ -107,12 +103,5 @@ struct EventInfoScreen: View {
             }
         })
         .tint(event.color)
-        .onDisappear {
-            dataStore.makeEditedEventNil()
-        }
     }
-}
-
-#Preview {
-    EventInfoScreen(event: Event.dummy)
 }

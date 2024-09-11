@@ -55,7 +55,7 @@ struct DateTypeSlider: View {
                     .frame(maxWidth: .infinity)
             }
             .onAppear {
-                sliderValue = DateCalculator.findIndexForThis(dateType) ?? 0
+                sliderValue = DateCalculator.findIndexForThis(dateType: dateType)
             }
             // MARK: Underline slider text
             HStack(content: {
