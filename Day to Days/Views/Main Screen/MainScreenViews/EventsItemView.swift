@@ -56,7 +56,7 @@ struct EventsItemView: View {
                     }
                     Group {
                         Text(event.dateType.label)
-                        Text(DateCalculator.determineFutureOrPastForThis(event.date))
+                        Text(DateCalculator.determineFutureOrPastForThis(date: event.date))
                     }
                     .italic()
                     .font(.footnote)

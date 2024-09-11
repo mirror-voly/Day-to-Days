@@ -11,22 +11,21 @@ import Combine
 struct AddOrEditEventSheet: View {
 
     @Environment(DataStore.self) private var dataStore
+
     @State private var fieldsAreNotEmpy = false
     @State private var addButtonIsVisible = false
     @State private var canDismiss = true
-
     @State private var sliderValue: Double = 0
     @State private var buttonSpacer: CGFloat = 0
-
-    @Binding var isOpened: Bool
-    @Binding var showAlert: Bool
-
     @State private var title = ""
     @State private var info = ""
     @State private var date = Constants.fixedDate
     @State private var color = Color.gray
     @State private var dateType: DateType = .day
 
+    @Binding var isOpened: Bool
+    @Binding var showAlert: Bool
+    // MARK: Set title
     var sheetTitle: String {
         dataStore.screenMode == .edit ? "Edit Event": "New Event"
     }
@@ -67,7 +66,7 @@ struct AddOrEditEventSheet: View {
         if dataStore.screenMode == .edit {
             dataStore.editEvent(newEvent: event)
         } else {
-            dataStore.addEvent(event: event)
+            dataStore.addAndSaveEvent(event: event)
         }
         dataStore.makeCurrentEventNil()
     }
@@ -111,7 +110,7 @@ struct AddOrEditEventSheet: View {
         .onChange(of: date) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
         .onChange(of: fieldsAreNotEmpy) { canDismiss = !fieldsAreNotEmpy }
         .onDisappear(perform: { prepareForDismiss() })
-        // MARK: - Keyboard detection
+        // MARK: Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
             buttonSpacer = Constants.Сonstraints.buttonSpaсerMaximize
         }

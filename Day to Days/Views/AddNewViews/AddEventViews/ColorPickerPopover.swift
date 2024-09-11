@@ -22,6 +22,7 @@ struct ColorPickerPopover: View {
                 Image(systemName: "pencil.tip.crop.circle.fill")
             })
             .foregroundStyle(color)
+            // MARK: Color popover
             .popover(isPresented: $popoverIsPresented, content: {
                 VStack {
                     VStack(alignment: .trailing, content: {

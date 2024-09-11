@@ -51,7 +51,7 @@ struct EventInfoScreen: View {
                             }
                         }
                         Divider()
-                        Text(DateCalculator.determineFutureOrPastForThis(event.date))
+                        Text(DateCalculator.determineFutureOrPastForThis(date: event.date))
                             .font(.subheadline)
                     }
                     .frame(width: Constants.Сonstraints.eventDateTableSize)

@@ -9,6 +9,21 @@ import Foundation
 
 final class DateCalculator {
 
+    static func findIndexForThis(dateType: DateType) -> Double { // for slider value
+        guard let index = DateType.allCases.firstIndex(of: dateType) else { return 0 }
+        return Double(index)
+    }
+
+    static func determineFutureOrPastForThis(date: Date) -> String {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        if calendar.isDate(date, inSameDayAs: currentDate) {
+            return "today"
+        } else {
+            return date < currentDate ? "passed" : "left"
+        }
+    }
+    // MARK: - Date counters
     static func daysFrom(date: Date) -> Int {
         let currentDate = Date()
         let calendar = Calendar.current
@@ -34,7 +49,7 @@ final class DateCalculator {
         return [.month: String(months), .weak: String(weeks), .day: String(days)]
     }
 
-    static func allTimeInfoFor(date: Date) -> [DateType: String] {
+    static func yearsFrom(date: Date) -> [DateType: String] {
         let calendar = Calendar.current
         let today = Date()
         let components = calendar.dateComponents([.year, .month, .day], from: date, to: today)
@@ -55,31 +70,16 @@ final class DateCalculator {
         case .month:
             returnDate = monthsFrom(date: date)
         case .year:
-            returnDate = allTimeInfoFor(date: date)
+            returnDate = yearsFrom(date: date)
         }
         return returnDate
     }
 
-    static func findFirstDateFromTheTopFor(date: Date, dateType: DateType) -> String {
+    static func findFirstDateFromTheTopFor(date: Date, dateType: DateType) -> String { // gives only top one
         let currentDate = dateInfoForThis(date: date, dateType: dateType)
         if let value = currentDate[dateType] {
             return value
         }
         return ""
-    }
-
-    static func determineFutureOrPastForThis(_ date: Date) -> String {
-        let currentDate = Date()
-        let calendar = Calendar.current
-        if calendar.isDate(date, inSameDayAs: currentDate) {
-            return "today"
-        } else {
-            return date < currentDate ? "passed" : "left"
-        }
-    }
-
-    static func findIndexForThis(_ dateType: DateType) -> Double? {
-        guard let index = DateType.allCases.firstIndex(of: dateType) else { return nil }
-        return Double(index)
     }
 }
