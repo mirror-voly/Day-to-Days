@@ -17,8 +17,6 @@ final class DataStore {
     // MARK: - Private variables
     private (set) var screenMode: EditModeType?
     private (set) var currentEvent: Event?
-    private (set) var editedEvent: Event?
-    private (set) var allEvents: [Event] = []
     // MARK: - Functions for changing local variables
     func setCurrentEvent(event: Event) {
         currentEvent = event
@@ -33,10 +31,6 @@ final class DataStore {
         currentEvent = nil
     }
 
-    func makeEditedEventNil() {
-        editedEvent = nil
-    }
-
     func addAndSaveEvent(event: Event) {
         do {
             let realm = try Realm()
@@ -48,11 +42,22 @@ final class DataStore {
         }
     }
 
-    func editEvent(newEvent: Event) {
-        guard let currentEvent = currentEvent else { return }
+    func findEventBy(id: UUID) -> Event? {
         do {
             let realm = try Realm()
-            if let eventToUpdate = realm.object(ofType: Event.self, forPrimaryKey: currentEvent.id) {
+            if let event = realm.object(ofType: Event.self, forPrimaryKey: id) {
+                return event
+            }
+        } catch {
+            print("Finding error occurred: \(error.localizedDescription)")
+        }
+        return nil
+    }
+
+    func editEvent(oldEventID: UUID, newEvent: Event) {
+        do {
+            let realm = try Realm()
+            if let eventToUpdate = realm.object(ofType: Event.self, forPrimaryKey: oldEventID) {
                 try realm.write {
                     eventToUpdate.title = newEvent.title
                     eventToUpdate.info = newEvent.info
@@ -60,39 +65,10 @@ final class DataStore {
                     eventToUpdate.dateType = newEvent.dateType
                     eventToUpdate.color = newEvent.color
                 }
-                editedEvent = newEvent
             }
         } catch {
             print("Editing error occurred: \(error.localizedDescription)")
         }
     }
 
-    func deleteEventAt(_ index: IndexSet) {
-        do {
-            let realm = try Realm()
-            try realm.write {
-                for item in index {
-                    realm.delete(allEvents[item])
-                }
-            }
-        } catch {
-            print("Deleting error occurred: \(error.localizedDescription)")
-        }
-    }
-
-    func loadEvents() {
-        do {
-            let realm = try Realm()
-            let events = realm.objects(Event.self)
-            for event in events {
-                allEvents.append(event)
-            }
-        } catch {
-            print("Ошибка при инициализации Realm: \(error.localizedDescription)")
-        }
-    }
-
-    init() {
-        loadEvents()
-    }
 }

@@ -8,7 +8,6 @@ import RealmSwift
 import SwiftUI
 
 struct EventsList: View {
-    @Environment(DataStore.self) private var dataStore
     @ObservedResults(Event.self) var allEvents
     var body: some View {
         VStack {
@@ -19,9 +18,7 @@ struct EventsList: View {
                         EventsItemView(event: event)
                     }
                 }
-                .onDelete { index in
-                    dataStore.deleteEventAt(index)
-                }
+                .onDelete(perform: $allEvents.remove)
             }
             .listStyle(.plain)
         }

@@ -11,7 +11,6 @@ import Combine
 struct AddOrEditEventSheet: View {
 
     @Environment(DataStore.self) private var dataStore
-
     @State private var fieldsAreNotEmpy = false
     @State private var addButtonIsVisible = false
     @State private var canDismiss = true
@@ -22,10 +21,11 @@ struct AddOrEditEventSheet: View {
     @State private var date = Constants.fixedDate
     @State private var color = Color.gray
     @State private var dateType: DateType = .day
-
     @Binding var isOpened: Bool
     @Binding var showAlert: Bool
-    // MARK: Set title
+
+    var event: Event?
+    
     var sheetTitle: String {
         dataStore.screenMode == .edit ? "Edit Event": "New Event"
     }
@@ -35,8 +35,21 @@ struct AddOrEditEventSheet: View {
         return Event(title: title, info: info, date: date, dateType: dateType, color: color)
     }
 
+    private func createEvent(id: UUID) -> Event {
+        return Event(id: id, title: title, info: info, date: date, dateType: dateType, color: color)
+    }
+
     private func extractEventData() {
-        guard let event = dataStore.currentEvent else { return }
+        if let event = event {
+            updateEventData(from: event)
+        }
+
+        if let currentEvent = dataStore.currentEvent {
+            updateEventData(from: currentEvent)
+        }
+    }
+
+    private func updateEventData(from event: Event) {
         title = event.title
         info = event.info
         date = event.date
@@ -49,24 +62,22 @@ struct AddOrEditEventSheet: View {
         isOpened = false
     }
 
-    private func prepareForDismiss() {
+    private func dismissAlertPrepare(oldEventID: UUID?) {
         guard !canDismiss else { return }
-        if dataStore.screenMode == .edit {
-            guard let id = dataStore.currentEvent?.id else { return }
-            let currentEvent = Event(id: id, title: title, info: info, date: date, dateType: dateType, color: color)
-            dataStore.setCurrentEvent(event: currentEvent)
+        if let oldEventID = oldEventID {
+            dataStore.setCurrentEvent(event: createEvent(id: oldEventID))
         } else {
             dataStore.setCurrentEvent(event: createEvent())
         }
         showAlert = true
     }
 
-    private func buttonAction() {
-        let event = createEvent()
-        if dataStore.screenMode == .edit {
-            dataStore.editEvent(newEvent: event)
+    private func buttonAction(oldEventID: UUID?) {
+        let createdEvent = createEvent()
+        if let oldEventID = oldEventID {
+            dataStore.editEvent(oldEventID: oldEventID, newEvent: createdEvent)
         } else {
-            dataStore.addAndSaveEvent(event: event)
+            dataStore.addAndSaveEvent(event: createdEvent)
         }
         dataStore.makeCurrentEventNil()
     }
@@ -91,7 +102,7 @@ struct AddOrEditEventSheet: View {
             }
             Spacer()
             AddEventButton(onAddNew: {
-                buttonAction()
+                buttonAction(oldEventID: event?.id)
                 closeSheet()
             }, addButtonIsVisible: $addButtonIsVisible)
             .frame(height: buttonSpacer)
@@ -109,7 +120,7 @@ struct AddOrEditEventSheet: View {
         .onChange(of: dateType) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
         .onChange(of: date) { fieldsAreNotEmpy = isFieldsAreNotEmpty() }
         .onChange(of: fieldsAreNotEmpy) { canDismiss = !fieldsAreNotEmpy }
-        .onDisappear(perform: { prepareForDismiss() })
+        .onDisappear(perform: { dismissAlertPrepare(oldEventID: event?.id) })
         // MARK: Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
             buttonSpacer = Constants.Сonstraints.buttonSpaсerMaximize

@@ -4,14 +4,14 @@
 //
 //  Created by mix on 03.09.2024.
 //
-
+import RealmSwift
 import SwiftUI
 
 struct MainScreen: View {
     @Environment(DataStore.self) private var dataStore
+    @ObservedResults(Event.self) var allEvents
     @State private var sheetIsOpened = false
     @State private var alertIsPresented = false
-
     private func startAddNewEvent() {
         dataStore.setScreenMode(mode: .add)
         sheetIsOpened = true
@@ -21,7 +21,7 @@ struct MainScreen: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .center) {
-                if !dataStore.allEvents.isEmpty {
+                if !allEvents.isEmpty {
                     EventsList()
                 } else {
                     EventsListIsEmpyView {

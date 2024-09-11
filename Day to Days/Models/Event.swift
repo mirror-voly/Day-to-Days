@@ -37,7 +37,8 @@ class Event: Object, Identifiable {
             return .gray
         }
         set {
-            colorTypeData = newValue.toData()        }
+            colorTypeData = newValue.toData()
+        }
     }
 
     var color: Color {
@@ -47,15 +48,6 @@ class Event: Object, Identifiable {
         set {
             colorType = newValue.getColorType
         }
-    }
-
-    convenience init(title: String, info: String, date: Date, dateType: DateType, colorType: ColorType) {
-        self.init()
-        self.title = title
-        self.info = info
-        self.date = date
-        self.dateType = dateType
-        self.colorType = colorType
     }
 
     init(id: UUID = UUID(), title: String, info: String, date: Date, dateType: DateType, color: Color) {
@@ -74,7 +66,7 @@ class Event: Object, Identifiable {
         self.dateTypeData = dateType.toData()
         self.colorTypeData = color.getColorType.toData()
     }
-    
+
     override class func primaryKey() -> String? {
         return "id"
     }
