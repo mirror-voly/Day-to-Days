@@ -4,7 +4,6 @@
 //
 //  Created by mix on 10.09.2024.
 //
-
 import Foundation
 
 enum DateType: String, CaseIterable, Codable {
@@ -20,5 +19,13 @@ enum DateType: String, CaseIterable, Codable {
         case .weak: return "weeks"
         case .day: return "days"
         }
+    }
+
+    func toData() -> Data? {
+        return try? JSONEncoder().encode(self)
+    }
+
+    static func fromData(_ data: Data) -> DateType? {
+        return try? JSONDecoder().decode(DateType.self, from: data)
     }
 }

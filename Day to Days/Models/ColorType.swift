@@ -52,4 +52,12 @@ enum ColorType: String, CaseIterable, Codable {
             return .teal
         }
     }
+
+    func toData() -> Data? {
+        return try? JSONEncoder().encode(self)
+    }
+
+    static func fromData(_ data: Data) -> ColorType? {
+        return try? JSONDecoder().decode(ColorType.self, from: data)
+    }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
 		516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */; };
 		516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9D2C8D9AF00095A646 /* EventsList.swift */; };
+		517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517282952C90CCCE00D09AC4 /* RealmSwift */; };
 		5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */; };
 		5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */; };
 		5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */; };
@@ -68,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +221,9 @@
 				516CBE522C87275900202B93 /* PBXTargetDependency */,
 			);
 			name = "Day to Days";
+			packageProductDependencies = (
+				517282952C90CCCE00D09AC4 /* RealmSwift */,
+			);
 			productName = "Day to Days";
 			productReference = 516CBE3F2C87247000202B93 /* Day to Days.app */;
 			productType = "com.apple.product-type.application";
@@ -249,6 +254,7 @@
 			mainGroup = 516CBE362C87247000202B93;
 			packageReferences = (
 				516CBE502C87254A00202B93 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				517282942C90CCCE00D09AC4 /* XCLocalSwiftPackageReference "../../../realm-swift" */,
 			);
 			productRefGroup = 516CBE402C87247000202B93 /* Products */;
 			projectDirPath = "";
@@ -510,6 +516,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		517282942C90CCCE00D09AC4 /* XCLocalSwiftPackageReference "../../../realm-swift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../../realm-swift";
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		516CBE502C87254A00202B93 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -526,6 +539,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 516CBE502C87254A00202B93 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		517282952C90CCCE00D09AC4 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

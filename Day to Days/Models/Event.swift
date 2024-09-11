@@ -6,15 +6,39 @@
 //
 
 import SwiftUI
+import RealmSwift
 
-struct Event: Identifiable, Equatable, Hashable, Codable {
+class Event: Object, Identifiable {
 
-    var id: UUID = UUID()
-    let title: String
-    let info: String
-    let date: Date
-    let dateType: DateType
-    var colorType: ColorType
+    @Persisted var id: UUID = UUID()
+    @Persisted var title: String = ""
+    @Persisted var info: String = ""
+    @Persisted var date: Date = Date()
+    @Persisted var dateTypeData: Data?
+    @Persisted var colorTypeData: Data?
+
+    var dateType: DateType {
+        get {
+            if let data = dateTypeData {
+                return DateType.fromData(data) ?? .day
+            }
+            return .day
+        }
+        set {
+            dateTypeData = newValue.toData()
+        }
+    }
+
+    var colorType: ColorType {
+        get {
+            if let data = colorTypeData {
+                return ColorType.fromData(data) ?? .gray
+            }
+            return .gray
+        }
+        set {
+            colorTypeData = newValue.toData()        }
+    }
 
     var color: Color {
         get {
@@ -25,20 +49,37 @@ struct Event: Identifiable, Equatable, Hashable, Codable {
         }
     }
 
+    convenience init(title: String, info: String, date: Date, dateType: DateType, colorType: ColorType) {
+        self.init()
+        self.title = title
+        self.info = info
+        self.date = date
+        self.dateType = dateType
+        self.colorType = colorType
+    }
+
     init(id: UUID = UUID(), title: String, info: String, date: Date, dateType: DateType, color: Color) {
         self.id = id
         self.title = title
         self.info = info
         self.date = date
-        self.dateType = dateType
-        self.colorType = color.getColorType
+        self.dateTypeData = dateType.toData()
+        self.colorTypeData = color.getColorType.toData()
     }
 
     init(title: String, info: String, date: Date, dateType: DateType, color: Color) {
         self.title = title
         self.info = info
         self.date = date
-        self.dateType = dateType
-        self.colorType = color.getColorType
+        self.dateTypeData = dateType.toData()
+        self.colorTypeData = color.getColorType.toData()
+    }
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+
+    override init() {
+        super.init()
     }
 }
