@@ -55,7 +55,7 @@
 "date_help" = "Select a start or end date";
 "color_help" = "Select a color for the event";
 "add_button_help" = "You need to add a title for the event";
-"day_help" = "Will display days";
-"week_help" = "Will display days and weeks";
-"month_help" = "Will display days, weeks and months";
-"year_help" = "Will display days, weeks, months and years";
+"day_help" = "Show days";
+"week_help" = "Show days and weeks";
+"month_help" = "Show days, weeks and months";
+"year_help" = "Show days, weeks, months and years";
