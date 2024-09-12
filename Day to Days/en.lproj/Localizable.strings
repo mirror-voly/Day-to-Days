@@ -40,11 +40,6 @@
 "color_indigo" = "Indigo";
 "color_gray" = "Gray";
 
-"date_type_day" = "Days";
-"date_type_week" = "Weeks";
-"date_type_month" = "Months";
-"date_type_year" = "Years";
-
 "date_label_years" = "years";
 "date_label_months" = "months";
 "date_label_weeks" = "weeks";

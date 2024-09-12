@@ -23,7 +23,7 @@ struct ColorPickerPopover: View {
             })
             .foregroundStyle(color)
             .contextMenu {
-                HelpContextMenu(helpText: "date_help")
+                HelpContextMenu(helpText: "color_help")
             }
             // MARK: Color popover
             .popover(isPresented: $popoverIsPresented, content: {
