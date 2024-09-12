@@ -17,8 +17,11 @@ struct EventsItemView: View {
     private let scaleFactor = Constants.Сonstraints.eventsItemViewDateTextMinimumScaleFactor
 
     var body: some View {
+        // TODO: Need refactoring
         let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
         let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
+        let localizetDateType = TimeUnitLocalizer.localizeIt(for: dateNumber, unit: event.dateType.label)
+        let localizetTimeState = TimeUnitLocalizer.localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
         HStack {
             // MARK: - Circle
             ZStack(alignment: .center, content: {
@@ -57,8 +60,8 @@ struct EventsItemView: View {
                         .frame(width: dateFrameSize, height: dateFrameSize)
                     }
                     Group {
-                        Text(timeState != .present ? TimeUnitLocalizer.localizeIt(for: dateNumber, unit: event.dateType.label) : "")
-                            Text(timeState.label)
+                        Text(timeState != .present ? localizetDateType : "")
+                        Text(localizetTimeState)
                     }
                     .italic()
                     .font(.footnote)

@@ -28,6 +28,10 @@ struct EventInfoScreen: View {
     }
     // MARK: - View
     var body: some View {
+        // TODO: Need refactoring
+        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
+        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
+        let localizetTimeState = TimeUnitLocalizer.localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
         VStack(alignment: .leading, content: {
             GroupBox {
                 HStack(alignment: .top, content: {
@@ -41,6 +45,9 @@ struct EventInfoScreen: View {
                     Spacer()
                     // MARK: Date presenter
                     GroupBox {
+                        Text(localizetTimeState.capitalized)
+                            .font(.subheadline)
+                        Divider()
                         LazyVStack {
                             ForEach(allDateTypes, id: \.self) { dateType in
                                 if let value = currentDateAllInfo[dateType] {
@@ -48,10 +55,6 @@ struct EventInfoScreen: View {
                                 }
                             }
                         }
-                        Divider()
-                        // TODO: try to fix
-                        Text(DateCalculator.determineFutureOrPastForThis(date: event.date).label)
-                            .font(.subheadline)
                     }
                     .frame(width: Constants.Сonstraints.eventDateTableSize)
                 })
