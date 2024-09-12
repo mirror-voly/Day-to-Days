@@ -30,7 +30,7 @@
 "color_orange" = "Оранжевый";
 "color_yellow" = "Желтый";
 "color_green" = "Зеленый";
-"color_cyan" = "Циан";
+"color_cyan" = "Голубой";
 "color_blue" = "Синий";
 "color_purple" = "Фиолетовый";
 "color_pink" = "Розовый";
@@ -39,11 +39,6 @@
 "color_teal" = "Бирюзовый";
 "color_indigo" = "Индиго";
 "color_gray" = "Серый";
-
-"date_type_day" = "Дни";
-"date_type_week" = "Недели";
-"date_type_month" = "Месяцы";
-"date_type_year" = "Годы";
 
 "date_label_years" = "годы";
 "date_label_months" = "месяцы";

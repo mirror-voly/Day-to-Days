@@ -15,8 +15,10 @@ struct EventsItemView: View {
     private let bigCircleSize = Constants.Сonstraints.eventsItemViewBigCicleSize
     private let dateFrameSize = Constants.Сonstraints.eventsItemViewDateFrameSize
     private let scaleFactor = Constants.Сonstraints.eventsItemViewDateTextMinimumScaleFactor
-    
+
     var body: some View {
+        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
+        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
         HStack {
             // MARK: - Circle
             ZStack(alignment: .center, content: {
@@ -42,7 +44,7 @@ struct EventsItemView: View {
                                 .frame(width: bigCircleSize, height: bigCircleSize)
 
                             VStack {
-                                Text(DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType))
+                                Text(dateNumber)
                                     .foregroundStyle(event.color)
                                     .bold()
                                     .font(.title3)
@@ -55,8 +57,7 @@ struct EventsItemView: View {
                         .frame(width: dateFrameSize, height: dateFrameSize)
                     }
                     Group {
-                        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
-                            Text(timeState != .present ? event.dateType.label: "")
+                        Text(timeState != .present ? TimeUnitLocalizer.localizeIt(for: dateNumber, unit: event.dateType.label) : "")
                             Text(timeState.label)
                     }
                     .italic()

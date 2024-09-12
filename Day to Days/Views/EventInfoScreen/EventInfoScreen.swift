@@ -44,7 +44,7 @@ struct EventInfoScreen: View {
                         LazyVStack {
                             ForEach(allDateTypes, id: \.self) { dateType in
                                 if let value = currentDateAllInfo[dateType] {
-                                    DateInfoView(value: value, label: dateType.label)
+                                    DateInfoView(value: value, label: TimeUnitLocalizer.localizeIt(for: value, unit: dateType.label))
                                 }
                             }
                         }

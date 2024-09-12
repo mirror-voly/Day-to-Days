@@ -27,7 +27,8 @@ final class DateCalculator {
     static func daysFrom(date: Date) -> Int {
         let currentDate = Date()
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: date, to: currentDate)
+        let components = calendar.dateComponents([.day, .hour], from: currentDate, to: date)
+        // TODO: Should we check hours on last day too?
         let daysCounter = components.day ?? 0
         return abs(daysCounter)
     }

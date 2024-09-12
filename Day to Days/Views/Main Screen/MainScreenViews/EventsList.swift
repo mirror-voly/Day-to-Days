@@ -12,6 +12,8 @@ struct EventsList: View {
     var body: some View {
         VStack {
             List {
+                // TODO: make mass delete
+                // TODO: make sort ability
                 ForEach(allEvents) { event in
                     NavigationLink(value: event) {
                         Divider()
