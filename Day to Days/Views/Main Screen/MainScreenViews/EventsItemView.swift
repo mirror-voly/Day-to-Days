@@ -39,14 +39,9 @@ struct EventsItemView: View {
                     .font(.title2)
             Spacer()
             // MARK: - Day counter
-            GroupBox {
-                    GroupBox {
-                        ZStack(alignment: .center, content: {
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: bigCircleSize, height: bigCircleSize)
-
                             VStack {
+                                Text(localizetTimeState.capitalized)
+                                Divider()
                                 Text(dateNumber)
                                     .foregroundStyle(event.color)
                                     .bold()
@@ -54,19 +49,13 @@ struct EventsItemView: View {
                                     .frame(maxWidth: .infinity)
                                     .minimumScaleFactor(scaleFactor)
                                     .lineLimit(1)
+                                Text(timeState != .present ? localizetDateType : "")
+                                    .italic()
+                                    .font(.footnote)
+                                    .foregroundStyle(.gray)
                             }
-                            .frame(maxWidth: .infinity)
-                        })
-                        .frame(width: dateFrameSize, height: dateFrameSize)
-                    }
-                    Group {
-                        Text(timeState != .present ? localizetDateType : "")
-                        Text(localizetTimeState)
-                    }
-                    .italic()
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
-            }
+                            .frame(width: dateFrameSize)
+                            .padding()
         }
         .containerShape(Rectangle())
     }
