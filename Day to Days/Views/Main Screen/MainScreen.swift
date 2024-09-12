@@ -42,6 +42,9 @@ struct MainScreen: View {
                         Image(systemName: "plus.circle")
                             .foregroundStyle(.gray)
                     }
+                    .contextMenu {
+                        HelpContextMenu(helpText: "new_event")
+                    }
                 }
             }
             .alert(isPresented: $alertIsPresented, content: {

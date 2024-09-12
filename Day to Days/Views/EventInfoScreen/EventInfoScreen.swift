@@ -100,6 +100,9 @@ struct EventInfoScreen: View {
                     .overlay(Image(systemName: "pencil")
                         .fontWeight(.semibold))
             }
+            .contextMenu {
+                HelpContextMenu(helpText: "edit_event")
+            }
             }
         })
         .tint(event.color)
