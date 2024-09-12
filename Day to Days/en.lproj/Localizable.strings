@@ -15,10 +15,6 @@
 "date" = "Date";
 "color" = "Color";
 "count" = "Count";
-"day" = "Day";
-"week" = "Week";
-"month" = "Month";
-"year" = "Year";
 "event_not_saved_title" = "Event is not saved";
 "event_not_saved_message" = "Are you sure that you want to quit?";
 "yes" = "Yes";
@@ -53,3 +49,13 @@
 "date_label_months" = "months";
 "date_label_weeks" = "weeks";
 "date_label_days" = "days";
+
+// Helpers
+"help" = "Help";
+"date_help" = "Select a start or end date";
+"color_help" = "Select a color for the event";
+"add_button_help" = "You need to add a title for the event";
+"day_help" = "Will display days";
+"week_help" = "Will display days and weeks";
+"month_help" = "Will display days, weeks and months";
+"year_help" = "Will display days, weeks, months and years";

@@ -22,6 +22,11 @@ struct AddEventButton: View {
                         .frame(height: Constants.Сonstraints.buttonSpaсerMinimize)
             })
             .disabled(!addButtonIsVisible)
+            .contextMenu {
+                if !addButtonIsVisible {
+                    HelpContextMenu(helpText: "add_button_help")
+                }
+            }
             .buttonStyle(BorderedProminentButtonStyle())
             Spacer()
         })

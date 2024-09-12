@@ -30,6 +30,9 @@ struct AddEventFields: View {
             GroupBox {
                 DatePicker("date".localized, selection: $date, displayedComponents: .date)
                     .datePickerStyle(.compact)
+                    .contextMenu {
+                        HelpContextMenu(helpText: "date_help")
+                    }
                 Divider()
                 ColorPickerPopover(popoverIsPresented: $popoverIsPresented, color: $color)
             }

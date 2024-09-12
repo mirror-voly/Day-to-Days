@@ -22,6 +22,9 @@ struct ColorPickerPopover: View {
                 Image(systemName: "pencil.tip.crop.circle.fill")
             })
             .foregroundStyle(color)
+            .contextMenu {
+                HelpContextMenu(helpText: "date_help")
+            }
             // MARK: Color popover
             .popover(isPresented: $popoverIsPresented, content: {
                 VStack {

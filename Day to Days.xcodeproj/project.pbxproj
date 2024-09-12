@@ -24,6 +24,7 @@
 		516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9D2C8D9AF00095A646 /* EventsList.swift */; };
 		5170CC592C92ADE600A9380B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
 		5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
+		5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */; };
 		517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517282952C90CCCE00D09AC4 /* RealmSwift */; };
 		5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */; };
 		5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */; };
@@ -57,6 +58,7 @@
 		5170CC582C92ADE600A9380B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5170CC5A2C92AE0C00A9380B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5170CC5B2C92B15200A9380B /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpContextMenu.swift; sourceTree = "<group>"; };
 		5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+KeyboardIsActive.swift"; sourceTree = "<group>"; };
 		5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreen.swift; sourceTree = "<group>"; };
 		5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Invert.swift"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				519195002C8CA6AA00F29C1B /* NewAlert.swift */,
+				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
 				519FF10B2C8D9F46002FA63A /* Constants.swift */,
 				5170CC5B2C92B15200A9380B /* String+Localized.swift */,
 				518289102C8849AB00676F0E /* View+HideKeyboard.swift */,
@@ -293,6 +296,7 @@
 			files = (
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
 				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,
+				5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */,
 				5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */,
 				516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */,
 				51665A022C905E2700468301 /* ColorType.swift in Sources */,

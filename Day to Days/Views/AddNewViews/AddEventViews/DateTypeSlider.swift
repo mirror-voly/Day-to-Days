@@ -14,9 +14,25 @@ struct DateTypeSlider: View {
     private let circleSizeNormal = Constants.Сonstraints.sliderCircleSizeNornmal
     private let circleSizeMaximized = Constants.Сonstraints.sliderCircleSizeMaximazed
 
+    private func addHelpToTheButtonBy(_ index: Int) -> String {
+        switch index {
+        case 0:
+            return "day_help"
+        case 1:
+            return "week_help"
+        case 2:
+            return "month_help"
+        case 3:
+            return "year_help"
+        default:
+            return "days_help"
+        }
+    }
+
     private func fillSliderCircles(step: Int, sum: Int) -> some View {
             HStack {
                 ForEach(0..<sum, id: \.self) { index in
+                    let helpString = addHelpToTheButtonBy(index)
                     VStack {
                         Button(action: {
                             sliderValue = Double(index)
@@ -27,6 +43,9 @@ struct DateTypeSlider: View {
                                 .frame(width: index < step + 1 ? circleSizeMaximized : circleSizeNormal)
                         })
                         .containerShape(Rectangle())
+                        .contextMenu {
+                            HelpContextMenu(helpText: helpString)
+                        }
                     }
                     .frame(width: circleSizeMaximized - 5)
                     if index < sum - 1 {
@@ -57,27 +76,6 @@ struct DateTypeSlider: View {
             .onAppear {
                 sliderValue = DateCalculator.findIndexForThis(dateType: dateType)
             }
-            // MARK: Underline slider text
-            HStack(content: {
-                Group {
-                    Text("day".localized)
-                        .fixedSize()
-                    Spacer()
-                    Text("week".localized)
-                        .fixedSize()
-                        .padding(.leading, Constants.Сonstraints.sliderTextPadding)
-                    Spacer()
-                    Text("month".localized)
-                        .fixedSize()
-                        .padding(.leading, Constants.Сonstraints.sliderTextPadding)
-                    Spacer()
-                    Text("year".localized)
-                        .fixedSize()
-                }
-                .lineLimit(1)
-                .foregroundStyle(.secondary)
-            })
-            .frame(maxWidth: .infinity)
         }
     }
 }
