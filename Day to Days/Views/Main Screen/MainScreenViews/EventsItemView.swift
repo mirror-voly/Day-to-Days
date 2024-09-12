@@ -15,6 +15,7 @@ struct EventsItemView: View {
     private let bigCircleSize = Constants.Сonstraints.eventsItemViewBigCicleSize
     private let dateFrameSize = Constants.Сonstraints.eventsItemViewDateFrameSize
     private let scaleFactor = Constants.Сonstraints.eventsItemViewDateTextMinimumScaleFactor
+    
     var body: some View {
         HStack {
             // MARK: - Circle
@@ -34,34 +35,33 @@ struct EventsItemView: View {
             Spacer()
             // MARK: - Day counter
             GroupBox {
-                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
                     GroupBox {
                         ZStack(alignment: .center, content: {
                             Circle()
                                 .fill(Color.white)
                                 .frame(width: bigCircleSize, height: bigCircleSize)
 
-                                        VStack {
-                                            Text(DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType))
-                                                .foregroundStyle(event.color)
-                                                .bold()
-                                                .font(.title3)
-                                                .frame(maxWidth: .infinity)
-                                                .minimumScaleFactor(scaleFactor)
-                                                .lineLimit(1)
-                                        }
-                                        .frame(maxWidth: .infinity)
+                            VStack {
+                                Text(DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType))
+                                    .foregroundStyle(event.color)
+                                    .bold()
+                                    .font(.title3)
+                                    .frame(maxWidth: .infinity)
+                                    .minimumScaleFactor(scaleFactor)
+                                    .lineLimit(1)
+                            }
+                            .frame(maxWidth: .infinity)
                         })
                         .frame(width: dateFrameSize, height: dateFrameSize)
                     }
                     Group {
-                        Text(event.dateType.label)
-                        Text(DateCalculator.determineFutureOrPastForThis(date: event.date))
+                        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
+                            Text(timeState != .present ? event.dateType.label: "")
+                            Text(timeState.label)
                     }
                     .italic()
                     .font(.footnote)
                     .foregroundStyle(.gray)
-                })
             }
         }
         .containerShape(Rectangle())

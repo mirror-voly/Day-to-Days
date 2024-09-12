@@ -14,15 +14,15 @@ final class DateCalculator {
         return Double(index)
     }
 
-        static func determineFutureOrPastForThis(date: Date) -> String {
-            let currentDate = Date()
-            let calendar = Calendar.current
-            if calendar.isDate(date, inSameDayAs: currentDate) {
-                return "today".localized
-            } else {
-                return date < currentDate ? "passed".localized : "left".localized
-            }
+    static func determineFutureOrPastForThis(date: Date) -> TimeStateType {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        if calendar.isDate(date, inSameDayAs: currentDate) {
+            return .present
+        } else {
+            return date < currentDate ? .past : .future
         }
+    }
     // MARK: - Date counters
     static func daysFrom(date: Date) -> Int {
         let currentDate = Date()

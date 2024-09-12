@@ -49,7 +49,8 @@ struct EventInfoScreen: View {
                             }
                         }
                         Divider()
-                        Text(DateCalculator.determineFutureOrPastForThis(date: event.date))
+                        // TODO: try to fix
+                        Text(DateCalculator.determineFutureOrPastForThis(date: event.date).label)
                             .font(.subheadline)
                     }
                     .frame(width: Constants.Сonstraints.eventDateTableSize)

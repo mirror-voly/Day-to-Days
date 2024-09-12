@@ -25,6 +25,7 @@
 		5170CC592C92ADE600A9380B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
 		5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
 		5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */; };
+		5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517282952C90CCCE00D09AC4 /* RealmSwift */; };
 		5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */; };
 		5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */; };
@@ -59,6 +60,7 @@
 		5170CC5A2C92AE0C00A9380B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5170CC5B2C92B15200A9380B /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpContextMenu.swift; sourceTree = "<group>"; };
+		5170CC5F2C92E67600A9380B /* TimeStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStateType.swift; sourceTree = "<group>"; };
 		5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+KeyboardIsActive.swift"; sourceTree = "<group>"; };
 		5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreen.swift; sourceTree = "<group>"; };
 		5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Invert.swift"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				516CBE532C87296400202B93 /* Event.swift */,
 				516659F82C90324C00468301 /* DateType.swift */,
 				51665A012C905E2700468301 /* ColorType.swift */,
+				5170CC5F2C92E67600A9380B /* TimeStateType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */,
 				5179F2702C8E16B10027B0F1 /* ColorPickerPopover.swift in Sources */,
 				5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */,
+				5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */,
 				516CBE592C87339F00202B93 /* DataStore.swift in Sources */,
 				516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */,
 				5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */,
