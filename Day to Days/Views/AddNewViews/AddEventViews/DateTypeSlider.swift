@@ -62,7 +62,7 @@ struct DateTypeSlider: View {
             HStack(alignment: .center, content: {
                 Text("count".localized)
                 Spacer()
-                Text(dateType.rawValue.localized)
+                Text(dateType.label.localized.capitalized)
             })
             // MARK: - Slider
             ZStack(alignment: .center) {

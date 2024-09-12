@@ -6,11 +6,11 @@
 //
 import Foundation
 
-enum DateType: String, CaseIterable, Codable {
-    case day = "date_type_day"
-    case week = "date_type_week"
-    case month = "date_type_month"
-    case year = "date_type_year"
+enum DateType: CaseIterable, Codable {
+    case day
+    case week
+    case month
+    case year
 
     var label: String {
         switch self {
