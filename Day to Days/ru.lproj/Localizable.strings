@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  Day to Days
+
+  Created by mix on 12.09.2024.
+  
+*/
+
+"events" = "События";
+"event_list_empty" = "Список событий пуст";
+"add_new" = "Добавить новое";
+"done" = "Готово";
+"title" = "Название";
+"description" = "Описание";
+"date" = "Дата";
+"color" = "Цвет";
+"count" = "Cчитать";
+"day" = "День";
+"week" = "Неделя";
+"month" = "Месяц";
+"year" = "Год";
+"event_not_saved_title" = "Событие не сохранено";
+"event_not_saved_message" = "Вы уверены, что хотите выйти?";
+"yes" = "Да";
+"cancel" = "Отмена";
+"no_description" = "Нет описания";
+"today" = "сегодня";
+"passed" = "прошло";
+"left" = "осталось";
+"edit_event" = "Редактировать событие";
+"new_event" = "Новое событие";
+
+"color_red" = "Красный";
+"color_orange" = "Оранжевый";
+"color_yellow" = "Желтый";
+"color_green" = "Зеленый";
+"color_cyan" = "Циан";
+"color_blue" = "Синий";
+"color_purple" = "Фиолетовый";
+"color_pink" = "Розовый";
+"color_brown" = "Коричневый";
+"color_mint" = "Мятный";
+"color_teal" = "Бирюзовый";
+"color_indigo" = "Индиго";
+"color_gray" = "Серый";
+
+"date_type_day" = "Дни";
+"date_type_week" = "Недели";
+"date_type_month" = "Месяцы";
+"date_type_year" = "Годы";
+
+"date_label_years" = "годы";
+"date_label_months" = "месяцы";
+"date_label_weeks" = "недели";
+"date_label_days" = "дни";

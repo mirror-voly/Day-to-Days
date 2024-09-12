@@ -29,7 +29,7 @@ struct MainScreen: View {
                     }
                 }
             }
-            .navigationTitle("Events")
+            .navigationTitle("events".localized)
             .sheet(isPresented: $sheetIsOpened, content: {
                 AddOrEditEventSheet(isOpened: $sheetIsOpened,
                                     showAlert: $alertIsPresented)

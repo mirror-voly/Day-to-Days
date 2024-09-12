@@ -14,15 +14,15 @@ final class DateCalculator {
         return Double(index)
     }
 
-    static func determineFutureOrPastForThis(date: Date) -> String {
-        let currentDate = Date()
-        let calendar = Calendar.current
-        if calendar.isDate(date, inSameDayAs: currentDate) {
-            return "today"
-        } else {
-            return date < currentDate ? "passed" : "left"
+        static func determineFutureOrPastForThis(date: Date) -> String {
+            let currentDate = Date()
+            let calendar = Calendar.current
+            if calendar.isDate(date, inSameDayAs: currentDate) {
+                return "today".localized
+            } else {
+                return date < currentDate ? "passed".localized : "left".localized
+            }
         }
-    }
     // MARK: - Date counters
     static func daysFrom(date: Date) -> Int {
         let currentDate = Date()
@@ -36,7 +36,7 @@ final class DateCalculator {
         let days = daysFrom(date: date)
         let weakCounter = days / 7
         let daysCounter = days % 7
-        return [.weak: String(weakCounter), .day: String(daysCounter)]
+        return [.week: String(weakCounter), .day: String(daysCounter)]
     }
 
     static func monthsFrom(date: Date) -> [DateType: String] {
@@ -46,7 +46,7 @@ final class DateCalculator {
         let months = abs(components.month ?? 0)
         let days = abs(components.day ?? 0)
         let weeks = abs(days / 7)
-        return [.month: String(months), .weak: String(weeks), .day: String(days)]
+        return [.month: String(months), .week: String(weeks), .day: String(days)]
     }
 
     static func yearsFrom(date: Date) -> [DateType: String] {
@@ -57,7 +57,7 @@ final class DateCalculator {
         let months = abs(components.month ?? 0)
         let days = abs(components.day ?? 0)
         let weeks = abs(days / 7)
-        return [.year: String(years), .month: String(months), .weak: String(weeks), .day: String(days)]
+        return [.year: String(years), .month: String(months), .week: String(weeks), .day: String(days)]
     }
 
     static func dateInfoForThis(date: Date, dateType: DateType) -> [DateType: String] {
@@ -65,7 +65,7 @@ final class DateCalculator {
         switch dateType {
         case .day:
             returnDate = [.day: String(daysFrom(date: date))]
-        case .weak:
+        case .week:
             returnDate = weeksFrom(date: date)
         case .month:
             returnDate = monthsFrom(date: date)

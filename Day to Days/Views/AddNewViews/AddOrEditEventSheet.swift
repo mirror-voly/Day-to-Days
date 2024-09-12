@@ -25,9 +25,9 @@ struct AddOrEditEventSheet: View {
     @Binding var showAlert: Bool
 
     var event: Event?
-    
+
     var sheetTitle: String {
-        dataStore.screenMode == .edit ? "Edit Event": "New Event"
+        dataStore.screenMode == .edit ? "edit_event".localized: "new_event".localized
     }
 
     // MARK: - Functions

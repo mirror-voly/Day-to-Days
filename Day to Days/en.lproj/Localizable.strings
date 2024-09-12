@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  Day to Days
+
+  Created by mix on 12.09.2024.
+  
+*/
+
+"events" = "Events";
+"event_list_empty" = "Event list is empty";
+"add_new" = "Add new";
+"done" = "Done";
+"title" = "Title";
+"description" = "Description";
+"date" = "Date";
+"color" = "Color";
+"count" = "Count";
+"day" = "Day";
+"week" = "Week";
+"month" = "Month";
+"year" = "Year";
+"event_not_saved_title" = "Event is not saved";
+"event_not_saved_message" = "Are you sure that you want to quit?";
+"yes" = "Yes";
+"cancel" = "Cancel";
+"no_description" = "No description";
+"today" = "today";
+"passed" = "passed";
+"left" = "left";
+"edit_event" = "Edit Event";
+"new_event" = "New Event";
+
+"color_red" = "Red";
+"color_orange" = "Orange";
+"color_yellow" = "Yellow";
+"color_green" = "Green";
+"color_cyan" = "Cyan";
+"color_blue" = "Blue";
+"color_purple" = "Purple";
+"color_pink" = "Pink";
+"color_brown" = "Brown";
+"color_mint" = "Mint";
+"color_teal" = "Teal";
+"color_indigo" = "Indigo";
+"color_gray" = "Gray";
+
+"date_type_day" = "Days";
+"date_type_week" = "Weeks";
+"date_type_month" = "Months";
+"date_type_year" = "Years";
+
+"date_label_years" = "years";
+"date_label_months" = "months";
+"date_label_weeks" = "weeks";
+"date_label_days" = "days";

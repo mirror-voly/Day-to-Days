@@ -18,17 +18,17 @@ struct AddEventFields: View {
     var body: some View {
             GroupBox {
                 TextField(text: $title) {
-                    Text("Title")
+                    Text("title".localized)
                 }
                 Divider()
                 TextField(text: $description) {
-                    Text("Description")
+                    Text("description".localized)
                 }
             }
             .padding(.bottom)
             // MARK: Date and color pickers
             GroupBox {
-                DatePicker("Date", selection: $date, displayedComponents: .date)
+                DatePicker("date".localized, selection: $date, displayedComponents: .date)
                     .datePickerStyle(.compact)
                 Divider()
                 ColorPickerPopover(popoverIsPresented: $popoverIsPresented, color: $color)

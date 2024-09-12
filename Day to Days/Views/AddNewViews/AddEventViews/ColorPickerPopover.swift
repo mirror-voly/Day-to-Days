@@ -13,12 +13,12 @@ struct ColorPickerPopover: View {
 
     var body: some View {
         HStack(content: {
-            Text("Color")
+            Text("color".localized)
             Spacer()
             Button(action: {
                 popoverIsPresented.toggle()
             }, label: {
-                Text(color.getColorType.rawValue)
+                Text(color.getColorType.rawValue.localized)
                 Image(systemName: "pencil.tip.crop.circle.fill")
             })
             .foregroundStyle(color)
@@ -34,7 +34,7 @@ struct ColorPickerPopover: View {
                             }, label: {
                                 HStack(alignment: .center) {
                                     Group {
-                                        Text(currentColor.rawValue)
+                                        Text(currentColor.rawValue.localized)
                                         Image(systemName: "pencil.tip.crop.circle.fill")
                                     }
                                     .foregroundStyle(currentColor.getColor)

@@ -8,19 +8,19 @@
 import SwiftUI
 
 enum ColorType: String, CaseIterable, Codable {
-    case red = "Red"
-    case orange = "Orange"
-    case yellow = "Yellow"
-    case green = "Green"
-    case cyan = "Cyan"
-    case blue = "Blue"
-    case purple = "Purple"
-    case pink = "Pink"
-    case brown = "Brown"
-    case mint = "Mint"
-    case teal = "Teal"
-    case indigo = "Indigo"
-    case gray = "Gray"
+    case red = "color_red"
+    case orange = "color_orange"
+    case yellow = "color_yellow"
+    case green = "color_green"
+    case cyan = "color_cyan"
+    case blue = "color_blue"
+    case purple = "color_purple"
+    case pink = "color_pink"
+    case brown = "color_brown"
+    case mint = "color_mint"
+    case teal = "color_teal"
+    case indigo = "color_indigo"
+    case gray = "color_gray"
 
     var getColor: Color {
         switch self {

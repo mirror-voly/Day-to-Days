@@ -41,9 +41,9 @@ struct DateTypeSlider: View {
         GroupBox {
             // MARK: - Counter Hstack
             HStack(alignment: .center, content: {
-                Text("Сount")
+                Text("count".localized)
                 Spacer()
-                Text(dateType.rawValue)
+                Text(dateType.rawValue.localized)
             })
             // MARK: - Slider
             ZStack(alignment: .center) {
@@ -60,18 +60,18 @@ struct DateTypeSlider: View {
             // MARK: Underline slider text
             HStack(content: {
                 Group {
-                    Text("Day")
+                    Text("day".localized)
                         .fixedSize()
                     Spacer()
-                    Text("Weak")
-                        .fixedSize()
-                        .padding(.leading, Constants.Сonstraints.sliderTextPadding)
-                    Spacer()
-                    Text("Month")
+                    Text("week".localized)
                         .fixedSize()
                         .padding(.leading, Constants.Сonstraints.sliderTextPadding)
                     Spacer()
-                    Text("Year")
+                    Text("month".localized)
+                        .fixedSize()
+                        .padding(.leading, Constants.Сonstraints.sliderTextPadding)
+                    Spacer()
+                    Text("year".localized)
                         .fixedSize()
                 }
                 .lineLimit(1)

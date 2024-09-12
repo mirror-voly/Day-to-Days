@@ -17,7 +17,7 @@ struct EventInfoScreen: View {
     private let circleButtonSize = Constants.Сonstraints.eventInfoButtonSize
     private let allDateTypes = (DateType.allCases).reversed()
     private var info: String {
-        event.info.isEmpty ? "No description" : event.info
+        event.info.isEmpty ? "no_description".localized : event.info
     }
     private var currentDateAllInfo: [DateType: String] {
         DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)

@@ -11,7 +11,7 @@ struct EventsListIsEmpyView: View {
     var onAddNew: () -> Void
     var body: some View {
         GroupBox {
-            Text("Event list is empty")
+            Text("event_list_empty".localized)
                 .font(.title3)
             GroupBox {
                 Button {
@@ -19,7 +19,7 @@ struct EventsListIsEmpyView: View {
                 } label: {
                     Group {
                         Image(systemName: "plus.circle")
-                        Text("Add new")
+                        Text("add_new".localized)
                     }
                     .italic()
                     .foregroundStyle(.secondary)

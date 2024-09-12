@@ -7,17 +7,17 @@
 import Foundation
 
 enum DateType: String, CaseIterable, Codable {
-    case day = "Days"
-    case weak = "Days and Weaks"
-    case month = "Days, Weaks, Months"
-    case year = "All"
+    case day = "date_type_day"
+    case week = "date_type_week"
+    case month = "date_type_month"
+    case year = "date_type_year"
 
     var label: String {
         switch self {
-        case .year: return "years"
-        case .month: return "months"
-        case .weak: return "weeks"
-        case .day: return "days"
+        case .year: return NSLocalizedString("date_label_years", comment: "")
+        case .month: return NSLocalizedString("date_label_months", comment: "")
+        case .week: return NSLocalizedString("date_label_weeks", comment: "")
+        case .day: return NSLocalizedString("date_label_days", comment: "")
         }
     }
 

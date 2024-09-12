@@ -16,7 +16,7 @@ struct AddEventButton: View {
             Button(action: {
                 onAddNew()
             }, label: {
-                    Text("Done")
+                Text("done".localized)
                         .font(.title2)
                         .frame(maxWidth: .infinity)
                         .frame(height: Constants.Сonstraints.buttonSpaсerMinimize)
