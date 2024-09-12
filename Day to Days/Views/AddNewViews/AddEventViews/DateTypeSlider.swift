@@ -14,19 +14,12 @@ struct DateTypeSlider: View {
     private let circleSizeNormal = Constants.Сonstraints.sliderCircleSizeNornmal
     private let circleSizeMaximized = Constants.Сonstraints.sliderCircleSizeMaximazed
 
+    private let helpStrings = [
+        "day_help", "week_help", "month_help", "year_help", "days_help"
+    ]
+
     private func addHelpToTheButtonBy(_ index: Int) -> String {
-        switch index {
-        case 0:
-            return "day_help"
-        case 1:
-            return "week_help"
-        case 2:
-            return "month_help"
-        case 3:
-            return "year_help"
-        default:
-            return "days_help"
-        }
+        return index < helpStrings.count ? helpStrings[index] : helpStrings.last!
     }
 
     private func fillSliderCircles(step: Int, sum: Int) -> some View {

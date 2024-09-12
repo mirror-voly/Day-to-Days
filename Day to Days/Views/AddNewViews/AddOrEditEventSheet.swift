@@ -31,25 +31,24 @@ struct AddOrEditEventSheet: View {
     }
 
     // MARK: - Functions
-    private func createEvent() -> Event {
-        return Event(title: title, info: info, date: date, dateType: dateType, color: color)
-    }
-
-    private func createEvent(id: UUID) -> Event {
+    private func createEvent(id: UUID?) -> Event {
+        guard let id = id else {
+            return Event(title: title, info: info, date: date, dateType: dateType, color: color)
+        }
         return Event(id: id, title: title, info: info, date: date, dateType: dateType, color: color)
     }
 
     private func extractEventData() {
         if let event = event {
-            updateEventData(from: event)
+            updateFieldsFrom(event)
         }
 
         if let currentEvent = dataStore.currentEvent {
-            updateEventData(from: currentEvent)
+            updateFieldsFrom(currentEvent)
         }
     }
 
-    private func updateEventData(from event: Event) {
+    private func updateFieldsFrom(_ event: Event) {
         title = event.title
         info = event.info
         date = event.date
@@ -64,16 +63,13 @@ struct AddOrEditEventSheet: View {
 
     private func dismissAlertPrepare(oldEventID: UUID?) {
         guard !canDismiss else { return }
-        if let oldEventID = oldEventID {
-            dataStore.setCurrentEvent(event: createEvent(id: oldEventID))
-        } else {
-            dataStore.setCurrentEvent(event: createEvent())
-        }
+        let event = createEvent(id: oldEventID)
+        dataStore.setCurrentEvent(event: event)
         showAlert = true
     }
 
     private func buttonAction(oldEventID: UUID?) {
-        let createdEvent = createEvent()
+        let createdEvent = createEvent(id: nil)
         if let oldEventID = oldEventID {
             dataStore.editEvent(oldEventID: oldEventID, newEvent: createdEvent)
         } else {
