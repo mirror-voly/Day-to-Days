@@ -36,9 +36,9 @@ struct MainScreen: View {
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
+                    Button {
                         startAddNewEvent()
-                    }) {
+                    } label: {
                         Image(systemName: "plus.circle")
                             .foregroundStyle(.gray)
                     }
