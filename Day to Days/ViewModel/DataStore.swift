@@ -17,7 +17,25 @@ final class DataStore {
     // MARK: - Private variables
     private (set) var screenMode: EditModeType?
     private (set) var currentEvent: Event?
+    private (set)var noSelectedEvents: Bool = true
+    private var selectedEvents: Set<UUID> = [] {
+           didSet {
+               noSelectedEvents = selectedEvents.isEmpty
+           }
+       }
     // MARK: - Functions for changing local variables
+    func insertToSelectedEvents(eventID: UUID) {
+        selectedEvents.insert(eventID)
+    }
+
+    func removeFromSelectedEvents(eventID: UUID) {
+        selectedEvents.remove(eventID)
+    }
+
+    func makeSelectedEventsEmpty() {
+        selectedEvents = []
+    }
+
     func setCurrentEvent(event: Event) {
         currentEvent = event
     }
@@ -29,6 +47,23 @@ final class DataStore {
     func makeCurrentEventNil() {
         screenMode = nil
         currentEvent = nil
+    }
+
+    func removeSelectedEvents() {
+        guard !selectedEvents.isEmpty else { return }
+        for eventID in selectedEvents {
+            do {
+                let realm = try Realm()
+                try realm.write {
+                    if let eventToDelete = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
+                        realm.delete(eventToDelete)
+                    }
+                }
+            } catch {
+                print("Adding error occurred: \(error.localizedDescription)")
+            }
+        }
+        makeSelectedEventsEmpty()
     }
 
     func addAndSaveEvent(event: Event) {
