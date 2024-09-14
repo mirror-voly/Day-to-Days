@@ -5,8 +5,9 @@
 //  Created by mix on 14.09.2024.
 //
 
-enum SortType {
-    case date
-    case title
-    case non
+enum SortType: String, CaseIterable {
+    case date = "Date"
+    case title = "Title"
+    case none = "Default"
 }
+// TODO: Need add localization on new strings

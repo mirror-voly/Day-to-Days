@@ -20,7 +20,7 @@ struct EventsItemView: View {
     private let dateFrameSize = Constants.Сonstraints.eventsItemViewDateFrameSize
     private let scaleFactor = Constants.Сonstraints.eventsItemViewDateTextMinimumScaleFactor
     private let cornerRadius = Constants.Сonstraints.cornerRadius
-    
+
     private func toggleSelection() {
         if isSelected {
             dataStore.insertToSelectedEvents(eventID: event.id)

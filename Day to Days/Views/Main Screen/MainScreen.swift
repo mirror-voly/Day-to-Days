@@ -13,8 +13,7 @@ struct MainScreen: View {
     @State private var sheetIsOpened = false
     @State private var alertIsPresented = false
     @State private var path = NavigationPath()
-    
-    
+
     private func startAddNewEvent() {
         dataStore.setScreenMode(mode: .add)
         sheetIsOpened = true
@@ -37,6 +36,7 @@ struct MainScreen: View {
                 AddOrEditEventSheet(isOpened: $sheetIsOpened,
                                     showAlert: $alertIsPresented)
             })
+            // MARK: Toolbar
             .toolbar {
                 if dataStore.noSelectedEvents {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -52,6 +52,7 @@ struct MainScreen: View {
                     }
                 }
             }
+            // MARK: Alert
             .alert(isPresented: $alertIsPresented, content: {
                 NewAlert.showAlert {
                     dataStore.makeCurrentEventNil()
