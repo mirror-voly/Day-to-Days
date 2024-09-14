@@ -63,6 +63,8 @@ struct EventsItemView: View {
             // MARK: - Day counter
                             VStack {
                                 Text(localizetTimeState.capitalized)
+                                    .minimumScaleFactor(scaleFactor)
+                                    .lineLimit(1)
                                 Divider()
                                 Text(dateNumber)
                                     .foregroundStyle(event.color)

@@ -6,8 +6,7 @@
 //
 
 enum SortType: String, CaseIterable {
-    case date = "Date"
-    case title = "Title"
-    case none = "Default"
+    case date = "date"
+    case title = "title"
+    case none = "default"
 }
-// TODO: Need add localization on new strings

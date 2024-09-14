@@ -16,36 +16,35 @@ struct EventsList: View {
     @State private var selectedEvent: Event?
     @State private var selectedState: [UUID: Bool] = [:]
     @ObservedResults(Event.self) var allEvents
-
+    private let primaryOpacity = Constants.Сonstraints.primaryOpacity
     var sortedEvents: [Event] {
         SortRelults.sortResulsBy(allEvents: allEvents, sortBy: sortBy, ascending: ascending).reversed()
     }
     // MARK: - Toolbar Items
-    // TODO: Need helpers
     private var sortMenu: some ToolbarContent {
-            ToolbarItem(placement: .topBarLeading) {
-                Menu {
-                    ForEach(SortType.allCases, id: \.self) { type in
-                        Button(role: .cancel) {
-                            sortBy = type
-                            if type != .none {
-                                ascending.toggle()
-                            }
-                        } label: {
-                            let imageName = ascending ? "arrow.up.circle" : "arrow.down.circle"
-                            HStack {
-                                Text(type.rawValue)
-                                Image(systemName: type != .none ? imageName : "dot.circle")
-                            }
+        ToolbarItem(placement: .topBarLeading) {
+            Menu {
+                ForEach(SortType.allCases, id: \.self) { type in
+                    Button(role: .cancel) {
+                        sortBy = type
+                        if type != .none {
+                            ascending.toggle()
+                        }
+                    } label: {
+                        let imageName = ascending ? "arrow.up.circle" : "arrow.down.circle"
+                        HStack {
+                            Text(type.rawValue.localized)
+                            Image(systemName: type != .none ? imageName : "dot.circle")
                         }
                     }
-                } label: {
-                    Image(systemName: "arrow.up.arrow.down.circle")
-                        .foregroundStyle(.gray)
                 }
+            } label: {
+                Image(systemName: "arrow.up.arrow.down.circle")
+                    .foregroundStyle(.gray)
             }
+        }
     }
-    // TODO: Need add localization on new strings
+
     private var editModeToolbar: some ToolbarContent {
         Group {
             ToolbarItem(placement: .topBarLeading) {
@@ -55,10 +54,10 @@ struct EventsList: View {
                         dataStore.removeSelectedEvents()
                     }
                 } label: {
-                    Text(dataStore.noSelectedEvents ? "Done" : "Delete selected")
+                    Text(dataStore.noSelectedEvents ? "done".localized : "delete_selected".localized)
                 }
                 .buttonStyle(BorderedButtonStyle())
-                .tint(.primary)
+                .tint(.primary.opacity(primaryOpacity))
             }
 
             if !dataStore.noSelectedEvents {
@@ -67,10 +66,10 @@ struct EventsList: View {
                         dataStore.makeSelectedEventsEmpty()
                         editMode = .inactive
                     } label: {
-                        Text("Cancel")
+                        Text("cancel".localized)
                     }
                     .buttonStyle(BorderedButtonStyle())
-                    .tint(.primary)
+                    .tint(.primary.opacity(primaryOpacity))
                 }
             }
         }
@@ -81,7 +80,7 @@ struct EventsList: View {
         Button(role: .destructive) {
             $allEvents.remove(event)
         } label: {
-            Label("Delete", systemImage: "trash")
+            Label("delete".localized, systemImage: "trash")
         }
     }
 
@@ -89,7 +88,7 @@ struct EventsList: View {
         Button(role: .cancel) {
             editMode = .active
         } label: {
-            Label("Multiple \n selection", systemImage: "checkmark.circle")
+            Label("multiple_selection".localized, systemImage: "checkmark.circle")
         }
     }
     // MARK: TapGesture Actions
