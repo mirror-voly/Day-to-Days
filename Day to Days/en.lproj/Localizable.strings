@@ -7,7 +7,7 @@
 */
 
 "events" = "Events";
-"event_list_empty" = "Event list is empty";
+"event_list_empty" = "Nothing here";
 "add_new" = "Add new";
 "done" = "Done";
 "title" = "Title";
