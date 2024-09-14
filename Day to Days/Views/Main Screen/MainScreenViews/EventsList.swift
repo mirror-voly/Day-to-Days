@@ -18,13 +18,13 @@ struct EventsList: View {
     var body: some View {
         VStack {
             List {
-                // TODO: make mass delete
                 // TODO: make sort ability
                 ForEach(allEvents) { event in
                                     EventsItemView(editMode: $editMode, isSelected: Binding(
                                         get: { selectedStates[event.id] ?? false },
                                         set: { selectedStates[event.id] = $0 }
                                     ), event: event)
+                                    .contentShape(Rectangle())
                                     .onTapGesture {
                                         if editMode == .inactive {
                                             selectedEvent = event
