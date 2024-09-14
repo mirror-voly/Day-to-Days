@@ -66,7 +66,7 @@ final class DataStore {
         makeSelectedEventsEmpty()
     }
 
-    func addAndSaveEvent(event: Event) {
+    func addEvent(event: Event) {
         do {
             let realm = try Realm()
             try realm.write {
