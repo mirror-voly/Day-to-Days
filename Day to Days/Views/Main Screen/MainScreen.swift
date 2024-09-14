@@ -12,6 +12,9 @@ struct MainScreen: View {
     @ObservedResults(Event.self) var allEvents
     @State private var sheetIsOpened = false
     @State private var alertIsPresented = false
+    @State private var path = NavigationPath()
+    
+    
     private func startAddNewEvent() {
         dataStore.setScreenMode(mode: .add)
         sheetIsOpened = true
@@ -19,7 +22,7 @@ struct MainScreen: View {
 
     // MARK: - View
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack(alignment: .center) {
                 if !allEvents.isEmpty {
                     EventsList()
@@ -35,15 +38,17 @@ struct MainScreen: View {
                                     showAlert: $alertIsPresented)
             })
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        startAddNewEvent()
-                    } label: {
-                        Image(systemName: "plus.circle")
-                            .foregroundStyle(.gray)
-                    }
-                    .contextMenu {
-                        HelpContextMenu(helpText: "new_event")
+                if dataStore.noSelectedEvents {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            startAddNewEvent()
+                        } label: {
+                            Image(systemName: "plus.circle")
+                                .foregroundStyle(.gray)
+                        }
+                        .contextMenu {
+                            HelpContextMenu(helpText: "new_event")
+                        }
                     }
                 }
             }

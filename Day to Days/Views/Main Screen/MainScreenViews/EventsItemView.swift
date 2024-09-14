@@ -11,8 +11,9 @@ struct EventsItemView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(DataStore.self) private var dataStore
     @Binding var editMode: EditMode
-    @State private var isSelected = false
+    @Binding var isSelected: Bool
     let event: Event
+
     private let circleHoleSize = Constants.Сonstraints.eventsItemViewCicleHoleSize
     private let circleSize = Constants.Сonstraints.eventsItemViewCicleSize
     private let bigCircleSize = Constants.Сonstraints.eventsItemViewBigCicleSize
@@ -20,11 +21,9 @@ struct EventsItemView: View {
     private let scaleFactor = Constants.Сonstraints.eventsItemViewDateTextMinimumScaleFactor
 
     private func toggleSelection() {
-        if !isSelected {
-            isSelected = true
+        if isSelected {
             dataStore.insertToSelectedEvents(eventID: event.id)
         } else {
-            isSelected = false
             dataStore.removeFromSelectedEvents(eventID: event.id)
         }
     }
@@ -38,42 +37,23 @@ struct EventsItemView: View {
         HStack {
             // MARK: - Circle
                 ZStack(alignment: .center, content: {
-
-//                    if isSelected {
-//                        Image(systemName: "minus.circle.fill")
-//                            .foregroundStyle(.red)
-//                            .font(.system(size: circleSize))
-//                    }
                         Circle()
                         .fill(event.color)
                             .overlay(
                                 Circle()
-                                    .fill(colorScheme == .light ? .white : .black)
+                                .fill(colorScheme == .light ? (isSelected ? Color.primary : .white) :
+                                        (isSelected ? Color.primary : .black))
                                 .frame(width: circleHoleSize, height: circleHoleSize))
-
-                    Button {
-                        if editMode == .active {
-                            print("taped")
-                                toggleSelection()
-                        }
-                    } label: {
-                        Image(systemName: "minus.circle.fill")
-                            .foregroundStyle(.red)
-                            .font(.system(size: circleSize))
-                    }
                 })
                 .frame(width: circleSize)
                 .padding()
-//                .onTapGesture {
-//                    if editMode == .active {
-//                        print("taped")
-//                            toggleSelection()
-//                    }
-//                }
                 .onChange(of: editMode) { _, newValue in
                     if newValue != .active {
                         isSelected = false
                     }
+                }
+                .onChange(of: isSelected) { _, _ in
+                    toggleSelection()
                 }
             // MARK: - Title
                 Text(event.title)
@@ -102,7 +82,7 @@ struct EventsItemView: View {
         .overlay(alignment: .center) {
             if isSelected {
                 Rectangle()
-                    .fill(Color.black.gradient.opacity(0.1))
+                    .fill(Color.primary.gradient.opacity(0.1))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .clipShape(.rect(cornerRadius: 20))
             }

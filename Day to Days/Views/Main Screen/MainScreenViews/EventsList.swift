@@ -10,23 +10,31 @@ import SwiftUI
 struct EventsList: View {
     @ObservedResults(Event.self) var allEvents
     @Environment(DataStore.self) private var dataStore
-    @State private var navigationLinkIsPresented = false
     @State private var editMode: EditMode = .inactive
+    @State private var navigationLinkIsPresented = false
     @State private var selectedEvent: Event?
+    @State private var selectedStates: [UUID: Bool] = [:]
+
     var body: some View {
         VStack {
             List {
                 // TODO: make mass delete
                 // TODO: make sort ability
                 ForEach(allEvents) { event in
-                    ZStack(alignment: .center) {
-                        EventsItemView(editMode: $editMode, event: event)
-                            .onTapGesture {
-                                if editMode == .inactive {
-                                    selectedEvent = event
-                                }
-                            }
-                            .swipeActions {
+                                    EventsItemView(editMode: $editMode, isSelected: Binding(
+                                        get: { selectedStates[event.id] ?? false },
+                                        set: { selectedStates[event.id] = $0 }
+                                    ), event: event)
+                                    .onTapGesture {
+                                        if editMode == .inactive {
+                                            selectedEvent = event
+                                            navigationLinkIsPresented = true
+                                        } else {
+                                            selectedStates[event.id, default: false].toggle()
+                                        }
+                                    }
+                        .swipeActions {
+                            if editMode == .inactive {
                                 Button(role: .destructive) {
                                     $allEvents.remove(event)
                                 } label: {
@@ -35,55 +43,44 @@ struct EventsList: View {
                                 Button(role: .cancel) {
                                     editMode = .active
                                 } label: {
-                                    Label("Selection", systemImage: "checkmark.circle")
+                                    Label("Multiple \n selection", systemImage: "checkmark.circle")
                                 }
                             }
-                            .containerShape(Rectangle())
-                    }
-                    
+                        }
                 }
             }
             .listStyle(.plain)
-            .onChange(of: selectedEvent, { _, _ in
-                if selectedEvent != nil {
-                    navigationLinkIsPresented = true
-                }
-            })
             .navigationDestination(isPresented: $navigationLinkIsPresented) {
-                if selectedEvent != nil {
-                    EventInfoScreen(event: selectedEvent!)
+                if let event = selectedEvent {
+                    EventInfoScreen(event: event)
                 }
-
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                if editMode == .active {
-                    if dataStore.noSelectedEvents {
-                        Button {
-                            editMode = .inactive
-                        } label: {
-                            Text("Done")
-                        }
-                    } else {
-                        Button {
-                            editMode = .inactive
+            if editMode == .active {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        editMode = .inactive
+                        if !dataStore.noSelectedEvents {
                             dataStore.removeSelectedEvents()
-                        } label: {
-                            Text("Delete selected")
                         }
+                    } label: {
+                        Text(dataStore.noSelectedEvents ? "Done" : "Delete selected")
                     }
+                    .buttonStyle(BorderedButtonStyle())
+                    .tint(.primary)
                 }
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                if editMode == .active {
-                    if !dataStore.noSelectedEvents {
+
+                if !dataStore.noSelectedEvents {
+                ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             dataStore.makeSelectedEventsEmpty()
                             editMode = .inactive
                         } label: {
                             Text("Cancel")
                         }
+                        .buttonStyle(BorderedButtonStyle())
+                        .tint(.primary)
                     }
                 }
             }

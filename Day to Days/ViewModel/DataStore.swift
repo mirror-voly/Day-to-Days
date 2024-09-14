@@ -17,7 +17,7 @@ final class DataStore {
     // MARK: - Private variables
     private (set) var screenMode: EditModeType?
     private (set) var currentEvent: Event?
-    private (set)var noSelectedEvents: Bool = true
+    private (set)var noSelectedEvents = true
     private var selectedEvents: Set<UUID> = [] {
            didSet {
                noSelectedEvents = selectedEvents.isEmpty
@@ -50,7 +50,7 @@ final class DataStore {
     }
 
     func removeSelectedEvents() {
-        guard !selectedEvents.isEmpty else { return }
+        guard !noSelectedEvents else { return }
         for eventID in selectedEvents {
             do {
                 let realm = try Realm()
