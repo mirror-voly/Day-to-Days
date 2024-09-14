@@ -23,8 +23,8 @@
 "today" = "today";
 "passed" = "passed";
 "left" = "left";
-"edit_event" = "Edit Event";
-"new_event" = "New Event";
+"edit_event" = "Edit event";
+"new_event" = "New event";
 
 "color_red" = "Red";
 "color_orange" = "Orange";
@@ -44,6 +44,11 @@
 "date_label_months" = "months";
 "date_label_weeks" = "weeks";
 "date_label_days" = "days";
+
+"delete_selected" = "Delete selected";
+"delete" = "Delete";
+"multiple_selection" = "Multiple \n selection";
+"default" = "Default";
 
 // Helpers
 "help" = "Help";

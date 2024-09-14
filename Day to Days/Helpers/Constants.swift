@@ -7,7 +7,6 @@
 
 import SwiftUI
 struct Constants {
-    // TODO: - Add localisation strings
     enum Сonstraints {
         static let buttonSpaсerMinimize: CGFloat = 50
         static let buttonSpaсerMaximize: CGFloat = 130
@@ -25,6 +24,7 @@ struct Constants {
         static let shadowRadius: CGFloat = 10
         static let emptyViewPaddingToTheTop: CGFloat = -60
         static let emptyViewFrameSize: CGFloat = 200
+        static let primaryOpacity: CGFloat = 0.8
     }
 
     static let fixedDate = Date()

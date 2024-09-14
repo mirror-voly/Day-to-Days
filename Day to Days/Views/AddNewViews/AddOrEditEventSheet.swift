@@ -73,7 +73,7 @@ struct AddOrEditEventSheet: View {
         if let oldEventID = oldEventID {
             dataStore.editEvent(oldEventID: oldEventID, newEvent: createdEvent)
         } else {
-            dataStore.addAndSaveEvent(event: createdEvent)
+            dataStore.addEvent(event: createdEvent)
         }
         dataStore.makeCurrentEventNil()
     }

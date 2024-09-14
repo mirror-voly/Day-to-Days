@@ -42,6 +42,11 @@
 "date_label_weeks" = "недели";
 "date_label_days" = "дни";
 
+"delete_selected" = "Удалить выбранные";
+"delete" = "Удалить";
+"multiple_selection" = "Выбрать \n несколько";
+"default" = "По умолчанию";
+
 // Helpers
 "help" = "Помощь";
 "date_help" = "Выберите дату начала или конца отсчета";
