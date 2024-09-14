@@ -102,6 +102,7 @@ struct AddOrEditEventSheet: View {
                 closeSheet()
             }, addButtonIsVisible: $addButtonIsVisible)
             .frame(height: buttonSpacer)
+            .tint(color)
         })
         .padding()
 

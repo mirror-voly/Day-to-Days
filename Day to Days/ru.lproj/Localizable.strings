@@ -7,8 +7,8 @@
 */
 
 "events" = "События";
-"event_list_empty" = "Список событий пуст";
-"add_new" = "Добавить новое";
+"event_list_empty" = "Ничего нет";
+"add_new" = "Создать";
 "done" = "Готово";
 "title" = "Название";
 "description" = "Описание";
