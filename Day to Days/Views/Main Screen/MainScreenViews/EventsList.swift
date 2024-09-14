@@ -14,7 +14,7 @@ struct EventsList: View {
     @State private var navigationLinkIsPresented = false
     @State private var selectedEvent: Event?
     @State private var selectedStates: [UUID: Bool] = [:]
-
+    // MARK: - View
     var body: some View {
         VStack {
             List {

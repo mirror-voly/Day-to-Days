@@ -19,7 +19,8 @@ struct EventsItemView: View {
     private let bigCircleSize = Constants.Сonstraints.eventsItemViewBigCicleSize
     private let dateFrameSize = Constants.Сonstraints.eventsItemViewDateFrameSize
     private let scaleFactor = Constants.Сonstraints.eventsItemViewDateTextMinimumScaleFactor
-
+    private let cornerRadius = Constants.Сonstraints.cornerRadius
+    
     private func toggleSelection() {
         if isSelected {
             dataStore.insertToSelectedEvents(eventID: event.id)
@@ -27,7 +28,7 @@ struct EventsItemView: View {
             dataStore.removeFromSelectedEvents(eventID: event.id)
         }
     }
-
+    // MARK: - View
     var body: some View {
         // TODO: Need refactoring
         let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
@@ -84,7 +85,7 @@ struct EventsItemView: View {
                 Rectangle()
                     .fill(Color.primary.gradient.opacity(0.1))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .clipShape(.rect(cornerRadius: 20))
+                    .clipShape(.rect(cornerRadius: cornerRadius))
             }
         }
 

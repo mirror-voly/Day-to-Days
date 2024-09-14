@@ -21,6 +21,10 @@ struct Constants {
         static let eventsItemViewCicleHoleSize: CGFloat = 10
         static let eventsItemViewDateFrameSize: CGFloat = 60
         static let eventsItemViewDateTextMinimumScaleFactor: CGFloat = 0.6
+        static let cornerRadius: CGFloat = 20
+        static let shadowRadius: CGFloat = 10
+        static let emptyViewPaddingToTheTop: CGFloat = -60
+        static let emptyViewFrameSize: CGFloat = 200
     }
 
     static let fixedDate = Date()
