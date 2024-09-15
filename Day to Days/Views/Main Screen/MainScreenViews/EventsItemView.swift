@@ -18,7 +18,7 @@ struct EventsItemView: View {
     private let circleSize = Constants.Сonstraints.eventsItemViewCicleSize
     private let bigCircleSize = Constants.Сonstraints.eventsItemViewBigCicleSize
     private let dateFrameSize = Constants.Сonstraints.eventsItemViewDateFrameSize
-    private let scaleFactor = Constants.Сonstraints.eventsItemViewDateTextMinimumScaleFactor
+    private let scaleFactor = Constants.Сonstraints.dateTextMinimumScaleFactor
     private let cornerRadius = Constants.Сonstraints.cornerRadius
 
     private func toggleSelection() {

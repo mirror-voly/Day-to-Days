@@ -19,7 +19,7 @@ struct Constants {
         static let eventsItemViewBigCicleSize: CGFloat = 50
         static let eventsItemViewCicleHoleSize: CGFloat = 10
         static let eventsItemViewDateFrameSize: CGFloat = 60
-        static let eventsItemViewDateTextMinimumScaleFactor: CGFloat = 0.6
+        static let dateTextMinimumScaleFactor: CGFloat = 0.6
         static let cornerRadius: CGFloat = 20
         static let shadowRadius: CGFloat = 10
         static let emptyViewPaddingToTheTop: CGFloat = -60

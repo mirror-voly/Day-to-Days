@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct DateInfoView: View {
+    private let scaleFactor = Constants.Сonstraints.dateTextMinimumScaleFactor
     let value: String
     let label: String
 
     var body: some View {
         VStack {
             Text(value)
+                .lineLimit(1)
                 .font(.title)
+                .minimumScaleFactor(scaleFactor)
             Text(label)
                 .italic()
                 .font(.footnote)
