@@ -14,11 +14,6 @@ struct MainScreen: View {
     @State private var alertIsPresented = false
     @State private var path = NavigationPath()
 
-    private func startAddNewEvent() {
-        dataStore.setScreenMode(mode: .add)
-        sheetIsOpened = true
-    }
-
     // MARK: - View
     var body: some View {
         NavigationStack(path: $path) {
@@ -27,7 +22,7 @@ struct MainScreen: View {
                     EventsList()
                 } else {
                     EventsListIsEmpyView {
-                        startAddNewEvent()
+                        sheetIsOpened = true
                     }
                 }
             }
@@ -41,7 +36,7 @@ struct MainScreen: View {
                 if dataStore.noSelectedEvents {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            startAddNewEvent()
+                            sheetIsOpened = true
                         } label: {
                             Image(systemName: "plus.circle")
                                 .foregroundStyle(.gray)

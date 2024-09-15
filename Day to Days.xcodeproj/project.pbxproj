@@ -109,6 +109,18 @@
 			path = "Main Screen";
 			sourceTree = "<group>";
 		};
+		516C39A22C971B9E008EC3B8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5170CC5B2C92B15200A9380B /* String+Localized.swift */,
+				518289102C8849AB00676F0E /* View+HideKeyboard.swift */,
+				5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */,
+				516659FF2C9051BF00468301 /* Color+colorType.swift */,
+				5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		516CBE362C87247000202B93 = {
 			isa = PBXGroup;
 			children = (
@@ -190,15 +202,11 @@
 		5178F4952C8AE70700DF45D4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				516C39A22C971B9E008EC3B8 /* Extensions */,
 				51F911802C95D2DD00C625DC /* Enums */,
 				519195002C8CA6AA00F29C1B /* NewAlert.swift */,
 				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
 				519FF10B2C8D9F46002FA63A /* Constants.swift */,
-				5170CC5B2C92B15200A9380B /* String+Localized.swift */,
-				518289102C8849AB00676F0E /* View+HideKeyboard.swift */,
-				5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */,
-				516659FF2C9051BF00468301 /* Color+colorType.swift */,
-				5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
