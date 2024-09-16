@@ -13,27 +13,9 @@ struct EventsItemView: View {
     @Binding var isSelected: Bool
     let event: Event
 
-    private let circleHoleSize = Constants.Сonstraints.eventsItemViewCicleHoleSize
-    private let circleSize = Constants.Сonstraints.eventsItemViewCicleSize
-    private let bigCircleSize = Constants.Сonstraints.eventsItemViewBigCicleSize
-    private let dateFrameSize = Constants.Сonstraints.eventsItemViewDateFrameSize
-    private let scaleFactor = Constants.Сonstraints.dateTextMinimumScaleFactor
-    private let cornerRadius = Constants.Сonstraints.cornerRadius
-
-    private func toggleSelection() {
-        if isSelected {
-            dataStore.insertToSelectedEvents(eventID: event.id)
-        } else {
-            dataStore.removeFromSelectedEvents(eventID: event.id)
-        }
-    }
     // MARK: - View
     var body: some View {
-        // TODO: Need refactoring
-        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
-        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
-        let localizetDateType = TimeUnitLocalizer.localizeIt(for: dateNumber, unit: event.dateType.label)
-        let localizetTimeState = TimeUnitLocalizer.localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
+        let timeData = dataStore.allTimeDataFor(event: event)
         HStack {
             // MARK: - Circle
                 ZStack(alignment: .center, content: {
@@ -43,9 +25,9 @@ struct EventsItemView: View {
                                 Circle()
                                 .fill(colorScheme == .light ? (isSelected ? Color.primary : .white) :
                                         (isSelected ? Color.primary : .black))
-                                .frame(width: circleHoleSize, height: circleHoleSize))
+                                .frame(width: dataStore.circleHoleSize, height: dataStore.circleHoleSize))
                 })
-                .frame(width: circleSize)
+                .frame(width: dataStore.circleSize)
                 .padding()
                 .onChange(of: dataStore.editMode) { _, newValue in
                     if newValue != .active {
@@ -53,7 +35,7 @@ struct EventsItemView: View {
                     }
                 }
                 .onChange(of: isSelected) { _, _ in
-                    toggleSelection()
+                    dataStore.toggleSelection(eventID: event.id, isSelected: isSelected)
                 }
             // MARK: - Title
                 Text(event.title)
@@ -61,23 +43,23 @@ struct EventsItemView: View {
             Spacer()
             // MARK: - Day counter
                             VStack {
-                                Text(localizetTimeState.capitalized)
-                                    .minimumScaleFactor(scaleFactor)
+                                Text(timeData["localizedTimeState"]?.capitalized ?? "")
+                                    .minimumScaleFactor(dataStore.scaleFactor)
                                     .lineLimit(1)
                                 Divider()
-                                Text(dateNumber)
+                                Text(timeData["dateNumber"] ?? "")
                                     .foregroundStyle(event.color)
                                     .bold()
                                     .font(.title3)
                                     .frame(maxWidth: .infinity)
-                                    .minimumScaleFactor(scaleFactor)
+                                    .minimumScaleFactor(dataStore.scaleFactor)
                                     .lineLimit(1)
-                                Text(timeState != .present ? localizetDateType : "")
+                                Text((timeData["timeState"] != TimeStateType.present.label ? timeData["localizetDateType"] : "")!)
                                     .italic()
                                     .font(.footnote)
                                     .foregroundStyle(.gray)
                             }
-                            .frame(width: dateFrameSize)
+                            .frame(width: dataStore.dateFrameSize)
                             .padding()
         }
         .containerShape(Rectangle())
@@ -86,7 +68,7 @@ struct EventsItemView: View {
                 Rectangle()
                     .fill(Color.primary.gradient.opacity(0.1))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .clipShape(.rect(cornerRadius: cornerRadius))
+                    .clipShape(.rect(cornerRadius: dataStore.cornerRadius))
             }
         }
 

@@ -27,6 +27,13 @@ final class DataStore {
     var sortBy: SortType = .none
 
     let primaryOpacity = Constants.Сonstraints.primaryOpacity
+    
+    let circleHoleSize = Constants.Сonstraints.eventsItemViewCicleHoleSize
+    let circleSize = Constants.Сonstraints.eventsItemViewCicleSize
+    let bigCircleSize = Constants.Сonstraints.eventsItemViewBigCicleSize
+    let dateFrameSize = Constants.Сonstraints.eventsItemViewDateFrameSize
+    let scaleFactor = Constants.Сonstraints.dateTextMinimumScaleFactor
+    let cornerRadius = Constants.Сonstraints.cornerRadius
 
     var sortedEvents: [Event] {
         guard let events = events else { return []}
@@ -39,6 +46,15 @@ final class DataStore {
                noSelectedEvents = selectedEvents.isEmpty
            }
        }
+
+    func allTimeDataFor(event: Event) -> [String: String] {
+        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
+        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
+        let localizetDateType = TimeUnitLocalizer.localizeIt(for: dateNumber, unit: event.dateType.label)
+        let localizedTimeState = TimeUnitLocalizer.localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
+        return ["timeState": timeState.label, "dateNumber": dateNumber, "localizetDateType": localizetDateType, "localizedTimeState": localizedTimeState]
+    }
+
     // MARK: TapGesture Actions
     func onTapGestureSwitch(event: Event) {
         if editMode == .inactive {
@@ -46,6 +62,14 @@ final class DataStore {
             navigationLinkIsPresented = true
         } else {
             selectedState[event.id, default: false].toggle()
+        }
+    }
+
+    func toggleSelection(eventID: UUID, isSelected: Bool) {
+        if isSelected {
+            insertToSelectedEvents(eventID: eventID)
+        } else {
+            removeFromSelectedEvents(eventID: eventID)
         }
     }
     // MARK: - Functions for changing private variables
