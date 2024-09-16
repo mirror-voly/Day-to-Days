@@ -9,29 +9,67 @@ import SwiftUI
 
 struct EventsList: View {
     @Environment(DataStore.self) private var dataStore
-    @State private var editMode: EditMode = .inactive
-    @State private var navigationLinkIsPresented = false
-    @State private var ascending = true
-    @State private var sortBy: SortType = .none
-    @State private var selectedEvent: Event?
-    @State private var selectedState: [UUID: Bool] = [:]
     @ObservedResults(Event.self) var allEvents
     private let primaryOpacity = Constants.Сonstraints.primaryOpacity
-    var sortedEvents: [Event] {
-        SortRelults.sortResulsBy(allEvents: allEvents, sortBy: sortBy, ascending: ascending).reversed()
+
+    private var sortedEvents: [Event] {
+        dataStore.sortResulsBy(allEvents: allEvents, sortBy: dataStore.sortBy, ascending: dataStore.ascending).reversed()
     }
-    // MARK: - Toolbar Items
+    // MARK: - View
+    var body: some View {
+        VStack {
+            List {
+                ForEach(sortedEvents) { event in
+                    EventsItemView(isSelected: Binding(
+                        get: { dataStore.selectedState[event.id] ?? false },
+                        set: { dataStore.selectedState[event.id] = $0 }
+                    ), event: event)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        dataStore.onTapGestureSwitch(event: event)
+                    }
+                    .swipeActions {
+                        if dataStore.editMode == .inactive {
+                            deleteButton(for: event)
+                            multipleSelectionButton()
+                        }
+                    }
+                }
+            }
+            .listStyle(.plain)
+        }
+        .toolbar {
+            if dataStore.noSelectedEvents {
+                sortMenu
+            }
+            if dataStore.editMode == .active {
+                editModeToolbar
+            }
+        }
+        .navigationDestination(isPresented: Binding(
+                    get: { dataStore.navigationLinkIsPresented },
+                    set: { dataStore.navigationLinkIsPresented = $0 }
+                )) {
+                    if let event = dataStore.selectedEvent {
+                        EventInfoScreen(event: event)
+                    }
+                }
+    }
+}
+
+// MARK: - Toolbar Items
+extension EventsList {
     private var sortMenu: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
             Menu {
                 ForEach(SortType.allCases, id: \.self) { type in
                     Button(role: .cancel) {
-                        sortBy = type
+                        dataStore.sortBy = type
                         if type != .none {
-                            ascending.toggle()
+                            dataStore.ascending.toggle()
                         }
                     } label: {
-                        let imageName = ascending ? "arrow.up.circle" : "arrow.down.circle"
+                        let imageName = dataStore.ascending ? "arrow.up.circle" : "arrow.down.circle"
                         HStack {
                             Text(type.rawValue.localized)
                             Image(systemName: type != .none ? imageName : "dot.circle")
@@ -49,7 +87,7 @@ struct EventsList: View {
         Group {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    editMode = .inactive
+                    dataStore.editMode = .inactive
                     if !dataStore.noSelectedEvents {
                         dataStore.removeSelectedEvents()
                     }
@@ -64,7 +102,7 @@ struct EventsList: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         dataStore.makeSelectedEventsEmpty()
-                        editMode = .inactive
+                        dataStore.editMode = .inactive
                     } label: {
                         Text("cancel".localized)
                     }
@@ -86,56 +124,9 @@ struct EventsList: View {
 
     private func multipleSelectionButton() -> some View {
         Button(role: .cancel) {
-            editMode = .active
+            dataStore.editMode = .active
         } label: {
             Label("multiple_selection".localized, systemImage: "checkmark.circle")
-        }
-    }
-    // MARK: TapGesture Actions
-    private func onTapGestureSwitch(event: Event) {
-        if editMode == .inactive {
-            selectedEvent = event
-            navigationLinkIsPresented = true
-        } else {
-            selectedState[event.id, default: false].toggle()
-        }
-    }
-
-    // MARK: - View
-    var body: some View {
-        VStack {
-            List {
-                ForEach(sortedEvents) { event in
-                    EventsItemView(editMode: $editMode, isSelected: Binding(
-                        get: { selectedState[event.id] ?? false },
-                        set: { selectedState[event.id] = $0 }
-                    ), event: event)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        onTapGestureSwitch(event: event)
-                    }
-                    .swipeActions {
-                        if editMode == .inactive {
-                            deleteButton(for: event)
-                            multipleSelectionButton()
-                        }
-                    }
-                }
-            }
-            .listStyle(.plain)
-        }
-        .toolbar {
-            if dataStore.noSelectedEvents {
-                sortMenu
-            }
-            if editMode == .active {
-                editModeToolbar
-            }
-        }
-        .navigationDestination(isPresented: $navigationLinkIsPresented) {
-            if let event = selectedEvent {
-                EventInfoScreen(event: event)
-            }
         }
     }
 }

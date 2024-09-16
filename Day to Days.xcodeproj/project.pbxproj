@@ -38,7 +38,6 @@
 		519FF10A2C8D9E84002FA63A /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF1092C8D9E84002FA63A /* AddEventButton.swift */; };
 		519FF10C2C8D9F46002FA63A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Constants.swift */; };
 		519FF10E2C8DA4A4002FA63A /* AddEventFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */; };
-		51F9117D2C95D28900C625DC /* SortRelults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9117C2C95D28900C625DC /* SortRelults.swift */; };
 		51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9117E2C95D2CA00C625DC /* SortType.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +74,6 @@
 		519FF1092C8D9E84002FA63A /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
 		519FF10B2C8D9F46002FA63A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventFields.swift; sourceTree = "<group>"; };
-		51F9117C2C95D28900C625DC /* SortRelults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortRelults.swift; sourceTree = "<group>"; };
 		51F9117E2C95D2CA00C625DC /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,7 +171,6 @@
 			children = (
 				516CBE582C87339F00202B93 /* DataStore.swift */,
 				516CBE562C872FAA00202B93 /* DateCalculator.swift */,
-				51F9117C2C95D28900C625DC /* SortRelults.swift */,
 				5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */,
 			);
 			path = ViewModel;
@@ -350,7 +347,6 @@
 				5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */,
 				516659F92C90324C00468301 /* DateType.swift in Sources */,
 				519FF10C2C8D9F46002FA63A /* Constants.swift in Sources */,
-				51F9117D2C95D28900C625DC /* SortRelults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

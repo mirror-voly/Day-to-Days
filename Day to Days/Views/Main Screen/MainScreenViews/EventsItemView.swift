@@ -10,7 +10,6 @@ import SwiftUI
 struct EventsItemView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(DataStore.self) private var dataStore
-    @Binding var editMode: EditMode
     @Binding var isSelected: Bool
     let event: Event
 
@@ -48,7 +47,7 @@ struct EventsItemView: View {
                 })
                 .frame(width: circleSize)
                 .padding()
-                .onChange(of: editMode) { _, newValue in
+                .onChange(of: dataStore.editMode) { _, newValue in
                     if newValue != .active {
                         isSelected = false
                     }

@@ -18,12 +18,28 @@ final class DataStore {
     private (set) var screenMode: EditModeType?
     private (set) var currentEvent: Event?
     private (set)var noSelectedEvents = true
+    var navigationLinkIsPresented = false
+    var editMode: EditMode = .inactive
+    var ascending = true
+    var sortBy: SortType = .none
+    var selectedEvent: Event?
+    var selectedState: [UUID: Bool] = [:]
+
     private var selectedEvents: Set<UUID> = [] {
            didSet {
                noSelectedEvents = selectedEvents.isEmpty
            }
        }
-    // MARK: - Functions for changing local variables
+    // MARK: TapGesture Actions
+    func onTapGestureSwitch(event: Event) {
+        if editMode == .inactive {
+            selectedEvent = event
+            navigationLinkIsPresented = true
+        } else {
+            selectedState[event.id, default: false].toggle()
+        }
+    }
+    // MARK: - Functions for changing private variables
     func insertToSelectedEvents(eventID: UUID) {
         selectedEvents.insert(eventID)
     }
@@ -103,6 +119,23 @@ final class DataStore {
             }
         } catch {
             print("Editing error occurred: \(error.localizedDescription)")
+        }
+    }
+
+    func sortResulsBy(allEvents: Results<Event>, sortBy: SortType, ascending: Bool) -> [Event] {
+        allEvents.sorted {
+            switch sortBy {
+            case .date:
+                let lhs = $0[keyPath: \Event.date] as Date
+                let rhs = $1[keyPath: \Event.date] as Date
+                return ascending ? lhs < rhs : lhs > rhs
+            case .title:
+                let lhs = $0[keyPath: \Event.title] as String
+                let rhs = $1[keyPath: \Event.title] as String
+                return ascending ? lhs < rhs : lhs > rhs
+            default:
+                return true
+            }
         }
     }
 
