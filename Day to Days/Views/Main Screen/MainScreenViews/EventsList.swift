@@ -10,16 +10,12 @@ import SwiftUI
 struct EventsList: View {
     @Environment(DataStore.self) private var dataStore
     @ObservedResults(Event.self) var allEvents
-    private let primaryOpacity = Constants.Сonstraints.primaryOpacity
 
-    private var sortedEvents: [Event] {
-        dataStore.sortResulsBy(allEvents: allEvents, sortBy: dataStore.sortBy, ascending: dataStore.ascending).reversed()
-    }
     // MARK: - View
     var body: some View {
         VStack {
             List {
-                ForEach(sortedEvents) { event in
+                ForEach(dataStore.sortedEvents) { event in
                     EventsItemView(isSelected: Binding(
                         get: { dataStore.selectedState[event.id] ?? false },
                         set: { dataStore.selectedState[event.id] = $0 }
@@ -47,13 +43,21 @@ struct EventsList: View {
             }
         }
         .navigationDestination(isPresented: Binding(
-                    get: { dataStore.navigationLinkIsPresented },
-                    set: { dataStore.navigationLinkIsPresented = $0 }
-                )) {
-                    if let event = dataStore.selectedEvent {
-                        EventInfoScreen(event: event)
-                    }
-                }
+            get: { dataStore.navigationLinkIsPresented },
+            set: { dataStore.navigationLinkIsPresented = $0 }
+        )) {
+            if let event = dataStore.selectedEvent {
+                EventInfoScreen(event: event)
+            }
+        }
+        .onAppear(perform: {
+            dataStore.events = allEvents
+        })
+        .onChange(of: allEvents.count) { oldValue, newValue in
+            DispatchQueue.main.async {
+                dataStore.events = allEvents
+            }
+        }
     }
 }
 
@@ -95,7 +99,7 @@ extension EventsList {
                     Text(dataStore.noSelectedEvents ? "done".localized : "delete_selected".localized)
                 }
                 .buttonStyle(BorderedButtonStyle())
-                .tint(.primary.opacity(primaryOpacity))
+                .tint(.primary.opacity(dataStore.primaryOpacity))
             }
 
             if !dataStore.noSelectedEvents {
@@ -107,7 +111,7 @@ extension EventsList {
                         Text("cancel".localized)
                     }
                     .buttonStyle(BorderedButtonStyle())
-                    .tint(.primary.opacity(primaryOpacity))
+                    .tint(.primary.opacity(dataStore.primaryOpacity))
                 }
             }
         }

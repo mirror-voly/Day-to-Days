@@ -17,13 +17,22 @@ final class DataStore {
     // MARK: - Private variables
     private (set) var screenMode: EditModeType?
     private (set) var currentEvent: Event?
-    private (set)var noSelectedEvents = true
+    var selectedEvent: Event?
+    var selectedState: [UUID: Bool] = [:]
+    var events: Results<Event>?
+    private (set) var noSelectedEvents = true
     var navigationLinkIsPresented = false
     var editMode: EditMode = .inactive
     var ascending = true
     var sortBy: SortType = .none
-    var selectedEvent: Event?
-    var selectedState: [UUID: Bool] = [:]
+
+    let primaryOpacity = Constants.Сonstraints.primaryOpacity
+
+    var sortedEvents: [Event] {
+        guard let events = events else { return []}
+        let result: [Event] = sortResulsBy(allEvents: events, sortBy: sortBy, ascending: ascending).reversed()
+        return result
+    }
 
     private var selectedEvents: Set<UUID> = [] {
            didSet {
