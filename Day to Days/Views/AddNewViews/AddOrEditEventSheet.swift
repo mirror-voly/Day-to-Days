@@ -35,7 +35,7 @@ struct AddOrEditEventSheet: View {
         .padding()
 
         // MARK: - View actions
-        .onAppear(perform: { viewModel.event = event })
+        .onAppear(perform: { viewModel.extractEventData(event: event) })
         .onDisappear(perform: { viewModel.dismissAlertPrepare(oldEventID: event?.id, action: {
             showAlert = true
         })
@@ -47,6 +47,5 @@ struct AddOrEditEventSheet: View {
         .onReceive(Publishers.keyboardWillHide) { _ in
             viewModel.buttonSpacer = Сonstraints.buttonSpaсerMinimize
         }
-        .environment(viewModel)
     }
 }

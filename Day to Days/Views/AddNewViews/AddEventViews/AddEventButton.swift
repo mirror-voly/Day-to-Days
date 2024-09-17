@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddEventButton: View {
-    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
+    @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
     var onAddNew: () -> Void
 
     var body: some View {
@@ -21,9 +21,9 @@ struct AddEventButton: View {
                         .frame(maxWidth: .infinity)
                         .frame(height: Сonstraints.buttonSpaсerMinimize)
             })
-            .disabled(!sheetViewModel.addButtonIsVisible)
+            .disabled(!viewModel.addButtonIsVisible)
             .contextMenu {
-                if !sheetViewModel.addButtonIsVisible {
+                if !viewModel.addButtonIsVisible {
                     HelpContextMenu(helpText: "add_button_help")
                 }
             }
