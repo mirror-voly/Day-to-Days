@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ColorPickerPopover: View {
-    @Binding var popoverIsPresented: Bool
+    @State var popoverIsPresented = false
     @Binding var color: Color
 
     var body: some View {

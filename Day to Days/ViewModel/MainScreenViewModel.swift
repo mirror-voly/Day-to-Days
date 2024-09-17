@@ -8,15 +8,10 @@ import RealmSwift
 import SwiftUI
 
 @Observable
-final class DataStore {
-
-    enum EditModeType {
-        case edit
-        case add
-    }
+final class MainScreenViewModel {
+// TODO: Need refactoring
     // MARK: - Private variables
-    private (set) var screenMode: EditModeType?
-    private (set) var currentEvent: Event?
+
     var selectedState: [UUID: Bool] = [:]
     var events: Results<Event>?
     private (set) var noSelectedEvents = true
@@ -27,7 +22,7 @@ final class DataStore {
     let fixedDate = Date()
 
     let primaryOpacity = Сonstraints.primaryOpacity
-    
+
     let circleHoleSize = Сonstraints.eventsItemViewCicleHoleSize
     let circleSize = Сonstraints.eventsItemViewCicleSize
     let bigCircleSize = Сonstraints.eventsItemViewBigCicleSize
@@ -67,7 +62,7 @@ final class DataStore {
             removeFromSelectedEvents(eventID: eventID)
         }
     }
-    // MARK: - Functions for changing private variables
+//     MARK: - Functions for changing private variables
     func insertToSelectedEvents(eventID: UUID) {
         selectedEvents.insert(eventID)
     }
@@ -78,19 +73,6 @@ final class DataStore {
 
     func makeSelectedEventsEmpty() {
         selectedEvents = []
-    }
-
-    func setCurrentEvent(event: Event) {
-        currentEvent = event
-    }
-
-    func setScreenMode(mode: EditModeType) {
-        screenMode = mode
-    }
-
-    func makeCurrentEventNil() {
-        screenMode = nil
-        currentEvent = nil
     }
 
     func removeSelectedEvents() {
@@ -110,17 +92,6 @@ final class DataStore {
         makeSelectedEventsEmpty()
     }
 
-    func addEvent(event: Event) {
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.add(event)
-            }
-        } catch {
-            print("Adding error occurred: \(error.localizedDescription)")
-        }
-    }
-
     func findEventBy(id: UUID) -> Event? {
         do {
             let realm = try Realm()
@@ -131,23 +102,6 @@ final class DataStore {
             print("Finding error occurred: \(error.localizedDescription)")
         }
         return nil
-    }
-
-    func editEvent(oldEventID: UUID, newEvent: Event) {
-        do {
-            let realm = try Realm()
-            if let eventToUpdate = realm.object(ofType: Event.self, forPrimaryKey: oldEventID) {
-                try realm.write {
-                    eventToUpdate.title = newEvent.title
-                    eventToUpdate.info = newEvent.info
-                    eventToUpdate.date = newEvent.date
-                    eventToUpdate.dateType = newEvent.dateType
-                    eventToUpdate.color = newEvent.color
-                }
-            }
-        } catch {
-            print("Editing error occurred: \(error.localizedDescription)")
-        }
     }
 
     func sortResulsBy(allEvents: Results<Event>, sortBy: SortType, ascending: Bool) -> [Event] {

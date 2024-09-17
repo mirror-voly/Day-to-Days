@@ -18,7 +18,7 @@
 		516CBE4A2C87247100202B93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516CBE492C87247100202B93 /* Preview Assets.xcassets */; };
 		516CBE542C87296400202B93 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE532C87296400202B93 /* Event.swift */; };
 		516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
-		516CBE592C87339F00202B93 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* DataStore.swift */; };
+		516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* MainScreenViewModel.swift */; };
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
 		516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */; };
 		516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9D2C8D9AF00095A646 /* EventsList.swift */; };
@@ -32,6 +32,8 @@
 		5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */; };
 		5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */; };
 		5179F2702C8E16B10027B0F1 /* ColorPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5179F26F2C8E16B10027B0F1 /* ColorPickerPopover.swift */; };
+		517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */; };
+		517DF9522C997CAE0007D924 /* EditModeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517DF9512C997CAE0007D924 /* EditModeType.swift */; };
 		5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */; };
 		518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518289102C8849AB00676F0E /* View+HideKeyboard.swift */; };
 		519195012C8CA6AA00F29C1B /* NewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519195002C8CA6AA00F29C1B /* NewAlert.swift */; };
@@ -54,7 +56,7 @@
 		516CBE492C87247100202B93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		516CBE532C87296400202B93 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		516CBE562C872FAA00202B93 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
-		516CBE582C87339F00202B93 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		516CBE582C87339F00202B93 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		516CBE5C2C87403600202B93 /* EventsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemView.swift; sourceTree = "<group>"; };
 		516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListIsEmpyView.swift; sourceTree = "<group>"; };
 		516F0C9D2C8D9AF00095A646 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
@@ -68,6 +70,8 @@
 		5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreen.swift; sourceTree = "<group>"; };
 		5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Invert.swift"; sourceTree = "<group>"; };
 		5179F26F2C8E16B10027B0F1 /* ColorPickerPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerPopover.swift; sourceTree = "<group>"; };
+		517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheetViewModel.swift; sourceTree = "<group>"; };
+		517DF9512C997CAE0007D924 /* EditModeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeType.swift; sourceTree = "<group>"; };
 		5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheet.swift; sourceTree = "<group>"; };
 		518289102C8849AB00676F0E /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 		519195002C8CA6AA00F29C1B /* NewAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlert.swift; sourceTree = "<group>"; };
@@ -169,7 +173,8 @@
 		516CBE5A2C8733D500202B93 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				516CBE582C87339F00202B93 /* DataStore.swift */,
+				516CBE582C87339F00202B93 /* MainScreenViewModel.swift */,
+				517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */,
 				516CBE562C872FAA00202B93 /* DateCalculator.swift */,
 				5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */,
 			);
@@ -235,6 +240,7 @@
 				51665A012C905E2700468301 /* ColorType.swift */,
 				5170CC5F2C92E67600A9380B /* TimeStateType.swift */,
 				51F9117E2C95D2CA00C625DC /* SortType.swift */,
+				517DF9512C997CAE0007D924 /* EditModeType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -319,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */,
 				51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */,
 				5170CC652C9300C800A9380B /* TimeUnitLocalizer.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
@@ -332,6 +339,7 @@
 				5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				519FF10A2C8D9E84002FA63A /* AddEventButton.swift in Sources */,
+				517DF9522C997CAE0007D924 /* EditModeType.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
 				516659F72C9013FB00468301 /* DateInfoView.swift in Sources */,
@@ -339,7 +347,7 @@
 				5179F2702C8E16B10027B0F1 /* ColorPickerPopover.swift in Sources */,
 				5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */,
 				5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */,
-				516CBE592C87339F00202B93 /* DataStore.swift in Sources */,
+				516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */,
 				516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */,
 				5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */,
 				516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */,

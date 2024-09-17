@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DateTypeSlider: View {
-    @Binding var sliderValue: Double
+    @State private var sliderValue: Double = 0
     @Binding var dateType: DateType
     @Binding var sliderColor: Color
     private let circleSizeNormal = Сonstraints.sliderCircleSizeNornmal

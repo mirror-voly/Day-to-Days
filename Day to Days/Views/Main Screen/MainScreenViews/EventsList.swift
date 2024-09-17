@@ -8,18 +8,18 @@ import RealmSwift
 import SwiftUI
 
 struct EventsList: View {
-    @Environment(DataStore.self) private var dataStore
+    @Environment(MainScreenViewModel.self) private var viewModel
     @ObservedResults(Event.self) var allEvents
 
     // MARK: - View
     var body: some View {
         VStack {
             List {
-                ForEach(dataStore.sortedEvents, id: \.self) { event in
+                ForEach(viewModel.sortedEvents, id: \.self) { event in
                     EventsItemView(event: event)
                     .background(
                         Group {
-                            if dataStore.editMode == .inactive {
+                            if viewModel.editMode == .inactive {
                                 ZStack {
                                     Button("") {} // Fix to bug when NavigationLink element is selected after coming back
                                     NavigationLink("", value: event).opacity(0)
@@ -27,7 +27,7 @@ struct EventsList: View {
                             }
                         })
                     .swipeActions {
-                        if dataStore.editMode == .inactive {
+                        if viewModel.editMode == .inactive {
                             deleteButton(for: event)
                             multipleSelectionButton()
                         }
@@ -37,10 +37,10 @@ struct EventsList: View {
             .listStyle(.plain)
         }
         .toolbar {
-            if dataStore.noSelectedEvents {
+            if viewModel.noSelectedEvents {
                 sortMenu
             }
-            if dataStore.editMode == .active {
+            if viewModel.editMode == .active {
                 editModeToolbar
             }
         }
@@ -48,11 +48,11 @@ struct EventsList: View {
             EventInfoScreen(event: event)
         }
         .onAppear(perform: {
-            dataStore.events = allEvents
+            viewModel.events = allEvents
         })
         .onChange(of: allEvents.count) { _, _ in
             DispatchQueue.main.async {
-                dataStore.events = allEvents
+                viewModel.events = allEvents
             }
         }
     }
@@ -65,12 +65,12 @@ extension EventsList {
             Menu {
                 ForEach(SortType.allCases, id: \.self) { type in
                     Button(role: .cancel) {
-                        dataStore.sortBy = type
+                        viewModel.sortBy = type
                         if type != .none {
-                            dataStore.ascending.toggle()
+                            viewModel.ascending.toggle()
                         }
                     } label: {
-                        let imageName = dataStore.ascending ? "arrow.up.circle" : "arrow.down.circle"
+                        let imageName = viewModel.ascending ? "arrow.up.circle" : "arrow.down.circle"
                         HStack {
                             Text(type.rawValue.localized)
                             Image(systemName: type != .none ? imageName : "dot.circle")
@@ -88,27 +88,27 @@ extension EventsList {
         Group {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    dataStore.editMode = .inactive
-                    if !dataStore.noSelectedEvents {
-                        dataStore.removeSelectedEvents()
+                    viewModel.editMode = .inactive
+                    if !viewModel.noSelectedEvents {
+                        viewModel.removeSelectedEvents()
                     }
                 } label: {
-                    Text(dataStore.noSelectedEvents ? "done".localized : "delete_selected".localized)
+                    Text(viewModel.noSelectedEvents ? "done".localized : "delete_selected".localized)
                 }
                 .buttonStyle(BorderedButtonStyle())
-                .tint(.primary.opacity(dataStore.primaryOpacity))
+                .tint(.primary.opacity(viewModel.primaryOpacity))
             }
 
-            if !dataStore.noSelectedEvents {
+            if !viewModel.noSelectedEvents {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        dataStore.makeSelectedEventsEmpty()
-                        dataStore.editMode = .inactive
+                        viewModel.makeSelectedEventsEmpty()
+                        viewModel.editMode = .inactive
                     } label: {
                         Text("cancel".localized)
                     }
                     .buttonStyle(BorderedButtonStyle())
-                    .tint(.primary.opacity(dataStore.primaryOpacity))
+                    .tint(.primary.opacity(viewModel.primaryOpacity))
                 }
             }
         }
@@ -125,7 +125,7 @@ extension EventsList {
 
     private func multipleSelectionButton() -> some View {
         Button(role: .cancel) {
-            dataStore.editMode = .active
+            viewModel.editMode = .active
         } label: {
             Label("multiple_selection".localized, systemImage: "checkmark.circle")
         }

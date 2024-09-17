@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AddEventFields: View {
-    @Environment(DataStore.self) private var dataStore
-    @State private var popoverIsPresented = false
+
+    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
     @Binding var title: String
     @Binding var description: String
     @Binding var date: Date
@@ -47,7 +47,7 @@ struct AddEventFields: View {
                     }
                 }
                 Divider()
-                ColorPickerPopover(popoverIsPresented: $popoverIsPresented, color: $color)
+                ColorPickerPopover(color: $color)
             }
             .padding(.bottom)
     }

@@ -9,7 +9,8 @@ import SwiftUI
 import RealmSwift
 
 struct EventInfoScreen: View {
-    @Environment(DataStore.self) private var dataStore
+    @Environment(MainScreenViewModel.self) private var dataStore
+    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
     @Environment(\.dismiss) private var dismis
     @State private var sheetIsOpened = false
     @State private var alertIsPresented = false
@@ -73,7 +74,7 @@ struct EventInfoScreen: View {
         })
         .alert(isPresented: $alertIsPresented, content: {
             NewAlert.showAlert {
-                dataStore.makeCurrentEventNil()
+                sheetViewModel.makeCurrentEventNil()
             } onCancel: {
                 sheetIsOpened = true
             }
@@ -93,7 +94,7 @@ struct EventInfoScreen: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    dataStore.setScreenMode(mode: .edit)
+                    sheetViewModel.setScreenMode(mode: .edit)
                     sheetIsOpened = true
                 }
             label: {

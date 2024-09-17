@@ -8,19 +8,19 @@ import RealmSwift
 import SwiftUI
 
 struct MainScreen: View {
-    @Environment(DataStore.self) private var dataStore
+    @Environment(MainScreenViewModel.self) private var viewModel
+    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
     @ObservedResults(Event.self) var allEvents
     @State private var sheetIsOpened = false
     @State private var alertIsPresented = false
-    @State private var path = NavigationPath()
 
     // MARK: - View
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack {
             VStack(alignment: .center) {
                 EventsList()
                     .overlay {
-                        if dataStore.sortedEvents.isEmpty {
+                        if viewModel.sortedEvents.isEmpty {
                             EventsListIsEmpyView {
                                 sheetIsOpened = true
                             }
@@ -34,7 +34,7 @@ struct MainScreen: View {
             })
             // MARK: Toolbar
             .toolbar {
-                if dataStore.noSelectedEvents {
+                if viewModel.noSelectedEvents {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             sheetIsOpened = true
@@ -51,7 +51,7 @@ struct MainScreen: View {
             // MARK: Alert
             .alert(isPresented: $alertIsPresented, content: {
                 NewAlert.showAlert {
-                    dataStore.makeCurrentEventNil()
+                    sheetViewModel.makeCurrentEventNil()
                 } onCancel: {
                     sheetIsOpened = true
                 }
