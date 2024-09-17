@@ -18,13 +18,14 @@ struct MainScreen: View {
     var body: some View {
         NavigationStack(path: $path) {
             VStack(alignment: .center) {
-                if !allEvents.isEmpty {
-                    EventsList()
-                } else {
-                    EventsListIsEmpyView {
-                        sheetIsOpened = true
+                EventsList()
+                    .overlay {
+                        if dataStore.sortedEvents.isEmpty {
+                            EventsListIsEmpyView {
+                                sheetIsOpened = true
+                            }
+                        }
                     }
-                }
             }
             .navigationTitle("events".localized)
             .sheet(isPresented: $sheetIsOpened, content: {

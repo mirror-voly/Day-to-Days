@@ -199,11 +199,10 @@
 		5178F4952C8AE70700DF45D4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				516C39A22C971B9E008EC3B8 /* Extensions */,
-				51F911802C95D2DD00C625DC /* Enums */,
 				519195002C8CA6AA00F29C1B /* NewAlert.swift */,
 				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
-				519FF10B2C8D9F46002FA63A /* Сonstraints.swift */,
+				516C39A22C971B9E008EC3B8 /* Extensions */,
+				51F911802C95D2DD00C625DC /* Enums */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -231,6 +230,7 @@
 		51F911802C95D2DD00C625DC /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				519FF10B2C8D9F46002FA63A /* Сonstraints.swift */,
 				516659F82C90324C00468301 /* DateType.swift */,
 				51665A012C905E2700468301 /* ColorType.swift */,
 				5170CC5F2C92E67600A9380B /* TimeStateType.swift */,

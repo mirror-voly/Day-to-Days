@@ -26,4 +26,3 @@ enum Сonstraints {
     static let emptyViewFrameSize: CGFloat = 200
     static let primaryOpacity: CGFloat = 0.8
 }
-
