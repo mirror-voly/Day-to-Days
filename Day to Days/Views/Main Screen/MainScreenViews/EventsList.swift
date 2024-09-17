@@ -16,14 +16,13 @@ struct EventsList: View {
         VStack {
             List {
                 ForEach(dataStore.sortedEvents) { event in
-                    EventsItemView(isSelected: Binding(
-                        get: { dataStore.selectedState[event.id] ?? false },
-                        set: { dataStore.selectedState[event.id] = $0 }
-                    ), event: event)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        dataStore.onTapGestureSwitch(event: event)
-                    }
+                    EventsItemView(event: event)
+                    .background(
+                        Group {
+                            if dataStore.editMode == .inactive {
+                                NavigationLink("", value: event).opacity(0) 
+                            }
+                        })
                     .swipeActions {
                         if dataStore.editMode == .inactive {
                             deleteButton(for: event)
@@ -42,18 +41,13 @@ struct EventsList: View {
                 editModeToolbar
             }
         }
-        .navigationDestination(isPresented: Binding(
-            get: { dataStore.navigationLinkIsPresented },
-            set: { dataStore.navigationLinkIsPresented = $0 }
-        )) {
-            if let event = dataStore.selectedEvent {
-                EventInfoScreen(event: event)
-            }
+        .navigationDestination(for: Event.self) { event in
+            EventInfoScreen(event: event)
         }
         .onAppear(perform: {
             dataStore.events = allEvents
         })
-        .onChange(of: allEvents.count) { oldValue, newValue in
+        .onChange(of: allEvents.count) { _, _ in
             DispatchQueue.main.async {
                 dataStore.events = allEvents
             }

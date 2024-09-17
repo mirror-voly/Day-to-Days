@@ -17,7 +17,6 @@ final class DataStore {
     // MARK: - Private variables
     private (set) var screenMode: EditModeType?
     private (set) var currentEvent: Event?
-    var selectedEvent: Event?
     var selectedState: [UUID: Bool] = [:]
     var events: Results<Event>?
     private (set) var noSelectedEvents = true
@@ -57,13 +56,8 @@ final class DataStore {
     }
 
     // MARK: TapGesture Actions
-    func onTapGestureSwitch(event: Event) {
-        if editMode == .inactive {
-            selectedEvent = event
-            navigationLinkIsPresented = true
-        } else {
-            selectedState[event.id, default: false].toggle()
-        }
+    func toggleSelectedState(eventID: UUID) {
+        selectedState[eventID, default: false].toggle()
     }
 
     func toggleSelection(eventID: UUID, isSelected: Bool) {

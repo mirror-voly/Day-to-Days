@@ -10,7 +10,7 @@ import SwiftUI
 struct EventsItemView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(DataStore.self) private var dataStore
-    @Binding var isSelected: Bool
+    @State var isSelected = false
     let event: Event
 
     // MARK: - View
@@ -62,15 +62,20 @@ struct EventsItemView: View {
                             .frame(width: dataStore.dateFrameSize)
                             .padding()
         }
-        .containerShape(Rectangle())
         .overlay(alignment: .center) {
-            if isSelected {
-                Rectangle()
-                    .fill(Color.primary.gradient.opacity(0.1))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .clipShape(.rect(cornerRadius: dataStore.cornerRadius))
+            Group {
+                let color = Color.primary.opacity(0.1)
+                if dataStore.editMode == .active {
+                    Rectangle()
+                        .fill(isSelected ? color : color.opacity(0.01))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .clipShape(.rect(cornerRadius: dataStore.cornerRadius))
+                        .onTapGesture {
+                            dataStore.toggleSelectedState(eventID: event.id)
+                            isSelected.toggle()
+                        }
+                }
             }
         }
-
     }
 }
