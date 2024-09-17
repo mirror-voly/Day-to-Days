@@ -64,10 +64,9 @@ struct EventsItemView: View {
         }
         .overlay(alignment: .center) {
             Group {
-                let color = Color.primary.opacity(0.1)
                 if dataStore.editMode == .active {
                     Rectangle()
-                        .fill(isSelected ? color : color.opacity(0.01))
+                        .fill(isSelected ? Color.primary.opacity(0.1) : Color.primary.opacity(0.01))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .clipShape(.rect(cornerRadius: dataStore.cornerRadius))
                         .onTapGesture {

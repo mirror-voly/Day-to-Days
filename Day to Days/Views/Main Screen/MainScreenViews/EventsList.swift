@@ -15,12 +15,15 @@ struct EventsList: View {
     var body: some View {
         VStack {
             List {
-                ForEach(dataStore.sortedEvents) { event in
+                ForEach(dataStore.sortedEvents, id: \.self) { event in
                     EventsItemView(event: event)
                     .background(
                         Group {
                             if dataStore.editMode == .inactive {
-                                NavigationLink("", value: event).opacity(0) 
+                                ZStack {
+                                    Button("") {} // Fix to bug when NavigationLink element is selected after coming back
+                                    NavigationLink("", value: event).opacity(0)
+                                }
                             }
                         })
                     .swipeActions {
