@@ -53,6 +53,7 @@
 // Helpers
 "help" = "Help";
 "date_help" = "Select a start or end date";
+"date_reset_help" = "Reset date";
 "color_help" = "Select a color for the event";
 "add_button_help" = "You need to add a title for the event";
 "day_help" = "Show days";

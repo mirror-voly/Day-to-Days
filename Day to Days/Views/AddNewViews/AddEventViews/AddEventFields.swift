@@ -28,11 +28,24 @@ struct AddEventFields: View {
             .padding(.bottom)
             // MARK: Date and color pickers
             GroupBox {
-                DatePicker("date".localized, selection: $date, displayedComponents: .date)
-                    .datePickerStyle(.compact)
-                    .contextMenu {
-                        HelpContextMenu(helpText: "date_help")
+                HStack {
+                    DatePicker("date".localized, selection: $date, displayedComponents: .date)
+                        .datePickerStyle(.compact)
+                        .contextMenu {
+                            HelpContextMenu(helpText: "date_help")
+                        }
+                    Button {
+                        date = Date()
+                    } label: {
+                        Image(systemName: "pin.circle.fill")
+                            .tint(.primary)
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 20))
                     }
+                    .contextMenu {
+                        HelpContextMenu(helpText: "date_reset_help")
+                    }
+                }
                 Divider()
                 ColorPickerPopover(popoverIsPresented: $popoverIsPresented, color: $color)
             }
