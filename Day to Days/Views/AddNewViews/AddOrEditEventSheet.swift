@@ -9,99 +9,44 @@ import SwiftUI
 import Combine
 
 struct AddOrEditEventSheet: View {
-
-    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
-    @State private var title = ""
-    @State private var info = ""
-    @State private var date = Date()
-    @State private var color = Color.gray
-    @State private var dateType: DateType = .day
-
+    @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
     @Binding var isOpened: Bool
     @Binding var showAlert: Bool
     var event: Event?
 
-    private func updateFieldsFrom(_ event: Event?) {
-        guard let event = event else { return }
-        title = event.title
-        info = event.info
-        date = event.date
-        color = event.color
-        dateType = event.dateType
-    }
-
-    private func extractEventData() {
-        if let currentEvent = sheetViewModel.currentEvent {
-            updateFieldsFrom(currentEvent)
-        } else {
-            updateFieldsFrom(event)
-        }
-    }
-
-    private func closeSheet() {
-        sheetViewModel.canDismiss = true
-        isOpened = false
-    }
-
-    private func createEvent(id: UUID?) -> Event {
-        guard let id = id else {
-            return Event(title: title, info: info, date: date, dateType: dateType, color: color)
-        }
-        return Event(id: id, title: title, info: info, date: date, dateType: dateType, color: color)
-    }
-
-    private func isFieldsAreNotEmpty() -> Bool {
-        if title != "" || info != "" || color != Color.gray || dateType != .day || date != date {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    private func dismissAlertPrepare(oldEventID: UUID?) {
-        guard !sheetViewModel.canDismiss else { return }
-        let event = createEvent(id: oldEventID)
-        sheetViewModel.setCurrentEvent(event: event)
-        showAlert = true
-    }
     // MARK: - View
     var body: some View {
         VStack(content: {
-            GroupBox(sheetViewModel.sheetTitle) {
-                AddEventFields(title: $title, description: $info, date: $date, color: $color)
-                DateTypeSlider(dateType: $dateType, sliderColor: $color)
+            GroupBox(viewModel.sheetTitle) {
+                AddEventFields()
+                DateTypeSlider()
                     .onTapGesture(perform: {
                         hideKeyboard()
                     })
             }
             Spacer()
             AddEventButton(onAddNew: {
-                sheetViewModel.buttonAction(oldEventID: event?.id, event: createEvent(id: nil))
-                closeSheet()
+                viewModel.buttonAction(oldEventID: event?.id, event: viewModel.createEvent(id: nil))
+                isOpened = false
             })
-            .frame(height: sheetViewModel.buttonSpacer)
-            .tint(color)
+            .frame(height: viewModel.buttonSpacer)
+            .tint(viewModel.color)
         })
         .padding()
 
         // MARK: - View actions
-        .onAppear(perform: { extractEventData() })
-        .onChange(of: title) {
-            sheetViewModel.fieldsAreNotEmpy = isFieldsAreNotEmpty()
-            sheetViewModel.addButtonIsVisible = title.isEmpty ? false : true
-        }
-        .onChange(of: info) { sheetViewModel.fieldsAreNotEmpy = isFieldsAreNotEmpty() }
-        .onChange(of: color) { sheetViewModel.fieldsAreNotEmpy = isFieldsAreNotEmpty() }
-        .onChange(of: dateType) { sheetViewModel.fieldsAreNotEmpy = isFieldsAreNotEmpty() }
-        .onChange(of: date) { sheetViewModel.fieldsAreNotEmpy = isFieldsAreNotEmpty() }
-        .onChange(of: sheetViewModel.fieldsAreNotEmpy) { sheetViewModel.canDismiss = !sheetViewModel.fieldsAreNotEmpy }
-        .onDisappear(perform: { dismissAlertPrepare(oldEventID: event?.id) })
+        .onAppear(perform: { viewModel.event = event })
+        .onDisappear(perform: { viewModel.dismissAlertPrepare(oldEventID: event?.id, action: {
+            showAlert = true
+        })
+        })
         // MARK: Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
-            sheetViewModel.buttonSpacer = Сonstraints.buttonSpaсerMaximize
+            viewModel.buttonSpacer = Сonstraints.buttonSpaсerMaximize
         }
         .onReceive(Publishers.keyboardWillHide) { _ in
-            sheetViewModel.buttonSpacer = Сonstraints.buttonSpaсerMinimize
+            viewModel.buttonSpacer = Сonstraints.buttonSpaсerMinimize
         }
+        .environment(viewModel)
     }
 }

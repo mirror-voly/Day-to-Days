@@ -10,18 +10,26 @@ import SwiftUI
 struct AddEventFields: View {
 
     @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
-    @Binding var title: String
-    @Binding var description: String
-    @Binding var date: Date
-    @Binding var color: Color
+//    @Binding var title: String
+//    @Binding var description: String
+//    @Binding var date: Date
+//    @Binding var color: Color
 
     var body: some View {
             GroupBox {
-                TextField(text: $title) {
+                TextField(text: Binding(get: {
+                    sheetViewModel.title
+                }, set: { value in
+                    sheetViewModel.title = value
+                })) {
                     Text("title".localized)
                 }
                 Divider()
-                TextField(text: $description) {
+                TextField(text: Binding(get: {
+                    sheetViewModel.info
+                }, set: { value in
+                    sheetViewModel.info = value
+                })) {
                     Text("description".localized)
                 }
             }
@@ -29,13 +37,17 @@ struct AddEventFields: View {
             // MARK: Date and color pickers
             GroupBox {
                 HStack {
-                    DatePicker("date".localized, selection: $date, displayedComponents: .date)
+                    DatePicker("date".localized, selection: Binding(get: {
+                        sheetViewModel.date
+                    }, set: { value in
+                        sheetViewModel.date = value
+                    }), displayedComponents: .date)
                         .datePickerStyle(.compact)
                         .contextMenu {
                             HelpContextMenu(helpText: "date_help")
                         }
                     Button {
-                        date = Date()
+                        sheetViewModel.date = Date()
                     } label: {
                         Image(systemName: "pin.circle.fill")
                             .tint(.primary)
@@ -47,7 +59,7 @@ struct AddEventFields: View {
                     }
                 }
                 Divider()
-                ColorPickerPopover(color: $color)
+                ColorPickerPopover()
             }
             .padding(.bottom)
     }

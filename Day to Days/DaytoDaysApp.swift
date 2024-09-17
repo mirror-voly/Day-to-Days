@@ -10,12 +10,12 @@ import SwiftUI
 @main
 struct DaytoDaysApp: App {
     @State private var mainScreenViewModel = MainScreenViewModel()
-    @State private var addOrEditSheetViewModel = AddOrEditEventSheetViewModel()
+    @State private var viewModel = AddOrEditEventSheetViewModel()
     var body: some Scene {
         WindowGroup {
             MainScreen()
                 .environment(mainScreenViewModel)
-                .environment(addOrEditSheetViewModel)
+                .environment(viewModel)
         }
     }
 }

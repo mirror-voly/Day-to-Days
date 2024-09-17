@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct DateTypeSlider: View {
-    @State private var sliderValue: Double = 0
-    @Binding var dateType: DateType
-    @Binding var sliderColor: Color
+    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
     private let circleSizeNormal = Сonstraints.sliderCircleSizeNornmal
     private let circleSizeMaximized = Сonstraints.sliderCircleSizeMaximazed
 
@@ -28,11 +26,11 @@ struct DateTypeSlider: View {
                     let helpString = addHelpToTheButtonBy(index)
                     VStack {
                         Button(action: {
-                            sliderValue = Double(index)
-                            dateType = .allCases[index]
+                            sheetViewModel.sliderValue = Double(index)
+                            sheetViewModel.dateType = .allCases[index]
                         }, label: {
                             Circle()
-                                .fill(index < step + 1 ? sliderColor : .gray)
+                                .fill(index < step + 1 ? sheetViewModel.color : .gray)
                                 .frame(width: index < step + 1 ? circleSizeMaximized : circleSizeNormal)
                         })
                         .containerShape(Rectangle())
@@ -55,19 +53,23 @@ struct DateTypeSlider: View {
             HStack(alignment: .center, content: {
                 Text("count".localized)
                 Spacer()
-                Text(dateType.label.localized.capitalized)
+                Text(sheetViewModel.dateType.label.localized.capitalized)
             })
             // MARK: - Slider
             ZStack(alignment: .center) {
-                Slider(value: $sliderValue, in: 0...Double(DateType.allCases.count - 1), step: 1)
-                .tint(sliderColor)
+                Slider(value: Binding(get: {
+                    sheetViewModel.sliderValue
+                }, set: { value in
+                    sheetViewModel.sliderValue
+                }), in: 0...Double(DateType.allCases.count - 1), step: 1)
+                    .tint(sheetViewModel.color)
                 .allowsHitTesting(false)
 
-                fillSliderCircles(step: Int(sliderValue), sum: DateType.allCases.count)
+                fillSliderCircles(step: Int(sheetViewModel.sliderValue), sum: DateType.allCases.count)
                     .frame(maxWidth: .infinity)
             }
             .onAppear {
-                sliderValue = DateCalculator.findIndexForThis(dateType: dateType)
+                sheetViewModel.sliderValue = DateCalculator.findIndexForThis(dateType: sheetViewModel.dateType)
             }
         }
     }
