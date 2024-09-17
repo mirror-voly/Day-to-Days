@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DateInfoView: View {
-    private let scaleFactor = Constants.Сonstraints.dateTextMinimumScaleFactor
+    private let scaleFactor = Сonstraints.dateTextMinimumScaleFactor
     let value: String
     let label: String
 

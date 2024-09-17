@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct EventsListIsEmpyView: View {
-    private let paddingToTheTop = Constants.Сonstraints.emptyViewPaddingToTheTop
-    private let frameSize = Constants.Сonstraints.emptyViewFrameSize
-    private let shadowRadius = Constants.Сonstraints.shadowRadius
     var onAddNew: () -> Void
     // MARK: - View
     var body: some View {
@@ -34,13 +31,13 @@ struct EventsListIsEmpyView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
                 .clipShape(Capsule())
-                .shadow(color: Color.primary, radius: shadowRadius)
+                .shadow(color: Color.primary, radius: Сonstraints.shadowRadius)
             }
-            .frame(width: frameSize, height: frameSize)
+            .frame(width: Сonstraints.emptyViewFrameSize, height: Сonstraints.emptyViewFrameSize)
             .padding()
         }
         .background(Color.secondary.gradient)
         .clipShape(Circle())
-        .padding(.top, paddingToTheTop)
+        .padding(.top, Сonstraints.emptyViewPaddingToTheTop)
     }
 }

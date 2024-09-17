@@ -25,15 +25,16 @@ final class DataStore {
     var editMode: EditMode = .inactive
     var ascending = true
     var sortBy: SortType = .none
+    let fixedDate = Date()
 
-    let primaryOpacity = Constants.Сonstraints.primaryOpacity
+    let primaryOpacity = Сonstraints.primaryOpacity
     
-    let circleHoleSize = Constants.Сonstraints.eventsItemViewCicleHoleSize
-    let circleSize = Constants.Сonstraints.eventsItemViewCicleSize
-    let bigCircleSize = Constants.Сonstraints.eventsItemViewBigCicleSize
-    let dateFrameSize = Constants.Сonstraints.eventsItemViewDateFrameSize
-    let scaleFactor = Constants.Сonstraints.dateTextMinimumScaleFactor
-    let cornerRadius = Constants.Сonstraints.cornerRadius
+    let circleHoleSize = Сonstraints.eventsItemViewCicleHoleSize
+    let circleSize = Сonstraints.eventsItemViewCicleSize
+    let bigCircleSize = Сonstraints.eventsItemViewBigCicleSize
+    let dateFrameSize = Сonstraints.eventsItemViewDateFrameSize
+    let scaleFactor = Сonstraints.dateTextMinimumScaleFactor
+    let cornerRadius = Сonstraints.cornerRadius
 
     var sortedEvents: [Event] {
         guard let events = events else { return []}

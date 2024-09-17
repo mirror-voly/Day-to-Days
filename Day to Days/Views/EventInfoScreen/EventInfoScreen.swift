@@ -14,7 +14,6 @@ struct EventInfoScreen: View {
     @State private var sheetIsOpened = false
     @State private var alertIsPresented = false
     @State var event: Event
-    private let circleButtonSize = Constants.Сonstraints.eventInfoButtonSize
     private let allDateTypes = (DateType.allCases).reversed()
     private var info: String {
         event.info.isEmpty ? "no_description".localized : event.info
@@ -56,7 +55,7 @@ struct EventInfoScreen: View {
                             }
                         }
                     }
-                    .frame(width: Constants.Сonstraints.eventDateTableSize)
+                    .frame(width: Сonstraints.eventDateTableSize)
                 })
             }
             Spacer()
@@ -87,7 +86,7 @@ struct EventInfoScreen: View {
             label: {
                 Circle()
                     .fill(.white)
-                    .frame(width: circleButtonSize, height: circleButtonSize)
+                    .frame(width: Сonstraints.eventInfoButtonSize, height: Сonstraints.eventInfoButtonSize)
                     .overlay(Image(systemName: "chevron.backward")
                         .fontWeight(.semibold))
             }
@@ -100,7 +99,7 @@ struct EventInfoScreen: View {
             label: {
                 Circle()
                     .fill(.white)
-                    .frame(width: circleButtonSize, height: circleButtonSize)
+                    .frame(width: Сonstraints.eventInfoButtonSize, height: Сonstraints.eventInfoButtonSize)
                     .overlay(Image(systemName: "pencil")
                         .fontWeight(.semibold))
             }

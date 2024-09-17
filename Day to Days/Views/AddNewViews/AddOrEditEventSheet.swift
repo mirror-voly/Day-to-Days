@@ -18,7 +18,7 @@ struct AddOrEditEventSheet: View {
     @State private var buttonSpacer: CGFloat = 0
     @State private var title = ""
     @State private var info = ""
-    @State private var date = Constants.fixedDate
+    @State private var date = Date()
     @State private var color = Color.gray
     @State private var dateType: DateType = .day
     @Binding var isOpened: Bool
@@ -79,7 +79,7 @@ struct AddOrEditEventSheet: View {
     }
 
     private func isFieldsAreNotEmpty() -> Bool {
-        if title != "" || info != "" || color != Color.gray || dateType != .day || date != Constants.fixedDate {
+        if title != "" || info != "" || color != Color.gray || dateType != .day || date != date {
             return true
         } else {
             return false
@@ -120,10 +120,10 @@ struct AddOrEditEventSheet: View {
         .onDisappear(perform: { dismissAlertPrepare(oldEventID: event?.id) })
         // MARK: Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
-            buttonSpacer = Constants.Сonstraints.buttonSpaсerMaximize
+            buttonSpacer = Сonstraints.buttonSpaсerMaximize
         }
         .onReceive(Publishers.keyboardWillHide) { _ in
-            buttonSpacer = Constants.Сonstraints.buttonSpaсerMinimize
+            buttonSpacer = Сonstraints.buttonSpaсerMinimize
         }
     }
 }

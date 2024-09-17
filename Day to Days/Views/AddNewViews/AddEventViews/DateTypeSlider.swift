@@ -11,8 +11,8 @@ struct DateTypeSlider: View {
     @Binding var sliderValue: Double
     @Binding var dateType: DateType
     @Binding var sliderColor: Color
-    private let circleSizeNormal = Constants.Сonstraints.sliderCircleSizeNornmal
-    private let circleSizeMaximized = Constants.Сonstraints.sliderCircleSizeMaximazed
+    private let circleSizeNormal = Сonstraints.sliderCircleSizeNornmal
+    private let circleSizeMaximized = Сonstraints.sliderCircleSizeMaximazed
 
     private let helpStrings = [
         "day_help", "week_help", "month_help", "year_help", "days_help"
