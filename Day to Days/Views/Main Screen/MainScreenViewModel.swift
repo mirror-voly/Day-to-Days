@@ -11,7 +11,6 @@ import SwiftUI
 final class MainScreenViewModel {
 // TODO: Need refactoring
     // MARK: - Private variables
-
     var selectedState: [UUID: Bool] = [:]
     var events: Results<Event>?
     private (set) var noSelectedEvents = true
@@ -20,8 +19,6 @@ final class MainScreenViewModel {
     var ascending = true
     var sortBy: SortType = .none
     let fixedDate = Date()
-
-    let primaryOpacity = Сonstraints.primaryOpacity
 
     let circleHoleSize = Сonstraints.eventsItemViewCicleHoleSize
     let circleSize = Сonstraints.eventsItemViewCicleSize
@@ -90,18 +87,6 @@ final class MainScreenViewModel {
             }
         }
         makeSelectedEventsEmpty()
-    }
-
-    func findEventBy(id: UUID) -> Event? {
-        do {
-            let realm = try Realm()
-            if let event = realm.object(ofType: Event.self, forPrimaryKey: id) {
-                return event
-            }
-        } catch {
-            print("Finding error occurred: \(error.localizedDescription)")
-        }
-        return nil
     }
 
     func sortResulsBy(allEvents: Results<Event>, sortBy: SortType, ascending: Bool) -> [Event] {

@@ -21,7 +21,7 @@ struct EventsList: View {
                         Group {
                             if viewModel.editMode == .inactive {
                                 ZStack {
-                                    Button("") {} // Fix to bug when NavigationLink element is selected after coming back
+                                    Button("") {} // Bugfix to NavigationLink element if it selected after coming back
                                     NavigationLink("", value: event).opacity(0)
                                 }
                             }
@@ -96,7 +96,7 @@ extension EventsList {
                     Text(viewModel.noSelectedEvents ? "done".localized : "delete_selected".localized)
                 }
                 .buttonStyle(BorderedButtonStyle())
-                .tint(.primary.opacity(viewModel.primaryOpacity))
+                .tint(.primary.opacity(Сonstraints.primaryOpacity))
             }
 
             if !viewModel.noSelectedEvents {
@@ -108,7 +108,7 @@ extension EventsList {
                         Text("cancel".localized)
                     }
                     .buttonStyle(BorderedButtonStyle())
-                    .tint(.primary.opacity(viewModel.primaryOpacity))
+                    .tint(.primary.opacity(Сonstraints.primaryOpacity))
                 }
             }
         }

@@ -9,8 +9,8 @@ import SwiftUI
 import RealmSwift
 
 struct EventInfoScreen: View {
-    @Environment(MainScreenViewModel.self) private var dataStore
     @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
+    @State private var vewModel = EventInfoScreenViewModel()
     @Environment(\.dismiss) private var dismis
     @State private var sheetIsOpened = false
     @State private var alertIsPresented = false

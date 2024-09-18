@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */; };
 		516659F72C9013FB00468301 /* DateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F62C9013FB00468301 /* DateInfoView.swift */; };
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreenViewModel.swift; sourceTree = "<group>"; };
 		516659F62C9013FB00468301 /* DateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInfoView.swift; sourceTree = "<group>"; };
 		516659F82C90324C00468301 /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */,
 				519FF10F2C8DA7D0002FA63A /* AddEventViews */,
+				517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */,
 			);
 			path = AddNewViews;
 			sourceTree = "<group>";
@@ -107,6 +110,7 @@
 			children = (
 				516CBE442C87247000202B93 /* MainScreen.swift */,
 				516F0C9F2C8D9B710095A646 /* MainScreenViews */,
+				516CBE582C87339F00202B93 /* MainScreenViewModel.swift */,
 			);
 			path = "Main Screen";
 			sourceTree = "<group>";
@@ -173,8 +177,6 @@
 		516CBE5A2C8733D500202B93 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				516CBE582C87339F00202B93 /* MainScreenViewModel.swift */,
-				517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */,
 				516CBE562C872FAA00202B93 /* DateCalculator.swift */,
 				5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */,
 			);
@@ -217,6 +219,7 @@
 			children = (
 				5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */,
 				516659F62C9013FB00468301 /* DateInfoView.swift */,
+				510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */,
 			);
 			path = EventInfoScreen;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				519FF10A2C8D9E84002FA63A /* AddEventButton.swift in Sources */,
 				517DF9522C997CAE0007D924 /* EditModeType.swift in Sources */,
+				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
 				516659F72C9013FB00468301 /* DateInfoView.swift in Sources */,
