@@ -9,7 +9,6 @@ import SwiftUI
 
 @Observable
 final class MainScreenViewModel {
-// TODO: Need refactoring
     // MARK: - Private variables
     var selectedState: [UUID: Bool] = [:]
     var events: Results<Event>?
@@ -18,7 +17,8 @@ final class MainScreenViewModel {
     var editMode: EditMode = .inactive
     var ascending = true
     var sortBy: SortType = .none
-    let fixedDate = Date()
+    var sheetIsOpened = false
+    var alertIsPresented = false
 
     let circleHoleSize = Сonstraints.eventsItemViewCicleHoleSize
     let circleSize = Сonstraints.eventsItemViewCicleSize
@@ -88,7 +88,7 @@ final class MainScreenViewModel {
         }
         makeSelectedEventsEmpty()
     }
-
+    // MARK: - Functions for sorting events
     func sortResulsBy(allEvents: Results<Event>, sortBy: SortType, ascending: Bool) -> [Event] {
         allEvents.sorted {
             switch sortBy {
@@ -105,5 +105,4 @@ final class MainScreenViewModel {
             }
         }
     }
-
 }

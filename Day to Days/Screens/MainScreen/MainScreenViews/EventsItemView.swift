@@ -13,7 +13,6 @@ struct EventsItemView: View {
     @State var isSelected = false
     let event: Event
 
-    // MARK: - View
     var body: some View {
         let timeData = viewModel.allTimeDataFor(event: event)
         HStack {

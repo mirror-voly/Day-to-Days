@@ -11,8 +11,6 @@ struct MainScreen: View {
     @Environment(MainScreenViewModel.self) private var viewModel
     @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
     @ObservedResults(Event.self) var allEvents
-    @State private var sheetIsOpened = false
-    @State private var alertIsPresented = false
 
     // MARK: - View
     var body: some View {
@@ -22,22 +20,34 @@ struct MainScreen: View {
                     .overlay {
                         if viewModel.sortedEvents.isEmpty {
                             EventsListIsEmpyView {
-                                sheetIsOpened = true
+                                viewModel.sheetIsOpened = true
                             }
                         }
                     }
             }
             .navigationTitle("events".localized)
-            .sheet(isPresented: $sheetIsOpened, content: {
-                AddOrEditEventSheet(isOpened: $sheetIsOpened,
-                                    showAlert: $alertIsPresented)
+            .sheet(isPresented: Binding(get: {
+                viewModel.sheetIsOpened
+            }, set: { value in
+                viewModel.sheetIsOpened = value
+            }), content: {
+                AddOrEditEventSheet(isOpened: Binding(get: {
+                    viewModel.sheetIsOpened
+                }, set: { value in
+                    viewModel.sheetIsOpened = value
+                }), showAlert: Binding(get: {
+                    viewModel.alertIsPresented
+                }, set: { value in
+                    viewModel.alertIsPresented = value
+                }))
             })
             // MARK: Toolbar
             .toolbar {
                 if viewModel.noSelectedEvents {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            sheetIsOpened = true
+                            sheetViewModel.setScreenMode(mode: .add)
+                            viewModel.sheetIsOpened = true
                         } label: {
                             Image(systemName: "plus.circle")
                                 .foregroundStyle(.gray)
@@ -49,11 +59,15 @@ struct MainScreen: View {
                 }
             }
             // MARK: Alert
-            .alert(isPresented: $alertIsPresented, content: {
+            .alert(isPresented: Binding(get: {
+                viewModel.alertIsPresented
+            }, set: { value in
+                viewModel.alertIsPresented = value
+            }), content: {
                 NewAlert.showAlert {
                     sheetViewModel.makeCurrentEventNil()
                 } onCancel: {
-                    sheetIsOpened = true
+                    viewModel.sheetIsOpened = true
                 }
             })
         }

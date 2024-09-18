@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventsListIsEmpyView: View {
     var onAddNew: () -> Void
-    // MARK: - View
+
     var body: some View {
         VStack(alignment: .center) {
             VStack {

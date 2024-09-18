@@ -27,9 +27,8 @@ struct DateTypeSlider: View {
                 }, set: { value in
                     viewModel.sliderValue = value
                 }), in: 0...Double(DateType.allCases.count - 1), step: 1)
-                    .tint(viewModel.color)
+                .tint(viewModel.color)
                 .allowsHitTesting(false)
-
                 fillSliderCircles(step: Int(viewModel.sliderValue), sum: DateType.allCases.count)
                     .frame(maxWidth: .infinity)
             }
@@ -39,29 +38,29 @@ struct DateTypeSlider: View {
 
 extension DateTypeSlider {
     private func fillSliderCircles(step: Int, sum: Int) -> some View {
-            HStack {
-                ForEach(0..<sum, id: \.self) { index in
-                    let helpString = viewModel.addHelpToTheButtonsBy(index)
-                    VStack {
-                        Button(action: {
-                            viewModel.sliderValue = Double(index)
-                            viewModel.dateType = .allCases[index]
-                        }, label: {
-                            Circle()
-                                .fill(index < step + 1 ? viewModel.color : .gray)
-                                .frame(width: index < step + 1 ? circleSizeMaximized : circleSizeNormal)
-                        })
-                        .containerShape(Rectangle())
-                        .contextMenu {
-                            HelpContextMenu(helpText: helpString)
-                        }
-                    }
-                    .frame(width: circleSizeMaximized - 5)
-                    if index < sum - 1 {
-                        Spacer()
+        HStack {
+            ForEach(0..<sum, id: \.self) { index in
+                let helpString = viewModel.addHelpToTheButtonsBy(index)
+                VStack {
+                    Button(action: {
+                        viewModel.sliderValue = Double(index)
+                        viewModel.dateType = .allCases[index]
+                    }, label: {
+                        Circle()
+                            .fill(index < step + 1 ? viewModel.color : .gray)
+                            .frame(width: index < step + 1 ? circleSizeMaximized : circleSizeNormal)
+                    })
+                    .containerShape(Rectangle())
+                    .contextMenu {
+                        HelpContextMenu(helpText: helpString)
                     }
                 }
+                .frame(width: circleSizeMaximized - 5)
+                if index < sum - 1 {
+                    Spacer()
+                }
             }
-            .frame(maxWidth: .infinity)
         }
+        .frame(maxWidth: .infinity)
+    }
 }

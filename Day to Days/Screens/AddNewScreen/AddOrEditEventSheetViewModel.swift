@@ -28,9 +28,9 @@ final class AddOrEditEventSheetViewModel {
     private var fixedDate = Date()
     private var canDismiss = true
     private (set) var addButtonIsVisible = false
+    private (set) var buttonSpacer: ButtonSpacerType = .minimize
     var popoverIsPresented = false
     var sliderValue: Double = 0
-    var buttonSpacer: ButtonSpacerType = .minimize
     var sheetTitle: String {
         screenMode == .edit ? "edit_event".localized: "new_event".localized
     }
@@ -120,6 +120,9 @@ final class AddOrEditEventSheetViewModel {
         }
     }
 
+    func setButtonSpacer(buttonSpacer: ButtonSpacerType) {
+        self.buttonSpacer = buttonSpacer
+    }
     func createEvent(id: UUID?) -> Event {
         return Event(
             id: id ?? UUID(),

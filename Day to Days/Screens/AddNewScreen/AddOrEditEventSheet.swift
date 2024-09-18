@@ -36,16 +36,17 @@ struct AddOrEditEventSheet: View {
 
         // MARK: - View actions
         .onAppear(perform: { viewModel.extractEventData(event: event) })
-        .onDisappear(perform: { viewModel.dismissAlertPrepare(oldEventID: event?.id, action: {
+        .onDisappear(perform: { 
+            viewModel.dismissAlertPrepare(oldEventID: event?.id, action: {
             showAlert = true
         })
         })
         // MARK: Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
-            viewModel.buttonSpacer = .maximize
+            viewModel.setButtonSpacer(buttonSpacer: .maximize)
         }
         .onReceive(Publishers.keyboardWillHide) { _ in
-            viewModel.buttonSpacer = .minimize
+            viewModel.setButtonSpacer(buttonSpacer: .minimize)
         }
     }
 }
