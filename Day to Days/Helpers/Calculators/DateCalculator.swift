@@ -8,12 +8,6 @@
 import Foundation
 
 final class DateCalculator {
-
-    static func findIndexForThis(dateType: DateType) -> Double { // for slider value
-        guard let index = DateType.allCases.firstIndex(of: dateType) else { return 0 }
-        return Double(index)
-    }
-
     static func determineFutureOrPastForThis(date: Date) -> TimeStateType {
         let currentDate = Date()
         let calendar = Calendar.current

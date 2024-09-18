@@ -10,22 +10,12 @@ import RealmSwift
 
 struct EventInfoScreen: View {
     @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
-    @State private var vewModel = EventInfoScreenViewModel()
     @Environment(\.dismiss) private var dismis
+    @State private var viewModel = EventInfoScreenViewModel()
     @State private var sheetIsOpened = false
     @State private var alertIsPresented = false
-    @State var event: Event
-    private let allDateTypes = (DateType.allCases).reversed()
-    private var info: String {
-        event.info.isEmpty ? "no_description".localized : event.info
-    }
-    private var currentDateAllInfo: [DateType: String] {
-        DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
-    }
-    private func updateEditedEvent() {
-        guard let finded = dataStore.findEventBy(id: event.id) else { return }
-        self.event = finded
-    }
+    @State private var event: Event
+
     // MARK: - View
     var body: some View {
         // TODO: Need refactoring
@@ -40,7 +30,7 @@ struct EventInfoScreen: View {
                             .font(.callout)
                             .foregroundStyle(.secondary)
                             .padding(.bottom)
-                        Text(info)
+                        Text(event.info.isEmpty ? "no_description".localized : event.info)
                     })
                     Spacer()
                     // MARK: Date presenter
@@ -49,7 +39,7 @@ struct EventInfoScreen: View {
                             .font(.subheadline)
                         Divider()
                         LazyVStack {
-                            ForEach(allDateTypes, id: \.self) { dateType in
+                            ForEach(viewModel.allDateTypes, id: \.self) { dateType in
                                 if let value = currentDateAllInfo[dateType] {
                                     DateInfoView(value: value, label: TimeUnitLocalizer.localizeIt(for: value, unit: dateType.label))
                                 }
@@ -68,7 +58,9 @@ struct EventInfoScreen: View {
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $sheetIsOpened, onDismiss: {
-            updateEditedEvent()
+            if let event = viewModel.updateEditedEvent(eventID: event.id) {
+                self.event = event
+            }
         }, content: {
             AddOrEditEventSheet(isOpened: $sheetIsOpened, showAlert: $alertIsPresented, event: event)
         })

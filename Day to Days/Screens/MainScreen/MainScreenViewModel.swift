@@ -59,7 +59,7 @@ final class MainScreenViewModel {
             removeFromSelectedEvents(eventID: eventID)
         }
     }
-//     MARK: - Functions for changing private variables
+    // MARK: - Functions for changing private variables
     func insertToSelectedEvents(eventID: UUID) {
         selectedEvents.insert(eventID)
     }
@@ -83,7 +83,7 @@ final class MainScreenViewModel {
                     }
                 }
             } catch {
-                print("Adding error occurred: \(error.localizedDescription)")
+                print("Removing error occurred: \(error.localizedDescription)")
             }
         }
         makeSelectedEventsEmpty()

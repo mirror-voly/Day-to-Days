@@ -1,5 +1,5 @@
 //
-//  AddNewOrEditEventSheetView.swift
+//  AddOrEditEventSheet.swift
 //  Day to Days
 //
 //  Created by mix on 04.09.2024.

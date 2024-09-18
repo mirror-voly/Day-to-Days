@@ -62,10 +62,15 @@ final class AddOrEditEventSheetViewModel {
     var dateType: DateType = .day {
         didSet {
             protectedChangeOfCanDismiss()
-            sliderValue = DateCalculator.findIndexForThis(dateType: dateType)
+            sliderValue = findIndexForThis(dateType: dateType)
         }
     }
     // MARK: - Functions
+    private func findIndexForThis(dateType: DateType) -> Double { // for slider value
+        guard let index = DateType.allCases.firstIndex(of: dateType) else { return 0 }
+        return Double(index)
+    }
+
     private func protectedChangeOfCanDismiss() {
         guard screenMode != nil else { return }
         canDismiss = !areFieldsEmpty()
