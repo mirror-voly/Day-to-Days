@@ -15,17 +15,14 @@ final class EventInfoScreenViewModel {
     private (set) var localizedTimeState: String?
     var sheetIsOpened = false
     var alertIsPresented = false
-    
+
     private func allInfoForDate(event: Event) {
         let info = DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
         allInfoForCurrentDate = info
     }
 
-    private func allTimeDataFor(event: Event) {
-        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
-        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
-        let localizedTimeState = TimeUnitLocalizer.localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
-        self.localizedTimeState = localizedTimeState
+    private func localizedTimeStateFor(event: Event) {
+        localizedTimeState = DateCalculator.getLocalizedTimeState(event: event)
     }
 
     func updateEditedEvent(eventID: UUID) -> Event? {
@@ -42,6 +39,6 @@ final class EventInfoScreenViewModel {
 
     func onAppearActions(event: Event) {
         allInfoForDate(event: event)
-        allTimeDataFor(event: event)
+        localizedTimeStateFor(event: event)
     }
 }

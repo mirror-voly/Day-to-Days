@@ -17,7 +17,6 @@ enum Сonstraints {
     static let eventInfoButtonSize: CGFloat = 35
     static let eventDateTableSize: CGFloat = 100
     static let eventsItemViewCicleSize: CGFloat = 25
-    static let eventsItemViewBigCicleSize: CGFloat = 50
     static let eventsItemViewCicleHoleSize: CGFloat = 10
     static let eventsItemViewDateFrameSize: CGFloat = 60
     static let dateTextMinimumScaleFactor: CGFloat = 0.6

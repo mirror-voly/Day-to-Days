@@ -9,12 +9,11 @@ import SwiftUI
 
 struct EventsItemView: View {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(MainScreenViewModel.self) private var viewModel
-    @State var isSelected = false
+    @Environment(MainScreenViewModel.self) private var mainScreenViewModel
+    @State private var viewModel = EventsItemViewModel()
     let event: Event
 
     var body: some View {
-        let timeData = viewModel.allTimeDataFor(event: event)
         HStack {
             // MARK: - Circle
                 ZStack(alignment: .center, content: {
@@ -22,19 +21,19 @@ struct EventsItemView: View {
                         .fill(event.color)
                             .overlay(
                                 Circle()
-                                .fill(colorScheme == .light ? (isSelected ? Color.primary : .white) :
-                                        (isSelected ? Color.primary : .black))
-                                .frame(width: viewModel.circleHoleSize, height: viewModel.circleHoleSize))
+                                    .fill(colorScheme == .light ? (viewModel.isSelected ? Color.primary : .white) :
+                                            (viewModel.isSelected ? Color.primary : .black))
+                                .frame(width: Сonstraints.eventsItemViewCicleHoleSize))
                 })
-                .frame(width: viewModel.circleSize)
+                .frame(width: Сonstraints.eventsItemViewCicleSize)
                 .padding()
-                .onChange(of: viewModel.editMode) { _, newValue in
+                .onChange(of: mainScreenViewModel.editMode) { _, newValue in
                     if newValue != .active {
-                        isSelected = false
+                        viewModel.isSelected = false
                     }
                 }
-                .onChange(of: isSelected) { _, _ in
-                    viewModel.toggleSelection(eventID: event.id, isSelected: isSelected)
+                .onChange(of: viewModel.isSelected) { _, _ in
+                    mainScreenViewModel.toggleSelection(eventID: event.id, isSelected: viewModel.isSelected)
                 }
             // MARK: - Title
                 Text(event.title)
@@ -42,38 +41,41 @@ struct EventsItemView: View {
             Spacer()
             // MARK: - Day counter
                             VStack {
-                                Text(timeData["localizedTimeState"]?.capitalized ?? "")
-                                    .minimumScaleFactor(viewModel.scaleFactor)
+                                Text(viewModel.localizedTimeState)
+                                    .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
                                     .lineLimit(1)
                                 Divider()
-                                Text(timeData["dateNumber"] ?? "")
+                                Text(viewModel.number)
                                     .foregroundStyle(event.color)
                                     .bold()
                                     .font(.title3)
                                     .frame(maxWidth: .infinity)
-                                    .minimumScaleFactor(viewModel.scaleFactor)
+                                    .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
                                     .lineLimit(1)
-                                Text(((timeData["timeState"] != TimeStateType.present.label ? timeData["localizetDateType"] : "") ?? ""))
+                                Text(viewModel.localizedDateType)
                                     .italic()
                                     .font(.footnote)
                                     .foregroundStyle(.gray)
                             }
-                            .frame(width: viewModel.dateFrameSize)
+                            .frame(width: Сonstraints.eventsItemViewDateFrameSize)
                             .padding()
         }
         .overlay(alignment: .center) {
             Group {
-                if viewModel.editMode == .active {
+                if mainScreenViewModel.editMode == .active {
                     Rectangle()
-                        .fill(isSelected ? Color.primary.opacity(0.1) : Color.primary.opacity(0.01))
+                        .fill(viewModel.isSelected ? Color.primary.opacity(0.1) : Color.primary.opacity(0.01))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .clipShape(.rect(cornerRadius: viewModel.cornerRadius))
+                        .clipShape(.rect(cornerRadius: Сonstraints.cornerRadius))
                         .onTapGesture {
-                            viewModel.toggleSelectedState(eventID: event.id)
-                            isSelected.toggle()
+                            mainScreenViewModel.toggleSelectedState(eventID: event.id)
+                            viewModel.isSelected.toggle()
                         }
                 }
             }
+        }
+        .onAppear {
+            viewModel.setTimeData(event: event)
         }
     }
 }

@@ -85,7 +85,7 @@ final class AddOrEditEventSheetViewModel {
     }
 
     private func areFieldsEmpty() -> Bool {
-        title != "" || info != "" || color != Color.gray || dateType != .day || date != Date()
+        title != "" || info != "" || color != Color.gray || dateType != .day || date != fixedDate
     }
 
     private func setCurrentEvent(event: Event) {

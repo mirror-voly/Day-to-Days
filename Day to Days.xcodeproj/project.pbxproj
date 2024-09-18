@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */; };
+		510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */; };
 		516659F72C9013FB00468301 /* DateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F62C9013FB00468301 /* DateInfoView.swift */; };
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreenViewModel.swift; sourceTree = "<group>"; };
+		510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemViewModel.swift; sourceTree = "<group>"; };
 		516659F62C9013FB00468301 /* DateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInfoView.swift; sourceTree = "<group>"; };
 		516659F82C90324C00468301 /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				516F0C9D2C8D9AF00095A646 /* EventsList.swift */,
 				516CBE5C2C87403600202B93 /* EventsItemView.swift */,
+				510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */,
 				516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */,
 			);
 			path = MainScreenViews;
@@ -332,6 +335,7 @@
 				51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */,
 				5170CC652C9300C800A9380B /* TimeUnitLocalizer.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
+				510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */,
 				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,
 				5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */,
 				5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */,

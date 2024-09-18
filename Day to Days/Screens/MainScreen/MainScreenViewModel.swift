@@ -10,22 +10,15 @@ import SwiftUI
 @Observable
 final class MainScreenViewModel {
     // MARK: - Private variables
-    var selectedState: [UUID: Bool] = [:]
-    var events: Results<Event>?
+    private (set) var selectedState: [UUID: Bool] = [:]
     private (set) var noSelectedEvents = true
-    var navigationLinkIsPresented = false
+    private (set) var navigationLinkIsPresented = false
+    var events: Results<Event>?
     var editMode: EditMode = .inactive
     var ascending = true
     var sortBy: SortType = .none
     var sheetIsOpened = false
     var alertIsPresented = false
-
-    let circleHoleSize = Сonstraints.eventsItemViewCicleHoleSize
-    let circleSize = Сonstraints.eventsItemViewCicleSize
-    let bigCircleSize = Сonstraints.eventsItemViewBigCicleSize
-    let dateFrameSize = Сonstraints.eventsItemViewDateFrameSize
-    let scaleFactor = Сonstraints.dateTextMinimumScaleFactor
-    let cornerRadius = Сonstraints.cornerRadius
 
     var sortedEvents: [Event] {
         guard let events = events else { return []}
@@ -38,14 +31,6 @@ final class MainScreenViewModel {
                noSelectedEvents = selectedEvents.isEmpty
            }
        }
-
-    func allTimeDataFor(event: Event) -> [String: String] {
-        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
-        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
-        let localizetDateType = TimeUnitLocalizer.localizeIt(for: dateNumber, unit: event.dateType.label)
-        let localizedTimeState = TimeUnitLocalizer.localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
-        return ["timeState": timeState.label, "dateNumber": dateNumber, "localizetDateType": localizetDateType, "localizedTimeState": localizedTimeState]
-    }
 
     // MARK: TapGesture Actions
     func toggleSelectedState(eventID: UUID) {
