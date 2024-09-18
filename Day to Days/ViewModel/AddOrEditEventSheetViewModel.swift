@@ -40,32 +40,36 @@ final class AddOrEditEventSheetViewModel {
     // MARK: - User fields
     var title: String = "" {
             didSet {
-                canDismiss = !areFieldsEmpty()
+                protectedChangeOfCanDismiss()
                 addButtonIsVisible = title.isEmpty ? false : true
         }
     }
     var info = "" {
         didSet {
-                canDismiss = !areFieldsEmpty()
+            protectedChangeOfCanDismiss()
         }
     }
     var date = Date() {
         didSet {
-                canDismiss = !areFieldsEmpty()
+            protectedChangeOfCanDismiss()
         }
     }
     var color = Color.gray {
         didSet {
-                canDismiss = !areFieldsEmpty()
+            protectedChangeOfCanDismiss()
         }
     }
     var dateType: DateType = .day {
         didSet {
-                canDismiss = !areFieldsEmpty()
+            protectedChangeOfCanDismiss()
             sliderValue = DateCalculator.findIndexForThis(dateType: dateType)
         }
     }
     // MARK: - Functions
+    private func protectedChangeOfCanDismiss() {
+        guard screenMode != nil else { return }
+        canDismiss = !areFieldsEmpty()
+    }
     private func updateFieldsFrom(_ event: Event?) {
         title = event?.title ?? ""
         info = event?.info ?? ""
@@ -75,7 +79,7 @@ final class AddOrEditEventSheetViewModel {
     }
 
     private func areFieldsEmpty() -> Bool {
-        title != "" || info != "" || color != Color.gray || dateType != .day || date != fixedDate
+        title != "" || info != "" || color != Color.gray || dateType != .day || date != Date()
     }
 
     private func setCurrentEvent(event: Event) {
