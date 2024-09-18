@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DateTypeSlider: View {
-    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
+    @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
     private let circleSizeNormal = Сonstraints.sliderCircleSizeNornmal
     private let circleSizeMaximized = Сonstraints.sliderCircleSizeMaximazed
 
@@ -18,19 +18,19 @@ struct DateTypeSlider: View {
             HStack(alignment: .center, content: {
                 Text("count".localized)
                 Spacer()
-                Text(sheetViewModel.dateType.label.localized.capitalized)
+                Text(viewModel.dateType.label.localized.capitalized)
             })
             // MARK: - Slider
             ZStack(alignment: .center) {
                 Slider(value: Binding(get: {
-                    sheetViewModel.sliderValue
+                    viewModel.sliderValue
                 }, set: { value in
-                    sheetViewModel.sliderValue = value
+                    viewModel.sliderValue = value
                 }), in: 0...Double(DateType.allCases.count - 1), step: 1)
-                    .tint(sheetViewModel.color)
+                    .tint(viewModel.color)
                 .allowsHitTesting(false)
 
-                fillSliderCircles(step: Int(sheetViewModel.sliderValue), sum: DateType.allCases.count)
+                fillSliderCircles(step: Int(viewModel.sliderValue), sum: DateType.allCases.count)
                     .frame(maxWidth: .infinity)
             }
         }
@@ -41,14 +41,14 @@ extension DateTypeSlider {
     private func fillSliderCircles(step: Int, sum: Int) -> some View {
             HStack {
                 ForEach(0..<sum, id: \.self) { index in
-                    let helpString = sheetViewModel.addHelpToTheButtonsBy(index)
+                    let helpString = viewModel.addHelpToTheButtonsBy(index)
                     VStack {
                         Button(action: {
-                            sheetViewModel.sliderValue = Double(index)
-                            sheetViewModel.dateType = .allCases[index]
+                            viewModel.sliderValue = Double(index)
+                            viewModel.dateType = .allCases[index]
                         }, label: {
                             Circle()
-                                .fill(index < step + 1 ? sheetViewModel.color : .gray)
+                                .fill(index < step + 1 ? viewModel.color : .gray)
                                 .frame(width: index < step + 1 ? circleSizeMaximized : circleSizeNormal)
                         })
                         .containerShape(Rectangle())

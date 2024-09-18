@@ -29,7 +29,7 @@ struct AddOrEditEventSheet: View {
                 viewModel.buttonAction(oldEventID: event?.id, event: viewModel.createEvent(id: nil))
                 isOpened = false
             })
-            .frame(height: viewModel.buttonSpacer)
+            .frame(height: viewModel.buttonSpacer.value)
             .tint(viewModel.color)
         })
         .padding()
@@ -42,10 +42,10 @@ struct AddOrEditEventSheet: View {
         })
         // MARK: Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
-            viewModel.buttonSpacer = Сonstraints.buttonSpaсerMaximize
+            viewModel.buttonSpacer = .maximize
         }
         .onReceive(Publishers.keyboardWillHide) { _ in
-            viewModel.buttonSpacer = Сonstraints.buttonSpaсerMinimize
+            viewModel.buttonSpacer = .minimize
         }
     }
 }

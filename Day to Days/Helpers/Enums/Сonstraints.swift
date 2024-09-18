@@ -8,8 +8,9 @@
 import Foundation
 
 enum Сonstraints {
-    static let buttonSpaсerMinimize: CGFloat = 50
-    static let buttonSpaсerMaximize: CGFloat = 130
+    static let buttonSpaсerMinimize: CGFloat = 0
+    static let buttonSpaсerMaximize: CGFloat = 80
+    static let addButtonsize: CGFloat = 40
     static let sliderCircleSizeNornmal: CGFloat = 15
     static let sliderCircleSizeMaximazed: CGFloat = 30
     static let sliderTextPadding: CGFloat = 7

@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct AddEventFields: View {
-    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
+    @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
 
     var body: some View {
             GroupBox {
                 TextField(text: Binding(get: {
-                    sheetViewModel.title
+                    viewModel.title
                 }, set: { value in
-                    sheetViewModel.title = value
+                    viewModel.title = value
                 })) {
                     Text("title".localized)
                 }
                 Divider()
                 TextField(text: Binding(get: {
-                    sheetViewModel.info
+                    viewModel.info
                 }, set: { value in
-                    sheetViewModel.info = value
+                    viewModel.info = value
                 })) {
                     Text("description".localized)
                 }
@@ -33,16 +33,16 @@ struct AddEventFields: View {
             GroupBox {
                 HStack {
                     DatePicker("date".localized, selection: Binding(get: {
-                        sheetViewModel.date
+                        viewModel.date
                     }, set: { value in
-                        sheetViewModel.date = value
+                        viewModel.date = value
                     }), displayedComponents: .date)
                         .datePickerStyle(.compact)
                         .contextMenu {
                             HelpContextMenu(helpText: "date_help")
                         }
                     Button {
-                        sheetViewModel.date = Date()
+                        viewModel.date = Date()
                     } label: {
                         Image(systemName: "pin.circle.fill")
                             .tint(.primary)

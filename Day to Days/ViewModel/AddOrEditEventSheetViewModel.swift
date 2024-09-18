@@ -10,20 +10,33 @@ import RealmSwift
 
 @Observable
 final class AddOrEditEventSheetViewModel {
+    enum ButtonSpacerType {
+        case minimize
+        case maximize
+        var value: Double {
+            switch self {
+            case .minimize:
+                return Сonstraints.buttonSpaсerMinimize
+            case .maximize:
+                return Сonstraints.buttonSpaсerMaximize
+            }
+        }
+    }
+
     private var screenMode: EditModeType?
     private var currentEvent: Event?
     private var fixedDate = Date()
     private var canDismiss = true
     private (set) var addButtonIsVisible = false
     var sliderValue: Double = 0
-    var buttonSpacer: CGFloat = 0
+    var buttonSpacer: ButtonSpacerType = .minimize
     var sheetTitle: String {
         screenMode == .edit ? "edit_event".localized: "new_event".localized
     }
     private let helpStrings = [
         "day_help", "week_help", "month_help", "year_help", "days_help"
     ]
-    
+
     // MARK: - User fields
     var title: String = "" {
             didSet {

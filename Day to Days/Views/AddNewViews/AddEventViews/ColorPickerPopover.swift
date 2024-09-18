@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ColorPickerPopover: View {
-    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
+    @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
     @State var popoverIsPresented = false
 
     var body: some View {
@@ -18,10 +18,10 @@ struct ColorPickerPopover: View {
             Button(action: {
                 popoverIsPresented.toggle()
             }, label: {
-                Text(sheetViewModel.color.getColorType.rawValue.localized)
+                Text(viewModel.color.getColorType.rawValue.localized)
                 Image(systemName: "pencil.tip.crop.circle.fill")
             })
-            .foregroundStyle(sheetViewModel.color)
+            .foregroundStyle(viewModel.color)
             .contextMenu {
                 HelpContextMenu(helpText: "color_help")
             }
@@ -30,9 +30,9 @@ struct ColorPickerPopover: View {
                 VStack {
                     VStack(alignment: .trailing, content: {
                         ForEach(ColorType.allCases, id: \.self) { currentColor in
-                            let isSelected = sheetViewModel.color.getColorType == currentColor
+                            let isSelected = viewModel.color.getColorType == currentColor
                             Button(action: {
-                                sheetViewModel.color = currentColor.getColor
+                                viewModel.color = currentColor.getColor
                                 popoverIsPresented = false
                             }, label: {
                                 HStack(alignment: .center) {
