@@ -28,6 +28,7 @@ final class AddOrEditEventSheetViewModel {
     private var fixedDate = Date()
     private var canDismiss = true
     private (set) var addButtonIsVisible = false
+    var popoverIsPresented = false
     var sliderValue: Double = 0
     var buttonSpacer: ButtonSpacerType = .minimize
     var sheetTitle: String {

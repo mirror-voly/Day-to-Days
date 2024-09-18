@@ -9,14 +9,13 @@ import SwiftUI
 
 struct ColorPickerPopover: View {
     @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
-    @State var popoverIsPresented = false
 
     var body: some View {
         HStack(content: {
             Text("color".localized)
             Spacer()
             Button(action: {
-                popoverIsPresented.toggle()
+                viewModel.popoverIsPresented.toggle()
             }, label: {
                 Text(viewModel.color.getColorType.rawValue.localized)
                 Image(systemName: "pencil.tip.crop.circle.fill")
@@ -26,14 +25,18 @@ struct ColorPickerPopover: View {
                 HelpContextMenu(helpText: "color_help")
             }
             // MARK: Color popover
-            .popover(isPresented: $popoverIsPresented, content: {
-                VStack {
+            .popover(isPresented: Binding(get: {
+                viewModel.popoverIsPresented
+            }, set: { value in
+                viewModel.popoverIsPresented = value
+            }), content: {
+                ScrollView {
                     VStack(alignment: .trailing, content: {
                         ForEach(ColorType.allCases, id: \.self) { currentColor in
                             let isSelected = viewModel.color.getColorType == currentColor
                             Button(action: {
                                 viewModel.color = currentColor.getColor
-                                popoverIsPresented = false
+                                viewModel.popoverIsPresented = false
                             }, label: {
                                 HStack(alignment: .center) {
                                     Group {
