@@ -12,18 +12,36 @@ struct DateTypeSlider: View {
     private let circleSizeNormal = Сonstraints.sliderCircleSizeNornmal
     private let circleSizeMaximized = Сonstraints.sliderCircleSizeMaximazed
 
-    private let helpStrings = [
-        "day_help", "week_help", "month_help", "year_help", "days_help"
-    ]
+    var body: some View {
+        GroupBox {
+            // MARK: - Counter Hstack
+            HStack(alignment: .center, content: {
+                Text("count".localized)
+                Spacer()
+                Text(sheetViewModel.dateType.label.localized.capitalized)
+            })
+            // MARK: - Slider
+            ZStack(alignment: .center) {
+                Slider(value: Binding(get: {
+                    sheetViewModel.sliderValue
+                }, set: { value in
+                    sheetViewModel.sliderValue = value
+                }), in: 0...Double(DateType.allCases.count - 1), step: 1)
+                    .tint(sheetViewModel.color)
+                .allowsHitTesting(false)
 
-    private func addHelpToTheButtonBy(_ index: Int) -> String {
-        return index < helpStrings.count ? helpStrings[index] : helpStrings.last!
+                fillSliderCircles(step: Int(sheetViewModel.sliderValue), sum: DateType.allCases.count)
+                    .frame(maxWidth: .infinity)
+            }
+        }
     }
+}
 
+extension DateTypeSlider {
     private func fillSliderCircles(step: Int, sum: Int) -> some View {
             HStack {
                 ForEach(0..<sum, id: \.self) { index in
-                    let helpString = addHelpToTheButtonBy(index)
+                    let helpString = sheetViewModel.addHelpToTheButtonsBy(index)
                     VStack {
                         Button(action: {
                             sheetViewModel.sliderValue = Double(index)
@@ -46,31 +64,4 @@ struct DateTypeSlider: View {
             }
             .frame(maxWidth: .infinity)
         }
-
-    var body: some View {
-        GroupBox {
-            // MARK: - Counter Hstack
-            HStack(alignment: .center, content: {
-                Text("count".localized)
-                Spacer()
-                Text(sheetViewModel.dateType.label.localized.capitalized)
-            })
-            // MARK: - Slider
-            ZStack(alignment: .center) {
-                Slider(value: Binding(get: {
-                    sheetViewModel.sliderValue
-                }, set: { value in
-                    sheetViewModel.sliderValue
-                }), in: 0...Double(DateType.allCases.count - 1), step: 1)
-                    .tint(sheetViewModel.color)
-                .allowsHitTesting(false)
-
-                fillSliderCircles(step: Int(sheetViewModel.sliderValue), sum: DateType.allCases.count)
-                    .frame(maxWidth: .infinity)
-            }
-            .onAppear {
-                sheetViewModel.sliderValue = DateCalculator.findIndexForThis(dateType: sheetViewModel.dateType)
-            }
-        }
-    }
 }

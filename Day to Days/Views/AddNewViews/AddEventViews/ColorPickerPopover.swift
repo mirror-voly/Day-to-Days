@@ -10,7 +10,6 @@ import SwiftUI
 struct ColorPickerPopover: View {
     @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
     @State var popoverIsPresented = false
-//    @Binding var color: Color
 
     var body: some View {
         HStack(content: {

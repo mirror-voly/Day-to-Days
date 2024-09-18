@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct AddEventFields: View {
-
     @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
-//    @Binding var title: String
-//    @Binding var description: String
-//    @Binding var date: Date
-//    @Binding var color: Color
 
     var body: some View {
             GroupBox {
