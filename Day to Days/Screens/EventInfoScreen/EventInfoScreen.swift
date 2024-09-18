@@ -10,10 +10,8 @@ import RealmSwift
 
 struct EventInfoScreen: View {
     @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
-    @Environment(\.dismiss) private var dismis
+    @Environment(\.dismiss) private var dismiss
     @State private var viewModel = EventInfoScreenViewModel()
-    @State private var sheetIsOpened = false
-    @State private var alertIsPresented = false
     @State var event: Event
 
     // MARK: - View
@@ -31,7 +29,7 @@ struct EventInfoScreen: View {
                     Spacer()
                     // MARK: Date presenter
                     GroupBox {
-                        Text(viewModel.timeData?["localizedTimeState"]?.capitalized ?? "")
+                        Text(viewModel.localizedTimeState?.capitalized ?? "")
                             .font(.subheadline)
                         Divider()
                         LazyVStack {
@@ -53,39 +51,53 @@ struct EventInfoScreen: View {
         .toolbarBackground(event.color, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
-        .sheet(isPresented: $sheetIsOpened, onDismiss: {
-            if let event = viewModel.updateEditedEvent(eventID: event.id) {
-                self.event = event
-            }
-        }, content: {
-            AddOrEditEventSheet(isOpened: $sheetIsOpened, showAlert: $alertIsPresented, event: event)
+        .onAppear(perform: {
+            viewModel.onAppearActions(event: event)
         })
-        .alert(isPresented: $alertIsPresented, content: {
+        .onChange(of: event, { _, _ in
+            viewModel.onAppearActions(event: event)
+        })
+        .sheet(isPresented: $viewModel.sheetIsOpened, onDismiss: {
+            self.event = viewModel.updateEditedEvent(eventID: event.id) ?? self.event
+        }, content: {
+            AddOrEditEventSheet(isOpened: $viewModel.sheetIsOpened, showAlert: $viewModel.alertIsPresented, event: event)
+        })
+        .alert(isPresented: $viewModel.alertIsPresented, content: {
             NewAlert.showAlert {
                 sheetViewModel.makeCurrentEventNil()
             } onCancel: {
-                sheetIsOpened = true
+                viewModel.sheetIsOpened = true
             }
         })
         .toolbar(content: {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    dismis()
-                }
-            label: {
+            backButton
+            editButton
+        })
+        .tint(event.color)
+    }
+}
+
+extension EventInfoScreen {
+    private var backButton: some ToolbarContent {
+        ToolbarItem(placement: .topBarLeading) {
+            Button {
+                dismiss()
+            } label: {
                 Circle()
                     .fill(.white)
                     .frame(width: Сonstraints.eventInfoButtonSize, height: Сonstraints.eventInfoButtonSize)
                     .overlay(Image(systemName: "chevron.backward")
                         .fontWeight(.semibold))
             }
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    sheetViewModel.setScreenMode(mode: .edit)
-                    sheetIsOpened = true
-                }
-            label: {
+        }
+    }
+
+    private var editButton: some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                sheetViewModel.setScreenMode(mode: .edit)
+                viewModel.sheetIsOpened = true
+            } label: {
                 Circle()
                     .fill(.white)
                     .frame(width: Сonstraints.eventInfoButtonSize, height: Сonstraints.eventInfoButtonSize)
@@ -95,8 +107,6 @@ struct EventInfoScreen: View {
             .contextMenu {
                 HelpContextMenu(helpText: "edit_event")
             }
-            }
-        })
-        .tint(event.color)
+        }
     }
 }
