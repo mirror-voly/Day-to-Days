@@ -10,8 +10,9 @@ import RealmSwift
 
 @Observable
 final class EventInfoScreenViewModel {
-    let allDateTypes = (DateType.allCases).reversed()
-    private (set) var allInfoForCurrentDate: [DateType: String] = [:]
+    let allDateTypes = DateType.allCases.reversed()
+    private (set) var allInfoForCurrentDate: [DateType: String]?
+    private (set) var timeData: [String: String]?
 
     func allInfoForDate(event: Event) {
         let info = DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
@@ -33,5 +34,12 @@ final class EventInfoScreenViewModel {
     func updateEditedEvent(eventID: UUID) -> Event? {
         guard let finded = findEventBy(id: eventID) else { return nil}
         return finded
+    }
+
+    func allTimeDataFor(event: Event) -> [String: String] {
+        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
+        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
+        let localizedTimeState = TimeUnitLocalizer.localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
+        return ["timeState": timeState.label, "dateNumber": dateNumber, "localizedTimeState": localizedTimeState]
     }
 }

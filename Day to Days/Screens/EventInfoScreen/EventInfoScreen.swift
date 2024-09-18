@@ -14,14 +14,10 @@ struct EventInfoScreen: View {
     @State private var viewModel = EventInfoScreenViewModel()
     @State private var sheetIsOpened = false
     @State private var alertIsPresented = false
-    @State private var event: Event
+    @State var event: Event
 
     // MARK: - View
     var body: some View {
-        // TODO: Need refactoring
-        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
-        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
-        let localizetTimeState = TimeUnitLocalizer.localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
         VStack(alignment: .leading, content: {
             GroupBox {
                 HStack(alignment: .top, content: {
@@ -35,12 +31,12 @@ struct EventInfoScreen: View {
                     Spacer()
                     // MARK: Date presenter
                     GroupBox {
-                        Text(localizetTimeState.capitalized)
+                        Text(viewModel.timeData?["localizedTimeState"]?.capitalized ?? "")
                             .font(.subheadline)
                         Divider()
                         LazyVStack {
                             ForEach(viewModel.allDateTypes, id: \.self) { dateType in
-                                if let value = currentDateAllInfo[dateType] {
+                                if let value = viewModel.allInfoForCurrentDate?[dateType] {
                                     DateInfoView(value: value, label: TimeUnitLocalizer.localizeIt(for: value, unit: dateType.label))
                                 }
                             }
