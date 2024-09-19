@@ -10,26 +10,13 @@ import RealmSwift
 
 @Observable
 final class AddOrEditEventSheetViewModel {
-    enum ButtonSpacerType {
-        case minimize
-        case maximize
-        var value: Double {
-            switch self {
-            case .minimize:
-                return Сonstraints.buttonSpaсerMinimize
-            case .maximize:
-                return Сonstraints.buttonSpaсerMaximize
-            }
-        }
-    }
-
     private var screenMode: ScreenModeType?
     private var currentEvent: Event?
     private var fixedDate = Date()
     private var canDismiss = true
     private (set) var addButtonIsVisible = false
     private (set) var buttonSpacer: ButtonSpacerType = .minimize
-    var popoverIsPresented = false
+    private (set) var popoverIsPresented = false
     private (set) var sliderValue: Double = 0 {
         didSet {
             dateType = .allCases[Int(sliderValue)]
@@ -59,7 +46,7 @@ final class AddOrEditEventSheetViewModel {
             protectedChangeOfCanDismiss()
         }
     }
-    var color = Color.gray {
+    private (set) var color = Color.gray {
         didSet {
             protectedChangeOfCanDismiss()
         }
@@ -176,5 +163,17 @@ final class AddOrEditEventSheetViewModel {
 
     func setSliderValue(value: Double) {
         sliderValue = Double(value)
+    }
+
+    func toggleIsPresented() {
+        popoverIsPresented.toggle()
+    }
+
+    func setColor(color: Color) {
+        self.color = color
+    }
+
+    func setPopoverIsPresented(set: Bool) {
+        popoverIsPresented = set
     }
 }

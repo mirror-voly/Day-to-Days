@@ -29,11 +29,11 @@ final class EventsItemViewModel {
             }
         }
     }
-    
+
     func toggleSelected() {
         isSelected.toggle()
     }
-    
+
     func changeSelectedToFalse() {
         isSelected = false
     }

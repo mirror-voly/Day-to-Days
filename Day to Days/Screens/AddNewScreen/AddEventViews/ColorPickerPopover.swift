@@ -15,7 +15,7 @@ struct ColorPickerPopover: View {
             Text("color".localized)
             Spacer()
             Button(action: {
-                viewModel.popoverIsPresented.toggle()
+                viewModel.toggleIsPresented()
             }, label: {
                 Text(viewModel.color.getColorType.rawValue.localized)
                 Image(systemName: "pencil.tip.crop.circle.fill")
@@ -28,14 +28,14 @@ struct ColorPickerPopover: View {
             .popover(isPresented: Binding(get: {
                 viewModel.popoverIsPresented
             }, set: { value in
-                viewModel.popoverIsPresented = value
+                viewModel.setPopoverIsPresented(set: value)
             }), content: {
                 ScrollView {
                     VStack(alignment: .trailing, content: {
                         ForEach(ColorType.allCases, id: \.self) { currentColor in
                             Button(action: {
-                                viewModel.color = currentColor.getColor
-                                viewModel.popoverIsPresented = false
+                                viewModel.setColor(color: currentColor.getColor)
+                                viewModel.setPopoverIsPresented(set: false)
                             }, label: {
                                 HStack(alignment: .center) {
                                     Group {

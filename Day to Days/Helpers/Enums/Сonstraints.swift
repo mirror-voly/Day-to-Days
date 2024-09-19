@@ -11,8 +11,8 @@ enum Сonstraints {
     static let buttonSpaсerMinimize: CGFloat = 0
     static let buttonSpaсerMaximize: CGFloat = 80
     static let addButtonsize: CGFloat = 40
-    static let sliderCircleSizeNornmal: CGFloat = 15
-    static let sliderCircleSizeMaximazed: CGFloat = 30
+    static let sliderCircleSmall: CGFloat = 15
+    static let sliderCircleBig: CGFloat = 30
     static let sliderTextPadding: CGFloat = 7
     static let eventInfoButtonSize: CGFloat = 35
     static let eventDateTableSize: CGFloat = 100

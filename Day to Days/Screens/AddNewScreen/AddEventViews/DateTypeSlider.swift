@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct DateTypeSlider: View {
-    @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
-    private let circleSizeNormal = Сonstraints.sliderCircleSizeNornmal
-    private let circleSizeMaximized = Сonstraints.sliderCircleSizeMaximazed
+    @Environment(AddOrEditEventSheetViewModel.self) var viewModel
 
     var body: some View {
         GroupBox {
@@ -22,6 +20,7 @@ struct DateTypeSlider: View {
             })
             // MARK: - Slider
             ZStack(alignment: .center) {
+
                 Slider(value: Binding(get: {
                     viewModel.sliderValue
                 }, set: { value in
@@ -29,36 +28,9 @@ struct DateTypeSlider: View {
                 }), in: 0...Double(DateType.allCases.count - 1), step: 1)
                 .tint(viewModel.color)
                 .allowsHitTesting(false)
-                fillSliderCircles(step: Int(viewModel.sliderValue), sum: DateType.allCases.count)
-                    .frame(maxWidth: .infinity)
-            }
-        }
-    }
-}
 
-extension DateTypeSlider {
-    private func fillSliderCircles(step: Int, sum: Int) -> some View {
-        HStack {
-            ForEach(0..<sum, id: \.self) { index in
-                VStack {
-                    Button(action: {
-                        viewModel.setSliderValue(value: Double(index))
-                    }, label: {
-                        Circle()
-                            .fill(index < step + 1 ? viewModel.color : .gray)
-                            .frame(width: index < step + 1 ? circleSizeMaximized : circleSizeNormal)
-                    })
-                    .containerShape(Rectangle())
-                    .contextMenu {
-                        HelpContextMenu(helpText: viewModel.addHelpToTheButtonsBy(index))
-                    }
-                }
-                .frame(width: circleSizeMaximized - 5)
-                if index < sum - 1 {
-                    Spacer()
-                }
+                fillSliderCircles(step: Int(viewModel.sliderValue), sum: DateType.allCases.count)
             }
         }
-        .frame(maxWidth: .infinity)
     }
 }

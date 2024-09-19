@@ -9,9 +9,9 @@ import SwiftUI
 import RealmSwift
 
 struct EventInfoScreen: View {
-    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
-    @Environment(\.dismiss) private var dismiss
-    @State private var viewModel = EventInfoScreenViewModel()
+    @Environment(AddOrEditEventSheetViewModel.self) var sheetViewModel
+    @Environment(\.dismiss) var dismiss
+    @State var viewModel = EventInfoScreenViewModel()
     @State var event: Event
 
     // MARK: - View
@@ -32,10 +32,12 @@ struct EventInfoScreen: View {
                         Text(viewModel.localizedTimeState?.capitalized ?? "")
                             .font(.subheadline)
                         Divider()
-                        LazyVStack {
-                            ForEach(viewModel.allDateTypes, id: \.self) { dateType in
-                                if let value = viewModel.allInfoForCurrentDate?[dateType] {
-                                    DateInfoView(value: value, label: TimeUnitLocalizer.localizeIt(for: value, unit: dateType.label))
+                        VStack {
+                            ForEach(viewModel.allDateTypes, id: \.self) { dateTypeKey in
+                                if let value = viewModel.allInfoForCurrentDate?[dateTypeKey] {
+                                    DateInfoView(value: value,
+                                                 label: TimeUnitLocalizer.localizeIt(for: value,
+                                                                                     unit: dateTypeKey.label))
                                 }
                             }
                         }
@@ -74,39 +76,5 @@ struct EventInfoScreen: View {
             editButton
         })
         .tint(event.color)
-    }
-}
-
-extension EventInfoScreen {
-    private var backButton: some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) {
-            Button {
-                dismiss()
-            } label: {
-                Circle()
-                    .fill(.white)
-                    .frame(width: Сonstraints.eventInfoButtonSize, height: Сonstraints.eventInfoButtonSize)
-                    .overlay(Image(systemName: "chevron.backward")
-                        .fontWeight(.semibold))
-            }
-        }
-    }
-
-    private var editButton: some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                sheetViewModel.setScreenMode(mode: .edit)
-                viewModel.sheetIsOpened = true
-            } label: {
-                Circle()
-                    .fill(.white)
-                    .frame(width: Сonstraints.eventInfoButtonSize, height: Сonstraints.eventInfoButtonSize)
-                    .overlay(Image(systemName: "pencil")
-                        .fontWeight(.semibold))
-            }
-            .contextMenu {
-                HelpContextMenu(helpText: "edit_event")
-            }
-        }
     }
 }
