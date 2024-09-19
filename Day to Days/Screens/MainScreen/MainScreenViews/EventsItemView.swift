@@ -29,7 +29,7 @@ struct EventsItemView: View {
                 .padding()
                 .onChange(of: mainScreenViewModel.editMode) { _, newValue in
                     if newValue != .active {
-                        viewModel.isSelected = false
+                        viewModel.changeSelectedToFalse()
                     }
                 }
                 .onChange(of: viewModel.isSelected) { _, _ in
@@ -69,7 +69,7 @@ struct EventsItemView: View {
                         .clipShape(.rect(cornerRadius: Сonstraints.cornerRadius))
                         .onTapGesture {
                             mainScreenViewModel.toggleSelectedState(eventID: event.id)
-                            viewModel.isSelected.toggle()
+                            viewModel.toggleSelected()
                         }
                 }
             }

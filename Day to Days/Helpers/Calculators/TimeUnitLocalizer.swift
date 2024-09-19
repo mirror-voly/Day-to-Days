@@ -93,4 +93,19 @@ final class TimeUnitLocalizer {
             return state.label
         }
     }
+
+    static func getLocalizedTimeState(event: Event) -> String {
+        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
+        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
+        let localizedTimeState = localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
+        return localizedTimeState
+    }
+
+    static func allTimeDataFor(event: Event) -> [String: String] {
+        let timeState = DateCalculator.determineFutureOrPastForThis(date: event.date)
+        let dateNumber = DateCalculator.findFirstDateFromTheTopFor(date: event.date, dateType: event.dateType)
+        let localizedDateType = TimeUnitLocalizer.localizeIt(for: dateNumber, unit: event.dateType.label)
+        let localizedTimeState = TimeUnitLocalizer.localizeTimeState(for: dateNumber, state: timeState, dateType: event.dateType)
+        return ["timeState": timeState.label, "dateNumber": dateNumber, "localizedDateType": localizedDateType, "localizedTimeState": localizedTimeState]
+    }
 }

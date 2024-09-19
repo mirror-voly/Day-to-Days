@@ -9,15 +9,14 @@ import Foundation
 
 @Observable
 final class EventsItemViewModel {
-    var isSelected = false
+    private (set) var isSelected = false
     private (set) var timeData: [String: String]?
-
     private (set) var localizedTimeState: String = ""
     private (set) var number: String = ""
     private (set) var localizedDateType: String = ""
 
     func setTimeData(event: Event) {
-        let timeData = DateCalculator.allTimeDataFor(event: event)
+        let timeData =  TimeUnitLocalizer.allTimeDataFor(event: event)
         if let localizedTimeState = timeData["localizedTimeState"] {
             self.localizedTimeState = localizedTimeState.capitalized
         }
@@ -29,5 +28,13 @@ final class EventsItemViewModel {
                 self.localizedDateType = localizedTimeState
             }
         }
+    }
+    
+    func toggleSelected() {
+        isSelected.toggle()
+    }
+    
+    func changeSelectedToFalse() {
+        isSelected = false
     }
 }

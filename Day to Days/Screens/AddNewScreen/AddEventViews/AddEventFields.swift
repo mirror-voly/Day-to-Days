@@ -47,7 +47,6 @@ struct AddEventFields: View {
                         Image(systemName: "pin.circle.fill")
                             .tint(.primary)
                             .symbolRenderingMode(.hierarchical)
-                            .font(.system(size: 20))
                     }
                     .contextMenu {
                         HelpContextMenu(helpText: "date_reset_help")

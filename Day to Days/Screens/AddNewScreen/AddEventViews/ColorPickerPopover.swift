@@ -33,7 +33,6 @@ struct ColorPickerPopover: View {
                 ScrollView {
                     VStack(alignment: .trailing, content: {
                         ForEach(ColorType.allCases, id: \.self) { currentColor in
-                            let isSelected = viewModel.color.getColorType == currentColor
                             Button(action: {
                                 viewModel.color = currentColor.getColor
                                 viewModel.popoverIsPresented = false
@@ -47,7 +46,7 @@ struct ColorPickerPopover: View {
                                 }
                             })
                             .frame(maxWidth: .infinity, alignment: .trailing)
-                            .background(isSelected ? Color.secondary : Color.clear)
+                            .background(viewModel.color.getColorType == currentColor ? Color.secondary : Color.clear)
                             Divider()
                         }
                     })

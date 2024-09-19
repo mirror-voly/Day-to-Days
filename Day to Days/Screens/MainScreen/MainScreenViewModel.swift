@@ -13,10 +13,15 @@ final class MainScreenViewModel {
     private (set) var selectedState: [UUID: Bool] = [:]
     private (set) var noSelectedEvents = true
     private (set) var navigationLinkIsPresented = false
-    var events: Results<Event>?
-    var editMode: EditMode = .inactive
-    var ascending = true
-    var sortBy: SortType = .none
+    private (set) var sortBy: SortType = .none
+    private (set) var imageName = "arrow.up.circle"
+    private (set) var editMode: EditMode = .inactive
+    private (set) var ascending = true {
+        didSet {
+            imageName = ascending ? "arrow.up.circle" : "arrow.down.circle"
+        }
+    }
+    private var events: Results<Event>?
     var sheetIsOpened = false
     var alertIsPresented = false
 
@@ -45,11 +50,11 @@ final class MainScreenViewModel {
         }
     }
     // MARK: - Functions for changing private variables
-    func insertToSelectedEvents(eventID: UUID) {
+    private func insertToSelectedEvents(eventID: UUID) {
         selectedEvents.insert(eventID)
     }
 
-    func removeFromSelectedEvents(eventID: UUID) {
+    private func removeFromSelectedEvents(eventID: UUID) {
         selectedEvents.remove(eventID)
     }
 
@@ -74,7 +79,7 @@ final class MainScreenViewModel {
         makeSelectedEventsEmpty()
     }
     // MARK: - Functions for sorting events
-    func sortResulsBy(allEvents: Results<Event>, sortBy: SortType, ascending: Bool) -> [Event] {
+    private func sortResulsBy(allEvents: Results<Event>, sortBy: SortType, ascending: Bool) -> [Event] {
         allEvents.sorted {
             switch sortBy {
             case .date:
@@ -89,5 +94,22 @@ final class MainScreenViewModel {
                 return true
             }
         }
+    }
+
+    func sortButtonAction(type: SortType) {
+        sortBy = type
+        if type != .none {
+            ascending.toggle()
+        }
+    }
+
+    func setEvents(allEvents: Results<Event>) {
+        DispatchQueue.main.async {
+            self.events = allEvents
+        }
+    }
+
+    func setEditMode(mode: EditMode) {
+        editMode = mode
     }
 }

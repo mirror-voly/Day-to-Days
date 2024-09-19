@@ -25,7 +25,7 @@ struct DateTypeSlider: View {
                 Slider(value: Binding(get: {
                     viewModel.sliderValue
                 }, set: { value in
-                    viewModel.sliderValue = value
+                    viewModel.setSliderValue(value: value)
                 }), in: 0...Double(DateType.allCases.count - 1), step: 1)
                 .tint(viewModel.color)
                 .allowsHitTesting(false)
@@ -40,11 +40,9 @@ extension DateTypeSlider {
     private func fillSliderCircles(step: Int, sum: Int) -> some View {
         HStack {
             ForEach(0..<sum, id: \.self) { index in
-                let helpString = viewModel.addHelpToTheButtonsBy(index)
                 VStack {
                     Button(action: {
-                        viewModel.sliderValue = Double(index)
-                        viewModel.dateType = .allCases[index]
+                        viewModel.setSliderValue(value: Double(index))
                     }, label: {
                         Circle()
                             .fill(index < step + 1 ? viewModel.color : .gray)
@@ -52,7 +50,7 @@ extension DateTypeSlider {
                     })
                     .containerShape(Rectangle())
                     .contextMenu {
-                        HelpContextMenu(helpText: helpString)
+                        HelpContextMenu(helpText: viewModel.addHelpToTheButtonsBy(index))
                     }
                 }
                 .frame(width: circleSizeMaximized - 5)

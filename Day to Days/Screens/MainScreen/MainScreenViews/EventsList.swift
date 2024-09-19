@@ -48,12 +48,10 @@ struct EventsList: View {
             EventInfoScreen(event: event)
         }
         .onAppear(perform: {
-            viewModel.events = allEvents
+            viewModel.setEvents(allEvents: allEvents)
         })
         .onChange(of: allEvents.count) { _, _ in
-            DispatchQueue.main.async {
-                viewModel.events = allEvents
-            }
+            viewModel.setEvents(allEvents: allEvents)
         }
     }
 }
@@ -65,15 +63,11 @@ extension EventsList {
             Menu {
                 ForEach(SortType.allCases, id: \.self) { type in
                     Button(role: .cancel) {
-                        viewModel.sortBy = type
-                        if type != .none {
-                            viewModel.ascending.toggle()
-                        }
+                        viewModel.sortButtonAction(type: type)
                     } label: {
-                        let imageName = viewModel.ascending ? "arrow.up.circle" : "arrow.down.circle"
                         HStack {
                             Text(type.rawValue.localized)
-                            Image(systemName: type != .none ? imageName : "dot.circle")
+                            Image(systemName: type != .none ? viewModel.imageName : "dot.circle")
                         }
                     }
                 }
@@ -88,10 +82,8 @@ extension EventsList {
         Group {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    viewModel.editMode = .inactive
-                    if !viewModel.noSelectedEvents {
-                        viewModel.removeSelectedEvents()
-                    }
+                    viewModel.setEditMode(mode: .inactive)
+                    viewModel.removeSelectedEvents()
                 } label: {
                     Text(viewModel.noSelectedEvents ? "done".localized : "delete_selected".localized)
                 }
@@ -103,7 +95,7 @@ extension EventsList {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         viewModel.makeSelectedEventsEmpty()
-                        viewModel.editMode = .inactive
+                        viewModel.setEditMode(mode: .inactive)
                     } label: {
                         Text("cancel".localized)
                     }
@@ -125,7 +117,7 @@ extension EventsList {
 
     private func multipleSelectionButton() -> some View {
         Button(role: .cancel) {
-            viewModel.editMode = .active
+            viewModel.setEditMode(mode: .active)
         } label: {
             Label("multiple_selection".localized, systemImage: "checkmark.circle")
         }

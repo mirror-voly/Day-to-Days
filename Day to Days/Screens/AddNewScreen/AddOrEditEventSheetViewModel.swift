@@ -23,14 +23,18 @@ final class AddOrEditEventSheetViewModel {
         }
     }
 
-    private var screenMode: EditModeType?
+    private var screenMode: ScreenModeType?
     private var currentEvent: Event?
     private var fixedDate = Date()
     private var canDismiss = true
     private (set) var addButtonIsVisible = false
     private (set) var buttonSpacer: ButtonSpacerType = .minimize
     var popoverIsPresented = false
-    var sliderValue: Double = 0
+    private (set) var sliderValue: Double = 0 {
+        didSet {
+            dateType = .allCases[Int(sliderValue)]
+        }
+    }
     var sheetTitle: String {
         screenMode == .edit ? "edit_event".localized: "new_event".localized
     }
@@ -63,7 +67,6 @@ final class AddOrEditEventSheetViewModel {
     var dateType: DateType = .day {
         didSet {
             protectedChangeOfCanDismiss()
-            sliderValue = findIndexForThis(dateType: dateType)
         }
     }
     // MARK: - Functions
@@ -82,6 +85,7 @@ final class AddOrEditEventSheetViewModel {
         date = event?.date ?? fixedDate
         color = event?.color ?? Color.gray
         dateType = event?.dateType ?? DateType.day
+        sliderValue = findIndexForThis(dateType: dateType)
     }
 
     private func areFieldsEmpty() -> Bool {
@@ -123,6 +127,7 @@ final class AddOrEditEventSheetViewModel {
     func setButtonSpacer(buttonSpacer: ButtonSpacerType) {
         self.buttonSpacer = buttonSpacer
     }
+
     func createEvent(id: UUID?) -> Event {
         return Event(
             id: id ?? UUID(),
@@ -155,7 +160,7 @@ final class AddOrEditEventSheetViewModel {
         makeCurrentEventNil()
     }
 
-    func setScreenMode(mode: EditModeType) {
+    func setScreenMode(mode: ScreenModeType) {
         screenMode = mode
     }
 
@@ -167,5 +172,9 @@ final class AddOrEditEventSheetViewModel {
 
     func addHelpToTheButtonsBy(_ index: Int) -> String {
         return index < helpStrings.count ? helpStrings[index] : helpStrings.last!
+    }
+
+    func setSliderValue(value: Double) {
+        sliderValue = Double(value)
     }
 }

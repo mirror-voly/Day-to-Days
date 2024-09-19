@@ -17,12 +17,12 @@ final class EventInfoScreenViewModel {
     var alertIsPresented = false
 
     private func allInfoForDate(event: Event) {
-        let info = DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
-        allInfoForCurrentDate = info
+        let allInfo = DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
+        allInfoForCurrentDate = allInfo
     }
 
     private func localizedTimeStateFor(event: Event) {
-        localizedTimeState = DateCalculator.getLocalizedTimeState(event: event)
+        localizedTimeState = TimeUnitLocalizer.getLocalizedTimeState(event: event)
     }
 
     func updateEditedEvent(eventID: UUID) -> Event? {
