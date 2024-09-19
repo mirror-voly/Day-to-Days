@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510589FB2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510589FA2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift */; };
+		510589FD2C9C5DA700CA612F /* EventsList+toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510589FC2C9C5DA700CA612F /* EventsList+toolbar.swift */; };
+		510589FF2C9C5E1400CA612F /* EventsList+swipeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510589FE2C9C5E1400CA612F /* EventsList+swipeButtons.swift */; };
+		51058A012C9C5F1A00CA612F /* DateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51058A002C9C5F1A00CA612F /* DateInfoView.swift */; };
+		51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51058A022C9C608D00CA612F /* DayCounterWithShortInfoView.swift */; };
+		51058A052C9C64D200CA612F /* ButtonSpacerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51058A042C9C64D200CA612F /* ButtonSpacerType.swift */; };
 		510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */; };
 		510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */; };
-		516659F72C9013FB00468301 /* DateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F62C9013FB00468301 /* DateInfoView.swift */; };
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		51665A022C905E2700468301 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
@@ -30,6 +35,7 @@
 		5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		5170CC652C9300C800A9380B /* TimeUnitLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */; };
 		517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517282952C90CCCE00D09AC4 /* RealmSwift */; };
+		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
 		5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */; };
 		5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */; };
 		5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */; };
@@ -46,9 +52,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		510589FA2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateTipeSlider+Circles.swift"; sourceTree = "<group>"; };
+		510589FC2C9C5DA700CA612F /* EventsList+toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventsList+toolbar.swift"; sourceTree = "<group>"; };
+		510589FE2C9C5E1400CA612F /* EventsList+swipeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventsList+swipeButtons.swift"; sourceTree = "<group>"; };
+		51058A002C9C5F1A00CA612F /* DateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInfoView.swift; sourceTree = "<group>"; };
+		51058A022C9C608D00CA612F /* DayCounterWithShortInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCounterWithShortInfoView.swift; sourceTree = "<group>"; };
+		51058A042C9C64D200CA612F /* ButtonSpacerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSpacerType.swift; sourceTree = "<group>"; };
 		510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreenViewModel.swift; sourceTree = "<group>"; };
 		510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemViewModel.swift; sourceTree = "<group>"; };
-		516659F62C9013FB00468301 /* DateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInfoView.swift; sourceTree = "<group>"; };
 		516659F82C90324C00468301 /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
 		51665A012C905E2700468301 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
@@ -70,6 +81,7 @@
 		5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpContextMenu.swift; sourceTree = "<group>"; };
 		5170CC5F2C92E67600A9380B /* TimeStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStateType.swift; sourceTree = "<group>"; };
 		5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUnitLocalizer.swift; sourceTree = "<group>"; };
+		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
 		5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+KeyboardIsActive.swift"; sourceTree = "<group>"; };
 		5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreen.swift; sourceTree = "<group>"; };
 		5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Invert.swift"; sourceTree = "<group>"; };
@@ -198,7 +210,10 @@
 			isa = PBXGroup;
 			children = (
 				516F0C9D2C8D9AF00095A646 /* EventsList.swift */,
+				510589FC2C9C5DA700CA612F /* EventsList+toolbar.swift */,
+				510589FE2C9C5E1400CA612F /* EventsList+swipeButtons.swift */,
 				516CBE5C2C87403600202B93 /* EventsItemView.swift */,
+				51058A022C9C608D00CA612F /* DayCounterWithShortInfoView.swift */,
 				510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */,
 				516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */,
 			);
@@ -221,7 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */,
-				516659F62C9013FB00468301 /* DateInfoView.swift */,
+				51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */,
+				51058A002C9C5F1A00CA612F /* DateInfoView.swift */,
 				510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */,
 			);
 			path = EventInfoScreen;
@@ -234,6 +250,7 @@
 				519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */,
 				5179F26F2C8E16B10027B0F1 /* ColorPickerPopover.swift */,
 				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
+				510589FA2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift */,
 			);
 			path = AddEventViews;
 			sourceTree = "<group>";
@@ -247,6 +264,7 @@
 				5170CC5F2C92E67600A9380B /* TimeStateType.swift */,
 				51F9117E2C95D2CA00C625DC /* SortType.swift */,
 				517DF9512C997CAE0007D924 /* ScreenModeType.swift */,
+				51058A042C9C64D200CA612F /* ButtonSpacerType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -344,20 +362,26 @@
 				519FF10E2C8DA4A4002FA63A /* AddEventFields.swift in Sources */,
 				516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */,
 				5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */,
+				510589FF2C9C5E1400CA612F /* EventsList+swipeButtons.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				519FF10A2C8D9E84002FA63A /* AddEventButton.swift in Sources */,
 				517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */,
+				51058A052C9C64D200CA612F /* ButtonSpacerType.swift in Sources */,
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
+				51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
-				516659F72C9013FB00468301 /* DateInfoView.swift in Sources */,
 				5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */,
 				5179F2702C8E16B10027B0F1 /* ColorPickerPopover.swift in Sources */,
 				5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */,
 				5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */,
+				51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */,
+				510589FD2C9C5DA700CA612F /* EventsList+toolbar.swift in Sources */,
+				51058A012C9C5F1A00CA612F /* DateInfoView.swift in Sources */,
 				516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */,
 				516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */,
 				5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */,
+				510589FB2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift in Sources */,
 				516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */,
 				519195012C8CA6AA00F29C1B /* NewAlert.swift in Sources */,
 				5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */,
