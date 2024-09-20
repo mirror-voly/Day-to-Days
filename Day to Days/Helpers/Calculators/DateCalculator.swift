@@ -18,7 +18,7 @@ final class DateCalculator {
         }
     }
     // MARK: - Date counters
-    static func daysFrom(date: Date) -> Int {
+    static private func daysFrom(date: Date) -> Int {
         let currentDate = Date()
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day, .hour], from: currentDate, to: date)
@@ -27,14 +27,14 @@ final class DateCalculator {
         return abs(daysCounter)
     }
 
-    static func weeksFrom(date: Date) -> [DateType: String] {
+    static private func weeksFrom(date: Date) -> [DateType: String] {
         let days = daysFrom(date: date)
         let weakCounter = days / 7
         let daysCounter = days % 7
         return [.week: String(weakCounter), .day: String(daysCounter)]
     }
 
-    static func monthsFrom(date: Date) -> [DateType: String] {
+    static private func monthsFrom(date: Date) -> [DateType: String] {
         let calendar = Calendar.current
         let today = Date()
         let components = calendar.dateComponents([.month, .day], from: date, to: today)
@@ -44,7 +44,7 @@ final class DateCalculator {
         return [.month: String(months), .week: String(weeks), .day: String(days)]
     }
 
-    static func yearsFrom(date: Date) -> [DateType: String] {
+    static private func yearsFrom(date: Date) -> [DateType: String] {
         let calendar = Calendar.current
         let today = Date()
         let components = calendar.dateComponents([.year, .month, .day], from: date, to: today)

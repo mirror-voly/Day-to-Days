@@ -20,7 +20,7 @@ struct Provider: AppIntentTimelineProvider {
         if let event = try? JSONDecoder().decode(EventWidget.self, from: data) {
             return SimpleEntry(date: Date(), configuration: configuration, event: event)
         } else {
-            return SimpleEntry(date: Date(), configuration: configuration, event: EventWidget(name: "error", id: UUID(), date: Date()))
+            return SimpleEntry(date: Date(), configuration: configuration, event: EventWidget(name: "Title", id: UUID(), date: Date()))
         }
     }
     
