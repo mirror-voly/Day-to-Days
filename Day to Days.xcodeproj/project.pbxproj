@@ -35,6 +35,14 @@
 		5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		5170CC652C9300C800A9380B /* TimeUnitLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */; };
 		517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517282952C90CCCE00D09AC4 /* RealmSwift */; };
+		5177245E2C9D5C880037143A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245D2C9D5C880037143A /* WidgetKit.framework */; };
+		517724602C9D5C880037143A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245F2C9D5C880037143A /* SwiftUI.framework */; };
+		517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724622C9D5C880037143A /* CounterWidgetBundle.swift */; };
+		517724652C9D5C880037143A /* CounterWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724642C9D5C880037143A /* CounterWidgetLiveActivity.swift */; };
+		517724672C9D5C880037143A /* CounterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724662C9D5C880037143A /* CounterWidget.swift */; };
+		517724692C9D5C880037143A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724682C9D5C880037143A /* AppIntent.swift */; };
+		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
+		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
 		5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */; };
 		5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */; };
@@ -48,8 +56,36 @@
 		519FF10A2C8D9E84002FA63A /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF1092C8D9E84002FA63A /* AddEventButton.swift */; };
 		519FF10C2C8D9F46002FA63A /* Сonstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Сonstraints.swift */; };
 		519FF10E2C8DA4A4002FA63A /* AddEventFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */; };
+		51BD461C2C9D6D1600D7515F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
+		51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
+		51BD46212C9D7A2D00D7515F /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46202C9D7A2D00D7515F /* WidgetManager.swift */; };
+		51BD46242C9D839B00D7515F /* EventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventWidget.swift */; };
 		51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9117E2C95D2CA00C625DC /* SortType.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5177246D2C9D5C8A0037143A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 516CBE372C87247000202B93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5177245A2C9D5C880037143A;
+			remoteInfo = CounterWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		517724702C9D5C8A0037143A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		510589FA2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateTipeSlider+Circles.swift"; sourceTree = "<group>"; };
@@ -81,6 +117,15 @@
 		5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpContextMenu.swift; sourceTree = "<group>"; };
 		5170CC5F2C92E67600A9380B /* TimeStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStateType.swift; sourceTree = "<group>"; };
 		5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUnitLocalizer.swift; sourceTree = "<group>"; };
+		5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5177245D2C9D5C880037143A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5177245F2C9D5C880037143A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		517724622C9D5C880037143A /* CounterWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidgetBundle.swift; sourceTree = "<group>"; };
+		517724642C9D5C880037143A /* CounterWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		517724662C9D5C880037143A /* CounterWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidget.swift; sourceTree = "<group>"; };
+		517724682C9D5C880037143A /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
 		5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+KeyboardIsActive.swift"; sourceTree = "<group>"; };
 		5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreen.swift; sourceTree = "<group>"; };
@@ -94,6 +139,10 @@
 		519FF1092C8D9E84002FA63A /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
 		519FF10B2C8D9F46002FA63A /* Сonstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сonstraints.swift"; sourceTree = "<group>"; };
 		519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventFields.swift; sourceTree = "<group>"; };
+		51BD461E2C9D6E9600D7515F /* CounterWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CounterWidgetExtension.entitlements; sourceTree = "<group>"; };
+		51BD461F2C9D6F3600D7515F /* Day to Days.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Day to Days.entitlements"; sourceTree = "<group>"; };
+		51BD46202C9D7A2D00D7515F /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
+		51BD46232C9D839B00D7515F /* EventWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWidget.swift; sourceTree = "<group>"; };
 		51F9117E2C95D2CA00C625DC /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +152,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		517724582C9D5C880037143A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				517724602C9D5C880037143A /* SwiftUI.framework in Frameworks */,
+				5177245E2C9D5C880037143A /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +202,10 @@
 		516CBE362C87247000202B93 = {
 			isa = PBXGroup;
 			children = (
+				51BD461E2C9D6E9600D7515F /* CounterWidgetExtension.entitlements */,
 				516CBE412C87247000202B93 /* Day to Days */,
+				517724612C9D5C880037143A /* CounterWidget */,
+				5177245C2C9D5C880037143A /* Frameworks */,
 				516CBE402C87247000202B93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -153,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				516CBE3F2C87247000202B93 /* Day to Days.app */,
+				5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,6 +222,7 @@
 		516CBE412C87247000202B93 /* Day to Days */ = {
 			isa = PBXGroup;
 			children = (
+				51BD461F2C9D6F3600D7515F /* Day to Days.entitlements */,
 				516CBE422C87247000202B93 /* DaytoDaysApp.swift */,
 				516CBE552C87296E00202B93 /* Models */,
 				516CBE5B2C8733E000202B93 /* Screens */,
@@ -183,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				516CBE532C87296400202B93 /* Event.swift */,
+				51BD46232C9D839B00D7515F /* EventWidget.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,10 +284,33 @@
 			path = MainScreenViews;
 			sourceTree = "<group>";
 		};
+		5177245C2C9D5C880037143A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5177245D2C9D5C880037143A /* WidgetKit.framework */,
+				5177245F2C9D5C880037143A /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		517724612C9D5C880037143A /* CounterWidget */ = {
+			isa = PBXGroup;
+			children = (
+				517724622C9D5C880037143A /* CounterWidgetBundle.swift */,
+				517724662C9D5C880037143A /* CounterWidget.swift */,
+				517724642C9D5C880037143A /* CounterWidgetLiveActivity.swift */,
+				517724682C9D5C880037143A /* AppIntent.swift */,
+				5177246A2C9D5C8A0037143A /* Assets.xcassets */,
+				5177246C2C9D5C8A0037143A /* Info.plist */,
+			);
+			path = CounterWidget;
+			sourceTree = "<group>";
+		};
 		5178F4952C8AE70700DF45D4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				516CBE5A2C8733D500202B93 /* Calculators */,
+				51BD46202C9D7A2D00D7515F /* WidgetManager.swift */,
 				519195002C8CA6AA00F29C1B /* NewAlert.swift */,
 				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
 				516C39A22C971B9E008EC3B8 /* Extensions */,
@@ -279,11 +366,13 @@
 				516CBE3B2C87247000202B93 /* Sources */,
 				516CBE3C2C87247000202B93 /* Frameworks */,
 				516CBE3D2C87247000202B93 /* Resources */,
+				517724702C9D5C8A0037143A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				516CBE522C87275900202B93 /* PBXTargetDependency */,
+				5177246E2C9D5C8A0037143A /* PBXTargetDependency */,
 			);
 			name = "Day to Days";
 			packageProductDependencies = (
@@ -292,6 +381,23 @@
 			productName = "Day to Days";
 			productReference = 516CBE3F2C87247000202B93 /* Day to Days.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5177245A2C9D5C880037143A /* CounterWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 517724732C9D5C8A0037143A /* Build configuration list for PBXNativeTarget "CounterWidgetExtension" */;
+			buildPhases = (
+				517724572C9D5C880037143A /* Sources */,
+				517724582C9D5C880037143A /* Frameworks */,
+				517724592C9D5C880037143A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CounterWidgetExtension;
+			productName = CounterWidgetExtension;
+			productReference = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -304,6 +410,9 @@
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					516CBE3E2C87247000202B93 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					5177245A2C9D5C880037143A = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
@@ -327,6 +436,7 @@
 			projectRoot = "";
 			targets = (
 				516CBE3E2C87247000202B93 /* Day to Days */,
+				5177245A2C9D5C880037143A /* CounterWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -339,6 +449,15 @@
 				516CBE4A2C87247100202B93 /* Preview Assets.xcassets in Resources */,
 				5170CC592C92ADE600A9380B /* Localizable.strings in Resources */,
 				516CBE472C87247100202B93 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		517724592C9D5C880037143A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */,
+				51BD461C2C9D6D1600D7515F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +478,7 @@
 				5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */,
 				516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */,
 				51665A022C905E2700468301 /* ColorType.swift in Sources */,
+				51BD46242C9D839B00D7515F /* EventWidget.swift in Sources */,
 				519FF10E2C8DA4A4002FA63A /* AddEventFields.swift in Sources */,
 				516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */,
 				5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */,
@@ -378,6 +498,7 @@
 				51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */,
 				510589FD2C9C5DA700CA612F /* EventsList+toolbar.swift in Sources */,
 				51058A012C9C5F1A00CA612F /* DateInfoView.swift in Sources */,
+				51BD46212C9D7A2D00D7515F /* WidgetManager.swift in Sources */,
 				516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */,
 				516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */,
 				5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */,
@@ -390,12 +511,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		517724572C9D5C880037143A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */,
+				517724692C9D5C880037143A /* AppIntent.swift in Sources */,
+				517724672C9D5C880037143A /* CounterWidget.swift in Sources */,
+				517724652C9D5C880037143A /* CounterWidgetLiveActivity.swift in Sources */,
+				51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		516CBE522C87275900202B93 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 516CBE512C87275900202B93 /* SwiftLintBuildToolPlugin */;
+		};
+		5177246E2C9D5C8A0037143A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5177245A2C9D5C880037143A /* CounterWidgetExtension */;
+			targetProxy = 5177246D2C9D5C8A0037143A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -534,11 +672,14 @@
 		516CBE4E2C87247100202B93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Day to Days/Day to Days.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Day to Days/Preview Content\"";
+				DEVELOPMENT_TEAM = WLC984U9MC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -562,11 +703,14 @@
 		516CBE4F2C87247100202B93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Day to Days/Day to Days.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Day to Days/Preview Content\"";
+				DEVELOPMENT_TEAM = WLC984U9MC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -581,6 +725,62 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "onlyMe.Day-to-Days";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		517724712C9D5C8A0037143A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CounterWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WLC984U9MC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CounterWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CounterWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "onlyMe.Day-to-Days.CounterWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		517724722C9D5C8A0037143A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CounterWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WLC984U9MC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CounterWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CounterWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "onlyMe.Day-to-Days.CounterWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -604,6 +804,15 @@
 			buildConfigurations = (
 				516CBE4E2C87247100202B93 /* Debug */,
 				516CBE4F2C87247100202B93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		517724732C9D5C8A0037143A /* Build configuration list for PBXNativeTarget "CounterWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				517724712C9D5C8A0037143A /* Debug */,
+				517724722C9D5C8A0037143A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
