@@ -7,11 +7,11 @@
 
 import Foundation
 
-final class EventWidget {
+final class EventWidget: Codable {
     let name: String
     let id: UUID
     let date: Date
-    
+
     init(name: String, id: UUID, date: Date) {
         self.name = name
         self.id = id

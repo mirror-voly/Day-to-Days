@@ -9,17 +9,24 @@ import UIKit
 import WidgetKit
 
 final class WidgetManager {
-    let encoder = JSONEncoder()
-//    private var eventData = Date()
-//    var event: Event?
 
-    func updateAction(event: Event) {
+    static private func makeEventWidget(event: Event) -> EventWidget {
+        return EventWidget(name: event.title, id: event.id, date: event.date)
+    }
+
+    static func updateWidgetInfoWith(_ event: Event) {
+        let eventForWidget = makeEventWidget(event: event)
         do {
-            let data = try encoder.encode(event)
-            UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget")?.set(Data.self, forKey: "counter")
-            WidgetCenter.shared.reloadTimelines(ofKind: "CounterWidget")
+            let data = try JSONEncoder().encode(eventForWidget)
+            if let userDefaults = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
+                userDefaults.set(data, forKey: "counter")
+                WidgetCenter.shared.reloadTimelines(ofKind: "CounterWidget")
+            } else {
+                print("UserDefaults could not be initialized.")
+            }
         } catch {
             print("Editing error occurred: \(error.localizedDescription)")
         }
     }
+
 }

@@ -73,6 +73,7 @@ struct EventInfoScreen: View {
         })
         .toolbar(content: {
             backButton
+            widgetButton
             editButton
         })
         .tint(event.color)

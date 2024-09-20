@@ -9,25 +9,31 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
+    @AppStorage("counter", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
+    var data = Data()
+    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "Title", id: UUID(), date: Date()))
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+        if let event = try? JSONDecoder().decode(EventWidget.self, from: data) {
+            return SimpleEntry(date: Date(), configuration: configuration, event: event)
+        } else {
+            return SimpleEntry(date: Date(), configuration: configuration, event: EventWidget(name: "error", id: UUID(), date: Date()))
+        }
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
         var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
+        if let event = try? JSONDecoder().decode(EventWidget.self, from: data) {
+            let currentDate = Date()
+            for hourOffset in 0 ..< 5 {
+                let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+                let entry = SimpleEntry(date: entryDate, configuration: configuration, event: event)
+                entries.append(entry)
+            }
         }
-
         return Timeline(entries: entries, policy: .atEnd)
     }
 }
@@ -35,6 +41,7 @@ struct Provider: AppIntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationAppIntent
+    let event: EventWidget
 }
 
 struct CounterWidgetEntryView : View {
@@ -42,10 +49,7 @@ struct CounterWidgetEntryView : View {
 
     var body: some View {
         VStack {
-            Text("day".localized)
-            Divider()
-            Text(entry.date, style: .time)
-            Text(entry.configuration.favoriteEmoji)
+            WidgetView(event: entry.event)
         }
     }
 }
@@ -79,6 +83,6 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     CounterWidget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
+    SimpleEntry(date: .now, configuration: .smiley, event: EventWidget(name: "", id: UUID(), date: Date()))
+    SimpleEntry(date: .now, configuration: .starEyes, event: EventWidget(name: "", id: UUID(), date: Date()))
 }
