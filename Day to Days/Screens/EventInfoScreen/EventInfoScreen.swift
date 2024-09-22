@@ -56,13 +56,13 @@ struct EventInfoScreen: View {
         .onAppear(perform: {
             viewModel.onAppearActions(event: event)
         })
-        .onChange(of: event, { _, _ in
-            viewModel.onAppearActions(event: event)
-        })
         .sheet(isPresented: $viewModel.sheetIsOpened, onDismiss: {
-            self.event = viewModel.updateEditedEvent(eventID: event.id) ?? self.event
+            event = viewModel.updateEditedEvent(eventID: event.id) ?? self.event
+            viewModel.onAppearActions(event: event)
         }, content: {
-            AddOrEditEventSheet(isOpened: $viewModel.sheetIsOpened, showAlert: $viewModel.alertIsPresented, event: event)
+            AddOrEditEventSheet(isOpened: $viewModel.sheetIsOpened, 
+                                showAlert: $viewModel.alertIsPresented,
+                                event: event)
         })
         .alert(isPresented: $viewModel.alertIsPresented, content: {
             NewAlert.showAlert {
@@ -73,6 +73,7 @@ struct EventInfoScreen: View {
         })
         .toolbar(content: {
             backButton
+            widgetButton
             editButton
         })
         .tint(event.color)

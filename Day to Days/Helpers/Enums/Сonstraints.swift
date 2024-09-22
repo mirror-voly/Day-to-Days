@@ -25,4 +25,6 @@ enum Сonstraints {
     static let emptyViewPaddingToTheTop: CGFloat = -60
     static let emptyViewFrameSize: CGFloat = 200
     static let primaryOpacity: CGFloat = 0.8
+    static let widgetNumberFontSize: CGFloat = 75
+    static let widgetStackSpaser: CGFloat = 5
 }

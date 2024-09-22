@@ -19,34 +19,22 @@ class Event: Object, Identifiable {
 
     var dateType: DateType {
         get {
-            if let data = dateTypeData {
-                return DateType.fromData(data) ?? .day
-            }
-            return .day
+            guard let data = dateTypeData else { return .day}
+            return DateType.fromData(data) ?? .day
         }
         set {
             dateTypeData = newValue.toData()
         }
     }
 
-    var colorType: ColorType {
-        get {
-            if let data = colorTypeData {
-                return ColorType.fromData(data) ?? .gray
-            }
-            return .gray
-        }
-        set {
-            colorTypeData = newValue.toData()
-        }
-    }
-
     var color: Color {
         get {
-            colorType.getColor
+            guard let data = colorTypeData else { return .gray}
+            let colorType = ColorType.fromData(data) ?? .gray
+            return colorType.getColor
         }
         set {
-            colorType = newValue.getColorType
+            colorTypeData = newValue.getColorType.toData()
         }
     }
 
