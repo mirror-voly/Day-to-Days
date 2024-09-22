@@ -13,15 +13,17 @@ struct Provider: AppIntentTimelineProvider {
     var data = Data()
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "Title", id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0])
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0])
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        if let event = try? JSONDecoder().decode(EventWidget.self, from: data) {
-            return SimpleEntry(date: Date(), configuration: configuration, event: event, widgetColor: configuration.numberColor)
+        let event: EventWidget
+        if let decodedEvent = try? JSONDecoder().decode(EventWidget.self, from: data) {
+            event = decodedEvent
         } else {
-            return SimpleEntry(date: Date(), configuration: configuration, event: EventWidget(name: "Title", id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0])
+            event = EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day)
         }
+        return SimpleEntry(date: Date(), configuration: configuration, event: event, widgetColor: configuration.numberColor)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {

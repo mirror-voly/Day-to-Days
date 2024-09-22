@@ -23,6 +23,15 @@ struct WidgetColor: AppEntity {
         WidgetColor(id: "Brown", color: .brown),
         WidgetColor(id: "Red", color: .red),
         WidgetColor(id: "Blue", color: .blue),
+        WidgetColor(id: "Orange", color: .orange),
+        WidgetColor(id: "Yellow", color: .yellow),
+        WidgetColor(id: "Green", color: .green),
+        WidgetColor(id: "Purple", color: .purple),
+        WidgetColor(id: "Pink", color: .pink),
+        WidgetColor(id: "Mint", color: .mint),
+        WidgetColor(id: "Teal", color: .teal),
+        WidgetColor(id: "Indigo", color: .indigo),
+        WidgetColor(id: "Gray", color: .gray),
         WidgetColor(id: "System default", color: .primary)
     ]
 }
