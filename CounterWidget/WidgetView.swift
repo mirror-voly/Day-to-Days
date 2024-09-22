@@ -8,32 +8,38 @@
 import SwiftUI
 
 struct WidgetView: View {
-//    @State var viewModel = WidgetViewModel()
+    @State var viewModel = WidgetViewModel()
     let event: EventWidget
 
     var body: some View {
-        VStack {
-            Text(event.name)
-                .bold()
-            Divider()
-            Text(event.date.formatted())
-                .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
-            Divider()
-            Text(event.date.formatted(.dateTime.day()))
-                .bold()
-                .font(.largeTitle)
-                .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
-            Text("ago")
+        VStack (spacing: 0) {
+                Text(event.name)
+                    .lineLimit(1)
+                    .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
+                Divider()
+                Text(viewModel.number)
+                    .bold()
+                    .fontWeight(.heavy)
+                    .font(.custom("", fixedSize: 80))
+                    .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
+            HStack(content: {
+                Group {
+                    Text(viewModel.localizedDateType)
+                    Text(viewModel.localizedTimeState)
+                }
                 .italic()
                 .font(.footnote)
                 .foregroundStyle(.gray)
-        }
-//        .onAppear(perform: {
-//            viewModel.setTimeData(event: event)
-//        })
+            })
+            
+            }
+        .onAppear(perform: {
+            viewModel.setTimeData(event: event)
+        })
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
-    WidgetView(event: EventWidget(name: "Title", id: UUID(), date: Date()))
+    WidgetView(event: EventWidget(name: "Title", id: UUID(), date: Date(), dateType: .day))
 }

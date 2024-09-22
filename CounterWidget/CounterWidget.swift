@@ -13,14 +13,14 @@ struct Provider: AppIntentTimelineProvider {
     var data = Data()
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "Title", id: UUID(), date: Date()))
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "Title", id: UUID(), date: Date(), dateType: .day))
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
         if let event = try? JSONDecoder().decode(EventWidget.self, from: data) {
             return SimpleEntry(date: Date(), configuration: configuration, event: event)
         } else {
-            return SimpleEntry(date: Date(), configuration: configuration, event: EventWidget(name: "Title", id: UUID(), date: Date()))
+            return SimpleEntry(date: Date(), configuration: configuration, event: EventWidget(name: "Title", id: UUID(), date: Date(), dateType: .day))
         }
     }
     
@@ -83,6 +83,6 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     CounterWidget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley, event: EventWidget(name: "", id: UUID(), date: Date()))
-    SimpleEntry(date: .now, configuration: .starEyes, event: EventWidget(name: "", id: UUID(), date: Date()))
+    SimpleEntry(date: .now, configuration: .smiley, event: EventWidget(name: "", id: UUID(), date: Date(), dateType: .day))
+    SimpleEntry(date: .now, configuration: .starEyes, event: EventWidget(name: "", id: UUID(), date: Date(), dateType: .year))
 }

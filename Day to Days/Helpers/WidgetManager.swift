@@ -11,10 +11,10 @@ import WidgetKit
 final class WidgetManager {
 
     static private func makeEventWidget(event: Event) -> EventWidget {
-        return EventWidget(name: event.title, id: event.id, date: event.date)
+        return EventWidget(name: event.title, id: event.id, date: event.date, dateType: event.dateType)
     }
 
-    static func updateWidgetInfoWith(_ event: Event) {
+    static func saveEventForWidget(_ event: Event) {
         let eventForWidget = makeEventWidget(event: event)
         do {
             let data = try JSONEncoder().encode(eventForWidget)

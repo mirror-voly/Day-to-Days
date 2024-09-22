@@ -27,6 +27,8 @@
 		516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* MainScreenViewModel.swift */; };
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
+		516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
+		516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */; };
 		516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9D2C8D9AF00095A646 /* EventsList.swift */; };
 		5170CC592C92ADE600A9380B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
@@ -527,11 +529,13 @@
 				517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */,
 				51BD46312C9DA6CD00D7515F /* EventWidget.swift in Sources */,
 				51BD462C2C9D957D00D7515F /* Сonstraints.swift in Sources */,
+				516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */,
 				517724692C9D5C880037143A /* AppIntent.swift in Sources */,
 				51BD462A2C9D948C00D7515F /* WidgetView.swift in Sources */,
 				517724672C9D5C880037143A /* CounterWidget.swift in Sources */,
 				517724652C9D5C880037143A /* CounterWidgetLiveActivity.swift in Sources */,
 				51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */,
+				516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

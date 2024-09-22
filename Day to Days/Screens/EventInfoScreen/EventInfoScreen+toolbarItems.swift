@@ -43,7 +43,7 @@ extension EventInfoScreen {
     var widgetButton: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
             Button {
-                WidgetManager.updateWidgetInfoWith(event)
+                WidgetManager.saveEventForWidget(event)
             } label: {
                 Circle()
                     .fill(.white)
