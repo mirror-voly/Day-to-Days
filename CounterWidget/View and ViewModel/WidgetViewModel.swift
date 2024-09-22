@@ -12,22 +12,7 @@ final class WidgetViewModel {
     private (set) var localizedTimeState: String = ""
     private (set) var number: String = ""
     private (set) var localizedDateType: String = ""
-    
-    func setTimeData(event: EventWidget) {
-        let timeData = allTimeDataFor(date: event.date, dateType: event.dateType)
-        if let localizedTimeState = timeData["localizedTimeState"] {
-            self.localizedTimeState = localizedTimeState
-        }
-        if let number = timeData["dateNumber"] {
-            self.number = number
-        }
-        if let localizedDateType = timeData["localizedDateType"] {
-            if timeData ["timeState"] != TimeStateType.present.label {
-                self.localizedDateType = localizedDateType
-            }
-        }
-    }
-    
+
     private func determineFutureOrPastForThis(date: Date) -> TimeStateType {
         let currentDate = Date()
         let calendar = Calendar.current
@@ -37,7 +22,7 @@ final class WidgetViewModel {
             return date < currentDate ? .past : .future
         }
     }
-    // MARK: - Date counters
+
     private func daysFrom(date: Date) -> Int {
         let currentDate = Date()
         let calendar = Calendar.current
@@ -74,7 +59,7 @@ final class WidgetViewModel {
         return [.year: String(years), .month: String(months), .week: String(weeks), .day: String(days)]
     }
     
-    func dateInfoForThis(date: Date, dateType: DateType) -> [DateType: String] {
+    private func dateInfoForThis(date: Date, dateType: DateType) -> [DateType: String] {
         let returnDate: [DateType: String]
         switch dateType {
         case .day:
@@ -89,7 +74,7 @@ final class WidgetViewModel {
         return returnDate
     }
     
-    func findFirstDateFromTheTopFor(date: Date, dateType: DateType) -> String { // gives only top one
+    private func findFirstDateFromTheTopFor(date: Date, dateType: DateType) -> String { // gives only top one
         let currentDate = dateInfoForThis(date: date, dateType: dateType)
         if let value = currentDate[dateType] {
             return value
@@ -147,7 +132,7 @@ final class WidgetViewModel {
         }
     }
     
-    func localizeIt(for count: String, unit: String) -> String {
+    private func localizeIt(for count: String, unit: String) -> String {
         guard let countInt = Int(count) else { return "error" }
         let absCount = abs(countInt)
         let languageCode = Locale.current.language.languageCode?.identifier
@@ -172,7 +157,7 @@ final class WidgetViewModel {
         }
     }
     
-    func localizeTimeState(for count: String, state: TimeStateType, dateType: DateType) -> String {
+    private func localizeTimeState(for count: String, state: TimeStateType, dateType: DateType) -> String {
         guard let countInt = Int(count) else { return "error" }
         let languageCode = Locale.current.language.languageCode?.identifier
         if languageCode == "ru" {
@@ -182,18 +167,26 @@ final class WidgetViewModel {
         }
     }
     
-    func getLocalizedTimeState(date: Date, dateType: DateType) -> String {
-        let timeState = determineFutureOrPastForThis(date: date)
-        let dateNumber = findFirstDateFromTheTopFor(date: date, dateType: dateType)
-        let localizedTimeState = localizeTimeState(for: dateNumber, state: timeState, dateType: dateType)
-        return localizedTimeState
-    }
-    
-    func allTimeDataFor(date: Date, dateType: DateType) -> [String: String] {
+    private func allTimeDataFor(date: Date, dateType: DateType) -> [String: String] {
         let timeState = determineFutureOrPastForThis(date: date)
         let dateNumber = findFirstDateFromTheTopFor(date: date, dateType: dateType)
         let localizedDateType = localizeIt(for: dateNumber, unit: dateType.label)
         let localizedTimeState = localizeTimeState(for: dateNumber, state: timeState, dateType: dateType)
         return ["timeState": timeState.label, "dateNumber": dateNumber, "localizedDateType": localizedDateType, "localizedTimeState": localizedTimeState]
+    }
+
+    func setTimeData(event: EventWidget) {
+        let timeData = allTimeDataFor(date: event.date, dateType: event.dateType)
+        if let localizedTimeState = timeData["localizedTimeState"] {
+            self.localizedTimeState = localizedTimeState
+        }
+        if let number = timeData["dateNumber"] {
+            self.number = number
+        }
+        if let localizedDateType = timeData["localizedDateType"] {
+            if timeData ["timeState"] != TimeStateType.present.label {
+                self.localizedDateType = localizedDateType
+            }
+        }
     }
 }

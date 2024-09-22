@@ -13,14 +13,14 @@ struct Provider: AppIntentTimelineProvider {
     var data = Data()
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "Title", id: UUID(), date: Date(), dateType: .day))
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "Title", id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0])
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
         if let event = try? JSONDecoder().decode(EventWidget.self, from: data) {
-            return SimpleEntry(date: Date(), configuration: configuration, event: event)
+            return SimpleEntry(date: Date(), configuration: configuration, event: event, widgetColor: configuration.numberColor)
         } else {
-            return SimpleEntry(date: Date(), configuration: configuration, event: EventWidget(name: "Title", id: UUID(), date: Date(), dateType: .day))
+            return SimpleEntry(date: Date(), configuration: configuration, event: EventWidget(name: "Title", id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0])
         }
     }
     
@@ -30,7 +30,7 @@ struct Provider: AppIntentTimelineProvider {
             let currentDate = Date()
             for hourOffset in 0 ..< 5 {
                 let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, configuration: configuration, event: event)
+                let entry = SimpleEntry(date: entryDate, configuration: configuration, event: event, widgetColor: configuration.numberColor)
                 entries.append(entry)
             }
         }
@@ -42,6 +42,7 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationAppIntent
     let event: EventWidget
+    let widgetColor: WidgetColor?
 }
 
 struct CounterWidgetEntryView : View {
@@ -49,7 +50,7 @@ struct CounterWidgetEntryView : View {
 
     var body: some View {
         VStack {
-            WidgetView(event: entry.event)
+            WidgetView(backgroundColor: entry.configuration.numberColor.color, event: entry.event)
         }
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.brown.opacity(0.1))
@@ -66,25 +67,4 @@ struct CounterWidget: Widget {
         }
         .supportedFamilies([.systemSmall])
     }
-}
-
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
-    }
-}
-
-#Preview(as: .systemSmall) {
-    CounterWidget()
-} timeline: {
-    SimpleEntry(date: .now, configuration: .smiley, event: EventWidget(name: "", id: UUID(), date: Date(), dateType: .day))
-    SimpleEntry(date: .now, configuration: .starEyes, event: EventWidget(name: "", id: UUID(), date: Date(), dateType: .year))
 }

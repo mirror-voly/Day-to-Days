@@ -30,6 +30,9 @@
 		516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		516DE0A82CA022E400E83E1D /* Сonstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Сonstraints.swift */; };
+		516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
+		516DE0AC2CA0392800E83E1D /* WidgetColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DE0AB2CA0392800E83E1D /* WidgetColor.swift */; };
+		516DE0AE2CA039AD00E83E1D /* WidgetColorQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */; };
 		516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */; };
 		516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9D2C8D9AF00095A646 /* EventsList.swift */; };
 		5170CC592C92ADE600A9380B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
@@ -41,7 +44,6 @@
 		5177245E2C9D5C880037143A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245D2C9D5C880037143A /* WidgetKit.framework */; };
 		517724602C9D5C880037143A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245F2C9D5C880037143A /* SwiftUI.framework */; };
 		517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724622C9D5C880037143A /* CounterWidgetBundle.swift */; };
-		517724652C9D5C880037143A /* CounterWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724642C9D5C880037143A /* CounterWidgetLiveActivity.swift */; };
 		517724672C9D5C880037143A /* CounterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724662C9D5C880037143A /* CounterWidget.swift */; };
 		517724692C9D5C880037143A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724682C9D5C880037143A /* AppIntent.swift */; };
 		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
@@ -115,6 +117,8 @@
 		516CBE562C872FAA00202B93 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		516CBE582C87339F00202B93 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		516CBE5C2C87403600202B93 /* EventsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemView.swift; sourceTree = "<group>"; };
+		516DE0AB2CA0392800E83E1D /* WidgetColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetColor.swift; sourceTree = "<group>"; };
+		516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetColorQuery.swift; sourceTree = "<group>"; };
 		516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListIsEmpyView.swift; sourceTree = "<group>"; };
 		516F0C9D2C8D9AF00095A646 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		5170CC582C92ADE600A9380B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -127,7 +131,6 @@
 		5177245D2C9D5C880037143A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5177245F2C9D5C880037143A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		517724622C9D5C880037143A /* CounterWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidgetBundle.swift; sourceTree = "<group>"; };
-		517724642C9D5C880037143A /* CounterWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		517724662C9D5C880037143A /* CounterWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidget.swift; sourceTree = "<group>"; };
 		517724682C9D5C880037143A /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -278,6 +281,15 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		516DE0AA2CA038A800E83E1D /* View and ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				51BD46262C9D908B00D7515F /* WidgetView.swift */,
+				51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */,
+			);
+			path = "View and ViewModel";
+			sourceTree = "<group>";
+		};
 		516F0C9F2C8D9B710095A646 /* MainScreenViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,10 +318,10 @@
 			children = (
 				517724622C9D5C880037143A /* CounterWidgetBundle.swift */,
 				517724662C9D5C880037143A /* CounterWidget.swift */,
-				51BD46262C9D908B00D7515F /* WidgetView.swift */,
-				51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */,
-				517724642C9D5C880037143A /* CounterWidgetLiveActivity.swift */,
 				517724682C9D5C880037143A /* AppIntent.swift */,
+				516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */,
+				516DE0AB2CA0392800E83E1D /* WidgetColor.swift */,
+				516DE0AA2CA038A800E83E1D /* View and ViewModel */,
 				5177246A2C9D5C8A0037143A /* Assets.xcassets */,
 				5177246C2C9D5C8A0037143A /* Info.plist */,
 			);
@@ -528,14 +540,16 @@
 				51BD462F2C9DA10F00D7515F /* WidgetViewModel.swift in Sources */,
 				517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */,
 				51BD46312C9DA6CD00D7515F /* EventWidget.swift in Sources */,
+				516DE0AE2CA039AD00E83E1D /* WidgetColorQuery.swift in Sources */,
 				516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */,
 				516DE0A82CA022E400E83E1D /* Сonstraints.swift in Sources */,
 				517724692C9D5C880037143A /* AppIntent.swift in Sources */,
 				51BD462A2C9D948C00D7515F /* WidgetView.swift in Sources */,
+				516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */,
 				517724672C9D5C880037143A /* CounterWidget.swift in Sources */,
-				517724652C9D5C880037143A /* CounterWidgetLiveActivity.swift in Sources */,
 				51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */,
 				516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */,
+				516DE0AC2CA0392800E83E1D /* WidgetColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
