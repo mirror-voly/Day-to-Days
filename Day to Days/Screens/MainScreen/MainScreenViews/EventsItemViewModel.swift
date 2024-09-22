@@ -25,7 +25,7 @@ final class EventsItemViewModel {
         }
         if let localizedDateType = timeData["localizedDateType"] {
             if timeData ["timeState"] != TimeStateType.present.label {
-                self.localizedDateType = localizedTimeState
+                self.localizedDateType = localizedDateType
             }
         }
     }
