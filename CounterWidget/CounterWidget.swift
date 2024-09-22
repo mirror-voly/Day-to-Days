@@ -51,6 +51,8 @@ struct CounterWidgetEntryView : View {
         VStack {
             WidgetView(event: entry.event)
         }
+        .containerRelativeFrame([.horizontal, .vertical])
+        .background(.brown.opacity(0.1))
     }
 }
 
