@@ -15,6 +15,11 @@ final class EventInfoScreenViewModel {
     private (set) var localizedTimeState: String?
     var sheetIsOpened = false
     var alertIsPresented = false
+    var widgetEventID: String = "" {
+        didSet {
+            UserDefaults.standard.set(widgetEventID, forKey: "widgetEventID")
+        }
+    }
 
     private func allInfoForDate(event: Event) {
         let allInfo = DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
