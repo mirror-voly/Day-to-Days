@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct WidgetView: View {
-    @State var viewModel = WidgetViewModel()
-    let backgroundColor: Color
+    var viewModel = WidgetViewModel()
+    let numberColor: Color
     let event: EventWidget
 
     var body: some View {
@@ -22,7 +22,7 @@ struct WidgetView: View {
             Text(viewModel.number)
                 .font(.system(size: Сonstraints.widgetNumberFontSize, weight: .heavy))
                 .lineLimit(1)
-                .foregroundStyle(backgroundColor)
+                .foregroundStyle(numberColor)
                 .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
             Divider()
             HStack(spacing: Сonstraints.widgetStackSpaser, content: {

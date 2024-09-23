@@ -29,4 +29,21 @@ final class WidgetManager {
         }
     }
 
+    static func saveEventsForWidgets(_ events: [Event]) {
+        var eventsForWidgets: [EventWidget] = []
+        for event in events {
+            eventsForWidgets.append(makeEventWidget(event: event))
+        }
+        do {
+            let data = try JSONEncoder().encode(eventsForWidgets)
+            if let userDefaults = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
+                userDefaults.set(data, forKey: "counters")
+                WidgetCenter.shared.reloadTimelines(ofKind: "CounterWidget")
+            } else {
+                print("UserDefaults could not be initialized.")
+            }
+        } catch {
+            print("Editing error occurred: \(error.localizedDescription)")
+        }
+    }
 }
