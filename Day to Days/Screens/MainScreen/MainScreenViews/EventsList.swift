@@ -11,24 +11,23 @@ struct EventsList: View {
     @Environment(MainScreenViewModel.self) var viewModel
     @ObservedResults(Event.self) var allEvents
 
-    // MARK: - View
     var body: some View {
         VStack {
             List {
-                ForEach(viewModel.sortedEvents, id: \.self) { event in
-                    EventsItemView(event: event)
+                ForEach(viewModel.sortedEvents.indices, id: \.self) { index in
+                    EventsItemView(index: index)
                     .background(
                         Group {
-                            if viewModel.editMode == .inactive {
+                            if !viewModel.editIsActivated {
                                 ZStack {
                                     Button("") {} // Bugfix to NavigationLink element if it selected after coming back
-                                    NavigationLink("", value: event).opacity(0)
+                                    NavigationLink("", value: viewModel.sortedEvents[index]).opacity(0)
                                 }
                             }
                         })
                     .swipeActions {
-                        if viewModel.editMode == .inactive {
-                            deleteButton(for: event)
+                        if !viewModel.editIsActivated {
+                            deleteButton(for: index)
                             multipleSelectionButton()
                         }
                     }
@@ -40,7 +39,7 @@ struct EventsList: View {
             if viewModel.noSelectedEvents {
                 sortMenu
             }
-            if viewModel.editMode == .active {
+            if viewModel.editIsActivated {
                 editModeToolbar
             }
         }

@@ -10,9 +10,9 @@ import SwiftUI
 // MARK: - Toolbar Items
 extension EventsList {
     // MARK: Swipe Actions
-    func deleteButton(for event: Event) -> some View {
+    func deleteButton(for index: Int) -> some View {
         Button(role: .destructive) {
-            $allEvents.remove(event)
+            viewModel.removeEventBy(index)
         } label: {
             Label("delete".localized, systemImage: "trash")
         }
@@ -20,7 +20,7 @@ extension EventsList {
 
     func multipleSelectionButton() -> some View {
         Button(role: .cancel) {
-            viewModel.setEditMode(mode: .active)
+            viewModel.setEditMode(set: true)
         } label: {
             Label("multiple_selection".localized, systemImage: "checkmark.circle")
         }

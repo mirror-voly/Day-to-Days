@@ -12,13 +12,13 @@ extension EventsList {
     var sortMenu: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
             Menu {
-                ForEach(SortType.allCases, id: \.self) { type in
+                ForEach(SortType.allCases, id: \.self) { sortType in
                     Button(role: .cancel) {
-                        viewModel.sortButtonAction(type: type)
+                        viewModel.sortButtonAction(type: sortType)
                     } label: {
                         HStack {
-                            Text(type.rawValue.localized)
-                            Image(systemName: type != .none ? viewModel.imageName : "dot.circle")
+                            Text(sortType.rawValue.localized)
+                            Image(systemName: sortType != .none ? viewModel.imageName : "dot.circle")
                         }
                     }
                 }
@@ -33,7 +33,6 @@ extension EventsList {
         Group {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    viewModel.setEditMode(mode: .inactive)
                     viewModel.removeSelectedEvents()
                 } label: {
                     Text(viewModel.noSelectedEvents ? "done".localized : "delete_selected".localized)
@@ -45,7 +44,6 @@ extension EventsList {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         viewModel.makeSelectedEventsEmpty()
-                        viewModel.setEditMode(mode: .inactive)
                     } label: {
                         Text("cancel".localized)
                     }

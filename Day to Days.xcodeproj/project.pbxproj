@@ -15,6 +15,7 @@
 		51058A052C9C64D200CA612F /* ButtonSpacerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51058A042C9C64D200CA612F /* ButtonSpacerType.swift */; };
 		510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */; };
 		510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */; };
+		513522BC2CA2D57A00FA685D /* OverlayRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513522BB2CA2D57A00FA685D /* OverlayRectangle.swift */; };
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		51665A022C905E2700468301 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
@@ -104,6 +105,7 @@
 		51058A042C9C64D200CA612F /* ButtonSpacerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSpacerType.swift; sourceTree = "<group>"; };
 		510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreenViewModel.swift; sourceTree = "<group>"; };
 		510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemViewModel.swift; sourceTree = "<group>"; };
+		513522BB2CA2D57A00FA685D /* OverlayRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayRectangle.swift; sourceTree = "<group>"; };
 		516659F82C90324C00468301 /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
 		51665A012C905E2700468301 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
@@ -297,8 +299,9 @@
 				510589FC2C9C5DA700CA612F /* EventsList+toolbar.swift */,
 				510589FE2C9C5E1400CA612F /* EventsList+swipeButtons.swift */,
 				516CBE5C2C87403600202B93 /* EventsItemView.swift */,
-				51058A022C9C608D00CA612F /* DayCounterWithShortInfoView.swift */,
 				510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */,
+				513522BB2CA2D57A00FA685D /* OverlayRectangle.swift */,
+				51058A022C9C608D00CA612F /* DayCounterWithShortInfoView.swift */,
 				516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */,
 			);
 			path = MainScreenViews;
@@ -495,6 +498,7 @@
 				5170CC652C9300C800A9380B /* TimeUnitLocalizer.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
 				510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */,
+				513522BC2CA2D57A00FA685D /* OverlayRectangle.swift in Sources */,
 				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,
 				5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */,
 				5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */,

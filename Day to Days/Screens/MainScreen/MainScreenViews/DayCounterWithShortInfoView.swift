@@ -9,18 +9,15 @@ import SwiftUI
 
 struct DayCounterWithShortInfoView: View {
     @Environment(EventsItemViewModel.self) private var viewModel
-    let color: Color
     var body: some View {
         VStack {
             Group {
                 Text(viewModel.localizedTimeState)
-                    .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
                 Divider()
                 Text(viewModel.number)
-                    .foregroundStyle(color)
+                    .foregroundStyle(viewModel.event.color)
                     .bold()
                     .font(.title3)
-                    .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
                 Text(viewModel.localizedDateType)
                     .italic()
                     .font(.footnote)
@@ -28,6 +25,7 @@ struct DayCounterWithShortInfoView: View {
             }
             .lineLimit(1)
             .frame(maxWidth: .infinity)
+            .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
         }
         .frame(width: Сonstraints.eventsItemViewDateFrameSize)
         .padding()

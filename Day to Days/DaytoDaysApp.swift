@@ -13,7 +13,7 @@ struct DaytoDaysApp: App {
     @State private var addViewModel = AddOrEditEventSheetViewModel()
     var body: some Scene {
         WindowGroup {
-            MainScreen()
+            MainScreen(viewModel: mainScreenViewModel)
                 .environment(mainScreenViewModel)
                 .environment(addViewModel)
         }

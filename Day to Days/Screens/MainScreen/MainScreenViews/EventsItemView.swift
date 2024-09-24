@@ -10,49 +10,43 @@ import SwiftUI
 struct EventsItemView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(MainScreenViewModel.self) private var mainScreenViewModel
-    @State private var viewModel = EventsItemViewModel()
-    let event: Event
+    @State private var viewModel: EventsItemViewModel
 
     var body: some View {
         HStack {
             // MARK: - Circle
             Circle()
-                .fill(event.color)
+                .fill(viewModel.event.color)
                 .overlay(
                     Circle()
-                        .fill(colorScheme == .light ? (viewModel.isSelected ? Color.primary : .white) :
-                                (viewModel.isSelected ? Color.primary : .black))
+                        .fill(viewModel.fillColor)
                         .frame(width: Сonstraints.eventsItemViewCicleHoleSize))
                 .frame(width: Сonstraints.eventsItemViewCicleSize)
                 .padding()
-                .onChange(of: mainScreenViewModel.editMode) { _, newValue in
-                    if newValue != .active {
-                        viewModel.changeSelectedToFalse()
-                    }
+                .onChange(of: mainScreenViewModel.editIsActivated) { _, newValue in
+                    guard !newValue else { return }
+                    viewModel.changeSelectedToFalse()
                 }
-            Text(event.title)
+            Text(viewModel.event.title)
                 .font(.title2)
             Spacer()
-            DayCounterWithShortInfoView(color: event.color)
+            DayCounterWithShortInfoView()
         }
         .overlay(alignment: .center) {
-                if mainScreenViewModel.editMode == .active {
-                    Rectangle()
-                        .fill(viewModel.isSelected ? Color.primary.opacity(0.1) : Color.primary.opacity(0.01))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .clipShape(.rect(cornerRadius: Сonstraints.cornerRadius))
-                        .onTapGesture {
-                            mainScreenViewModel.toggleSelectedState(eventID: event.id)
-                            viewModel.toggleSelected()
-                        }
-                }
+            if mainScreenViewModel.editIsActivated {
+                OverlayRectangle()
+            }
         }
+        .onChange(of: mainScreenViewModel.sortedEvents, { _, _ in
+            viewModel.updateEvent()
+        })
         .onAppear {
-            viewModel.setTimeData(event: event)
-        }
-        .onChange(of: viewModel.isSelected) { _, _ in
-            mainScreenViewModel.toggleSelection(eventID: event.id, isSelected: viewModel.isSelected)
+            viewModel.setMainViewModel(mainScreenViewModel)
         }
         .environment(viewModel)
+    }
+
+    init(index: Int) {
+        _viewModel = State(wrappedValue: EventsItemViewModel(index: index))
     }
 }
