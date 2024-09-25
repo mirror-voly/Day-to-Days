@@ -14,8 +14,13 @@ final class WidgetManager {
         return EventWidget(name: event.title, id: event.id, date: event.date, dateType: event.dateType)
     }
 
+    static private func saveIDToUserDefaults(eventID: String) {
+        UserDefaults.standard.set(eventID, forKey: "widgetEventID")
+    }
+
     static func saveEventForWidget(_ event: Event) {
         let eventForWidget = makeEventWidget(event: event)
+        saveIDToUserDefaults(eventID: event.id.uuidString)
         do {
             let data = try JSONEncoder().encode(eventForWidget)
             if let userDefaults = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
@@ -29,21 +34,7 @@ final class WidgetManager {
         }
     }
 
-    static func saveEventsForWidgets(_ events: [Event]) {
-        var eventsForWidgets: [EventWidget] = []
-        for event in events {
-            eventsForWidgets.append(makeEventWidget(event: event))
-        }
-        do {
-            let data = try JSONEncoder().encode(eventsForWidgets)
-            if let userDefaults = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
-                userDefaults.set(data, forKey: "counters")
-                WidgetCenter.shared.reloadTimelines(ofKind: "CounterWidget")
-            } else {
-                print("UserDefaults could not be initialized.")
-            }
-        } catch {
-            print("Editing error occurred: \(error.localizedDescription)")
-        }
+    static func activeVidgetEventID() -> String? {
+        UserDefaults.standard.string(forKey: "widgetEventID")
     }
 }

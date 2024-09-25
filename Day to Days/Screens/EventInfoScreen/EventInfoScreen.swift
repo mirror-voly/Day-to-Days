@@ -27,16 +27,12 @@ struct EventInfoScreen: View {
                     Spacer()
                     // MARK: Date presenter
                     GroupBox {
-                        Text(viewModel.localizedTimeState?.capitalized ?? "")
+                        Text(viewModel.localizedTimeState)
                             .font(.subheadline)
                         Divider()
-                        VStack {
-                            ForEach(viewModel.allDateTypes, id: \.self) { dateTypeKey in
-                                if let value = viewModel.allInfoForCurrentDate?[dateTypeKey] {
-                                    DateInfoView(value: value,
-                                                 label: TimeUnitLocalizer.localizeIt(for: value,
-                                                                                     unit: dateTypeKey.label))
-                                }
+                        ForEach(viewModel.allDateTypes, id: \.self) { dateTypeKey in
+                            if let number = viewModel.allInfoForCurrentDate?[dateTypeKey] {
+                                DateInfoView(number: number, dateType: dateTypeKey)
                             }
                         }
                     }
@@ -52,18 +48,16 @@ struct EventInfoScreen: View {
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $viewModel.sheetIsOpened, onDismiss: {
-            viewModel.setEvent(event: viewModel.updateEditedEvent(eventID: viewModel.event.id) ?? self.viewModel.event)
-            viewModel.onAppearActions(event: viewModel.event)
+            viewModel.updateEditedEvent()
         }, content: {
-            AddOrEditEventSheet(event: viewModel.event, 
-            isOpened: $viewModel.sheetIsOpened,
+            AddOrEditEventSheet(event: viewModel.event, isOpened: $viewModel.sheetIsOpened,
             showAlert: $viewModel.alertIsPresented, viewModel: sheetViewModel)
         })
         .alert(isPresented: $viewModel.alertIsPresented, content: {
             NewAlert.showAlert {
                 sheetViewModel.makeCurrentEventNil()
             } onCancel: {
-                viewModel.sheetIsOpened = true
+                viewModel.reopenSheet()
             }
         })
         .toolbar(content: {
@@ -75,7 +69,6 @@ struct EventInfoScreen: View {
     }
 
     init(event: Event) {
-        self.viewModel = EventInfoScreenViewModel()
-        viewModel.setEvent(event: event)
+        self.viewModel = EventInfoScreenViewModel(event: event)
     }
 }

@@ -19,6 +19,7 @@ final class MainScreenViewModel {
     private var events: Results<Event>?
     var sheetIsOpened = false
     var alertIsPresented = false
+
     private (set) var ascending = true {
         didSet {
             imageName = ascending ? "arrow.up.circle" : "arrow.down.circle"
@@ -29,7 +30,7 @@ final class MainScreenViewModel {
             noSelectedEvents = selectedEvents.isEmpty
         }
     }
-    // MARK: - Calculated variables
+    // MARK: - Calculated properties
     var sortedEvents: [Event] {
         guard let events = events else { return []}
         let result: [Event] = sortResulsBy(allEvents: events, sortBy: sortBy, ascending: ascending).reversed()

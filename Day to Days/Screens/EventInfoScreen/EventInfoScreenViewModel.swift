@@ -10,51 +10,52 @@ import RealmSwift
 
 @Observable
 final class EventInfoScreenViewModel {
-    let allDateTypes = DateType.allCases.reversed()
-    private var eventOptional: Event?
+
     private (set) var allInfoForCurrentDate: [DateType: String]?
-    private (set) var localizedTimeState: String?
+    let allDateTypes = DateType.allCases.reversed()
+    var alertIsPresented = false
+    var sheetIsOpened = false
+
+    // MARK: - Calculated properties
+    private (set) var event: Event {
+        didSet {
+            allInfoForDate(event: event)
+        }
+    }
+    var localizedTimeState: String {
+        TimeUnitLocalizer.getLocalizedTimeState(event: event).capitalized
+    }
     var info: String {
         event.info.isEmpty ? "no_description".localized : event.info
     }
-    var sheetIsOpened = false
-    var alertIsPresented = false
-    var widgetEventID: String = "" {
-        didSet {
-            UserDefaults.standard.set(widgetEventID, forKey: "widgetEventID")
-        }
-    }
-    var event: Event {
-        eventOptional ?? Event()
-    }
+    // MARK: - Functions
     private func allInfoForDate(event: Event) {
         let allInfo = DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
         allInfoForCurrentDate = allInfo
     }
 
-    private func localizedTimeStateFor(event: Event) {
-        localizedTimeState = TimeUnitLocalizer.getLocalizedTimeState(event: event)
-    }
-
-    func updateEditedEvent(eventID: UUID) -> Event? {
+    func updateEditedEvent() {
+        let eventID = event.id
         do {
             let realm = try Realm()
             if let event = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
-                return event
+                setEvent(event: event)
             }
         } catch {
             print("Finding event error occurred: \(error.localizedDescription)")
         }
-        return nil
-    }
-
-    func onAppearActions(event: Event) {
-        allInfoForDate(event: event)
-        localizedTimeStateFor(event: event)
     }
 
     func setEvent(event: Event) {
-        self.eventOptional = event
-        onAppearActions(event: event)
+        self.event = event
+    }
+
+    func reopenSheet() {
+        sheetIsOpened = true
+    }
+
+    init(event: Event) {
+        self.event = event
+        allInfoForDate(event: event)
     }
 }

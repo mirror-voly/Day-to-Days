@@ -18,18 +18,19 @@ final class AddOrEditEventSheetViewModel {
     private (set) var addButtonIsVisible = false
     private (set) var buttonSpacer: ButtonSpacerType = .minimize
     var popoverIsPresented = false
+
     private (set) var sliderValue: Double = 0 {
         didSet {
             dateType = .allCases[Int(sliderValue)]
         }
     }
+    // MARK: - Calculated properties
     var sheetTitle: String {
         screenMode == .edit ? "edit_event".localized: "new_event".localized
     }
     private let helpStrings = [
         "day_help", "week_help", "month_help", "year_help", "days_help"
     ]
-
     // MARK: - User fields
     var title: String = "" {
             didSet {
@@ -143,7 +144,7 @@ final class AddOrEditEventSheetViewModel {
     func buttonAction() {
         let oldEventID = event?.id
         let event = createEvent(id: nil)
-        let widgetEventID: String? = UserDefaults.standard.string(forKey: "widgetEventID")
+        let widgetEventID = WidgetManager.activeVidgetEventID()
         if let oldEventID = oldEventID {
             editEvent(oldEventID: oldEventID, newEvent: event)
             if widgetEventID == oldEventID.uuidString {

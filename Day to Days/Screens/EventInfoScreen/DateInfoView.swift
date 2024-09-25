@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct DateInfoView: View {
-    let value: String
+    let number: String
     let label: String
 
     var body: some View {
         VStack {
-            Text(value)
+            Text(number)
                 .lineLimit(1)
                 .font(.title)
                 .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
@@ -23,5 +23,10 @@ struct DateInfoView: View {
                 .foregroundStyle(Color.secondary)
         }
         .frame(maxWidth: .infinity)
+    }
+
+    init(number: String, dateType: DateType) {
+        self.number = number
+        self.label = TimeUnitLocalizer.localizeIt(for: number, unit: dateType.label)
     }
 }
