@@ -11,20 +11,18 @@ import RealmSwift
 struct EventInfoScreen: View {
     @Environment(AddOrEditEventSheetViewModel.self) var sheetViewModel
     @Environment(\.dismiss) var dismiss
-    @State var viewModel = EventInfoScreenViewModel()
-    @State var event: Event
-
+    @Bindable var viewModel: EventInfoScreenViewModel
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading, content: {
             GroupBox {
                 HStack(alignment: .top, content: {
                     VStack(alignment: .leading, content: {
-                        Text(event.date.formatted(date: .long, time: .omitted))
+                        Text(viewModel.event.date.formatted(date: .long, time: .omitted))
                             .font(.callout)
                             .foregroundStyle(.secondary)
                             .padding(.bottom)
-                        Text(event.info.isEmpty ? "no_description".localized : event.info)
+                        Text(viewModel.info)
                     })
                     Spacer()
                     // MARK: Date presenter
@@ -49,18 +47,15 @@ struct EventInfoScreen: View {
         })
         .padding()
         // MARK: - View settings
-        .navigationTitle(event.title)
-        .toolbarBackground(event.color, for: .navigationBar)
+        .navigationTitle(viewModel.event.title)
+        .toolbarBackground(viewModel.event.color, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
-        .onAppear(perform: {
-            viewModel.onAppearActions(event: event)
-        })
         .sheet(isPresented: $viewModel.sheetIsOpened, onDismiss: {
-            event = viewModel.updateEditedEvent(eventID: event.id) ?? self.event
-            viewModel.onAppearActions(event: event)
+            viewModel.setEvent(event: viewModel.updateEditedEvent(eventID: viewModel.event.id) ?? self.viewModel.event)
+            viewModel.onAppearActions(event: viewModel.event)
         }, content: {
-            AddOrEditEventSheet(event: event, 
+            AddOrEditEventSheet(event: viewModel.event, 
             isOpened: $viewModel.sheetIsOpened,
             showAlert: $viewModel.alertIsPresented, viewModel: sheetViewModel)
         })
@@ -76,6 +71,11 @@ struct EventInfoScreen: View {
             widgetButton
             editButton
         })
-        .tint(event.color)
+        .tint(viewModel.event.color)
+    }
+
+    init(event: Event) {
+        self.viewModel = EventInfoScreenViewModel()
+        viewModel.setEvent(event: event)
     }
 }
