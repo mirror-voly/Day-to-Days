@@ -9,16 +9,15 @@ import SwiftUI
 import Combine
 
 struct AddOrEditEventSheet: View {
-    @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
+    private let viewModel: AddOrEditEventSheetViewModel
     @Binding var isOpened: Bool
     @Binding var showAlert: Bool
-    var event: Event?
 
     // MARK: - View
     var body: some View {
         VStack(content: {
             GroupBox(viewModel.sheetTitle) {
-                AddEventFields()
+                AddEventFields(viewModel: viewModel)
                 DateTypeSlider()
                     .onTapGesture(perform: {
                         hideKeyboard()
@@ -26,7 +25,7 @@ struct AddOrEditEventSheet: View {
             }
             Spacer()
             AddEventButton(onAddNew: {
-                viewModel.buttonAction(oldEventID: event?.id, event: viewModel.createEvent(id: nil))
+                viewModel.buttonAction()
                 isOpened = false
             })
             .frame(height: viewModel.buttonSpacer.value)
@@ -35,9 +34,10 @@ struct AddOrEditEventSheet: View {
         .padding()
 
         // MARK: - View actions
-        .onAppear(perform: { viewModel.extractEventData(event: event) })
-        .onDisappear(perform: { viewModel.dismissAlertPrepare(oldEventID: event?.id,
-                                                              action: { showAlert = true })
+        .onAppear(perform: { viewModel.extractEventData() })
+        .onDisappear(perform: { viewModel.dismissAlertPrepare(action: {
+            showAlert = true
+        })
         })
         // MARK: Keyboard detection
         .onReceive(Publishers.keyboardWillShow) { _ in
@@ -46,5 +46,17 @@ struct AddOrEditEventSheet: View {
         .onReceive(Publishers.keyboardWillHide) { _ in
             viewModel.setButtonSpacer(buttonSpacer: .minimize)
         }
+    }
+    init(event: Event, isOpened: Binding<Bool>, showAlert: Binding<Bool>, viewModel: AddOrEditEventSheetViewModel) {
+        self._isOpened = isOpened
+        self._showAlert = showAlert
+        self.viewModel = viewModel
+        viewModel.setEvent(event: event)
+    }
+
+    init(isOpened: Binding<Bool>, showAlert: Binding<Bool>, viewModel: AddOrEditEventSheetViewModel) {
+        self._isOpened = isOpened
+        self._showAlert = showAlert
+        self.viewModel = viewModel
     }
 }

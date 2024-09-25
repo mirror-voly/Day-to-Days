@@ -60,9 +60,9 @@ struct EventInfoScreen: View {
             event = viewModel.updateEditedEvent(eventID: event.id) ?? self.event
             viewModel.onAppearActions(event: event)
         }, content: {
-            AddOrEditEventSheet(isOpened: $viewModel.sheetIsOpened, 
-                                showAlert: $viewModel.alertIsPresented,
-                                event: event)
+            AddOrEditEventSheet(event: event, 
+            isOpened: $viewModel.sheetIsOpened,
+            showAlert: $viewModel.alertIsPresented, viewModel: sheetViewModel)
         })
         .alert(isPresented: $viewModel.alertIsPresented, content: {
             NewAlert.showAlert {

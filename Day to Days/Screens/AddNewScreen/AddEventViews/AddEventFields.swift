@@ -8,23 +8,14 @@
 import SwiftUI
 
 struct AddEventFields: View {
-    @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
-
+    @Bindable var viewModel: AddOrEditEventSheetViewModel
     var body: some View {
             GroupBox {
-                TextField(text: Binding(get: {
-                    viewModel.title
-                }, set: { value in
-                    viewModel.title = value
-                })) {
+                TextField(text: $viewModel.title) {
                     Text("title".localized)
                 }
                 Divider()
-                TextField(text: Binding(get: {
-                    viewModel.info
-                }, set: { value in
-                    viewModel.info = value
-                })) {
+                TextField(text: $viewModel.info) {
                     Text("description".localized)
                 }
             }
@@ -32,11 +23,7 @@ struct AddEventFields: View {
             // MARK: Date and color pickers
             GroupBox {
                 HStack {
-                    DatePicker("date".localized, selection: Binding(get: {
-                        viewModel.date
-                    }, set: { value in
-                        viewModel.date = value
-                    }), displayedComponents: .date)
+                    DatePicker("date".localized, selection: $viewModel.date, displayedComponents: .date)
                         .datePickerStyle(.compact)
                         .contextMenu {
                             HelpContextMenu(helpText: "date_help")
@@ -53,7 +40,7 @@ struct AddEventFields: View {
                     }
                 }
                 Divider()
-                ColorPickerPopover()
+                ColorPickerPopover(viewModel: viewModel)
             }
             .padding(.bottom)
     }

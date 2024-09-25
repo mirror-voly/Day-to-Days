@@ -27,7 +27,8 @@ struct MainScreen: View {
             .sheet(isPresented: $viewModel.sheetIsOpened) {
                         AddOrEditEventSheet(
                             isOpened: $viewModel.sheetIsOpened,
-                            showAlert: $viewModel.alertIsPresented
+                            showAlert: $viewModel.alertIsPresented, 
+                            viewModel: sheetViewModel
                         )
                     }
             // MARK: Toolbar

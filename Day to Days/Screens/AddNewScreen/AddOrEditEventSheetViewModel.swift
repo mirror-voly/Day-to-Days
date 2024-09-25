@@ -14,9 +14,10 @@ final class AddOrEditEventSheetViewModel {
     private var currentEvent: Event?
     private var fixedDate = Date()
     private var canDismiss = true
+    private var event: Event?
     private (set) var addButtonIsVisible = false
     private (set) var buttonSpacer: ButtonSpacerType = .minimize
-    private (set) var popoverIsPresented = false
+    var popoverIsPresented = false
     private (set) var sliderValue: Double = 0 {
         didSet {
             dateType = .allCases[Int(sliderValue)]
@@ -126,19 +127,22 @@ final class AddOrEditEventSheetViewModel {
         )
     }
 
-    func extractEventData(event: Event?) {
+    func extractEventData() {
         let eventToUpdate = currentEvent ?? event
         updateFieldsFrom(eventToUpdate)
     }
 
-    func dismissAlertPrepare(oldEventID: UUID?, action: () -> Void) {
+    func dismissAlertPrepare(action: () -> Void) {
+        let oldEventID = event?.id
         guard !canDismiss else { return }
         let event = createEvent(id: oldEventID)
         setCurrentEvent(event: event)
         action()
     }
 
-    func buttonAction(oldEventID: UUID?, event: Event) {
+    func buttonAction() {
+        let oldEventID = event?.id
+        let event = createEvent(id: nil)
         let widgetEventID: String? = UserDefaults.standard.string(forKey: "widgetEventID")
         if let oldEventID = oldEventID {
             editEvent(oldEventID: oldEventID, newEvent: event)
@@ -158,10 +162,15 @@ final class AddOrEditEventSheetViewModel {
         screenMode = mode
     }
 
+    func setEvent(event: Event) {
+        self.event = event
+    }
+
     func makeCurrentEventNil() {
         screenMode = nil
         currentEvent = nil
         canDismiss = true
+        event = nil
     }
 
     func addHelpToTheButtonsBy(_ index: Int) -> String {
@@ -182,5 +191,9 @@ final class AddOrEditEventSheetViewModel {
 
     func setPopoverIsPresented(set: Bool) {
         popoverIsPresented = set
+    }
+
+    func getColorForMenuItem(currentColor: ColorType) -> Color {
+        color.getColorType == currentColor ? Color.secondary : Color.clear
     }
 }

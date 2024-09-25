@@ -15,9 +15,10 @@ extension DateTypeSlider {
                     Button(action: {
                         viewModel.setSliderValue(value: Double(index))
                     }, label: {
+                        let needToColorize = index < step + 1
                         Circle()
-                            .fill(index < step + 1 ? viewModel.color : .gray)
-                            .frame(width: index < step + 1 ? Сonstraints.sliderCircleBig: Сonstraints.sliderCircleSmall)
+                            .fill(needToColorize ? viewModel.color : .gray)
+                            .frame(width: needToColorize ? Сonstraints.sliderCircleBig: Сonstraints.sliderCircleSmall)
                     })
                     .containerShape(Rectangle())
                     .contextMenu {
