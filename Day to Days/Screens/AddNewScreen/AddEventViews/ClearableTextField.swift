@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct ClearableTextField: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @Binding var text: String
+    var placeholder: String
 
-#Preview {
-    ClearableTextField()
+    var body: some View {
+        HStack {
+            TextField(placeholder.localized, text: $text)
+            if !text.isEmpty {
+                Button {
+                    text.removeAll()
+                } label: {
+                    Image(systemName: "clear")
+                        .foregroundStyle(.gray)
+                }
+            }
+        }
+    }
 }
