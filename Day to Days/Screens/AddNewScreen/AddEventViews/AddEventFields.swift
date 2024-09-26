@@ -10,15 +10,11 @@ import SwiftUI
 struct AddEventFields: View {
     @Bindable var viewModel: AddOrEditEventSheetViewModel
     var body: some View {
-            GroupBox {
-                TextField(text: $viewModel.title) {
-                    Text("title".localized)
-                }
-                Divider()
-                TextField(text: $viewModel.info) {
-                    Text("description".localized)
-                }
-            }
+        GroupBox {
+            ClearableTextField(text: $viewModel.title, placeholder: "title")
+            Divider()
+            ClearableTextField(text: $viewModel.info, placeholder: "description")
+        }
             .padding(.bottom)
             // MARK: Date and color pickers
             GroupBox {
@@ -43,5 +39,24 @@ struct AddEventFields: View {
                 ColorPickerPopover(viewModel: viewModel)
             }
             .padding(.bottom)
+    }
+}
+
+struct ClearableTextField: View {
+    @Binding var text: String
+    var placeholder: String
+
+    var body: some View {
+        HStack {
+            TextField(placeholder.localized, text: $text)
+            if !text.isEmpty {
+                Button {
+                    text.removeAll()
+                } label: {
+                    Image(systemName: "clear")
+                        .foregroundStyle(.gray)
+                }
+            }
+        }
     }
 }
