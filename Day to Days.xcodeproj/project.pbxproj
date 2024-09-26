@@ -41,6 +41,7 @@
 		5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */; };
 		5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		5170CC652C9300C800A9380B /* TimeUnitLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */; };
+		517122412CA59F850037974D /* ClearableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517122402CA59F850037974D /* ClearableTextField.swift */; };
 		517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517282952C90CCCE00D09AC4 /* RealmSwift */; };
 		5177245E2C9D5C880037143A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245D2C9D5C880037143A /* WidgetKit.framework */; };
 		517724602C9D5C880037143A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245F2C9D5C880037143A /* SwiftUI.framework */; };
@@ -129,6 +130,7 @@
 		5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpContextMenu.swift; sourceTree = "<group>"; };
 		5170CC5F2C92E67600A9380B /* TimeStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStateType.swift; sourceTree = "<group>"; };
 		5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUnitLocalizer.swift; sourceTree = "<group>"; };
+		517122402CA59F850037974D /* ClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextField.swift; sourceTree = "<group>"; };
 		5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5177245D2C9D5C880037143A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5177245F2C9D5C880037143A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -363,6 +365,7 @@
 				5179F26F2C8E16B10027B0F1 /* ColorPickerPopover.swift */,
 				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
 				510589FA2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift */,
+				517122402CA59F850037974D /* ClearableTextField.swift */,
 			);
 			path = AddEventViews;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */,
+				517122412CA59F850037974D /* ClearableTextField.swift in Sources */,
 				51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */,
 				5170CC652C9300C800A9380B /* TimeUnitLocalizer.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,

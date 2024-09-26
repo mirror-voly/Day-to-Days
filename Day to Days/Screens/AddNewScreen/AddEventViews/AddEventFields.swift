@@ -41,22 +41,3 @@ struct AddEventFields: View {
             .padding(.bottom)
     }
 }
-
-struct ClearableTextField: View {
-    @Binding var text: String
-    var placeholder: String
-
-    var body: some View {
-        HStack {
-            TextField(placeholder.localized, text: $text)
-            if !text.isEmpty {
-                Button {
-                    text.removeAll()
-                } label: {
-                    Image(systemName: "clear")
-                        .foregroundStyle(.gray)
-                }
-            }
-        }
-    }
-}
