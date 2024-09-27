@@ -40,7 +40,7 @@ final class EventsItemViewModel {
     }
 
     var selectedColor: Color {
-        isSelected ? Color.primary.opacity(0.1) : Color.primary.opacity(0.01)
+            isSelected ? Color.primary.opacity(0.1) : Color.primary.opacity(0.01)
     }
 
     func setMainViewModel(_ viewModel: MainScreenViewModel) {
@@ -68,9 +68,11 @@ final class EventsItemViewModel {
     }
 
     func toggleSelected() {
-        isSelected.toggle()
-        if let uuid = mainScreenViewModel?.sortedEvents[index].id {
-            mainScreenViewModel?.toggleSelectedState(eventID: uuid)
+        withAnimation {
+            isSelected.toggle()
+            if let uuid = mainScreenViewModel?.sortedEvents[index].id {
+                mainScreenViewModel?.toggleSelectedState(eventID: uuid)
+            }
         }
     }
 

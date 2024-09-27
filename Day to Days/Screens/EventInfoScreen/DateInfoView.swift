@@ -17,6 +17,7 @@ struct DateInfoView: View {
                 .lineLimit(1)
                 .font(.title)
                 .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
+                .contentTransition(.numericText())
             Text(label)
                 .italic()
                 .font(.footnote)

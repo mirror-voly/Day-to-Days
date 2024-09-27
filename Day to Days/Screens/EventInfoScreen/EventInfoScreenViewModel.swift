@@ -5,7 +5,7 @@
 //  Created by mix on 18.09.2024.
 //
 
-import Foundation
+import SwiftUI
 import RealmSwift
 
 @Observable
@@ -31,7 +31,9 @@ final class EventInfoScreenViewModel {
     // MARK: - Functions
     private func allInfoForDate(event: Event) {
         let allInfo = DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
-        allInfoForCurrentDate = allInfo
+        withAnimation {
+            allInfoForCurrentDate = allInfo
+        }
     }
 
     func updateEditedEvent() {

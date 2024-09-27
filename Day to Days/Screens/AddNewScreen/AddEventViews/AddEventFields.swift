@@ -24,8 +24,11 @@ struct AddEventFields: View {
                         .contextMenu {
                             HelpContextMenu(helpText: "date_help")
                         }
+                        .contentTransition(.numericText())
                     Button {
-                        viewModel.date = Date()
+                        withAnimation {
+                            viewModel.date = Date()
+                        }
                     } label: {
                         Image(systemName: "pin.circle.fill")
                             .tint(.primary)

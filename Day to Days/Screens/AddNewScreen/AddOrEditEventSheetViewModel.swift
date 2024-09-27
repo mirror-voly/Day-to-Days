@@ -179,7 +179,9 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func setSliderValue(value: Double) {
-        sliderValue = Double(value)
+        withAnimation {
+            sliderValue = Double(value)
+        }
     }
 
     func toggleIsPresented() {

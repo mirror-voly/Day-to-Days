@@ -16,7 +16,9 @@ struct ClearableTextField: View {
             TextField(placeholder.localized, text: $text)
             if !text.isEmpty {
                 Button {
-                    text.removeAll()
+                    withAnimation {
+                        text.removeAll()
+                    }
                 } label: {
                     Image(systemName: "clear")
                         .foregroundStyle(.gray)

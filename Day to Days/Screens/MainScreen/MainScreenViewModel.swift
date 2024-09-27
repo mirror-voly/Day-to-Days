@@ -114,7 +114,9 @@ final class MainScreenViewModel {
     }
 
     func setEvents(allEvents: Results<Event>) {
-        self.events = allEvents
+        withAnimation {
+            self.events = allEvents
+        }
     }
 
     func setEditMode(set: Bool) {
