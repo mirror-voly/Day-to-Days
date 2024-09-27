@@ -36,7 +36,7 @@ struct EventInfoScreen: View {
                             }
                         }
                     }
-                    .frame(width: Сonstraints.eventDateTableSize)
+                    .frame(width: Constraints.eventDateTableSize)
                 })
             }
             Spacer()

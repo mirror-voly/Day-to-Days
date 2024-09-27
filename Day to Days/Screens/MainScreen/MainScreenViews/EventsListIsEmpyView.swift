@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct EventsListIsEmpyView: View {
+struct EventsListIsEmptyView: View {
+    @Environment(MainScreenViewModel.self) var viewModel
     var onAddNew: () -> Void
 
     var body: some View {
@@ -31,13 +32,22 @@ struct EventsListIsEmpyView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
                 .clipShape(Capsule())
-                .shadow(color: Color.primary, radius: Сonstraints.shadowRadius)
+                .shadow(color: Color.primary, radius: Constraints.shadowRadius)
             }
-            .frame(width: Сonstraints.emptyViewFrameSize, height: Сonstraints.emptyViewFrameSize)
+            .frame(width: Constraints.emptyViewFrameSize, height: Constraints.emptyViewFrameSize)
             .padding()
         }
         .background(Color.secondary.gradient)
         .clipShape(Circle())
-        .padding(.top, Сonstraints.emptyViewPaddingToTheTop)
+        .scaleEffect(viewModel.isAnimating ? 1.1 : 1.0)
+        .animation(
+            Animation.easeInOut(duration: 3)
+                .repeatForever(autoreverses: true),
+            value: viewModel.isAnimating
+        )
+        .onAppear {
+            viewModel.isAnimating = true
+        }
+        .padding(.top, Constraints.emptyViewPaddingToTheTop)
     }
 }

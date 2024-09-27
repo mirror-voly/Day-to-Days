@@ -11,9 +11,9 @@ enum ButtonSpacerType {
     var value: Double {
         switch self {
         case .minimize:
-            return Сonstraints.buttonSpaсerMinimize
+            return Constraints.buttonSpaсerMinimize
         case .maximize:
-            return Сonstraints.buttonSpaсerMaximize
+            return Constraints.buttonSpaсerMaximize
         }
     }
 }

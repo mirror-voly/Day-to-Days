@@ -25,9 +25,9 @@ struct DayCounterWithShortInfoView: View {
             }
             .lineLimit(1)
             .frame(maxWidth: .infinity)
-            .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
+            .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
         }
-        .frame(width: Сonstraints.eventsItemViewDateFrameSize)
+        .frame(width: Constraints.eventsItemViewDateFrameSize)
         .padding()
     }
 }

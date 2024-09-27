@@ -17,9 +17,9 @@ struct MainScreen: View {
                 EventsList()
                     .overlay {
                         if viewModel.eventsIsEmpty {
-                            EventsListIsEmpyView {
+                            EventsListIsEmptyView(onAddNew: {
                                 viewModel.sheetIsOpened = true
-                            }
+                            })
                         }
                     }
             }
@@ -33,7 +33,7 @@ struct MainScreen: View {
                     }
             // MARK: Toolbar
             .toolbar {
-                if viewModel.noSelectedEvents {
+                if viewModel.noSelectedEvents && !viewModel.eventsIsEmpty {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             sheetViewModel.setScreenMode(mode: .add)

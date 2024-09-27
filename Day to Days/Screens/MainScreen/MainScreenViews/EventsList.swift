@@ -36,7 +36,7 @@ struct EventsList: View {
             .listStyle(.plain)
         }
         .toolbar {
-            if viewModel.noSelectedEvents {
+            if viewModel.noSelectedEvents && !viewModel.eventsIsEmpty {
                 sortMenu
             }
             if viewModel.editIsActivated {

@@ -19,6 +19,7 @@ final class MainScreenViewModel {
     private var events: Results<Event>?
     var sheetIsOpened = false
     var alertIsPresented = false
+    var isAnimating = false
 
     private (set) var ascending = true {
         didSet {

@@ -1,5 +1,5 @@
 //
-//  Сonstraints.swift
+//  Constraints.swift
 //  Day to Days
 //
 //  Created by mix on 08.09.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Сonstraints {
+enum Constraints {
     static let buttonSpaсerMinimize: CGFloat = 0
     static let buttonSpaсerMaximize: CGFloat = 80
     static let addButtonsize: CGFloat = 40

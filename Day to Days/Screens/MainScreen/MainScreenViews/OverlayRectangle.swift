@@ -13,7 +13,7 @@ struct OverlayRectangle: View {
         Rectangle()
             .fill(viewModel.selectedColor)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .clipShape(.rect(cornerRadius: Сonstraints.cornerRadius))
+            .clipShape(.rect(cornerRadius: Constraints.cornerRadius))
             .onTapGesture {
                 viewModel.toggleSelected()
             }

@@ -18,14 +18,14 @@ extension DateTypeSlider {
                         let needToColorize = index < step + 1
                         Circle()
                             .fill(needToColorize ? viewModel.color : .gray)
-                            .frame(width: needToColorize ? Сonstraints.sliderCircleBig: Сonstraints.sliderCircleSmall)
+                            .frame(width: needToColorize ? Constraints.sliderCircleBig: Constraints.sliderCircleSmall)
                     })
                     .containerShape(Rectangle())
                     .contextMenu {
                         HelpContextMenu(helpText: viewModel.addHelpToTheButtonsBy(index))
                     }
                 }
-                .frame(width: Сonstraints.sliderCircleBig - 5)
+                .frame(width: Constraints.sliderCircleBig - 5)
                 if index < sum - 1 {
                     Spacer()
                 }

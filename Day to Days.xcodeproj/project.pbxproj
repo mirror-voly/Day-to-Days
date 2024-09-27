@@ -30,7 +30,7 @@
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
 		516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
-		516DE0A82CA022E400E83E1D /* Сonstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Сonstraints.swift */; };
+		516DE0A82CA022E400E83E1D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Constraints.swift */; };
 		516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
 		516DE0AC2CA0392800E83E1D /* WidgetColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DE0AB2CA0392800E83E1D /* WidgetColor.swift */; };
 		516DE0AE2CA039AD00E83E1D /* WidgetColorQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */; };
@@ -61,7 +61,7 @@
 		518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518289102C8849AB00676F0E /* View+HideKeyboard.swift */; };
 		519195012C8CA6AA00F29C1B /* NewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519195002C8CA6AA00F29C1B /* NewAlert.swift */; };
 		519FF10A2C8D9E84002FA63A /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF1092C8D9E84002FA63A /* AddEventButton.swift */; };
-		519FF10C2C8D9F46002FA63A /* Сonstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Сonstraints.swift */; };
+		519FF10C2C8D9F46002FA63A /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Constraints.swift */; };
 		519FF10E2C8DA4A4002FA63A /* AddEventFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */; };
 		51BD461C2C9D6D1600D7515F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
 		51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
@@ -150,7 +150,7 @@
 		518289102C8849AB00676F0E /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 		519195002C8CA6AA00F29C1B /* NewAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlert.swift; sourceTree = "<group>"; };
 		519FF1092C8D9E84002FA63A /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
-		519FF10B2C8D9F46002FA63A /* Сonstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сonstraints.swift"; sourceTree = "<group>"; };
+		519FF10B2C8D9F46002FA63A /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventFields.swift; sourceTree = "<group>"; };
 		51BD461E2C9D6E9600D7515F /* CounterWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CounterWidgetExtension.entitlements; sourceTree = "<group>"; };
 		51BD461F2C9D6F3600D7515F /* Day to Days.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Day to Days.entitlements"; sourceTree = "<group>"; };
@@ -373,7 +373,7 @@
 		51F911802C95D2DD00C625DC /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				519FF10B2C8D9F46002FA63A /* Сonstraints.swift */,
+				519FF10B2C8D9F46002FA63A /* Constraints.swift */,
 				516659F82C90324C00468301 /* DateType.swift */,
 				51665A012C905E2700468301 /* ColorType.swift */,
 				5170CC5F2C92E67600A9380B /* TimeStateType.swift */,
@@ -537,7 +537,7 @@
 				519195012C8CA6AA00F29C1B /* NewAlert.swift in Sources */,
 				5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */,
 				516659F92C90324C00468301 /* DateType.swift in Sources */,
-				519FF10C2C8D9F46002FA63A /* Сonstraints.swift in Sources */,
+				519FF10C2C8D9F46002FA63A /* Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +550,7 @@
 				51BD46312C9DA6CD00D7515F /* EventWidget.swift in Sources */,
 				516DE0AE2CA039AD00E83E1D /* WidgetColorQuery.swift in Sources */,
 				516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */,
-				516DE0A82CA022E400E83E1D /* Сonstraints.swift in Sources */,
+				516DE0A82CA022E400E83E1D /* Constraints.swift in Sources */,
 				517724692C9D5C880037143A /* AppIntent.swift in Sources */,
 				51BD462A2C9D948C00D7515F /* WidgetView.swift in Sources */,
 				516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */,

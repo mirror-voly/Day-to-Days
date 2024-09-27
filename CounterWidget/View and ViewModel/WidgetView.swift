@@ -13,19 +13,19 @@ struct WidgetView: View {
     let event: EventWidget
 
     var body: some View {
-        VStack (spacing: Сonstraints.widgetStackSpaser) {
+        VStack (spacing: Constraints.widgetStackSpaser) {
             Text(event.name)
                 .lineLimit(1)
-                .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
+                .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
                 .foregroundStyle(.gray)
             Divider()
             Text(viewModel.number)
-                .font(.system(size: Сonstraints.widgetNumberFontSize, weight: .heavy))
+                .font(.system(size: Constraints.widgetNumberFontSize, weight: .heavy))
                 .lineLimit(1)
                 .foregroundStyle(numberColor)
-                .minimumScaleFactor(Сonstraints.dateTextMinimumScaleFactor)
+                .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
             Divider()
-            HStack(spacing: Сonstraints.widgetStackSpaser, content: {
+            HStack(spacing: Constraints.widgetStackSpaser, content: {
                 Group {
                     Text(viewModel.localizedDateType.capitalized)
                     Text(viewModel.localizedTimeState)

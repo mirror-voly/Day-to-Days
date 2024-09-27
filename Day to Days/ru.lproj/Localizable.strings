@@ -18,6 +18,7 @@
 "event_not_saved_title" = "Событие не сохранено";
 "event_not_saved_message" = "Вы уверены, что хотите выйти?";
 "сontinue" = "Продолжить";
+"cancel" = "Отмена";
 "return" = "Вернуться";
 "no_description" = "Нет описания";
 "edit_event" = "Редактировать событие";

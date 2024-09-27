@@ -38,7 +38,7 @@ extension EventsList {
                     Text(viewModel.noSelectedEvents ? "done".localized : "delete_selected".localized)
                 }
                 .buttonStyle(BorderedButtonStyle())
-                .tint(.primary.opacity(Сonstraints.primaryOpacity))
+                .tint(.primary.opacity(Constraints.primaryOpacity))
             }
             if !viewModel.noSelectedEvents {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -48,7 +48,7 @@ extension EventsList {
                         Text("cancel".localized)
                     }
                     .buttonStyle(BorderedButtonStyle())
-                    .tint(.primary.opacity(Сonstraints.primaryOpacity))
+                    .tint(.primary.opacity(Constraints.primaryOpacity))
                 }
             }
         }

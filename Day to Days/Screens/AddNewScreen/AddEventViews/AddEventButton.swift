@@ -19,7 +19,7 @@ struct AddEventButton: View {
                 Text("done".localized)
                         .font(.title2)
                         .frame(maxWidth: .infinity)
-                        .frame(height: Сonstraints.addButtonsize)
+                        .frame(height: Constraints.addButtonsize)
             })
             .disabled(!viewModel.addButtonIsVisible)
             .contextMenu {

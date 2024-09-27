@@ -20,8 +20,8 @@ struct EventsItemView: View {
                 .overlay(
                     Circle()
                         .fill(viewModel.fillColor)
-                        .frame(width: Сonstraints.eventsItemViewCicleHoleSize))
-                .frame(width: Сonstraints.eventsItemViewCicleSize)
+                        .frame(width: Constraints.eventsItemViewCicleHoleSize))
+                .frame(width: Constraints.eventsItemViewCicleSize)
                 .padding()
                 .onChange(of: mainScreenViewModel.editIsActivated) { _, newValue in
                     guard !newValue else { return }
