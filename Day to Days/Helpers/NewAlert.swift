@@ -13,8 +13,8 @@ struct NewAlert {
             Alert(
                 title: Text("event_not_saved_title".localized),
                 message: Text("event_not_saved_message".localized),
-                primaryButton: .destructive(Text("yes".localized), action: onConfirm),
-                secondaryButton: .default(Text("cancel".localized), action: onCancel)
+                primaryButton: .destructive(Text("сontinue".localized), action: onConfirm),
+                secondaryButton: .default(Text("return".localized), action: onCancel)
             )
         }
 }

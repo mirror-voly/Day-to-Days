@@ -17,8 +17,8 @@
 "count" = "Count";
 "event_not_saved_title" = "Event is not saved";
 "event_not_saved_message" = "Are you sure that you want to quit?";
-"yes" = "Yes";
-"cancel" = "Cancel";
+"сontinue" = "Continue";
+"return" = "Return";
 "no_description" = "No description";
 "today" = "today";
 "passed" = "passed";

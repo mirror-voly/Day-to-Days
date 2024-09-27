@@ -17,8 +17,8 @@
 "count" = "Cчитать";
 "event_not_saved_title" = "Событие не сохранено";
 "event_not_saved_message" = "Вы уверены, что хотите выйти?";
-"yes" = "Да";
-"cancel" = "Отмена";
+"сontinue" = "Продолжить";
+"return" = "Вернуться";
 "no_description" = "Нет описания";
 "edit_event" = "Редактировать событие";
 "new_event" = "Новое событие";
