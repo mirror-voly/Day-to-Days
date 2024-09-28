@@ -18,6 +18,8 @@ struct EventInfoScreen: View {
             GroupBox {
                 HStack(alignment: .top, content: {
                     VStack(alignment: .leading, content: {
+                        Text(viewModel.event.title)
+                            .font(.title2)
                         Text(viewModel.event.date.formatted(date: .long, time: .omitted))
                             .font(.callout)
                             .foregroundStyle(.secondary)
@@ -43,7 +45,8 @@ struct EventInfoScreen: View {
         })
         .padding()
         // MARK: - View settings
-        .navigationTitle(viewModel.event.title)
+        .navigationTitle("details".localized)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(viewModel.event.color, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()

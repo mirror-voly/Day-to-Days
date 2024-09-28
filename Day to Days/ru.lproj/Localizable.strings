@@ -23,6 +23,7 @@
 "no_description" = "Нет описания";
 "edit_event" = "Редактировать событие";
 "new_event" = "Новое событие";
+"details" = "Подрбнее";
 
 "color_red" = "Красный";
 "color_orange" = "Оранжевый";

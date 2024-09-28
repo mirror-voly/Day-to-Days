@@ -26,6 +26,7 @@
 "left" = "left";
 "edit_event" = "Edit event";
 "new_event" = "New event";
+"details" = "Details";
 
 "color_red" = "Red";
 "color_orange" = "Orange";
