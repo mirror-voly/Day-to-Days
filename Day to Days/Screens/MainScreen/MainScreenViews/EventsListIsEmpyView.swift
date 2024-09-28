@@ -37,8 +37,12 @@ struct EventsListIsEmptyView: View {
             .frame(width: Constraints.emptyViewFrameSize, height: Constraints.emptyViewFrameSize)
             .padding()
         }
-        .background(Color.secondary.gradient)
+        .background(LinearGradient(gradient: Gradient(colors: [.purple, .brown]),
+                                   startPoint: .top, endPoint: .bottom)
+            .rotationEffect(Angle(degrees: viewModel.isAnimating ? 0 : 180))
+        )
         .clipShape(Circle())
+        .shadow(color: Color.primary, radius: Constraints.shadowRadius)
         .scaleEffect(viewModel.isAnimating ? 1.1 : 1.0)
         .animation(
             Animation.easeInOut(duration: 3)
@@ -48,6 +52,9 @@ struct EventsListIsEmptyView: View {
         .onAppear {
             viewModel.isAnimating = true
         }
+        .onDisappear(perform: {
+            viewModel.isAnimating = false
+        })
         .padding(.top, Constraints.emptyViewPaddingToTheTop)
     }
 }
