@@ -39,15 +39,15 @@ struct EventsListIsEmptyView: View {
         }
         .background(LinearGradient(gradient: Gradient(colors: [.purple, .brown]),
                                    startPoint: .top, endPoint: .bottom)
-            .rotationEffect(Angle(degrees: viewModel.isAnimating ? 0 : 180))
+            .rotationEffect(Angle(degrees: viewModel.isAnimating ? .zero : Constraints.rotationAngle))
         )
         .clipShape(Circle())
         .shadow(color: Color.primary, radius: Constraints.shadowRadius)
-        .scaleEffect(viewModel.isAnimating ? 1.1 : 1.0)
-        .blur(radius: viewModel.isAnimating ? 0.1 : 1)
-        .opacity(viewModel.isAnimating ? 1 : 0.4)
+        .scaleEffect(viewModel.isAnimating ? Constraints.scaleEffect : 1)
+        .blur(radius: viewModel.isAnimating ? .zero : Constraints.blurValue)
+        .opacity(viewModel.isAnimating ? 1 : Constraints.opacityEffect)
         .animation(
-            Animation.easeInOut(duration: 3)
+            Animation.easeInOut(duration: Constraints.animationDuration)
                 .repeatForever(autoreverses: true),
             value: viewModel.isAnimating
         )
