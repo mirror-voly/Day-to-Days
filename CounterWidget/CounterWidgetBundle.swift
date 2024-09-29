@@ -10,6 +10,7 @@ import SwiftUI
 
 @main
 struct CounterWidgetBundle: WidgetBundle {
+    @WidgetBundleBuilder
     var body: some Widget {
         CounterWidget()
     }
