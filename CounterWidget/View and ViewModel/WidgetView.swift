@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct WidgetView: View {
-    var viewModel = WidgetViewModel()
-    let numberColor: Color
-    let event: EventWidget
+    var viewModel: WidgetViewModel
 
     var body: some View {
         VStack (spacing: Constraints.widgetStackSpaser) {
-            Text(event.name)
+            Text(viewModel.event.name)
                 .lineLimit(1)
                 .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
                 .foregroundStyle(.gray)
@@ -22,7 +20,7 @@ struct WidgetView: View {
             Text(viewModel.number)
                 .font(.system(size: Constraints.widgetNumberFontSize, weight: .heavy))
                 .lineLimit(1)
-                .foregroundStyle(numberColor)
+                .foregroundStyle(viewModel.numberColor)
                 .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
             Divider()
             HStack(spacing: Constraints.widgetStackSpaser, content: {
@@ -35,9 +33,9 @@ struct WidgetView: View {
                 .foregroundStyle(.gray)
             })
         }
-        .onAppear(perform: {
-            viewModel.setTimeData(event: event)
-        })
         .ignoresSafeArea()
+    }
+    init(event: EventWidget, numberColor: Color) {
+        self.viewModel = WidgetViewModel(event: event, numberColor: numberColor)
     }
 }

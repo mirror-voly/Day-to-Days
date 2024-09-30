@@ -52,7 +52,7 @@ struct CounterWidgetEntryView : View {
 
     var body: some View {
         VStack {
-            WidgetView(numberColor: entry.configuration.numberColor.color, event: entry.event)
+            WidgetView(event: entry.event, numberColor: entry.configuration.numberColor.color)
         }
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.brown.opacity(0.1))
