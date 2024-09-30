@@ -22,7 +22,6 @@ struct ColorPickerPopover: View {
                 Text(viewModel.color.getColorType.rawValue.localized)
                 Image(systemName: "pencil.tip.crop.circle.fill")
             })
-    
             .foregroundStyle(viewModel.color)
             .contextMenu {
                 HelpContextMenu(helpText: "color_help")
@@ -30,7 +29,6 @@ struct ColorPickerPopover: View {
             // MARK: Color popover
             .popover(isPresented: $viewModel.popoverIsPresented, content: {
                 ScrollView {
-                    
                     VStack(alignment: .trailing, content: {
                         ForEach(ColorType.allCases, id: \.self) { currentColor in
                             Button(action: {
@@ -51,7 +49,6 @@ struct ColorPickerPopover: View {
                         }
                     })
                     .padding()
-                    
                 }
                 .presentationCompactAdaptation(.popover)
             })

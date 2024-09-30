@@ -9,6 +9,7 @@ import SwiftUI
 
 @Observable
 final class EventsItemViewModel {
+    private let dateCalculator = DateCalculator()
     private var index: Int
     private (set) var timeData: [String: String]?
     private (set) var localizedTimeState: String = ""
@@ -53,7 +54,7 @@ final class EventsItemViewModel {
     }
 
     private func setTimeData(event: Event) {
-        let timeData =  TimeUnitLocalizer.allTimeDataFor(event: event)
+        let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
         if let localizedTimeState = timeData["localizedTimeState"] {
             self.localizedTimeState = localizedTimeState.capitalized
         }

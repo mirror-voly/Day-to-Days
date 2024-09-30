@@ -13,6 +13,7 @@ final class EventInfoScreenViewModel {
 
     private (set) var allInfoForCurrentDate: [DateType: String]?
     let allDateTypes = DateType.allCases.reversed()
+    let dateCalculator = DateCalculator()
     var alertIsPresented = false
     var sheetIsOpened = false
 
@@ -23,14 +24,14 @@ final class EventInfoScreenViewModel {
         }
     }
     var localizedTimeState: String {
-        TimeUnitLocalizer.getLocalizedTimeState(event: event).capitalized
+        dateCalculator.getLocalizedTimeState(date: event.date, dateType: event.dateType).capitalized
     }
     var info: String {
         event.info.isEmpty ? "no_description".localized : event.info
     }
     // MARK: - Functions
     private func allInfoForDate(event: Event) {
-        let allInfo = DateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
+        let allInfo = dateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
         withAnimation {
             allInfoForCurrentDate = allInfo
         }

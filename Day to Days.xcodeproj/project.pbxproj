@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,13 @@
 		51058A052C9C64D200CA612F /* ButtonSpacerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51058A042C9C64D200CA612F /* ButtonSpacerType.swift */; };
 		510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */; };
 		510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */; };
+		5128E0B82CAACD9100F68CA2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5128E0B72CAACD9100F68CA2 /* RealmSwift */; };
+		5128E0BB2CAAD76400F68CA2 /* TimeStateDeterminer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128E0BA2CAAD76400F68CA2 /* TimeStateDeterminer.swift */; };
+		5128E0BD2CAAD7A100F68CA2 /* DateLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128E0BC2CAAD7A100F68CA2 /* DateLocalization.swift */; };
+		5128E0BF2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128E0BE2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift */; };
+		5128E0C02CAADB7100F68CA2 /* TimeStateDeterminer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128E0BA2CAAD76400F68CA2 /* TimeStateDeterminer.swift */; };
+		5128E0C12CAADB7400F68CA2 /* DateLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128E0BC2CAAD7A100F68CA2 /* DateLocalization.swift */; };
+		5128E0C22CAADB7700F68CA2 /* DateDifferenceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128E0BE2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift */; };
 		513522BC2CA2D57A00FA685D /* OverlayRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513522BB2CA2D57A00FA685D /* OverlayRectangle.swift */; };
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
@@ -25,7 +32,6 @@
 		516CBE472C87247100202B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516CBE462C87247100202B93 /* Assets.xcassets */; };
 		516CBE4A2C87247100202B93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516CBE492C87247100202B93 /* Preview Assets.xcassets */; };
 		516CBE542C87296400202B93 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE532C87296400202B93 /* Event.swift */; };
-		516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* MainScreenViewModel.swift */; };
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
 		516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
@@ -40,7 +46,6 @@
 		5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
 		5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */; };
 		5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
-		5170CC652C9300C800A9380B /* TimeUnitLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */; };
 		517122412CA59F850037974D /* ClearableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517122402CA59F850037974D /* ClearableTextField.swift */; };
 		517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517282952C90CCCE00D09AC4 /* RealmSwift */; };
 		5177245E2C9D5C880037143A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245D2C9D5C880037143A /* WidgetKit.framework */; };
@@ -66,10 +71,12 @@
 		51BD461C2C9D6D1600D7515F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
 		51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
 		51BD46212C9D7A2D00D7515F /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46202C9D7A2D00D7515F /* WidgetManager.swift */; };
-		51BD46242C9D839B00D7515F /* EventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventWidget.swift */; };
 		51BD462A2C9D948C00D7515F /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46262C9D908B00D7515F /* WidgetView.swift */; };
 		51BD462F2C9DA10F00D7515F /* WidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */; };
-		51BD46312C9DA6CD00D7515F /* EventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventWidget.swift */; };
+		51C623672CAAB0CE00CF58B4 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
+		51C623682CAAB14C00CF58B4 /* EventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventWidget.swift */; };
+		51C623692CAAB14D00CF58B4 /* EventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventWidget.swift */; };
+		51C6236A2CAAB2D300CF58B4 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9117E2C95D2CA00C625DC /* SortType.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +113,9 @@
 		51058A042C9C64D200CA612F /* ButtonSpacerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSpacerType.swift; sourceTree = "<group>"; };
 		510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreenViewModel.swift; sourceTree = "<group>"; };
 		510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemViewModel.swift; sourceTree = "<group>"; };
+		5128E0BA2CAAD76400F68CA2 /* TimeStateDeterminer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStateDeterminer.swift; sourceTree = "<group>"; };
+		5128E0BC2CAAD7A100F68CA2 /* DateLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLocalization.swift; sourceTree = "<group>"; };
+		5128E0BE2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDifferenceCalculator.swift; sourceTree = "<group>"; };
 		513522BB2CA2D57A00FA685D /* OverlayRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayRectangle.swift; sourceTree = "<group>"; };
 		516659F82C90324C00468301 /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
@@ -129,7 +139,6 @@
 		5170CC5B2C92B15200A9380B /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpContextMenu.swift; sourceTree = "<group>"; };
 		5170CC5F2C92E67600A9380B /* TimeStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStateType.swift; sourceTree = "<group>"; };
-		5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUnitLocalizer.swift; sourceTree = "<group>"; };
 		517122402CA59F850037974D /* ClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextField.swift; sourceTree = "<group>"; };
 		5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5177245D2C9D5C880037143A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -166,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5128E0B82CAACD9100F68CA2 /* RealmSwift in Frameworks */,
 				517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,7 +280,9 @@
 			isa = PBXGroup;
 			children = (
 				516CBE562C872FAA00202B93 /* DateCalculator.swift */,
-				5170CC642C9300C800A9380B /* TimeUnitLocalizer.swift */,
+				5128E0BA2CAAD76400F68CA2 /* TimeStateDeterminer.swift */,
+				5128E0BC2CAAD7A100F68CA2 /* DateLocalization.swift */,
+				5128E0BE2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift */,
 			);
 			path = Calculators;
 			sourceTree = "<group>";
@@ -405,6 +417,7 @@
 			name = "Day to Days";
 			packageProductDependencies = (
 				517282952C90CCCE00D09AC4 /* RealmSwift */,
+				5128E0B72CAACD9100F68CA2 /* RealmSwift */,
 			);
 			productName = "Day to Days";
 			productReference = 516CBE3F2C87247000202B93 /* Day to Days.app */;
@@ -457,7 +470,7 @@
 			mainGroup = 516CBE362C87247000202B93;
 			packageReferences = (
 				516CBE502C87254A00202B93 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
-				517282942C90CCCE00D09AC4 /* XCLocalSwiftPackageReference "../../../realm-swift" */,
+				5128E0B62CAACD9100F68CA2 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 516CBE402C87247000202B93 /* Products */;
 			projectDirPath = "";
@@ -498,29 +511,32 @@
 			files = (
 				517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */,
 				517122412CA59F850037974D /* ClearableTextField.swift in Sources */,
+				51C623682CAAB14C00CF58B4 /* EventWidget.swift in Sources */,
 				51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */,
-				5170CC652C9300C800A9380B /* TimeUnitLocalizer.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
 				510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */,
+				51C623672CAAB0CE00CF58B4 /* DateCalculator.swift in Sources */,
 				513522BC2CA2D57A00FA685D /* OverlayRectangle.swift in Sources */,
 				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,
 				5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */,
 				5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */,
 				516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */,
 				51665A022C905E2700468301 /* ColorType.swift in Sources */,
-				51BD46242C9D839B00D7515F /* EventWidget.swift in Sources */,
+				5128E0BD2CAAD7A100F68CA2 /* DateLocalization.swift in Sources */,
 				519FF10E2C8DA4A4002FA63A /* AddEventFields.swift in Sources */,
 				516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */,
 				5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */,
 				510589FF2C9C5E1400CA612F /* EventsList+swipeButtons.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				519FF10A2C8D9E84002FA63A /* AddEventButton.swift in Sources */,
+				5128E0BF2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift in Sources */,
 				517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */,
 				51058A052C9C64D200CA612F /* ButtonSpacerType.swift in Sources */,
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
 				51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
+				5128E0BB2CAAD76400F68CA2 /* TimeStateDeterminer.swift in Sources */,
 				5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */,
 				5179F2702C8E16B10027B0F1 /* ColorPickerPopover.swift in Sources */,
 				5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */,
@@ -533,7 +549,6 @@
 				516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */,
 				5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */,
 				510589FB2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift in Sources */,
-				516CBE572C872FAA00202B93 /* DateCalculator.swift in Sources */,
 				519195012C8CA6AA00F29C1B /* NewAlert.swift in Sources */,
 				5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */,
 				516659F92C90324C00468301 /* DateType.swift in Sources */,
@@ -546,18 +561,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				51BD462F2C9DA10F00D7515F /* WidgetViewModel.swift in Sources */,
+				51C623692CAAB14D00CF58B4 /* EventWidget.swift in Sources */,
 				517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */,
-				51BD46312C9DA6CD00D7515F /* EventWidget.swift in Sources */,
 				516DE0AE2CA039AD00E83E1D /* WidgetColorQuery.swift in Sources */,
 				516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */,
 				516DE0A82CA022E400E83E1D /* Constraints.swift in Sources */,
 				517724692C9D5C880037143A /* AppIntent.swift in Sources */,
+				5128E0C02CAADB7100F68CA2 /* TimeStateDeterminer.swift in Sources */,
+				5128E0C12CAADB7400F68CA2 /* DateLocalization.swift in Sources */,
+				5128E0C22CAADB7700F68CA2 /* DateDifferenceCalculator.swift in Sources */,
 				51BD462A2C9D948C00D7515F /* WidgetView.swift in Sources */,
 				516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */,
 				517724672C9D5C880037143A /* CounterWidget.swift in Sources */,
 				51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */,
 				516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */,
 				516DE0AC2CA0392800E83E1D /* WidgetColor.swift in Sources */,
+				51C6236A2CAAB2D300CF58B4 /* DateCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,14 +880,15 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		517282942C90CCCE00D09AC4 /* XCLocalSwiftPackageReference "../../../realm-swift" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../../realm-swift";
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
+		5128E0B62CAACD9100F68CA2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.54.0;
+			};
+		};
 		516CBE502C87254A00202B93 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
@@ -880,6 +900,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5128E0B72CAACD9100F68CA2 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5128E0B62CAACD9100F68CA2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		516CBE512C87275900202B93 /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 516CBE502C87254A00202B93 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;

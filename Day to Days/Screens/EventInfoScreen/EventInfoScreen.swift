@@ -34,7 +34,7 @@ struct EventInfoScreen: View {
                         Divider()
                         ForEach(viewModel.allDateTypes, id: \.self) { dateTypeKey in
                             if let number = viewModel.allInfoForCurrentDate?[dateTypeKey] {
-                                DateInfoView(number: number, dateType: dateTypeKey)
+                                DateInfoView(number: number, dateType: dateTypeKey, viewModel: viewModel)
                             }
                         }
                     }
