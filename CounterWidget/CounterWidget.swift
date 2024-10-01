@@ -13,7 +13,7 @@ struct Provider: AppIntentTimelineProvider {
     var data = Data()
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0])
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0], count: 0)
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
@@ -23,7 +23,7 @@ struct Provider: AppIntentTimelineProvider {
         } else {
             event = EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day)
         }
-        return SimpleEntry(date: Date(), configuration: configuration, event: event, widgetColor: configuration.numberColor)
+        return SimpleEntry(date: Date(), configuration: configuration, event: event, widgetColor: configuration.numberColor, count: 0)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
@@ -32,7 +32,7 @@ struct Provider: AppIntentTimelineProvider {
             let currentDate = Date()
             for hourOffset in 0 ..< 5 {
                 let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, configuration: configuration, event: event, widgetColor: configuration.numberColor)
+                let entry = SimpleEntry(date: entryDate, configuration: configuration, event: event, widgetColor: configuration.numberColor, count: 0)
                 entries.append(entry)
             }
         }
@@ -45,6 +45,7 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationAppIntent
     let event: EventWidget
     let widgetColor: WidgetColor?
+    let count: Int
 }
 
 struct CounterWidgetEntryView : View {
@@ -54,8 +55,7 @@ struct CounterWidgetEntryView : View {
         VStack {
             WidgetView(event: entry.event, numberColor: entry.configuration.numberColor.color)
         }
-        .containerRelativeFrame([.horizontal, .vertical])
-        .background(.brown.opacity(0.1))
+        .containerBackground(.brown, for: .widget)
     }
 }
 

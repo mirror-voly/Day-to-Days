@@ -11,7 +11,9 @@ import AppIntents
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "Set color"
     static var description = IntentDescription("Edit number color.")
-
+    
     @Parameter(title: "Color")
     var numberColor: WidgetColor
 }
+
+

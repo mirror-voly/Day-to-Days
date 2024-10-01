@@ -30,11 +30,28 @@ final class WidgetManager {
                 print("UserDefaults could not be initialized.")
             }
         } catch {
-            print("Editing error occurred: \(error.localizedDescription)")
+            print("Saving error occurred: \(error.localizedDescription)")
         }
     }
 
     static func activeVidgetEventID() -> String? {
         UserDefaults.standard.string(forKey: "widgetEventID")
+    }
+
+    static func sendAllEventsForWidget(_ events: [Event]) {
+        var eventsForWidget: [EventWidget] = []
+        for event in events {
+            eventsForWidget.append(makeEventWidget(event: event))
+        }
+        do {
+            let data = try JSONEncoder().encode(eventsForWidget)
+            if let userDefaults = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
+                userDefaults.set(data, forKey: "allEvents")
+            } else {
+                print("UserDefaults could not be initialized.")
+            }
+        } catch {
+            print("Saving error occurred: \(error.localizedDescription)")
+        }
     }
 }

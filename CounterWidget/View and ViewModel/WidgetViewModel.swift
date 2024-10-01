@@ -12,6 +12,7 @@ final class WidgetViewModel {
     private (set) var localizedTimeState: String = ""
     private (set) var number: String = ""
     private (set) var localizedDateType: String = ""
+    /*private (set)*/ var eventID: String?
     let event: EventWidget
     let numberColor: Color
     let dateCalculator = DateCalculator()
