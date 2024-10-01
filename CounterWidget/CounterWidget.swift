@@ -9,20 +9,30 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
+    let id: UUID = UUID()
     @AppStorage("counter", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
     var data = Data()
-    
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0], count: 0)
-    }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
+    func getEvent() -> EventWidget {
         let event: EventWidget
         if let decodedEvent = try? JSONDecoder().decode(EventWidget.self, from: data) {
             event = decodedEvent
         } else {
             event = EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day)
         }
+        return event
+    }
+    
+    func itIsNewWidget() {
+        
+    }
+
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0], count: 0)
+    }
+
+    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
+        let event = getEvent()
         return SimpleEntry(date: Date(), configuration: configuration, event: event, widgetColor: configuration.numberColor, count: 0)
     }
     
@@ -44,7 +54,7 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationAppIntent
     let event: EventWidget
-    let widgetColor: WidgetColor?
+    let widgetColor: WidgetColor
     let count: Int
 }
 

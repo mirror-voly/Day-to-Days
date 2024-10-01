@@ -34,7 +34,7 @@
 		516CBE542C87296400202B93 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE532C87296400202B93 /* Event.swift */; };
 		516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* MainScreenViewModel.swift */; };
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
-		516DD08A2CAC64720003E3D5 /* ChoseViewAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD0892CAC64720003E3D5 /* ChoseViewAppIntent.swift */; };
+		516DD08B2CAC677B0003E3D5 /* ChoseViewAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD0892CAC64720003E3D5 /* ChoseViewAppIntent.swift */; };
 		516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		516DE0A82CA022E400E83E1D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Constraints.swift */; };
@@ -550,7 +550,6 @@
 				51BD46212C9D7A2D00D7515F /* WidgetManager.swift in Sources */,
 				516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */,
 				516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */,
-				516DD08A2CAC64720003E3D5 /* ChoseViewAppIntent.swift in Sources */,
 				5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */,
 				510589FB2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift in Sources */,
 				519195012C8CA6AA00F29C1B /* NewAlert.swift in Sources */,
@@ -575,6 +574,7 @@
 				5128E0C12CAADB7400F68CA2 /* DateLocalization.swift in Sources */,
 				5128E0C22CAADB7700F68CA2 /* DateDifferenceCalculator.swift in Sources */,
 				51BD462A2C9D948C00D7515F /* WidgetView.swift in Sources */,
+				516DD08B2CAC677B0003E3D5 /* ChoseViewAppIntent.swift in Sources */,
 				516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */,
 				517724672C9D5C880037143A /* CounterWidget.swift in Sources */,
 				51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */,

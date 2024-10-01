@@ -37,10 +37,12 @@ struct WidgetView: View {
             }
             .ignoresSafeArea()
         } else {
-            Button(intent: ChoseWidgetView()) {
-                Text("Hi")
+            Button(intent: IncreaseCounter()) {
+                Text("Up")
             }
-            Text(viewModel.eventID ?? "")
+            Button(intent: DecriseCounter()) {
+                Text("Down")
+            }
         }
         
     }
