@@ -23,6 +23,12 @@
 		5128E0C12CAADB7400F68CA2 /* DateLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128E0BC2CAAD7A100F68CA2 /* DateLocalization.swift */; };
 		5128E0C22CAADB7700F68CA2 /* DateDifferenceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128E0BE2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift */; };
 		513522BC2CA2D57A00FA685D /* OverlayRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513522BB2CA2D57A00FA685D /* OverlayRectangle.swift */; };
+		515617C62CAD97F60024C5EC /* SetEvent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */; };
+		515617CE2CAD98740024C5EC /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515617CD2CAD98740024C5EC /* Intents.framework */; };
+		515617D12CAD98740024C5EC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515617D02CAD98740024C5EC /* IntentHandler.swift */; };
+		515617D52CAD98740024C5EC /* SetEventItent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 515617CC2CAD98740024C5EC /* SetEventItent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		515617D92CAD98930024C5EC /* SetEvent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */; };
+		515617DA2CAD98940024C5EC /* SetEvent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */; };
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		51665A022C905E2700468301 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
@@ -82,6 +88,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		515617D32CAD98740024C5EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 516CBE372C87247000202B93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 515617CB2CAD98740024C5EC;
+			remoteInfo = SetEventItent;
+		};
 		5177246D2C9D5C8A0037143A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 516CBE372C87247000202B93 /* Project object */;
@@ -99,6 +112,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */,
+				515617D52CAD98740024C5EC /* SetEventItent.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +132,12 @@
 		5128E0BC2CAAD7A100F68CA2 /* DateLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLocalization.swift; sourceTree = "<group>"; };
 		5128E0BE2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDifferenceCalculator.swift; sourceTree = "<group>"; };
 		513522BB2CA2D57A00FA685D /* OverlayRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayRectangle.swift; sourceTree = "<group>"; };
+		515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SetEvent.intentdefinition; sourceTree = "<group>"; };
+		515617C72CAD98440024C5EC /* Day-to-Days-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Day-to-Days-Info.plist"; sourceTree = SOURCE_ROOT; };
+		515617CC2CAD98740024C5EC /* SetEventItent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SetEventItent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		515617CD2CAD98740024C5EC /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		515617D02CAD98740024C5EC /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		515617D22CAD98740024C5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		516659F82C90324C00468301 /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
 		51665A012C905E2700468301 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
@@ -173,6 +193,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		515617C92CAD98740024C5EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				515617CE2CAD98740024C5EC /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		516CBE3C2C87247000202B93 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,6 +222,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		515617CF2CAD98740024C5EC /* SetEventItent */ = {
+			isa = PBXGroup;
+			children = (
+				515617D02CAD98740024C5EC /* IntentHandler.swift */,
+				515617D22CAD98740024C5EC /* Info.plist */,
+			);
+			path = SetEventItent;
+			sourceTree = "<group>";
+		};
 		5168C4292C898037002CEAAC /* AddNewScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +269,7 @@
 				51BD461E2C9D6E9600D7515F /* CounterWidgetExtension.entitlements */,
 				516CBE412C87247000202B93 /* Day to Days */,
 				517724612C9D5C880037143A /* CounterWidget */,
+				515617CF2CAD98740024C5EC /* SetEventItent */,
 				5177245C2C9D5C880037143A /* Frameworks */,
 				516CBE402C87247000202B93 /* Products */,
 			);
@@ -242,6 +280,7 @@
 			children = (
 				516CBE3F2C87247000202B93 /* Day to Days.app */,
 				5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */,
+				515617CC2CAD98740024C5EC /* SetEventItent.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -249,6 +288,7 @@
 		516CBE412C87247000202B93 /* Day to Days */ = {
 			isa = PBXGroup;
 			children = (
+				515617C72CAD98440024C5EC /* Day-to-Days-Info.plist */,
 				51BD461F2C9D6F3600D7515F /* Day to Days.entitlements */,
 				516CBE422C87247000202B93 /* DaytoDaysApp.swift */,
 				516CBE552C87296E00202B93 /* Models */,
@@ -328,6 +368,7 @@
 			children = (
 				5177245D2C9D5C880037143A /* WidgetKit.framework */,
 				5177245F2C9D5C880037143A /* SwiftUI.framework */,
+				515617CD2CAD98740024C5EC /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -338,6 +379,7 @@
 				517724622C9D5C880037143A /* CounterWidgetBundle.swift */,
 				517724662C9D5C880037143A /* CounterWidget.swift */,
 				517724682C9D5C880037143A /* ConfigurationAppIntent.swift */,
+				515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */,
 				516DD0892CAC64720003E3D5 /* ChoseViewAppIntent.swift */,
 				516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */,
 				516DE0AB2CA0392800E83E1D /* WidgetColor.swift */,
@@ -402,6 +444,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		515617CB2CAD98740024C5EC /* SetEventItent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 515617D62CAD98740024C5EC /* Build configuration list for PBXNativeTarget "SetEventItent" */;
+			buildPhases = (
+				515617C82CAD98740024C5EC /* Sources */,
+				515617C92CAD98740024C5EC /* Frameworks */,
+				515617CA2CAD98740024C5EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SetEventItent;
+			productName = SetEventItent;
+			productReference = 515617CC2CAD98740024C5EC /* SetEventItent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		516CBE3E2C87247000202B93 /* Day to Days */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 516CBE4D2C87247100202B93 /* Build configuration list for PBXNativeTarget "Day to Days" */;
@@ -416,6 +475,7 @@
 			dependencies = (
 				516CBE522C87275900202B93 /* PBXTargetDependency */,
 				5177246E2C9D5C8A0037143A /* PBXTargetDependency */,
+				515617D42CAD98740024C5EC /* PBXTargetDependency */,
 			);
 			name = "Day to Days";
 			packageProductDependencies = (
@@ -453,6 +513,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					515617CB2CAD98740024C5EC = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					516CBE3E2C87247000202B93 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -481,11 +544,19 @@
 			targets = (
 				516CBE3E2C87247000202B93 /* Day to Days */,
 				5177245A2C9D5C880037143A /* CounterWidgetExtension */,
+				515617CB2CAD98740024C5EC /* SetEventItent */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		515617CA2CAD98740024C5EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		516CBE3D2C87247000202B93 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,6 +579,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		515617C82CAD98740024C5EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				515617DA2CAD98940024C5EC /* SetEvent.intentdefinition in Sources */,
+				515617D12CAD98740024C5EC /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		516CBE3B2C87247000202B93 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -535,6 +615,7 @@
 				5128E0BF2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift in Sources */,
 				517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */,
 				51058A052C9C64D200CA612F /* ButtonSpacerType.swift in Sources */,
+				515617C62CAD97F60024C5EC /* SetEvent.intentdefinition in Sources */,
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
 				51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
@@ -574,6 +655,7 @@
 				5128E0C12CAADB7400F68CA2 /* DateLocalization.swift in Sources */,
 				5128E0C22CAADB7700F68CA2 /* DateDifferenceCalculator.swift in Sources */,
 				51BD462A2C9D948C00D7515F /* WidgetView.swift in Sources */,
+				515617D92CAD98930024C5EC /* SetEvent.intentdefinition in Sources */,
 				516DD08B2CAC677B0003E3D5 /* ChoseViewAppIntent.swift in Sources */,
 				516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */,
 				517724672C9D5C880037143A /* CounterWidget.swift in Sources */,
@@ -587,6 +669,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		515617D42CAD98740024C5EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 515617CB2CAD98740024C5EC /* SetEventItent */;
+			targetProxy = 515617D32CAD98740024C5EC /* PBXContainerItemProxy */;
+		};
 		516CBE522C87275900202B93 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 516CBE512C87275900202B93 /* SwiftLintBuildToolPlugin */;
@@ -611,6 +698,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		515617D72CAD98740024C5EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WLC984U9MC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SetEventItent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SetEventItent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "onlyMe.Day-to-Days.SetEventItent";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		515617D82CAD98740024C5EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WLC984U9MC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SetEventItent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SetEventItent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "onlyMe.Day-to-Days.SetEventItent";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		516CBE4B2C87247100202B93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -743,6 +882,7 @@
 				DEVELOPMENT_TEAM = WLC984U9MC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Day-to-Days-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Days left";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -776,6 +916,7 @@
 				DEVELOPMENT_TEAM = WLC984U9MC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Day-to-Days-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Days left";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -855,6 +996,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		515617D62CAD98740024C5EC /* Build configuration list for PBXNativeTarget "SetEventItent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				515617D72CAD98740024C5EC /* Debug */,
+				515617D82CAD98740024C5EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		516CBE3A2C87247000202B93 /* Build configuration list for PBXProject "Day to Days" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
