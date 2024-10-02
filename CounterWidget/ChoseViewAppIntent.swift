@@ -8,36 +8,55 @@
 import WidgetKit
 import AppIntents
 
+
 struct SetChosenEventToWidget: AppIntent {
     static var title: LocalizedStringResource = "Chose"
+    
+    @Parameter(title: "widgetID")
+    var widgetID: String
     
     @Parameter(title: "eventID")
     var eventID: String
 
     func perform() async throws -> some IntentResult {
-        .result()
+        if let store = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
+            store.setValue(eventID, forKey: widgetID)
+            return .result()
+        }
+        return .result()
     }
     
-    init(counter: String) {
+    init(widgetID: String, eventID: String) {
+        self.widgetID = widgetID
         self.eventID = eventID
     }
     
     init() {
-        eventID = ""
+        
     }
 }
 
 struct IncreaseCounter: AppIntent {
     static var title: LocalizedStringResource = "Up"
     
+    @Parameter(title: "eventsCount")
+    var eventsCount: Int
+    
     func perform() async throws -> some IntentResult {
         if let store = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
-            let count = store.integer(forKey: "count")
-            store.setValue(count + 1, forKey: "count")
+            let count = store.integer(forKey: "widgetCount")
+            let changedCount = min(count + 1, eventsCount - 1)
+            store.setValue(changedCount, forKey: "widgetCount")
             return .result()
         }
         return .result()
     }
+    
+    init(eventsCount: Int) {
+        self.eventsCount = eventsCount
+    }
+    
+    init() {}
 }
 
 struct DecriseCounter: AppIntent {
@@ -45,9 +64,9 @@ struct DecriseCounter: AppIntent {
     
     func perform() async throws -> some IntentResult {
         if let store = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
-            let count = store.integer(forKey: "count")
+            let count = store.integer(forKey: "widgetCount")
             let changedCount = count - 1
-            store.setValue(changedCount > -1 ? changedCount : 0, forKey: "count")
+            store.setValue(changedCount > -1 ? changedCount : 0, forKey: "widgetCount")
             return .result()
         }
         return .result()

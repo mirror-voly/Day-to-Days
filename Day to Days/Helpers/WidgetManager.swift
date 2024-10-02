@@ -38,7 +38,7 @@ final class WidgetManager {
         UserDefaults.standard.string(forKey: "widgetEventID")
     }
 
-    static func sendAllEventsForWidget(_ events: [Event]) {
+    static func sendToWidgetsThis(_ events: [Event]) {
         var eventsForWidget: [EventWidget] = []
         for event in events {
             eventsForWidget.append(makeEventWidget(event: event))
@@ -46,7 +46,8 @@ final class WidgetManager {
         do {
             let data = try JSONEncoder().encode(eventsForWidget)
             if let userDefaults = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
-                userDefaults.set(data, forKey: "allEvents")
+                userDefaults.set(data, forKey: "counters")
+                WidgetCenter.shared.reloadTimelines(ofKind: "CounterWidget")
             } else {
                 print("UserDefaults could not be initialized.")
             }
