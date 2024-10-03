@@ -18,7 +18,7 @@ struct MainWidgetView: View {
                     Divider()
                     Text(viewModel.number)
                         .font(.system(size: Constraints.widgetNumberFontSize, weight: .heavy))
-//                        .foregroundStyle(viewModel.numberColor)
+                        .foregroundStyle(.brown)
                     Divider()
                     HStack(spacing: Constraints.widgetStackSpaser, content: {
                         Group {

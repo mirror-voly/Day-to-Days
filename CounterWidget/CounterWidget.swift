@@ -12,7 +12,7 @@ struct Provider: IntentTimelineProvider {
     @AppStorage("counters", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
     private var data = Data()
     
-    private func decodeEvents(from data: Data) -> [EventWidget] {
+    private func decodeEvents() -> [EventWidget] {
         do {
             return try JSONDecoder().decode([EventWidget].self, from: data)
         } catch {
@@ -25,24 +25,20 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getSnapshot(for configuration: SetupEventIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        completion(SimpleEntry(date: Date(), configuration: configuration, events: decodeEvents(from: data)))
+        completion(SimpleEntry(date: Date(), configuration: configuration, events: decodeEvents()))
     }
 
     func getTimeline(for configuration: SetupEventIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         var entries: [SimpleEntry] = []
-        if let events = try? JSONDecoder().decode([EventWidget].self, from: data) {
-            let currentDate = Date()
-            for hourOffset in 0 ..< 5 {
-                let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, configuration: configuration, events: events)
-                entries.append(entry)
-            }
+        let events = decodeEvents()
+        let currentDate = Date()
+        for hourOffset in 0 ..< 5 {
+            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+            let entry = SimpleEntry(date: entryDate, configuration: configuration, events: events)
+            entries.append(entry)
         }
         completion(Timeline(entries: entries, policy: .atEnd))
     }
-
-    typealias Entry = SimpleEntry
-    typealias Intent = SetupEventIntent
 }
 
 struct SimpleEntry: TimelineEntry {
