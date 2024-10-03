@@ -55,7 +55,11 @@ struct CounterWidgetEntryView : View {
     var entry: Provider.Entry
     
     var body: some View {
-        WidgetView(events: entry.events, eventID: entry.configuration.WidgetEvent?.identifier ?? "" )
+        if entry.configuration.WidgetEvent?.identifier != nil{
+            MainWidgetView(events: entry.events, eventID: entry.configuration.WidgetEvent?.identifier ?? "" )
+        } else {
+            EmptyWidgetView()
+        }
     }
 }
 

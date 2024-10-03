@@ -36,6 +36,7 @@
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		51665A022C905E2700468301 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
+		5168A3142CAEAAD600E42A7E /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */; };
 		5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168C42A2C898095002CEAAC /* DateTypeSlider.swift */; };
 		516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE422C87247000202B93 /* DaytoDaysApp.swift */; };
 		516CBE452C87247000202B93 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE442C87247000202B93 /* MainScreen.swift */; };
@@ -82,7 +83,7 @@
 		51BD461C2C9D6D1600D7515F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
 		51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
 		51BD46212C9D7A2D00D7515F /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46202C9D7A2D00D7515F /* WidgetManager.swift */; };
-		51BD462A2C9D948C00D7515F /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46262C9D908B00D7515F /* WidgetView.swift */; };
+		51BD462A2C9D948C00D7515F /* MainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46262C9D908B00D7515F /* MainWidgetView.swift */; };
 		51BD462F2C9DA10F00D7515F /* WidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */; };
 		51C623672CAAB0CE00CF58B4 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		51C623682CAAB14C00CF58B4 /* EventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventWidget.swift */; };
@@ -146,6 +147,7 @@
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
 		51665A012C905E2700468301 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
 		5168A30F2CAE844400E42A7E /* SetEventItent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SetEventItent.entitlements; sourceTree = "<group>"; };
+		5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
 		5168C42A2C898095002CEAAC /* DateTypeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTypeSlider.swift; sourceTree = "<group>"; };
 		516CBE3F2C87247000202B93 /* Day to Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Day to Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		516CBE422C87247000202B93 /* DaytoDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaytoDaysApp.swift; sourceTree = "<group>"; };
@@ -192,7 +194,7 @@
 		51BD461F2C9D6F3600D7515F /* Day to Days.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Day to Days.entitlements"; sourceTree = "<group>"; };
 		51BD46202C9D7A2D00D7515F /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
 		51BD46232C9D839B00D7515F /* EventWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWidget.swift; sourceTree = "<group>"; };
-		51BD46262C9D908B00D7515F /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		51BD46262C9D908B00D7515F /* MainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetView.swift; sourceTree = "<group>"; };
 		51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
 		51F9117E2C95D2CA00C625DC /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -366,8 +368,9 @@
 		516DE0AA2CA038A800E83E1D /* View and ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				51BD46262C9D908B00D7515F /* WidgetView.swift */,
+				51BD46262C9D908B00D7515F /* MainWidgetView.swift */,
 				51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */,
+				5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */,
 			);
 			path = "View and ViewModel";
 			sourceTree = "<group>";
@@ -680,11 +683,12 @@
 				5128E0C02CAADB7100F68CA2 /* TimeStateDeterminer.swift in Sources */,
 				5128E0C12CAADB7400F68CA2 /* DateLocalization.swift in Sources */,
 				5128E0C22CAADB7700F68CA2 /* DateDifferenceCalculator.swift in Sources */,
-				51BD462A2C9D948C00D7515F /* WidgetView.swift in Sources */,
+				51BD462A2C9D948C00D7515F /* MainWidgetView.swift in Sources */,
 				515617D92CAD98930024C5EC /* SetEvent.intentdefinition in Sources */,
 				516DD08B2CAC677B0003E3D5 /* ChoseViewAppIntent.swift in Sources */,
 				516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */,
 				517724672C9D5C880037143A /* CounterWidget.swift in Sources */,
+				5168A3142CAEAAD600E42A7E /* EmptyWidgetView.swift in Sources */,
 				51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */,
 				516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */,
 				516DE0AC2CA0392800E83E1D /* WidgetColor.swift in Sources */,
@@ -911,7 +915,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Day-to-Days-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Days left";
+				INFOPLIST_KEY_CFBundleDisplayName = "Days counter";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -945,7 +949,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Day-to-Days-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Days left";
+				INFOPLIST_KEY_CFBundleDisplayName = "Days counter";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
