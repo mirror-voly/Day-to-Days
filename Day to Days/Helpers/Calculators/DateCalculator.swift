@@ -27,17 +27,17 @@ final class DateCalculator {
             return returnDate
         }
 
-    func localizeIt(for count: String, unit: String) -> String {
+    func localizeIt(for count: String, dateType: DateType) -> String {
         guard let countInt = Int(count) else { return "error" }
         let absCount = abs(countInt)
         let languageCode = Locale.current.language.languageCode?.identifier
         switch languageCode {
         case "ru":
-            return dateLocalization.getRussianLocalization(for: absCount, unit: unit)
+            return dateLocalization.getRussianLocalization(for: absCount, dateType: dateType)
         case "en":
-            return dateLocalization.getEnglishLocalization(for: absCount, unit: unit)
+            return dateLocalization.getEnglishLocalization(for: absCount, dateType: dateType)
         default:
-            return unit
+            return dateType.label
         }
     }
 
@@ -52,7 +52,7 @@ final class DateCalculator {
     func allTimeDataFor(date: Date, dateType: DateType) -> [String: String] {
         let timeState = timeStateDeterminer.determineFutureOrPast(for: date)
         let dateNumber = findFirstDateFromTheTopFor(date: date, dateType: dateType)
-        let localizedDateType = localizeIt(for: dateNumber, unit: dateType.label)
+        let localizedDateType = localizeIt(for: dateNumber, dateType: dateType)
         let localizedTimeState = dateLocalization.localizeTimeState(for: dateNumber,
                                                                     state: timeState, dateType: dateType)
         return ["timeState": timeState.label, "dateNumber": dateNumber,

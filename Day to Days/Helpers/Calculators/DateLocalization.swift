@@ -28,33 +28,29 @@ final class DateLocalization {
         (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20) ? "дня" : "дней")
     }
 
-    func getRussianLocalization(for count: Int, unit: String) -> String {
-        switch unit {
-        case "годы":
+    func getRussianLocalization(for count: Int, dateType: DateType) -> String {
+        switch dateType {
+        case .year:
             return getRussianYearForm(for: count)
-        case "месяцы":
+        case .month:
             return getRussianMonthForm(for: count)
-        case "недели":
+        case .week:
             return getRussianWeekForm(for: count)
-        case "дни":
+        case .day:
             return getRussianDayForm(for: count)
-        default:
-            return unit
         }
     }
 
-    func getEnglishLocalization(for count: Int, unit: String) -> String {
-        switch unit {
-        case "years":
+    func getEnglishLocalization(for count: Int, dateType: DateType) -> String {
+        switch dateType {
+        case .year:
             return count == 1 ? "year" : "years"
-        case "months":
+        case .month:
             return count == 1 ? "month" : "months"
-        case "weeks":
+        case .week:
             return count == 1 ? "week" : "weeks"
-        case "days":
+        case .day:
             return count == 1 ? "day" : "days"
-        default:
-            return unit
         }
     }
 

@@ -28,6 +28,6 @@ struct DateInfoView: View {
 
     init(number: String, dateType: DateType, viewModel: EventInfoScreenViewModel) {
         self.number = number
-        self.label = viewModel.dateCalculator.localizeIt(for: number, unit: dateType.label)
+        self.label = viewModel.dateCalculator.localizeIt(for: number, dateType: dateType)
     }
 }
