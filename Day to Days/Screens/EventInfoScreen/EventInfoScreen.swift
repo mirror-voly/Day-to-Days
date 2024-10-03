@@ -9,6 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct EventInfoScreen: View {
+    @ObservedResults(Event.self) var allEvents
     @Environment(AddOrEditEventSheetViewModel.self) var sheetViewModel
     @Environment(\.dismiss) var dismiss
     @Bindable var viewModel: EventInfoScreenViewModel
@@ -52,6 +53,7 @@ struct EventInfoScreen: View {
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $viewModel.sheetIsOpened, onDismiss: {
             viewModel.updateEditedEvent()
+            WidgetManager.sendToWidgetsThis(Array(allEvents))
         }, content: {
             AddOrEditEventSheet(event: viewModel.event, isOpened: $viewModel.sheetIsOpened,
             showAlert: $viewModel.alertIsPresented, viewModel: sheetViewModel)
@@ -65,7 +67,6 @@ struct EventInfoScreen: View {
         })
         .toolbar(content: {
             backButton
-            widgetButton
             editButton
         })
         .tint(viewModel.event.color)

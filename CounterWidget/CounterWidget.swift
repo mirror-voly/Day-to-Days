@@ -8,54 +8,55 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: AppIntentTimelineProvider {
-    @AppStorage("counter", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
-    var data = Data()
+struct Provider: IntentTimelineProvider {
+    @AppStorage("counters", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
+    private var data = Data()
     
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), event: EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day), widgetColor: .allColors[0], count: 0)
+    private func decodeEvents() -> [EventForTransfer] {
+        do {
+            return try JSONDecoder().decode([EventForTransfer].self, from: data)
+        } catch {
+            return []
+        }
     }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        let event: EventWidget
-        if let decodedEvent = try? JSONDecoder().decode(EventWidget.self, from: data) {
-            event = decodedEvent
-        } else {
-            event = EventWidget(name: "title".localized.capitalized, id: UUID(), date: Date(), dateType: .day)
-        }
-        return SimpleEntry(date: Date(), configuration: configuration, event: event, widgetColor: configuration.numberColor, count: 0)
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date(), configuration: SetupEventIntent(),
+                    events: [EventForTransfer(name: "", id: UUID(), date: Date(), dateType: .day, color: .brown)])
     }
-    
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
+
+    func getSnapshot(for configuration: SetupEventIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+        completion(SimpleEntry(date: Date(), configuration: configuration, events: decodeEvents()))
+    }
+
+    func getTimeline(for configuration: SetupEventIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         var entries: [SimpleEntry] = []
-        if let event = try? JSONDecoder().decode(EventWidget.self, from: data) {
-            let currentDate = Date()
-            for hourOffset in 0 ..< 5 {
-                let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, configuration: configuration, event: event, widgetColor: configuration.numberColor, count: 0)
-                entries.append(entry)
-            }
+        let events = decodeEvents()
+        let currentDate = Date()
+        for hourOffset in 0 ..< 5 {
+            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+            let entry = SimpleEntry(date: entryDate, configuration: configuration, events: events)
+            entries.append(entry)
         }
-        return Timeline(entries: entries, policy: .atEnd)
+        completion(Timeline(entries: entries, policy: .atEnd))
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationAppIntent
-    let event: EventWidget
-    let widgetColor: WidgetColor?
-    let count: Int
+    let configuration: SetupEventIntent
+    let events: [EventForTransfer]
 }
 
 struct CounterWidgetEntryView : View {
     var entry: Provider.Entry
-
+    
     var body: some View {
-        VStack {
-            WidgetView(event: entry.event, numberColor: entry.configuration.numberColor.color)
+        if entry.configuration.WidgetEvent?.identifier != nil{
+            MainWidgetView(events: entry.events, eventID: entry.configuration.WidgetEvent?.identifier ?? "" )
+        } else {
+            EmptyWidgetView()
         }
-        .containerBackground(.brown, for: .widget)
     }
 }
 
@@ -63,7 +64,7 @@ struct CounterWidget: Widget {
     let kind: String = "CounterWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: SetupEventIntent.self, provider: Provider()) { entry in
             CounterWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }

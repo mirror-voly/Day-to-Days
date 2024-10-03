@@ -144,17 +144,10 @@ final class AddOrEditEventSheetViewModel {
     func buttonAction() {
         let oldEventID = event?.id
         let event = createEvent(id: nil)
-        let widgetEventID = WidgetManager.activeVidgetEventID()
         if let oldEventID = oldEventID {
             editEvent(oldEventID: oldEventID, newEvent: event)
-            if widgetEventID == oldEventID.uuidString {
-                WidgetManager.saveEventForWidget(event)
-            }
         } else {
             addEvent(event: event)
-            if widgetEventID == nil {
-                WidgetManager.saveEventForWidget(event)
-            }
         }
         makeCurrentEventNil()
     }

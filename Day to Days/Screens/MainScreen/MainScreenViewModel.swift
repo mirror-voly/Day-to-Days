@@ -117,6 +117,7 @@ final class MainScreenViewModel {
     func setEvents(allEvents: Results<Event>) {
         withAnimation {
             self.events = allEvents
+            WidgetManager.sendToWidgetsThis(Array(allEvents))
         }
     }
 

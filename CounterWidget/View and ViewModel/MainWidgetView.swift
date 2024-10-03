@@ -1,5 +1,5 @@
 //
-//  WidgetView.swift
+//  MainWidgetView.swift
 //  Day to Days
 //
 //  Created by mix on 20.09.2024.
@@ -7,21 +7,18 @@
 
 import SwiftUI
 
-struct WidgetView: View {
+struct MainWidgetView: View {
     var viewModel: WidgetViewModel
 
     var body: some View {
-        if viewModel.eventID != nil {
             VStack (spacing: Constraints.widgetStackSpaser) {
                 Group {
-                    Text(viewModel.event.name)
-                        .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
+                    Text(viewModel.eventTitle)
                         .foregroundStyle(.gray)
                     Divider()
                     Text(viewModel.number)
                         .font(.system(size: Constraints.widgetNumberFontSize, weight: .heavy))
-                        .foregroundStyle(viewModel.numberColor)
-                        .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
+                        .foregroundStyle(viewModel.color)
                     Divider()
                     HStack(spacing: Constraints.widgetStackSpaser, content: {
                         Group {
@@ -33,18 +30,12 @@ struct WidgetView: View {
                         .foregroundStyle(.gray)
                     })
                 }
+                .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
                 .lineLimit(1)
             }
             .ignoresSafeArea()
-        } else {
-            Button(intent: ChoseWidgetView()) {
-                Text("Hi")
-            }
-            Text(viewModel.eventID ?? "")
-        }
-        
     }
-    init(event: EventWidget, numberColor: Color) {
-        self.viewModel = WidgetViewModel(event: event, numberColor: numberColor)
+    init(events: [EventForTransfer], eventID: String) {
+        self.viewModel = WidgetViewModel(events: events, eventID: eventID)
     }
 }
