@@ -8,7 +8,7 @@
 import Foundation
 
 final class EventWidget: Codable {
-    let name: String
+    let title: String
     let id: UUID
     let date: Date
     var dateTypeData: Data?
@@ -19,9 +19,15 @@ final class EventWidget: Codable {
     }
 
     init(name: String, id: UUID, date: Date, dateType: DateType) {
-        self.name = name
+        self.title = name
         self.id = id
         self.date = date
         self.dateTypeData = dateType.toData()
+    }
+
+    init() {
+        self.title = ""
+        self.id = UUID()
+        self.date = Date()
     }
 }

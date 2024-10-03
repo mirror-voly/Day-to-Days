@@ -39,21 +39,4 @@ extension EventInfoScreen {
             }
         }
     }
-
-    var widgetButton: some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                WidgetManager.saveEventForWidget(viewModel.event)
-            } label: {
-                Circle()
-                    .fill(.white)
-                    .frame(width: Constraints.eventInfoButtonSize, height: Constraints.eventInfoButtonSize)
-                    .overlay(Image(systemName: "pin.fill")
-                        .font(.footnote))
-            }
-            .contextMenu {
-                HelpContextMenu(helpText: "add_widget_help")
-            }
-        }
-    }
 }

@@ -9,15 +9,14 @@ import SwiftUI
 
 @Observable
 final class WidgetViewModel {
+    private (set) var eventTitle: String = ""
     private (set) var localizedTimeState: String = ""
     private (set) var number: String = ""
     private (set) var localizedDateType: String = ""
-    /*private (set)*/ var eventID: String?
-    let event: EventWidget
-    let numberColor: Color
     let dateCalculator = DateCalculator()
 
-    func setTimeData(event: EventWidget) {
+    func setTimeData(event: EventWidget?) {
+        guard let event = event else { return }
         let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
         if let localizedTimeState = timeData["localizedTimeState"] {
             self.localizedTimeState = localizedTimeState
@@ -30,11 +29,10 @@ final class WidgetViewModel {
                 self.localizedDateType = localizedDateType
             }
         }
+        eventTitle = event.title
     }
     
-    init(event: EventWidget, numberColor: Color) {
-        self.numberColor = numberColor
-        self.event = event
-        setTimeData(event: event)
+    init(events: [EventWidget], eventID: String) {
+        setTimeData(event: events.first(where: { $0.id.uuidString == eventID }))
     }
 }

@@ -27,7 +27,7 @@ extension IntentHandler: SetupEventIntentHandling {
                                                                          (any Error)?) -> Void) {
         let events = decodeEvents(from: data)
         let widgetEvents = events.map { event in
-            WidgetEvent(identifier: event.id.uuidString, display: event.name)
+            WidgetEvent(identifier: event.id.uuidString, display: event.title)
         }
         let collection = INObjectCollection(items: widgetEvents)
         completion(collection, nil)

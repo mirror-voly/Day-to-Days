@@ -240,8 +240,8 @@
 		5168A3102CAE85E700E42A7E /* Color Intent */ = {
 			isa = PBXGroup;
 			children = (
-				516DE0AB2CA0392800E83E1D /* WidgetColor.swift */,
 				517724682C9D5C880037143A /* ConfigurationAppIntent.swift */,
+				516DE0AB2CA0392800E83E1D /* WidgetColor.swift */,
 				516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */,
 			);
 			path = "Color Intent";

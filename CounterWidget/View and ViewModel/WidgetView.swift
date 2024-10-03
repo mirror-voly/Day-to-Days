@@ -11,16 +11,15 @@ struct WidgetView: View {
     var viewModel: WidgetViewModel
 
     var body: some View {
-        if viewModel.eventID != nil {
             VStack (spacing: Constraints.widgetStackSpaser) {
                 Group {
-                    Text(viewModel.event.name)
+                    Text(viewModel.eventTitle)
                         .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
                         .foregroundStyle(.gray)
                     Divider()
                     Text(viewModel.number)
                         .font(.system(size: Constraints.widgetNumberFontSize, weight: .heavy))
-                        .foregroundStyle(viewModel.numberColor)
+//                        .foregroundStyle(viewModel.numberColor)
                         .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
                     Divider()
                     HStack(spacing: Constraints.widgetStackSpaser, content: {
@@ -36,18 +35,8 @@ struct WidgetView: View {
                 .lineLimit(1)
             }
             .ignoresSafeArea()
-        }
-//        else {
-//            Button(intent: IncreaseCounter()) {
-//                Text("Up")
-//            }
-//            Button(intent: DecriseCounter()) {
-//                Text("Down")
-//            }
-//        }
-        
     }
-    init(event: EventWidget, numberColor: Color) {
-        self.viewModel = WidgetViewModel(event: event, numberColor: numberColor)
+    init(events: [EventWidget], eventID: String) {
+        self.viewModel = WidgetViewModel(events: events, eventID: eventID)
     }
 }
