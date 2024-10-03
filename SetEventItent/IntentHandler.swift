@@ -6,19 +6,31 @@
 //
 
 import Intents
+import SwiftUI
 
-class IntentHandler: INExtension, SetupEventIntentHandling {
-    func provideWidgetEventOptionsCollection(for intent: SetupEventIntent, with completion: @escaping (INObjectCollection<WidgetEvent>?, (any Error)?) -> Void) {
-        let collection: [WidgetEvent] = [WidgetEvent(identifier: "1", display: "2")]
-        completion(INObjectCollection(items: collection), nil)
+class IntentHandler: INExtension {
+    @AppStorage("counters", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
+    var data = Data()
+}
+
+extension IntentHandler: SetupEventIntentHandling {
+
+    func getEvents() -> [EventWidget] {
+        if let decodedEvent = try? JSONDecoder().decode([EventWidget].self, from: data) {
+            return decodedEvent
+        }
+        return []
     }
-    
-    
-    override func handler(for intent: INIntent) -> Any {
-        // This is the default implementation.  If you want different objects to handle different intents,
-        // you can override this and return the handler you want for that particular intent.
-        
-        return self
+
+    func provideWidgetEventOptionsCollection(for intent: SetupEventIntent,
+                                             with completion: @escaping (INObjectCollection<WidgetEvent>?,
+                                                                         (any Error)?) -> Void) {
+            let events = self.getEvents()
+            var widgetEvents: [WidgetEvent] = [WidgetEvent(identifier: "1", display: "1")]
+            for event in events {
+                widgetEvents.append(WidgetEvent(identifier: event.id.uuidString, display: event.name))
+            }
+            let collection: [WidgetEvent] = widgetEvents
+            completion(INObjectCollection(items: collection), nil)
     }
-    
 }

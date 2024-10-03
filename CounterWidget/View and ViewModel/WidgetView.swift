@@ -36,14 +36,15 @@ struct WidgetView: View {
                 .lineLimit(1)
             }
             .ignoresSafeArea()
-        } else {
-            Button(intent: IncreaseCounter()) {
-                Text("Up")
-            }
-            Button(intent: DecriseCounter()) {
-                Text("Down")
-            }
         }
+//        else {
+//            Button(intent: IncreaseCounter()) {
+//                Text("Up")
+//            }
+//            Button(intent: DecriseCounter()) {
+//                Text("Down")
+//            }
+//        }
         
     }
     init(event: EventWidget, numberColor: Color) {
