@@ -18,7 +18,9 @@
 	<array>
 		<dict>
 			<key>INIntentCategory</key>
-			<string>information</string>
+			<string>generic</string>
+			<key>INIntentDescription</key>
+			<string>Choose event to present on this widget</string>
 			<key>INIntentDescriptionID</key>
 			<string>psTHnu</string>
 			<key>INIntentEligibleForWidgets</key>
@@ -26,7 +28,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>2</integer>
+			<integer>6</integer>
 			<key>INIntentName</key>
 			<string>SetupEvent</string>
 			<key>INIntentParameters</key>
@@ -64,7 +66,7 @@
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>2</integer>
+					<integer>6</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
@@ -92,7 +94,7 @@
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
-			<string>View</string>
+			<string>Do</string>
 		</dict>
 	</array>
 	<key>INTypes</key>

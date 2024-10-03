@@ -237,6 +237,24 @@
 			path = SetEventItent;
 			sourceTree = "<group>";
 		};
+		5168A3102CAE85E700E42A7E /* Color Intent */ = {
+			isa = PBXGroup;
+			children = (
+				516DE0AB2CA0392800E83E1D /* WidgetColor.swift */,
+				517724682C9D5C880037143A /* ConfigurationAppIntent.swift */,
+				516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */,
+			);
+			path = "Color Intent";
+			sourceTree = "<group>";
+		};
+		5168A3112CAE863700E42A7E /* Setup Intent */ = {
+			isa = PBXGroup;
+			children = (
+				515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */,
+			);
+			path = "Setup Intent";
+			sourceTree = "<group>";
+		};
 		5168C4292C898037002CEAAC /* AddNewScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,14 +400,12 @@
 		517724612C9D5C880037143A /* CounterWidget */ = {
 			isa = PBXGroup;
 			children = (
-				515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */,
+				5168A3112CAE863700E42A7E /* Setup Intent */,
+				5168A3102CAE85E700E42A7E /* Color Intent */,
 				517724622C9D5C880037143A /* CounterWidgetBundle.swift */,
 				517724662C9D5C880037143A /* CounterWidget.swift */,
-				517724682C9D5C880037143A /* ConfigurationAppIntent.swift */,
-				516DD0892CAC64720003E3D5 /* ChoseViewAppIntent.swift */,
-				516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */,
-				516DE0AB2CA0392800E83E1D /* WidgetColor.swift */,
 				516DE0AA2CA038A800E83E1D /* View and ViewModel */,
+				516DD0892CAC64720003E3D5 /* ChoseViewAppIntent.swift */,
 				5177246A2C9D5C8A0037143A /* Assets.xcassets */,
 				5177246C2C9D5C8A0037143A /* Info.plist */,
 			);
