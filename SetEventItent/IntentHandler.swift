@@ -12,9 +12,9 @@ class IntentHandler: INExtension {
     @AppStorage("counters", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
     private var data = Data()
 
-    private func decodeEvents(from data: Data) -> [EventWidget] {
+    private func decodeEvents() -> [EventForTransfer] {
         do {
-            return try JSONDecoder().decode([EventWidget].self, from: data)
+            return try JSONDecoder().decode([EventForTransfer].self, from: data)
         } catch {
             return []
         }
@@ -25,7 +25,7 @@ extension IntentHandler: SetupEventIntentHandling {
     func provideWidgetEventOptionsCollection(for intent: SetupEventIntent,
                                              with completion: @escaping (INObjectCollection<WidgetEvent>?,
                                                                          (any Error)?) -> Void) {
-        let events = decodeEvents(from: data)
+        let events = decodeEvents()
         let widgetEvents = events.map { event in
             WidgetEvent(identifier: event.id.uuidString, display: event.title)
         }

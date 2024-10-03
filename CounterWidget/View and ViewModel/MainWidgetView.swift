@@ -18,7 +18,7 @@ struct MainWidgetView: View {
                     Divider()
                     Text(viewModel.number)
                         .font(.system(size: Constraints.widgetNumberFontSize, weight: .heavy))
-                        .foregroundStyle(.brown)
+                        .foregroundStyle(viewModel.color)
                     Divider()
                     HStack(spacing: Constraints.widgetStackSpaser, content: {
                         Group {
@@ -35,7 +35,7 @@ struct MainWidgetView: View {
             }
             .ignoresSafeArea()
     }
-    init(events: [EventWidget], eventID: String) {
+    init(events: [EventForTransfer], eventID: String) {
         self.viewModel = WidgetViewModel(events: events, eventID: eventID)
     }
 }

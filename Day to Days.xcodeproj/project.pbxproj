@@ -30,13 +30,16 @@
 		515617D92CAD98930024C5EC /* SetEvent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */; };
 		515617DA2CAD98940024C5EC /* SetEvent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */; };
 		515617DB2CADBDC50024C5EC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515617D02CAD98740024C5EC /* IntentHandler.swift */; };
-		515617DD2CADC2A30024C5EC /* EventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventWidget.swift */; };
+		515617DD2CADC2A30024C5EC /* EventForTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventForTransfer.swift */; };
 		515617DE2CADC5740024C5EC /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		515617DF2CADC57E0024C5EC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515617D02CAD98740024C5EC /* IntentHandler.swift */; };
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		51665A022C905E2700468301 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
 		5168A3142CAEAAD600E42A7E /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */; };
+		5168A3152CAEC73800E42A7E /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
+		5168A3162CAEC8BD00E42A7E /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
+		5168A3172CAECBAD00E42A7E /* EventForTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventForTransfer.swift */; };
 		5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168C42A2C898095002CEAAC /* DateTypeSlider.swift */; };
 		516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE422C87247000202B93 /* DaytoDaysApp.swift */; };
 		516CBE452C87247000202B93 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE442C87247000202B93 /* MainScreen.swift */; };
@@ -50,8 +53,6 @@
 		516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		516DE0A82CA022E400E83E1D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Constraints.swift */; };
 		516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
-		516DE0AC2CA0392800E83E1D /* WidgetColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DE0AB2CA0392800E83E1D /* WidgetColor.swift */; };
-		516DE0AE2CA039AD00E83E1D /* WidgetColorQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */; };
 		516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */; };
 		516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9D2C8D9AF00095A646 /* EventsList.swift */; };
 		5170CC592C92ADE600A9380B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
@@ -64,7 +65,6 @@
 		517724602C9D5C880037143A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245F2C9D5C880037143A /* SwiftUI.framework */; };
 		517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724622C9D5C880037143A /* CounterWidgetBundle.swift */; };
 		517724672C9D5C880037143A /* CounterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724662C9D5C880037143A /* CounterWidget.swift */; };
-		517724692C9D5C880037143A /* ConfigurationAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724682C9D5C880037143A /* ConfigurationAppIntent.swift */; };
 		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
 		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
@@ -86,8 +86,7 @@
 		51BD462A2C9D948C00D7515F /* MainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46262C9D908B00D7515F /* MainWidgetView.swift */; };
 		51BD462F2C9DA10F00D7515F /* WidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */; };
 		51C623672CAAB0CE00CF58B4 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
-		51C623682CAAB14C00CF58B4 /* EventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventWidget.swift */; };
-		51C623692CAAB14D00CF58B4 /* EventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventWidget.swift */; };
+		51C623682CAAB14C00CF58B4 /* EventForTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventForTransfer.swift */; };
 		51C6236A2CAAB2D300CF58B4 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9117E2C95D2CA00C625DC /* SortType.swift */; };
 /* End PBXBuildFile section */
@@ -159,8 +158,6 @@
 		516CBE582C87339F00202B93 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		516CBE5C2C87403600202B93 /* EventsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemView.swift; sourceTree = "<group>"; };
 		516DD0892CAC64720003E3D5 /* ChoseViewAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseViewAppIntent.swift; sourceTree = "<group>"; };
-		516DE0AB2CA0392800E83E1D /* WidgetColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetColor.swift; sourceTree = "<group>"; };
-		516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetColorQuery.swift; sourceTree = "<group>"; };
 		516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListIsEmpyView.swift; sourceTree = "<group>"; };
 		516F0C9D2C8D9AF00095A646 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		5170CC582C92ADE600A9380B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -174,7 +171,6 @@
 		5177245F2C9D5C880037143A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		517724622C9D5C880037143A /* CounterWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidgetBundle.swift; sourceTree = "<group>"; };
 		517724662C9D5C880037143A /* CounterWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidget.swift; sourceTree = "<group>"; };
-		517724682C9D5C880037143A /* ConfigurationAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationAppIntent.swift; sourceTree = "<group>"; };
 		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
@@ -193,7 +189,7 @@
 		51BD461E2C9D6E9600D7515F /* CounterWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CounterWidgetExtension.entitlements; sourceTree = "<group>"; };
 		51BD461F2C9D6F3600D7515F /* Day to Days.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Day to Days.entitlements"; sourceTree = "<group>"; };
 		51BD46202C9D7A2D00D7515F /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
-		51BD46232C9D839B00D7515F /* EventWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWidget.swift; sourceTree = "<group>"; };
+		51BD46232C9D839B00D7515F /* EventForTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventForTransfer.swift; sourceTree = "<group>"; };
 		51BD46262C9D908B00D7515F /* MainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetView.swift; sourceTree = "<group>"; };
 		51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
 		51F9117E2C95D2CA00C625DC /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
@@ -237,16 +233,6 @@
 				515617D22CAD98740024C5EC /* Info.plist */,
 			);
 			path = SetEventItent;
-			sourceTree = "<group>";
-		};
-		5168A3102CAE85E700E42A7E /* Color Intent */ = {
-			isa = PBXGroup;
-			children = (
-				517724682C9D5C880037143A /* ConfigurationAppIntent.swift */,
-				516DE0AB2CA0392800E83E1D /* WidgetColor.swift */,
-				516DE0AD2CA039AD00E83E1D /* WidgetColorQuery.swift */,
-			);
-			path = "Color Intent";
 			sourceTree = "<group>";
 		};
 		5168A3112CAE863700E42A7E /* Setup Intent */ = {
@@ -339,7 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				516CBE532C87296400202B93 /* Event.swift */,
-				51BD46232C9D839B00D7515F /* EventWidget.swift */,
+				51BD46232C9D839B00D7515F /* EventForTransfer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -404,7 +390,6 @@
 			isa = PBXGroup;
 			children = (
 				5168A3112CAE863700E42A7E /* Setup Intent */,
-				5168A3102CAE85E700E42A7E /* Color Intent */,
 				517724622C9D5C880037143A /* CounterWidgetBundle.swift */,
 				517724662C9D5C880037143A /* CounterWidget.swift */,
 				516DE0AA2CA038A800E83E1D /* View and ViewModel */,
@@ -609,9 +594,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				515617DA2CAD98940024C5EC /* SetEvent.intentdefinition in Sources */,
+				5168A3162CAEC8BD00E42A7E /* ColorType.swift in Sources */,
 				515617DE2CADC5740024C5EC /* DateType.swift in Sources */,
 				515617D12CAD98740024C5EC /* IntentHandler.swift in Sources */,
-				515617DD2CADC2A30024C5EC /* EventWidget.swift in Sources */,
+				515617DD2CADC2A30024C5EC /* EventForTransfer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,7 +607,7 @@
 			files = (
 				517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */,
 				517122412CA59F850037974D /* ClearableTextField.swift in Sources */,
-				51C623682CAAB14C00CF58B4 /* EventWidget.swift in Sources */,
+				51C623682CAAB14C00CF58B4 /* EventForTransfer.swift in Sources */,
 				51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */,
 				515617DF2CADC57E0024C5EC /* IntentHandler.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
@@ -673,16 +659,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				51BD462F2C9DA10F00D7515F /* WidgetViewModel.swift in Sources */,
-				51C623692CAAB14D00CF58B4 /* EventWidget.swift in Sources */,
 				517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */,
-				516DE0AE2CA039AD00E83E1D /* WidgetColorQuery.swift in Sources */,
 				516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */,
 				516DE0A82CA022E400E83E1D /* Constraints.swift in Sources */,
 				515617DB2CADBDC50024C5EC /* IntentHandler.swift in Sources */,
-				517724692C9D5C880037143A /* ConfigurationAppIntent.swift in Sources */,
 				5128E0C02CAADB7100F68CA2 /* TimeStateDeterminer.swift in Sources */,
+				5168A3172CAECBAD00E42A7E /* EventForTransfer.swift in Sources */,
 				5128E0C12CAADB7400F68CA2 /* DateLocalization.swift in Sources */,
 				5128E0C22CAADB7700F68CA2 /* DateDifferenceCalculator.swift in Sources */,
+				5168A3152CAEC73800E42A7E /* Color+colorType.swift in Sources */,
 				51BD462A2C9D948C00D7515F /* MainWidgetView.swift in Sources */,
 				515617D92CAD98930024C5EC /* SetEvent.intentdefinition in Sources */,
 				516DD08B2CAC677B0003E3D5 /* ChoseViewAppIntent.swift in Sources */,
@@ -691,7 +676,6 @@
 				5168A3142CAEAAD600E42A7E /* EmptyWidgetView.swift in Sources */,
 				51BD461D2C9D6D2500D7515F /* String+Localized.swift in Sources */,
 				516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */,
-				516DE0AC2CA0392800E83E1D /* WidgetColor.swift in Sources */,
 				51C6236A2CAAB2D300CF58B4 /* DateCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

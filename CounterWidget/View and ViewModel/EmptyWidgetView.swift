@@ -13,9 +13,10 @@ struct EmptyWidgetView: View {
             Text("Setup")
                 .font(.title2)
             Divider()
-            Text("Tap and hold on widget screen")
-                .font(.footnote)
             Image(systemName: "hand.tap")
+                .font(.title)
+            Text("Tap and hold")
+                .font(.footnote)
         }
         .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
         .multilineTextAlignment(.center)

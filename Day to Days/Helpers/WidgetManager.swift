@@ -10,14 +10,18 @@ import WidgetKit
 
 final class WidgetManager {
 
-    static private func makeEventWidget(event: Event) -> EventWidget {
-        return EventWidget(name: event.title, id: event.id, date: event.date, dateType: event.dateType)
+    static private func makeEventForTransfer(event: Event) -> EventForTransfer {
+        return EventForTransfer(name: event.title,
+                           id: event.id,
+                           date: event.date,
+                           dateType: event.dateType,
+                           color: event.color.getColorType)
     }
 
     static func sendToWidgetsThis(_ events: [Event]) {
-        var eventsForWidget: [EventWidget] = []
+        var eventsForWidget: [EventForTransfer] = []
         for event in events {
-            eventsForWidget.append(makeEventWidget(event: event))
+            eventsForWidget.append(makeEventForTransfer(event: event))
         }
         do {
             let data = try JSONEncoder().encode(eventsForWidget)

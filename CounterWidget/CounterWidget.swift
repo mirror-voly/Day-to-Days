@@ -12,16 +12,17 @@ struct Provider: IntentTimelineProvider {
     @AppStorage("counters", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
     private var data = Data()
     
-    private func decodeEvents() -> [EventWidget] {
+    private func decodeEvents() -> [EventForTransfer] {
         do {
-            return try JSONDecoder().decode([EventWidget].self, from: data)
+            return try JSONDecoder().decode([EventForTransfer].self, from: data)
         } catch {
             return []
         }
     }
 
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: SetupEventIntent(), events: [EventWidget()])
+        SimpleEntry(date: Date(), configuration: SetupEventIntent(),
+                    events: [EventForTransfer(name: "", id: UUID(), date: Date(), dateType: .day, color: .brown)])
     }
 
     func getSnapshot(for configuration: SetupEventIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
@@ -44,7 +45,7 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: SetupEventIntent
-    let events: [EventWidget]
+    let events: [EventForTransfer]
 }
 
 struct CounterWidgetEntryView : View {
