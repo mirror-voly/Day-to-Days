@@ -41,6 +41,8 @@
 		5168A3172CAECBAD00E42A7E /* EventForTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventForTransfer.swift */; };
 		5168A3192CAED20900E42A7E /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
 		5168A31A2CAED21100E42A7E /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
+		5168A31C2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */; };
+		5168A31D2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */; };
 		5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168C42A2C898095002CEAAC /* DateTypeSlider.swift */; };
 		516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE422C87247000202B93 /* DaytoDaysApp.swift */; };
 		516CBE452C87247000202B93 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE442C87247000202B93 /* MainScreen.swift */; };
@@ -49,7 +51,6 @@
 		516CBE542C87296400202B93 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE532C87296400202B93 /* Event.swift */; };
 		516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* MainScreenViewModel.swift */; };
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
-		516DD08B2CAC677B0003E3D5 /* ChoseViewAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD0892CAC64720003E3D5 /* ChoseViewAppIntent.swift */; };
 		516DE0A42C9FF46300E83E1D /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		516DE0A72CA0035E00E83E1D /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		516DE0A82CA022E400E83E1D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Constraints.swift */; };
@@ -148,6 +149,7 @@
 		51665A012C905E2700468301 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
 		5168A30F2CAE844400E42A7E /* SetEventItent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SetEventItent.entitlements; sourceTree = "<group>"; };
 		5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
+		5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CapitalizedFirst.swift"; sourceTree = "<group>"; };
 		5168C42A2C898095002CEAAC /* DateTypeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTypeSlider.swift; sourceTree = "<group>"; };
 		516CBE3F2C87247000202B93 /* Day to Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Day to Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		516CBE422C87247000202B93 /* DaytoDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaytoDaysApp.swift; sourceTree = "<group>"; };
@@ -158,7 +160,6 @@
 		516CBE562C872FAA00202B93 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		516CBE582C87339F00202B93 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		516CBE5C2C87403600202B93 /* EventsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemView.swift; sourceTree = "<group>"; };
-		516DD0892CAC64720003E3D5 /* ChoseViewAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseViewAppIntent.swift; sourceTree = "<group>"; };
 		516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListIsEmpyView.swift; sourceTree = "<group>"; };
 		516F0C9D2C8D9AF00095A646 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		5170CC582C92ADE600A9380B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -236,14 +237,6 @@
 			path = SetEventItent;
 			sourceTree = "<group>";
 		};
-		5168A3112CAE863700E42A7E /* Setup Intent */ = {
-			isa = PBXGroup;
-			children = (
-				515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */,
-			);
-			path = "Setup Intent";
-			sourceTree = "<group>";
-		};
 		5168C4292C898037002CEAAC /* AddNewScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +265,7 @@
 				5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */,
 				516659FF2C9051BF00468301 /* Color+colorType.swift */,
 				5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */,
+				5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -390,11 +384,10 @@
 		517724612C9D5C880037143A /* CounterWidget */ = {
 			isa = PBXGroup;
 			children = (
-				5168A3112CAE863700E42A7E /* Setup Intent */,
+				515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */,
 				517724622C9D5C880037143A /* CounterWidgetBundle.swift */,
 				517724662C9D5C880037143A /* CounterWidget.swift */,
 				516DE0AA2CA038A800E83E1D /* View and ViewModel */,
-				516DD0892CAC64720003E3D5 /* ChoseViewAppIntent.swift */,
 				5177246A2C9D5C8A0037143A /* Assets.xcassets */,
 				5177246C2C9D5C8A0037143A /* Info.plist */,
 			);
@@ -635,6 +628,7 @@
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
 				51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
+				5168A31C2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
 				5128E0BB2CAAD76400F68CA2 /* TimeStateDeterminer.swift in Sources */,
 				5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */,
@@ -672,7 +666,7 @@
 				5168A3152CAEC73800E42A7E /* Color+colorType.swift in Sources */,
 				51BD462A2C9D948C00D7515F /* MainWidgetView.swift in Sources */,
 				515617D92CAD98930024C5EC /* SetEvent.intentdefinition in Sources */,
-				516DD08B2CAC677B0003E3D5 /* ChoseViewAppIntent.swift in Sources */,
+				5168A31D2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */,
 				516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */,
 				517724672C9D5C880037143A /* CounterWidget.swift in Sources */,
 				5168A3142CAEAAD600E42A7E /* EmptyWidgetView.swift in Sources */,

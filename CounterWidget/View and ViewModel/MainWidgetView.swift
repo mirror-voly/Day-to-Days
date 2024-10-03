@@ -22,8 +22,7 @@ struct MainWidgetView: View {
                     Divider()
                     HStack(spacing: Constraints.widgetStackSpaser, content: {
                         Group {
-                            Text(viewModel.localizedDateType.capitalized)
-                            Text(viewModel.localizedTimeState)
+                            Text("\(viewModel.localizedDateType) \(viewModel.localizedTimeState)".capitalizedFirstLetter())
                         }
                         .italic()
                         .font(.footnote)
