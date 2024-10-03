@@ -14,9 +14,9 @@ enum TimeStateType {
 
     var label: String {
         switch self {
-        case .past: return NSLocalizedString("passed", comment: "")
-        case .future: return NSLocalizedString("left", comment: "")
-        case .present: return NSLocalizedString("today", comment: "")
+        case .past: return "passed".localized
+        case .future: return "left".localized
+        case .present: return "today".localized
         }
     }
 }

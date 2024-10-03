@@ -14,10 +14,10 @@ enum DateType: CaseIterable, Codable {
 
     var label: String {
         switch self {
-        case .year: return NSLocalizedString("date_label_years", comment: "")
-        case .month: return NSLocalizedString("date_label_months", comment: "")
-        case .week: return NSLocalizedString("date_label_weeks", comment: "")
-        case .day: return NSLocalizedString("date_label_days", comment: "")
+        case .year: return "date_label_years".localized
+        case .month: return "date_label_months".localized
+        case .week: return "date_label_weeks".localized
+        case .day: return "date_label_days".localized
         }
     }
 

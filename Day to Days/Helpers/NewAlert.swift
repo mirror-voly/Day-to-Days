@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct NewAlert {
-
     static func showAlert(onConfirm: @escaping () -> Void, onCancel: @escaping () -> Void) -> Alert {
-            Alert(
-                title: Text("event_not_saved_title".localized),
-                message: Text("event_not_saved_message".localized),
-                primaryButton: .destructive(Text("сontinue".localized), action: onConfirm),
-                secondaryButton: .default(Text("return".localized), action: onCancel)
-            )
-        }
+        Alert(
+            title: Text("event_not_saved_title".localized),
+            message: Text("event_not_saved_message".localized),
+            primaryButton: .destructive(Text("сontinue".localized), action: onConfirm),
+            secondaryButton: .default(Text("return".localized), action: onCancel)
+        )
+    }
 }

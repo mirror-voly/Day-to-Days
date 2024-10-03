@@ -31,7 +31,6 @@
 		515617DA2CAD98940024C5EC /* SetEvent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 515617C52CAD97F60024C5EC /* SetEvent.intentdefinition */; };
 		515617DB2CADBDC50024C5EC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515617D02CAD98740024C5EC /* IntentHandler.swift */; };
 		515617DD2CADC2A30024C5EC /* EventForTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventForTransfer.swift */; };
-		515617DE2CADC5740024C5EC /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		515617DF2CADC57E0024C5EC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515617D02CAD98740024C5EC /* IntentHandler.swift */; };
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
@@ -40,6 +39,8 @@
 		5168A3152CAEC73800E42A7E /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		5168A3162CAEC8BD00E42A7E /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
 		5168A3172CAECBAD00E42A7E /* EventForTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventForTransfer.swift */; };
+		5168A3192CAED20900E42A7E /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
+		5168A31A2CAED21100E42A7E /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168C42A2C898095002CEAAC /* DateTypeSlider.swift */; };
 		516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE422C87247000202B93 /* DaytoDaysApp.swift */; };
 		516CBE452C87247000202B93 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE442C87247000202B93 /* MainScreen.swift */; };
@@ -594,10 +595,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				515617DA2CAD98940024C5EC /* SetEvent.intentdefinition in Sources */,
+				5168A31A2CAED21100E42A7E /* DateType.swift in Sources */,
 				5168A3162CAEC8BD00E42A7E /* ColorType.swift in Sources */,
-				515617DE2CADC5740024C5EC /* DateType.swift in Sources */,
 				515617D12CAD98740024C5EC /* IntentHandler.swift in Sources */,
 				515617DD2CADC2A30024C5EC /* EventForTransfer.swift in Sources */,
+				5168A3192CAED20900E42A7E /* String+Localized.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
