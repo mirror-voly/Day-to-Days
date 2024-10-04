@@ -8,7 +8,7 @@ import RealmSwift
 import SwiftUI
 
 struct MainScreen: View {
-    @Environment(AddOrEditEventSheetViewModel.self) private var sheetViewModel
+    @Environment(AddOrEditEventSheetViewModel.self) var sheetViewModel
     @Bindable var viewModel: MainScreenViewModel
     // MARK: - View
     var body: some View {
@@ -24,6 +24,7 @@ struct MainScreen: View {
                     }
             }
             .navigationTitle("events".localized)
+            // MARK: Sheet
             .sheet(isPresented: $viewModel.sheetIsOpened) {
                         AddOrEditEventSheet(
                             isOpened: $viewModel.sheetIsOpened,
@@ -34,18 +35,7 @@ struct MainScreen: View {
             // MARK: Toolbar
             .toolbar {
                 if viewModel.noSelectedEvents && !viewModel.eventsIsEmpty {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            sheetViewModel.setScreenMode(mode: .add)
-                            viewModel.sheetIsOpened = true
-                        } label: {
-                            Image(systemName: "plus.circle")
-                                .foregroundStyle(.gray)
-                        }
-                        .contextMenu {
-                            HelpContextMenu(helpText: "new_event")
-                        }
-                    }
+                    addNewButton
                 }
             }
             // MARK: Alert
