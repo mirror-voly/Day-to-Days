@@ -90,7 +90,7 @@ final class MainScreenViewModel {
     }
 
     func removeSelectedEvents() {
-        DispatchQueue.global(qos: .utility).async {
+        DispatchQueue.main.async {
             if !self.noSelectedEvents {
                 for eventID in self.selectedEvents {
                     do {

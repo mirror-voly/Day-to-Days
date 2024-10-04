@@ -142,7 +142,7 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func buttonAction() {
-        DispatchQueue.global(qos: .utility).async {
+        DispatchQueue.main.async {
             let oldEventID = self.event?.id
             let event = self.createEvent(id: nil)
             if let oldEventID = oldEventID {
