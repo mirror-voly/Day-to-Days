@@ -90,21 +90,23 @@ final class MainScreenViewModel {
     }
 
     func removeSelectedEvents() {
-        if !noSelectedEvents {
-            for eventID in selectedEvents {
-                do {
-                    let realm = try Realm()
-                    try realm.write {
-                        if let eventToDelete = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
-                            realm.delete(eventToDelete)
+        DispatchQueue.global(qos: .utility).async {
+            if !self.noSelectedEvents {
+                for eventID in self.selectedEvents {
+                    do {
+                        let realm = try Realm()
+                        try realm.write {
+                            if let eventToDelete = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
+                                realm.delete(eventToDelete)
+                            }
                         }
+                    } catch {
+                        print("Removing error occurred: \(error.localizedDescription)")
                     }
-                } catch {
-                    print("Removing error occurred: \(error.localizedDescription)")
                 }
             }
+            self.makeSelectedEventsEmpty()
         }
-        makeSelectedEventsEmpty()
     }
 
     func sortButtonAction(type: SortType) {
@@ -115,10 +117,8 @@ final class MainScreenViewModel {
     }
 
     func setEvents(allEvents: Results<Event>) {
-        withAnimation {
-            self.events = allEvents
-            WidgetManager.sendToWidgetsThis(Array(allEvents))
-        }
+        self.events = allEvents
+        WidgetManager.sendToWidgetsThis(Array(allEvents))
     }
 
     func setEditMode(set: Bool) {

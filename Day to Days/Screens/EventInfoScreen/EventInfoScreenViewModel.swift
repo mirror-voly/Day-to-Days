@@ -31,26 +31,32 @@ final class EventInfoScreenViewModel {
     }
     // MARK: - Functions
     private func allInfoForDate(event: Event) {
-        let allInfo = dateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
-        withAnimation {
-            allInfoForCurrentDate = allInfo
+        DispatchQueue.main.async {
+            let allInfo = self.dateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
+            withAnimation {
+                self.allInfoForCurrentDate = allInfo
+            }
         }
     }
 
     func updateEditedEvent() {
-        let eventID = event.id
-        do {
-            let realm = try Realm()
-            if let event = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
-                setEvent(event: event)
+        DispatchQueue.main.async {
+            let eventID = self.event.id
+            do {
+                let realm = try Realm()
+                if let event = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
+                    self.setEvent(event: event)
+                }
+            } catch {
+                print("Finding event error occurred: \(error.localizedDescription)")
             }
-        } catch {
-            print("Finding event error occurred: \(error.localizedDescription)")
         }
     }
 
     func setEvent(event: Event) {
-        self.event = event
+        withAnimation {
+            self.event = event
+        }
     }
 
     func reopenSheet() {

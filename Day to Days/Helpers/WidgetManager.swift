@@ -19,20 +19,22 @@ final class WidgetManager {
     }
 
     static func sendToWidgetsThis(_ events: [Event]) {
-        var eventsForWidget: [EventForTransfer] = []
-        for event in events {
-            eventsForWidget.append(makeEventForTransfer(event: event))
-        }
-        do {
-            let data = try JSONEncoder().encode(eventsForWidget)
-            if let userDefaults = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
-                userDefaults.set(data, forKey: "counters")
-                WidgetCenter.shared.reloadTimelines(ofKind: "CounterWidget")
-            } else {
-                print("UserDefaults could not be initialized.")
+        DispatchQueue.global(qos: .background).async {
+            var eventsForWidget: [EventForTransfer] = []
+            for event in events {
+                eventsForWidget.append(makeEventForTransfer(event: event))
             }
-        } catch {
-            print("Saving error occurred: \(error.localizedDescription)")
+            do {
+                let data = try JSONEncoder().encode(eventsForWidget)
+                if let userDefaults = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
+                    userDefaults.set(data, forKey: "counters")
+                    WidgetCenter.shared.reloadTimelines(ofKind: "CounterWidget")
+                } else {
+                    print("UserDefaults could not be initialized.")
+                }
+            } catch {
+                print("Saving error occurred: \(error.localizedDescription)")
+            }
         }
     }
 }

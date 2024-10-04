@@ -49,21 +49,25 @@ final class EventsItemViewModel {
     }
 
     func updateEvent() {
-        guard let mainScreenViewModel = mainScreenViewModel else { return }
-        self.event = mainScreenViewModel.sortedEvents[index]
+        DispatchQueue.main.async {
+            guard let mainScreenViewModel = self.mainScreenViewModel else { return }
+            self.event = mainScreenViewModel.sortedEvents[self.index]
+        }
     }
 
     private func setTimeData(event: Event) {
-        let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
-        if let localizedTimeState = timeData["localizedTimeState"] {
-            self.localizedTimeState = localizedTimeState.capitalized
-        }
-        if let number = timeData["dateNumber"] {
-            self.number = number
-        }
-        if let localizedDateType = timeData["localizedDateType"] {
-            if timeData ["timeState"] != TimeStateType.present.label {
-                self.localizedDateType = localizedDateType
+        DispatchQueue.main.async {
+            let timeData = self.dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
+            if let localizedTimeState = timeData["localizedTimeState"] {
+                self.localizedTimeState = localizedTimeState.capitalized
+            }
+            if let number = timeData["dateNumber"] {
+                self.number = number
+            }
+            if let localizedDateType = timeData["localizedDateType"] {
+                if timeData ["timeState"] != TimeStateType.present.label {
+                    self.localizedDateType = localizedDateType
+                }
             }
         }
     }

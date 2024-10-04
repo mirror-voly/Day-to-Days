@@ -17,21 +17,23 @@ final class WidgetViewModel {
     private (set) var color: Color = .brown
 
     private func fillFieldsWith(_ event: EventForTransfer?) {
-        guard let event = event else { return }
-        let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
-        if let localizedTimeState = timeData["localizedTimeState"] {
-            self.localizedTimeState = localizedTimeState
-        }
-        if let number = timeData["dateNumber"] {
-            self.number = number
-        }
-        if let localizedDateType = timeData["localizedDateType"] {
-            if timeData ["timeState"] != TimeStateType.present.label {
-                self.localizedDateType = localizedDateType
+        DispatchQueue.global(qos: .userInteractive).async {
+            guard let event = event else { return }
+            let timeData = self.dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
+            if let localizedTimeState = timeData["localizedTimeState"] {
+                self.localizedTimeState = localizedTimeState
             }
+            if let number = timeData["dateNumber"] {
+                self.number = number
+            }
+            if let localizedDateType = timeData["localizedDateType"] {
+                if timeData ["timeState"] != TimeStateType.present.label {
+                    self.localizedDateType = localizedDateType
+                }
+            }
+            self.color = event.color.getColor
+            self.eventTitle = event.title
         }
-        color = event.color.getColor
-        eventTitle = event.title
     }
     
     init(events: [EventForTransfer], eventID: String) {

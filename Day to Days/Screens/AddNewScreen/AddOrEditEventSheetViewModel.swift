@@ -81,10 +81,6 @@ final class AddOrEditEventSheetViewModel {
         title != "" || info != "" || color != Color.gray || dateType != .day || date != fixedDate
     }
 
-    private func setCurrentEvent(event: Event) {
-        currentEvent = event
-    }
-
     private func addEvent(event: Event) {
         do {
             let realm = try Realm()
@@ -129,27 +125,33 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func extractEventData() {
-        let eventToUpdate = currentEvent ?? event
-        updateFieldsFrom(eventToUpdate)
+        DispatchQueue.main.async {
+            let eventToUpdate = self.currentEvent ?? self.event
+            self.updateFieldsFrom(eventToUpdate)
+        }
     }
 
-    func dismissAlertPrepare(action: () -> Void) {
-        let oldEventID = event?.id
-        guard !canDismiss else { return }
-        let event = createEvent(id: oldEventID)
-        setCurrentEvent(event: event)
-        action()
+    func dismissAlertPrepare(action: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            let oldEventID = self.event?.id
+            guard !self.canDismiss else { return }
+            let event = self.createEvent(id: oldEventID)
+            self.event = event
+            action()
+        }
     }
 
     func buttonAction() {
-        let oldEventID = event?.id
-        let event = createEvent(id: nil)
-        if let oldEventID = oldEventID {
-            editEvent(oldEventID: oldEventID, newEvent: event)
-        } else {
-            addEvent(event: event)
+        DispatchQueue.global(qos: .utility).async {
+            let oldEventID = self.event?.id
+            let event = self.createEvent(id: nil)
+            if let oldEventID = oldEventID {
+                self.editEvent(oldEventID: oldEventID, newEvent: event)
+            } else {
+                self.addEvent(event: event)
+            }
+            self.makeCurrentEventNil()
         }
-        makeCurrentEventNil()
     }
 
     func setScreenMode(mode: ScreenModeType) {
