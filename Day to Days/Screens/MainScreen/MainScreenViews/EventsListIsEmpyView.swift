@@ -42,10 +42,9 @@ struct EventsListIsEmptyView: View {
             .rotationEffect(Angle(degrees: viewModel.isAnimating ? .zero : Constraints.rotationAngle))
         )
         .clipShape(Circle())
-        .shadow(color: Color.primary, radius: Constraints.shadowRadius)
+        .shadow(color: Color.primary, radius: viewModel.isAnimating ?
+                Constraints.shadowRadius * 2 : Constraints.shadowRadius)
         .scaleEffect(viewModel.isAnimating ? Constraints.scaleEffect : 1)
-        .blur(radius: viewModel.isAnimating ? .zero : Constraints.blurValue)
-        .opacity(viewModel.isAnimating ? 1 : Constraints.opacityEffect)
         .animation(
             Animation.easeInOut(duration: Constraints.animationDuration)
                 .repeatForever(autoreverses: true),
