@@ -32,6 +32,7 @@ struct EventsList: View {
                         }
                     }
                 }
+                .listRowSeparator(.visible)
             }
             .listStyle(.plain)
         }

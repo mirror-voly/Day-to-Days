@@ -14,7 +14,7 @@ struct EventsItemView: View {
 
     var body: some View {
         HStack {
-            // MARK: - Circle
+            // MARK: Circle
             Circle()
                 .fill(viewModel.event.color)
                 .overlay(
@@ -30,6 +30,7 @@ struct EventsItemView: View {
             Text(viewModel.event.title)
                 .font(.title2)
             Spacer()
+            // MARK: Counter
             DayCounterWithShortInfoView()
         }
         .overlay(alignment: .center) {
