@@ -10,7 +10,7 @@ import WidgetKit
 
 final class WidgetManager {
 
-    static private func makeEventForTransfer(event: Event) -> EventForTransfer {
+    static private func makeEventsForTransfer(event: Event) -> EventForTransfer {
         return EventForTransfer(name: event.title,
                            id: event.id,
                            date: event.date,
@@ -22,7 +22,7 @@ final class WidgetManager {
         DispatchQueue.global(qos: .background).async {
             var eventsForWidget: [EventForTransfer] = []
             for event in events {
-                eventsForWidget.append(makeEventForTransfer(event: event))
+                eventsForWidget.append(makeEventsForTransfer(event: event))
             }
             do {
                 let data = try JSONEncoder().encode(eventsForWidget)

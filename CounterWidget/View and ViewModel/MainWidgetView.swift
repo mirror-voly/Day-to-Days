@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainWidgetView: View {
-    var viewModel: WidgetViewModel
+    private let viewModel: WidgetViewModel
 
     var body: some View {
             VStack (spacing: Constraints.widgetStackSpaser) {
@@ -34,7 +34,7 @@ struct MainWidgetView: View {
             }
             .ignoresSafeArea()
     }
-    init(events: [EventForTransfer], eventID: String) {
-        self.viewModel = WidgetViewModel(events: events, eventID: eventID)
+    init(viewModel: WidgetViewModel) {
+        self.viewModel = viewModel
     }
 }

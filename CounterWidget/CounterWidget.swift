@@ -49,11 +49,12 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct CounterWidgetEntryView : View {
-    var entry: Provider.Entry
+    let entry: Provider.Entry
+    let viewModel: WidgetViewModel
     
     var body: some View {
-        if entry.configuration.WidgetEvent?.identifier != nil{
-            MainWidgetView(events: entry.events, eventID: entry.configuration.WidgetEvent?.identifier ?? "" )
+        if viewModel.inList {
+            MainWidgetView(viewModel: viewModel)
         } else {
             EmptyWidgetView()
         }
@@ -65,7 +66,7 @@ struct CounterWidget: Widget {
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: SetupEventIntent.self, provider: Provider()) { entry in
-            CounterWidgetEntryView(entry: entry)
+            CounterWidgetEntryView(entry: entry, viewModel: WidgetViewModel(events: entry.events, eventID: entry.configuration.WidgetEvent?.identifier ?? ""))
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .supportedFamilies([.systemSmall])
