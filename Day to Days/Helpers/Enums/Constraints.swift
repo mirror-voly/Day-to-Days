@@ -30,4 +30,5 @@ enum Constraints {
     static let rotationAngle: CGFloat = 100
     static let scaleEffect: CGFloat = 1.1
     static let animationDuration: CGFloat = 3
+    static let dividerWidth: CGFloat = 125
 }

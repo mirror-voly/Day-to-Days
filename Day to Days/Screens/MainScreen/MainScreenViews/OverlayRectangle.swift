@@ -19,7 +19,3 @@ struct OverlayRectangle: View {
             }
     }
 }
-
-#Preview {
-    OverlayRectangle()
-}
