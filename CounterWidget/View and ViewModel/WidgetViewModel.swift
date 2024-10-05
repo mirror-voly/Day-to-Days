@@ -17,8 +17,7 @@ final class WidgetViewModel {
     private (set) var color: Color = .brown
     private (set) var inList: Bool = false
 
-    private func fillFieldsWith(_ event: EventForTransfer?) {
-        guard let event = event else { return }
+    private func fillFieldsWith(_ event: EventForTransfer) {
         let timeData = self.dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
         if let localizedTimeState = timeData["localizedTimeState"] {
             self.localizedTimeState = localizedTimeState
@@ -31,16 +30,14 @@ final class WidgetViewModel {
                 self.localizedDateType = localizedDateType
             }
         }
-        self.color = event.color.getColor
-        self.eventTitle = event.title
+        color = event.color.getColor
+        eventTitle = event.title
     }
     
     private func searchForEvent(events: [EventForTransfer], eventID: String) {
         if let eventInList = events.first(where: { $0.id.uuidString == eventID }) {
             fillFieldsWith(eventInList)
             self.inList = true
-        } else {
-            self.inList = false
         }
     }
     
