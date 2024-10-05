@@ -66,6 +66,9 @@
 		517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517282952C90CCCE00D09AC4 /* RealmSwift */; };
 		5175173D2CB19ACE000D04C4 /* TimeDataReturnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */; };
 		5175173E2CB19CAF000D04C4 /* TimeDataReturnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */; };
+		517517412CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
+		517517422CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
+		517517432CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
 		5177245E2C9D5C880037143A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245D2C9D5C880037143A /* WidgetKit.framework */; };
 		517724602C9D5C880037143A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245F2C9D5C880037143A /* SwiftUI.framework */; };
 		517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724622C9D5C880037143A /* CounterWidgetBundle.swift */; };
@@ -173,6 +176,7 @@
 		5170CC5F2C92E67600A9380B /* TimeStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStateType.swift; sourceTree = "<group>"; };
 		517122402CA59F850037974D /* ClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextField.swift; sourceTree = "<group>"; };
 		5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataReturnType.swift; sourceTree = "<group>"; };
+		517517402CB19F36000D04C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5177245D2C9D5C880037143A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5177245F2C9D5C880037143A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -441,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				519FF10B2C8D9F46002FA63A /* Constraints.swift */,
+				517517402CB19F36000D04C4 /* Constants.swift */,
 				516659F82C90324C00468301 /* DateType.swift */,
 				51665A012C905E2700468301 /* ColorType.swift */,
 				5170CC5F2C92E67600A9380B /* TimeStateType.swift */,
@@ -598,6 +603,7 @@
 				5168A31A2CAED21100E42A7E /* DateType.swift in Sources */,
 				5168A3162CAEC8BD00E42A7E /* ColorType.swift in Sources */,
 				515617D12CAD98740024C5EC /* IntentHandler.swift in Sources */,
+				517517432CB19F36000D04C4 /* Constants.swift in Sources */,
 				515617DD2CADC2A30024C5EC /* EventForTransfer.swift in Sources */,
 				5168A3192CAED20900E42A7E /* String+Localized.swift in Sources */,
 			);
@@ -632,6 +638,7 @@
 				517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */,
 				516DD8042CAFCF96006C534C /* MainScreen+addNewButton.swift in Sources */,
 				51058A052C9C64D200CA612F /* ButtonSpacerType.swift in Sources */,
+				517517412CB19F36000D04C4 /* Constants.swift in Sources */,
 				515617C62CAD97F60024C5EC /* SetEvent.intentdefinition in Sources */,
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
 				51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */,
@@ -674,6 +681,7 @@
 				5128E0C22CAADB7700F68CA2 /* DateDifferenceCalculator.swift in Sources */,
 				5168A3152CAEC73800E42A7E /* Color+colorType.swift in Sources */,
 				51BD462A2C9D948C00D7515F /* MainWidgetView.swift in Sources */,
+				517517422CB19F36000D04C4 /* Constants.swift in Sources */,
 				515617D92CAD98930024C5EC /* SetEvent.intentdefinition in Sources */,
 				5168A31D2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */,
 				516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */,

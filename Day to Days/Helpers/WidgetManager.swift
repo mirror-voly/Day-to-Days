@@ -26,9 +26,9 @@ final class WidgetManager {
             }
             do {
                 let data = try JSONEncoder().encode(eventsForWidget)
-                if let userDefaults = UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget") {
-                    userDefaults.set(data, forKey: "counters")
-                    WidgetCenter.shared.reloadTimelines(ofKind: "CounterWidget")
+                if let userDefaults = UserDefaults(suiteName: Constants.suiteName) {
+                    userDefaults.set(data, forKey: Constants.widgetStorage)
+                    WidgetCenter.shared.reloadTimelines(ofKind: Constants.widgetKind)
                 } else {
                     print("UserDefaults could not be initialized.")
                 }

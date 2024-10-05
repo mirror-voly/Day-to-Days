@@ -9,7 +9,7 @@ import Intents
 import SwiftUI
 
 class IntentHandler: INExtension {
-    @AppStorage("counters", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
+    @AppStorage(Constants.widgetStorage, store: UserDefaults(suiteName: Constants.suiteName))
     private var data = Data()
 
     private func decodeEvents() -> [EventForTransfer] {

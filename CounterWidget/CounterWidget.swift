@@ -9,7 +9,8 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: IntentTimelineProvider {
-    @AppStorage("counters", store: UserDefaults(suiteName: "group.onlyMe.Day-to-Days.CounterWidget"))
+    @AppStorage(Constants.widgetStorage,
+                store: UserDefaults(suiteName: Constants.suiteName))
     private var data = Data()
     
     private func decodeEvents() -> [EventForTransfer] {
@@ -33,7 +34,7 @@ struct Provider: IntentTimelineProvider {
         var entries: [SimpleEntry] = []
         let events = decodeEvents()
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
+        for hourOffset in .zero ..< Constants.widgetHourOffset {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, configuration: configuration, events: events)
             entries.append(entry)
@@ -62,11 +63,14 @@ struct CounterWidgetEntryView : View {
 }
 
 struct CounterWidget: Widget {
-    let kind: String = "CounterWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SetupEventIntent.self, provider: Provider()) { entry in
-            CounterWidgetEntryView(entry: entry, viewModel: WidgetViewModel(events: entry.events, eventID: entry.configuration.WidgetEvent?.identifier ?? ""))
+        IntentConfiguration(kind: Constants.widgetKind,
+                            intent: SetupEventIntent.self,
+                            provider: Provider()) { entry in
+            CounterWidgetEntryView(entry: entry,
+                                   viewModel: WidgetViewModel(events: entry.events,
+                                                              eventID: entry.configuration.WidgetEvent?.identifier ?? ""))
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .supportedFamilies([.systemSmall])
