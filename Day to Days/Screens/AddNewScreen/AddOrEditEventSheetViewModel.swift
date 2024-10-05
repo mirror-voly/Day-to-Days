@@ -69,11 +69,12 @@ final class AddOrEditEventSheetViewModel {
         canDismiss = !areFieldsEmpty()
     }
     private func updateFieldsFrom(_ event: Event?) {
-        title = event?.title ?? ""
-        info = event?.info ?? ""
-        date = event?.date ?? fixedDate
-        color = event?.color ?? Color.gray
-        dateType = event?.dateType ?? DateType.day
+        guard let event = event else { return }
+        title = event.title
+        info = event.info
+        date = event.date
+        color = event.color
+        dateType = event.dateType
         sliderValue = findIndexForThis(dateType: dateType)
     }
 

@@ -21,7 +21,7 @@ struct EventsList: View {
                             if !viewModel.editIsActivated {
                                 ZStack {
                                     Button("") {} // Bugfix to NavigationLink element if it selected after coming back
-                                    NavigationLink("", value: viewModel.sortedEvents[index]).opacity(0)
+                                    NavigationLink("", value: viewModel.sortedEvents[index]).opacity(.zero)
                                 }
                             }
                         })
