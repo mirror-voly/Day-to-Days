@@ -58,14 +58,14 @@ final class EventsItemViewModel {
     private func setTimeData(event: Event) {
         DispatchQueue.main.async {
             let timeData = self.dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
-            if let localizedTimeState = timeData["localizedTimeState"] {
+            if let localizedTimeState = timeData[.localizedTimeState] {
                 self.localizedTimeState = localizedTimeState.capitalized
             }
-            if let number = timeData["dateNumber"] {
+            if let number = timeData[.dateNumber] {
                 self.number = number
             }
-            if let localizedDateType = timeData["localizedDateType"] {
-                if timeData ["timeState"] != TimeStateType.present.label {
+            if let localizedDateType = timeData[.localizedDateType] {
+                if timeData [.timeState] != TimeStateType.present.label {
                     self.localizedDateType = localizedDateType
                 }
             }

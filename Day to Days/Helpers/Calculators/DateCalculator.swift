@@ -49,14 +49,14 @@ final class DateCalculator {
         return localizedTimeState
     }
 
-    func allTimeDataFor(date: Date, dateType: DateType) -> [String: String] {
+    func allTimeDataFor(date: Date, dateType: DateType) -> [TimeDataReturnType: String] {
         let timeState = timeStateDeterminer.determineFutureOrPast(for: date)
         let dateNumber = findFirstDateFromTheTopFor(date: date, dateType: dateType)
         let localizedDateType = localizeIt(for: dateNumber, dateType: dateType)
         let localizedTimeState = dateLocalization.localizeTimeState(for: dateNumber,
                                                                     state: timeState, dateType: dateType)
-        return ["timeState": timeState.label, "dateNumber": dateNumber,
-                "localizedDateType": localizedDateType, "localizedTimeState": localizedTimeState]
+        return [.timeState: timeState.label, .dateNumber: dateNumber,
+                .localizedDateType: localizedDateType, .localizedTimeState: localizedTimeState]
     }
 
     private func findFirstDateFromTheTopFor(date: Date, dateType: DateType) -> String {
