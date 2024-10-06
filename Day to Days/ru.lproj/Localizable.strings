@@ -13,7 +13,6 @@
 "title" = "Название";
 "description" = "Описание";
 "date" = "Дата";
-"color" = "Цвет";
 "count" = "Cчитать";
 "event_not_saved_title" = "Событие не сохранено";
 "event_not_saved_message" = "Вы уверены, что хотите выйти?";

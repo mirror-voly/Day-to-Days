@@ -48,7 +48,7 @@ struct EventInfoScreen: View {
         .padding()
         // MARK: - View settings
         .navigationTitle("details".localized)
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .toolbarBackground(viewModel.event.color, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()

@@ -69,12 +69,11 @@ final class AddOrEditEventSheetViewModel {
         canDismiss = !areFieldsEmpty()
     }
     private func updateFieldsFrom(_ event: Event?) {
-        guard let event = event else { return }
-        title = event.title
-        info = event.info
-        date = event.date
-        color = event.color
-        dateType = event.dateType
+        title = event?.title ?? ""
+        info = event?.info ?? ""
+        date = event?.date ?? Date()
+        color = event?.color ?? .gray
+        dateType = event?.dateType ?? .day
         sliderValue = findIndexForThis(dateType: dateType)
     }
 
@@ -126,10 +125,8 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func extractEventData() {
-        DispatchQueue.main.async {
             let eventToUpdate = self.currentEvent ?? self.event
             self.updateFieldsFrom(eventToUpdate)
-        }
     }
 
     func dismissAlertPrepare(action: @escaping () -> Void) {
@@ -185,6 +182,6 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func getColorForMenuItem(currentColor: ColorType) -> Color {
-        color.getColorType == currentColor ? Color.primary.inverted() : Color.clear
+        color.getColorType == currentColor ? .white : .clear
     }
 }

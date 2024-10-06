@@ -13,7 +13,6 @@
 "title" = "Title";
 "description" = "Description";
 "date" = "Date";
-"color" = "Color";
 "count" = "Count";
 "event_not_saved_title" = "Event is not saved";
 "event_not_saved_message" = "Are you sure that you want to quit?";
