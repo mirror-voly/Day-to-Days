@@ -11,7 +11,6 @@ struct DateTypeSlider: View {
     @Environment(AddOrEditEventSheetViewModel.self) var viewModel
 
     var body: some View {
-        GroupBox {
             // MARK: - Counter Hstack
             HStack(alignment: .center, content: {
                 Text("count".localized)
@@ -31,6 +30,5 @@ struct DateTypeSlider: View {
 
                 fillSliderCircles(step: Int(viewModel.sliderValue), sum: DateType.allCases.count)
             }
-        }
     }
 }

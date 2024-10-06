@@ -18,7 +18,7 @@ struct ColorPicker: View {
                         viewModel.setColor(color: currentColor.getColor)
                     }, label: {
                         Image(systemName: "largecircle.fill.circle")
-                            .font(.title2)
+                            .font(.title)
                             .foregroundStyle(currentColor.getColor)
                             .overlay(content: {
                                 Circle()
@@ -28,17 +28,20 @@ struct ColorPicker: View {
                     })
                     .scrollTransition { content, phase in
                         content
-                            .scaleEffect(phase.isIdentity ? 1 : 0.2)
+                            .scaleEffect(phase.isIdentity ? Constraints.originalSize :
+                                            Constraints.scaleColorItem)
                     }
                     .contextMenu {
                         HelpContextMenu(helpText: "color_help")
                     }
                 }
-                .containerRelativeFrame(.horizontal, count: 9, spacing: 6)
+                .containerRelativeFrame(.horizontal,
+                                        count: 8,
+                                        spacing: Constraints.containerRelativeFrame)
             })
             .scrollTargetLayout()
         }
-        .contentMargins(8, for: .scrollContent)
+        .contentMargins(Constraints.containerRelativeFrame, for: .scrollContent)
         .scrollIndicators(.hidden)
         .scrollTargetBehavior(.viewAligned)
     }
