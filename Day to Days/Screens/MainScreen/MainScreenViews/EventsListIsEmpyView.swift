@@ -44,7 +44,7 @@ struct EventsListIsEmptyView: View {
         .clipShape(Circle())
         .shadow(color: Color.primary, radius: viewModel.isAnimating ?
                 Constraints.shadowRadius * 2 : Constraints.shadowRadius)
-        .scaleEffect(viewModel.isAnimating ? Constraints.scaleEffect : 1)
+        .scaleEffect(viewModel.isAnimating ? Constraints.scaleEffect : Constraints.originalSize)
         .animation(
             Animation.easeInOut(duration: Constraints.animationDuration)
                 .repeatForever(autoreverses: true),

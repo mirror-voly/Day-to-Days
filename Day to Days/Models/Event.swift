@@ -11,8 +11,8 @@ import RealmSwift
 class Event: Object, Identifiable {
 
     @Persisted var id: UUID = UUID()
-    @Persisted var title: String = ""
-    @Persisted var info: String = ""
+    @Persisted var title: String = Constants.emptyString
+    @Persisted var info: String = Constants.emptyString
     @Persisted var date: Date = Date()
     @Persisted var dateTypeData: Data?
     @Persisted var colorTypeData: Data?

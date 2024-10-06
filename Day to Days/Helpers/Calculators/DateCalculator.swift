@@ -61,7 +61,7 @@ final class DateCalculator {
 
     private func findFirstDateFromTheTopFor(date: Date, dateType: DateType) -> String {
         let currentDate = dateInfoForThis(date: date, dateType: dateType)
-        guard let value = currentDate[dateType] else { return "" }
+        guard let value = currentDate[dateType] else { return Constants.emptyString }
         return value
     }
 }

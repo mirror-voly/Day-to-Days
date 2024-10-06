@@ -15,7 +15,14 @@ final class AddOrEditEventSheetViewModel {
     private var fixedDate = Date()
     private var canDismiss = true
     private var event: Event?
-    private (set) var addButtonIsVisible = false
+    var isAnimating = false
+    private (set) var addButtonIsVisible = false {
+        didSet {
+            if addButtonIsVisible == true {
+                isAnimating = true
+            }
+        }
+    }
     private (set) var buttonSpacer: ButtonSpacerType = .minimize
     var popoverIsPresented = false
 
@@ -32,13 +39,15 @@ final class AddOrEditEventSheetViewModel {
         "day_help", "week_help", "month_help", "year_help", "days_help"
     ]
     // MARK: - User fields
-    var title: String = "" {
+    var title: String = Constants.emptyString {
             didSet {
                 protectedChangeOfCanDismiss()
-                addButtonIsVisible = title.isEmpty ? false : true
+                withAnimation {
+                    addButtonIsVisible = title.isEmpty ? false : true
+                }
         }
     }
-    var info = "" {
+    var info = Constants.emptyString {
         didSet {
             protectedChangeOfCanDismiss()
         }
@@ -48,7 +57,7 @@ final class AddOrEditEventSheetViewModel {
             protectedChangeOfCanDismiss()
         }
     }
-    private (set) var color = Color.gray {
+    private (set) var color: Color = .teal {
         didSet {
             protectedChangeOfCanDismiss()
         }
@@ -60,7 +69,7 @@ final class AddOrEditEventSheetViewModel {
     }
     // MARK: - Functions
     private func findIndexForThis(dateType: DateType) -> Double { // for slider value
-        guard let index = DateType.allCases.firstIndex(of: dateType) else { return 0 }
+        guard let index = DateType.allCases.firstIndex(of: dateType) else { return .zero }
         return Double(index)
     }
 
@@ -69,16 +78,17 @@ final class AddOrEditEventSheetViewModel {
         canDismiss = !areFieldsEmpty()
     }
     private func updateFieldsFrom(_ event: Event?) {
-        title = event?.title ?? ""
-        info = event?.info ?? ""
+        title = event?.title ?? Constants.emptyString
+        info = event?.info ?? Constants.emptyString
         date = event?.date ?? Date()
-        color = event?.color ?? .gray
+        color = event?.color ?? .teal
         dateType = event?.dateType ?? .day
         sliderValue = findIndexForThis(dateType: dateType)
     }
 
     private func areFieldsEmpty() -> Bool {
-        title != "" || info != "" || color != Color.gray || dateType != .day || date != fixedDate
+        title != Constants.emptyString || info != Constants.emptyString ||
+        color != .teal || dateType != .day || date != fixedDate
     }
 
     private func addEvent(event: Event) {
@@ -178,10 +188,12 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func setColor(color: Color) {
-        self.color = color
+        withAnimation {
+            self.color = color
+        }
     }
 
     func getColorForMenuItem(currentColor: ColorType) -> Color {
-        color.getColorType == currentColor ? .white : .clear
+        color.getColorType == currentColor ? .colorScheme : .clear
     }
 }

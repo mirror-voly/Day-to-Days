@@ -9,7 +9,7 @@ import Foundation
 
 enum Constraints {
     static let buttonSpaсerMinimize: CGFloat = 0
-    static let buttonSpaсerMaximize: CGFloat = 80
+    static let buttonSpaсerMaximize: CGFloat = 40
     static let addButtonsize: CGFloat = 40
     static let sliderCircleSmall: CGFloat = 15
     static let sliderCircleBig: CGFloat = 30
@@ -31,4 +31,7 @@ enum Constraints {
     static let scaleEffect: CGFloat = 1.1
     static let animationDuration: CGFloat = 3
     static let dividerWidth: CGFloat = 125
+    static let originalSize: CGFloat = 1
+    static let scaleColorItem: CGFloat = 0.2
+    static let containerRelativeFrame: CGFloat = 11
 }

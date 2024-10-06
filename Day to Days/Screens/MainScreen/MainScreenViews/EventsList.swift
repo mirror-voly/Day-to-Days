@@ -20,8 +20,10 @@ struct EventsList: View {
                         Group {
                             if !viewModel.editIsActivated {
                                 ZStack {
-                                    Button("") {} // Bugfix to NavigationLink element if it selected after coming back
-                                    NavigationLink("", value: viewModel.sortedEvents[index]).opacity(.zero)
+                                    // Bugfix to NavigationLink element if it selected after coming back
+                                    Button(Constants.emptyString) {}
+                                    NavigationLink(Constants.emptyString,
+                                                   value: viewModel.sortedEvents[index]).opacity(.zero)
                                 }
                             }
                         })

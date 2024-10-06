@@ -10,10 +10,10 @@ import SwiftUI
 @Observable
 final class WidgetViewModel {
     private let dateCalculator = DateCalculator()
-    private (set) var eventTitle: String = ""
-    private (set) var localizedTimeState: String = ""
-    private (set) var number: String = ""
-    private (set) var localizedDateType: String = ""
+    private (set) var eventTitle: String = Constants.emptyString
+    private (set) var localizedTimeState: String = Constants.emptyString
+    private (set) var number: String = Constants.emptyString
+    private (set) var localizedDateType: String = Constants.emptyString
     private (set) var color: Color = .brown
     private (set) var inList: Bool = false
 

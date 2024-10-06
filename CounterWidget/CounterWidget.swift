@@ -23,7 +23,7 @@ struct Provider: IntentTimelineProvider {
 
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: SetupEventIntent(),
-                    events: [EventForTransfer(name: "", id: UUID(), date: Date(), dateType: .day, color: .brown)])
+                    events: [EventForTransfer(name: Constants.emptyString, id: UUID(), date: Date(), dateType: .day, color: .brown)])
     }
 
     func getSnapshot(for configuration: SetupEventIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
@@ -70,7 +70,7 @@ struct CounterWidget: Widget {
                             provider: Provider()) { entry in
             CounterWidgetEntryView(entry: entry,
                                    viewModel: WidgetViewModel(events: entry.events,
-                                                              eventID: entry.configuration.WidgetEvent?.identifier ?? ""))
+                                                              eventID: entry.configuration.WidgetEvent?.identifier ?? Constants.emptyString))
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .supportedFamilies([.systemSmall])
