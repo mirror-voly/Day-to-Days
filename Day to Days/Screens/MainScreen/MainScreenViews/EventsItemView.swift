@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EventsItemView: View {
-    @Environment(\.colorScheme) var colorScheme
     @Environment(MainScreenViewModel.self) private var mainScreenViewModel
     @State private var viewModel: EventsItemViewModel
 

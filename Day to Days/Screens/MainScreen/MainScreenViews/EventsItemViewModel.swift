@@ -12,9 +12,9 @@ final class EventsItemViewModel {
     private let dateCalculator = DateCalculator()
     private var index: Int
     private (set) var timeData: [String: String]?
-    private (set) var localizedTimeState: String = ""
-    private (set) var number: String = ""
-    private (set) var localizedDateType: String = ""
+    private (set) var localizedTimeState: String = Constants.emptyString
+    private (set) var number: String = Constants.emptyString
+    private (set) var localizedDateType: String = Constants.emptyString
     private (set) var event: Event = Event() {
         didSet {
             setTimeData(event: event)
@@ -33,15 +33,12 @@ final class EventsItemViewModel {
         }
     }
     var fillColor: Color {
-        if isSelected {
-            return Color.primary
-        } else {
-            return Color.primary.inverted()
-        }
+        isSelected ? .primary : .colorScheme
     }
 
     var selectedColor: Color {
-            isSelected ? Color.primary.opacity(0.1) : Color.primary.opacity(0.01)
+        isSelected ? Color.primary.opacity(Constants.selectedOpacity) :
+        Color.primary.opacity(Constants.notSelectedOpacity)
     }
 
     func setMainViewModel(_ viewModel: MainScreenViewModel) {
