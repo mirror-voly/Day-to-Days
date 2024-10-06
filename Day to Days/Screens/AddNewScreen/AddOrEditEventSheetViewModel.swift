@@ -180,19 +180,11 @@ final class AddOrEditEventSheetViewModel {
         }
     }
 
-    func toggleIsPresented() {
-        popoverIsPresented.toggle()
-    }
-
     func setColor(color: Color) {
         self.color = color
     }
 
-    func setPopoverIsPresented(set: Bool) {
-        popoverIsPresented = set
-    }
-
     func getColorForMenuItem(currentColor: ColorType) -> Color {
-        color.getColorType == currentColor ? Color.secondary : Color.clear
+        color.getColorType == currentColor ? Color.primary.inverted() : Color.clear
     }
 }

@@ -39,7 +39,7 @@ struct AddEventFields: View {
                     }
                 }
                 Divider()
-                ColorPickerPopover(viewModel: viewModel)
+                ColorPicker(viewModel: viewModel)
             }
             .padding(.bottom)
     }

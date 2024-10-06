@@ -79,7 +79,7 @@
 		5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */; };
 		5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */; };
 		5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */; };
-		5179F2702C8E16B10027B0F1 /* ColorPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5179F26F2C8E16B10027B0F1 /* ColorPickerPopover.swift */; };
+		5179F2702C8E16B10027B0F1 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */; };
 		517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */; };
 		517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517DF9512C997CAE0007D924 /* ScreenModeType.swift */; };
 		5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */; };
@@ -188,7 +188,7 @@
 		5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+KeyboardIsActive.swift"; sourceTree = "<group>"; };
 		5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreen.swift; sourceTree = "<group>"; };
 		5178F49B2C8B3F4300DF45D4 /* Color+Invert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Invert.swift"; sourceTree = "<group>"; };
-		5179F26F2C8E16B10027B0F1 /* ColorPickerPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerPopover.swift; sourceTree = "<group>"; };
+		5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheetViewModel.swift; sourceTree = "<group>"; };
 		517DF9512C997CAE0007D924 /* ScreenModeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenModeType.swift; sourceTree = "<group>"; };
 		5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheet.swift; sourceTree = "<group>"; };
@@ -433,7 +433,7 @@
 			children = (
 				519FF1092C8D9E84002FA63A /* AddEventButton.swift */,
 				519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */,
-				5179F26F2C8E16B10027B0F1 /* ColorPickerPopover.swift */,
+				5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */,
 				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
 				510589FA2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift */,
 				517122402CA59F850037974D /* ClearableTextField.swift */,
@@ -647,7 +647,7 @@
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
 				5128E0BB2CAAD76400F68CA2 /* TimeStateDeterminer.swift in Sources */,
 				5178F49C2C8B3F4300DF45D4 /* Color+Invert.swift in Sources */,
-				5179F2702C8E16B10027B0F1 /* ColorPickerPopover.swift in Sources */,
+				5179F2702C8E16B10027B0F1 /* ColorPicker.swift in Sources */,
 				5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */,
 				5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */,
 				51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */,
