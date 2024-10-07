@@ -29,8 +29,9 @@ final class EventInfoScreenViewModel {
     }
     // MARK: - Functions
     private func allInfoForDate(event: Event) {
-        DispatchQueue.main.async {
-            let allInfo = self.dateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let allInfo = dateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
             withAnimation {
                 self.allInfoForCurrentDate = allInfo
             }
@@ -38,12 +39,12 @@ final class EventInfoScreenViewModel {
     }
 
     func updateEditedEvent() {
-        DispatchQueue.main.async {
-            let eventID = self.event.id
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             do {
                 let realm = try Realm()
-                if let event = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
-                    self.setEvent(event: event)
+                if let event = realm.object(ofType: Event.self, forPrimaryKey: event.id) {
+                    setEvent(event: event)
                 }
             } catch {
                 print("Finding event error occurred: \(error.localizedDescription)")

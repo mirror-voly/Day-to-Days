@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum ColorType: String, CaseIterable, Codable {
+    case gray = "color_gray"
     case red = "color_red"
     case orange = "color_orange"
     case yellow = "color_yellow"
@@ -20,7 +21,6 @@ enum ColorType: String, CaseIterable, Codable {
     case mint = "color_mint"
     case teal = "color_teal"
     case indigo = "color_indigo"
-    case gray = "color_gray"
 
     var getColor: Color {
         switch self {

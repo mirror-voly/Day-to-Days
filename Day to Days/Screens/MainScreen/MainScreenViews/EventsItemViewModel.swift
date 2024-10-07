@@ -46,9 +46,10 @@ final class EventsItemViewModel {
     }
 
     func updateEvent() {
-        DispatchQueue.main.async {
-            guard let mainScreenViewModel = self.mainScreenViewModel else { return }
-            self.event = mainScreenViewModel.sortedEvents[self.index]
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            guard let mainScreenViewModel = mainScreenViewModel else { return }
+            event = mainScreenViewModel.sortedEvents[index]
         }
     }
 

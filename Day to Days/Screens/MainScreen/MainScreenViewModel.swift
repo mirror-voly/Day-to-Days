@@ -90,9 +90,10 @@ final class MainScreenViewModel {
     }
 
     func removeSelectedEvents() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             if !self.noSelectedEvents {
-                for eventID in self.selectedEvents {
+                selectedEvents.forEach({ eventID in
                     do {
                         let realm = try Realm()
                         try realm.write {
@@ -103,7 +104,8 @@ final class MainScreenViewModel {
                     } catch {
                         print("Removing error occurred: \(error.localizedDescription)")
                     }
-                }
+                })
+                    
             }
             self.makeSelectedEventsEmpty()
         }
