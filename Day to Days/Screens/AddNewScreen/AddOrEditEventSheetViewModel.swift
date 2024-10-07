@@ -15,9 +15,16 @@ final class AddOrEditEventSheetViewModel {
 
     var popoverIsPresented = false
     var actionSheetIsPresented = false
+    var aninmate: Bool = false
     private (set) var dragOffset = CGSize.zero
     // MARK: - User fields
-    var title = Constants.emptyString
+    var title = Constants.emptyString {
+        didSet {
+            withAnimation {
+                addButtonIsVisible = title.isEmpty ? false : true
+            }
+        }
+    }
     var info = Constants.emptyString
     var date = Date()
     private (set) var dateType: DateType = .day
@@ -34,11 +41,7 @@ final class AddOrEditEventSheetViewModel {
     var sheetTitle: String {
         screenMode == .edit ? "edit_event".localized: "new_event".localized
     }
-    var addButtonIsVisible: Bool {
-        withAnimation {
-            title.isEmpty ? false : true
-        }
-    }
+    var addButtonIsVisible = false
     // MARK: - Functions
     private func findIndexForThis(dateType: DateType) -> Double { // for slider value
         guard let index = DateType.allCases.firstIndex(of: dateType) else { return .zero }
