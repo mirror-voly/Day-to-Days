@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 struct AddOrEditEventSheet: View {
-    @Environment(\.dismiss) var dismiss
     @Bindable private var viewModel: AddOrEditEventSheetViewModel
     @Binding var isOpened: Bool
     // MARK: - View
@@ -44,18 +43,18 @@ struct AddOrEditEventSheet: View {
         .padding()
         .onAppear(perform: { viewModel.updateFields() })
         // MARK: - ActionSheet guesture
-        .gesture(DragGesture(minimumDistance: Constraints.dragGestureMinimumDistance)
-            .onEnded({ value in
-                if value.translation.height > .zero {
-                    viewModel.actionSheetIsPresented = true
-                }
-            }))
+        .offset(y: viewModel.dragOffset.height)
+        .gesture(DragGesture()
+            .onChanged({ value in
+                viewModel.dragOffsetForSheetFrom(value)
+            })
+        )
         // MARK: - ActionSheet
         .confirmationDialog(Constants.emptyString,
                             isPresented: $viewModel.actionSheetIsPresented,
                             actions: {
             Button(role: .destructive, action: {
-                dismiss.callAsFunction()
+                isOpened = false
             }, label: {
                 Text("сontinue".localized)
             })

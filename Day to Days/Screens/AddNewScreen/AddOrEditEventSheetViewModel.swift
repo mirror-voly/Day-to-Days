@@ -13,15 +13,15 @@ final class AddOrEditEventSheetViewModel {
     private var screenMode: ScreenModeType?
     private var event: Event?
 
-    var actionSheetIsPresented = false
     var popoverIsPresented = false
+    var actionSheetIsPresented = false
+    private (set) var dragOffset = CGSize.zero
     // MARK: - User fields
     var title = Constants.emptyString
     var info = Constants.emptyString
     var date = Date()
     private (set) var dateType: DateType = .day
-    private (set) var color: Color = .teal
-
+    private (set) var color: Color = .gray
     private (set) var sliderValue: Double = 0 {
         didSet {
             dateType = .allCases[Int(sliderValue)]
@@ -56,10 +56,10 @@ final class AddOrEditEventSheetViewModel {
         }
     }
 
-    private func editEvent(oldEventID: UUID, newEvent: Event) {
+    private func editEvent(newEvent: Event) {
         do {
             let realm = try Realm()
-            if let eventToUpdate = realm.object(ofType: Event.self, forPrimaryKey: oldEventID) {
+            if let eventToUpdate = realm.object(ofType: Event.self, forPrimaryKey: newEvent.id) {
                 try realm.write {
                     eventToUpdate.title = newEvent.title
                     eventToUpdate.info = newEvent.info
@@ -77,7 +77,7 @@ final class AddOrEditEventSheetViewModel {
         title = event?.title ?? Constants.emptyString
         info = event?.info ?? Constants.emptyString
         date = event?.date ?? Date()
-        color = event?.color ?? .teal
+        color = event?.color ?? .gray
         dateType = event?.dateType ?? .day
         sliderValue = findIndexForThis(dateType: dateType)
     }
@@ -98,15 +98,14 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func buttonAction() {
-        DispatchQueue.main.async {
-            let oldEventID = self.event?.id
-            let event = self.createEvent(id: nil)
-            if let oldEventID = oldEventID {
-                self.editEvent(oldEventID: oldEventID, newEvent: event)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let event = createEvent(id: event?.id)
+            if screenMode == .edit {
+                editEvent(newEvent: event)
             } else {
-                self.addEvent(event: event)
+                addEvent(event: event)
             }
-            self.makeCurrentEventNil()
         }
     }
 
@@ -116,11 +115,6 @@ final class AddOrEditEventSheetViewModel {
 
     func setEvent(event: Event) {
         self.event = event
-    }
-
-    func makeCurrentEventNil() {
-        screenMode = nil
-        event = nil
     }
 
     func addHelpToTheButtonsBy(_ index: Int) -> String {
@@ -141,5 +135,13 @@ final class AddOrEditEventSheetViewModel {
 
     func getColorForMenuItem(currentColor: ColorType) -> Color {
         color.getColorType == currentColor ? .colorScheme : .clear
+    }
+
+    func dragOffsetForSheetFrom(_ value: DragGesture.Value) {
+        dragOffset = value.translation
+        if value.translation.height > Constraints.dragGestureDistance {
+            actionSheetIsPresented = true
+            dragOffset = .zero
+        }
     }
 }

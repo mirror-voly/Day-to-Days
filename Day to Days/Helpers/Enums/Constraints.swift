@@ -35,5 +35,5 @@ enum Constraints {
     static let scaleColorItem: CGFloat = 0.2
     static let containerRelativeFrame: CGFloat = 11
     static let clearableTextFieldHeight: CGFloat = 25
-    static let dragGestureMinimumDistance: CGFloat = 15
+    static let dragGestureDistance: CGFloat = 100
 }
