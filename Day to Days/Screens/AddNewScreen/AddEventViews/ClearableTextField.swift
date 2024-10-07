@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ClearableTextField: View {
     @Binding var text: String
-    var placeholder: String
+    let placeholder: String
 
     var body: some View {
         HStack {
@@ -25,5 +25,6 @@ struct ClearableTextField: View {
                 }
             }
         }
+        .frame(height: Constraints.clearableTextFieldHeight)
     }
 }

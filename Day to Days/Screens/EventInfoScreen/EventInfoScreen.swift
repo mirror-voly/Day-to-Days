@@ -56,15 +56,10 @@ struct EventInfoScreen: View {
             viewModel.updateEditedEvent()
             WidgetManager.sendToWidgetsThis(Array(allEvents))
         }, content: {
-            AddOrEditEventSheet(event: viewModel.event, isOpened: $viewModel.sheetIsOpened,
-            showAlert: $viewModel.alertIsPresented, viewModel: sheetViewModel)
-        })
-        .alert(isPresented: $viewModel.alertIsPresented, content: {
-            NewAlert.showAlert {
-                sheetViewModel.makeCurrentEventNil()
-            } onCancel: {
-                viewModel.reopenSheet()
-            }
+            AddOrEditEventSheet(event: viewModel.event,
+                                isOpened: $viewModel.sheetIsOpened,
+                                viewModel: sheetViewModel)
+            .interactiveDismissDisabled()
         })
         .toolbar(content: {
             backButton

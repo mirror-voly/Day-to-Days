@@ -17,8 +17,8 @@ final class MainScreenViewModel {
     private (set) var imageName = "arrow.up.circle"
     private (set) var editIsActivated = false
     private var events: Results<Event>?
+
     var sheetIsOpened = false
-    var alertIsPresented = false
     var isAnimating = false
 
     private (set) var ascending = true {

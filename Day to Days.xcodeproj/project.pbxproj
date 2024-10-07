@@ -12,7 +12,6 @@
 		510589FF2C9C5E1400CA612F /* EventsList+swipeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510589FE2C9C5E1400CA612F /* EventsList+swipeButtons.swift */; };
 		51058A012C9C5F1A00CA612F /* DateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51058A002C9C5F1A00CA612F /* DateInfoView.swift */; };
 		51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51058A022C9C608D00CA612F /* DayCounterWithShortInfoView.swift */; };
-		51058A052C9C64D200CA612F /* ButtonSpacerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51058A042C9C64D200CA612F /* ButtonSpacerType.swift */; };
 		510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */; };
 		510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */; };
 		5128E0B82CAACD9100F68CA2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5128E0B72CAACD9100F68CA2 /* RealmSwift */; };
@@ -76,7 +75,6 @@
 		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
 		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
-		5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */; };
 		5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */; };
 		5179F2702C8E16B10027B0F1 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */; };
 		517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */; };
@@ -135,7 +133,6 @@
 		510589FE2C9C5E1400CA612F /* EventsList+swipeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventsList+swipeButtons.swift"; sourceTree = "<group>"; };
 		51058A002C9C5F1A00CA612F /* DateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInfoView.swift; sourceTree = "<group>"; };
 		51058A022C9C608D00CA612F /* DayCounterWithShortInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCounterWithShortInfoView.swift; sourceTree = "<group>"; };
-		51058A042C9C64D200CA612F /* ButtonSpacerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSpacerType.swift; sourceTree = "<group>"; };
 		510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreenViewModel.swift; sourceTree = "<group>"; };
 		510E6B982C9B1E8A00B0430C /* EventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemViewModel.swift; sourceTree = "<group>"; };
 		5128E0BA2CAAD76400F68CA2 /* TimeStateDeterminer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStateDeterminer.swift; sourceTree = "<group>"; };
@@ -183,7 +180,6 @@
 		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
-		5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+KeyboardIsActive.swift"; sourceTree = "<group>"; };
 		5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreen.swift; sourceTree = "<group>"; };
 		5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheetViewModel.swift; sourceTree = "<group>"; };
@@ -269,7 +265,6 @@
 				5170CC5B2C92B15200A9380B /* String+Localized.swift */,
 				518289102C8849AB00676F0E /* View+HideKeyboard.swift */,
 				516659FF2C9051BF00468301 /* Color+colorType.swift */,
-				5178F4962C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift */,
 				5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */,
 			);
 			path = Extensions;
@@ -445,7 +440,6 @@
 				5170CC5F2C92E67600A9380B /* TimeStateType.swift */,
 				51F9117E2C95D2CA00C625DC /* SortType.swift */,
 				517DF9512C997CAE0007D924 /* ScreenModeType.swift */,
-				51058A042C9C64D200CA612F /* ButtonSpacerType.swift */,
 				5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */,
 			);
 			path = Enums;
@@ -630,7 +624,6 @@
 				5128E0BF2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift in Sources */,
 				517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */,
 				516DD8042CAFCF96006C534C /* MainScreen+addNewButton.swift in Sources */,
-				51058A052C9C64D200CA612F /* ButtonSpacerType.swift in Sources */,
 				517517412CB19F36000D04C4 /* Constants.swift in Sources */,
 				515617C62CAD97F60024C5EC /* SetEvent.intentdefinition in Sources */,
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
@@ -640,7 +633,6 @@
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
 				5128E0BB2CAAD76400F68CA2 /* TimeStateDeterminer.swift in Sources */,
 				5179F2702C8E16B10027B0F1 /* ColorPicker.swift in Sources */,
-				5178F4972C8AE74800DF45D4 /* Publishers+KeyboardIsActive.swift in Sources */,
 				5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */,
 				51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */,
 				510589FD2C9C5DA700CA612F /* EventsList+toolbar.swift in Sources */,

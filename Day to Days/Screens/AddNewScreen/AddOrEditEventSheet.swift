@@ -9,54 +9,70 @@ import SwiftUI
 import Combine
 
 struct AddOrEditEventSheet: View {
-    private let viewModel: AddOrEditEventSheetViewModel
+    @Environment(\.dismiss) var dismiss
+    @Bindable private var viewModel: AddOrEditEventSheetViewModel
     @Binding var isOpened: Bool
-    @Binding var showAlert: Bool
-
     // MARK: - View
     var body: some View {
         VStack(content: {
-            GroupBox(viewModel.sheetTitle) {
-                AddEventFields(viewModel: viewModel)
-                DateTypeSlider()
-                    .onTapGesture(perform: {
-                        hideKeyboard()
+            GroupBox {
+                HStack {
+                    Text(viewModel.sheetTitle)
+                    Spacer()
+                    Button(action: {
+                        viewModel.buttonAction()
+                        isOpened = false
+                    }, label: {
+                        Text("done".localized)
                     })
+                    .disabled(!viewModel.addButtonIsVisible)
+                    .opacity(viewModel.addButtonIsVisible ? Constraints.originalSize :
+                                Constraints.scaleColorItem)
+                    .tint(viewModel.color)
+                    .buttonStyle(BorderedButtonStyle())
+                    .foregroundStyle(.primary)
+                    .contextMenu {
+                        if !viewModel.addButtonIsVisible {
+                            HelpContextMenu(helpText: "add_button_help")
+                        }
+                    }
+                }
+                AddEventFields(viewModel: viewModel)
             }
             Spacer()
-            AddEventButton(onAddNew: {
-                viewModel.buttonAction()
-                isOpened = false
-            })
-            .frame(height: viewModel.buttonSpacer.value)
-            .tint(viewModel.color)
         })
         .padding()
-
-        // MARK: - View actions
-        .onAppear(perform: { viewModel.extractEventData() })
-        .onDisappear(perform: { viewModel.dismissAlertPrepare(action: {
-            showAlert = true
+        .onAppear(perform: { viewModel.updateFields() })
+        // MARK: - ActionSheet guesture
+        .gesture(DragGesture(minimumDistance: Constraints.dragGestureMinimumDistance)
+            .onEnded({ value in
+                if value.translation.height > .zero {
+                    viewModel.actionSheetIsPresented = true
+                }
+            }))
+        // MARK: - ActionSheet
+        .confirmationDialog(Constants.emptyString,
+                            isPresented: $viewModel.actionSheetIsPresented,
+                            actions: {
+            Button(role: .destructive, action: {
+                dismiss.callAsFunction()
+            }, label: {
+                Text("сontinue".localized)
+            })
         })
-        })
-        // MARK: Keyboard detection
-        .onReceive(Publishers.keyboardWillShow) { _ in
-            viewModel.setButtonSpacer(buttonSpacer: .maximize)
-        }
-        .onReceive(Publishers.keyboardWillHide) { _ in
-            viewModel.setButtonSpacer(buttonSpacer: .minimize)
-        }
     }
-    init(event: Event, isOpened: Binding<Bool>, showAlert: Binding<Bool>, viewModel: AddOrEditEventSheetViewModel) {
+
+    init(event: Event, isOpened: Binding<Bool>,
+         viewModel: AddOrEditEventSheetViewModel) {
         self._isOpened = isOpened
-        self._showAlert = showAlert
         self.viewModel = viewModel
         viewModel.setEvent(event: event)
     }
 
-    init(isOpened: Binding<Bool>, showAlert: Binding<Bool>, viewModel: AddOrEditEventSheetViewModel) {
+    init(isOpened: Binding<Bool>,
+         viewModel: AddOrEditEventSheetViewModel) {
         self._isOpened = isOpened
-        self._showAlert = showAlert
         self.viewModel = viewModel
+        viewModel.clearEvent()
     }
 }

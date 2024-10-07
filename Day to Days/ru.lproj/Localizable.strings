@@ -14,9 +14,7 @@
 "description" = "Описание";
 "date" = "Дата";
 "count" = "Cчитать";
-"event_not_saved_title" = "Событие не сохранено";
-"event_not_saved_message" = "Вы уверены, что хотите выйти?";
-"сontinue" = "Продолжить";
+"сontinue" = "Не сохранять";
 "cancel" = "Отмена";
 "return" = "Вернуться";
 "no_description" = "Нет описания";

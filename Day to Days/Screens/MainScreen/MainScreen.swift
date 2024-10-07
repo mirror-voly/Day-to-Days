@@ -26,26 +26,18 @@ struct MainScreen: View {
             .navigationTitle("events".localized)
             // MARK: Sheet
             .sheet(isPresented: $viewModel.sheetIsOpened) {
-                        AddOrEditEventSheet(
-                            isOpened: $viewModel.sheetIsOpened,
-                            showAlert: $viewModel.alertIsPresented,
-                            viewModel: sheetViewModel
-                        )
-                    }
+                AddOrEditEventSheet(
+                    isOpened: $viewModel.sheetIsOpened,
+                    viewModel: sheetViewModel
+                )
+                .interactiveDismissDisabled()
+            }
             // MARK: Toolbar
             .toolbar {
                 if viewModel.noSelectedEvents && !viewModel.eventsIsEmpty {
                     addNewButton
                 }
             }
-            // MARK: Alert
-            .alert(isPresented: $viewModel.alertIsPresented, content: {
-                NewAlert.showAlert {
-                    sheetViewModel.makeCurrentEventNil()
-                } onCancel: {
-                    viewModel.sheetIsOpened = true
-                }
-            })
         }
     }
 }

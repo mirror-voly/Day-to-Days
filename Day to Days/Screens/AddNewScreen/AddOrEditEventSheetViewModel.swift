@@ -11,84 +11,38 @@ import RealmSwift
 @Observable
 final class AddOrEditEventSheetViewModel {
     private var screenMode: ScreenModeType?
-    private var currentEvent: Event?
-    private var fixedDate = Date()
-    private var canDismiss = true
     private var event: Event?
-    var isAnimating = false
-    private (set) var addButtonIsVisible = false {
-        didSet {
-            if addButtonIsVisible == true {
-                isAnimating = true
-            }
-        }
-    }
-    private (set) var buttonSpacer: ButtonSpacerType = .minimize
+
+    var actionSheetIsPresented = false
     var popoverIsPresented = false
+    // MARK: - User fields
+    var title = Constants.emptyString
+    var info = Constants.emptyString
+    var date = Date()
+    private (set) var dateType: DateType = .day
+    private (set) var color: Color = .teal
 
     private (set) var sliderValue: Double = 0 {
         didSet {
             dateType = .allCases[Int(sliderValue)]
         }
     }
+    private let helpStrings = [
+        "day_help", "week_help", "month_help", "year_help", "days_help"
+    ]
     // MARK: - Calculated properties
     var sheetTitle: String {
         screenMode == .edit ? "edit_event".localized: "new_event".localized
     }
-    private let helpStrings = [
-        "day_help", "week_help", "month_help", "year_help", "days_help"
-    ]
-    // MARK: - User fields
-    var title: String = Constants.emptyString {
-            didSet {
-                protectedChangeOfCanDismiss()
-                withAnimation {
-                    addButtonIsVisible = title.isEmpty ? false : true
-                }
-        }
-    }
-    var info = Constants.emptyString {
-        didSet {
-            protectedChangeOfCanDismiss()
-        }
-    }
-    var date = Date() {
-        didSet {
-            protectedChangeOfCanDismiss()
-        }
-    }
-    private (set) var color: Color = .teal {
-        didSet {
-            protectedChangeOfCanDismiss()
-        }
-    }
-    var dateType: DateType = .day {
-        didSet {
-            protectedChangeOfCanDismiss()
+    var addButtonIsVisible: Bool {
+        withAnimation {
+            title.isEmpty ? false : true
         }
     }
     // MARK: - Functions
     private func findIndexForThis(dateType: DateType) -> Double { // for slider value
         guard let index = DateType.allCases.firstIndex(of: dateType) else { return .zero }
         return Double(index)
-    }
-
-    private func protectedChangeOfCanDismiss() {
-        guard screenMode != nil else { return }
-        canDismiss = !areFieldsEmpty()
-    }
-    private func updateFieldsFrom(_ event: Event?) {
-        title = event?.title ?? Constants.emptyString
-        info = event?.info ?? Constants.emptyString
-        date = event?.date ?? Date()
-        color = event?.color ?? .teal
-        dateType = event?.dateType ?? .day
-        sliderValue = findIndexForThis(dateType: dateType)
-    }
-
-    private func areFieldsEmpty() -> Bool {
-        title != Constants.emptyString || info != Constants.emptyString ||
-        color != .teal || dateType != .day || date != fixedDate
     }
 
     private func addEvent(event: Event) {
@@ -119,8 +73,17 @@ final class AddOrEditEventSheetViewModel {
         }
     }
 
-    func setButtonSpacer(buttonSpacer: ButtonSpacerType) {
-        self.buttonSpacer = buttonSpacer
+    func updateFields() {
+        title = event?.title ?? Constants.emptyString
+        info = event?.info ?? Constants.emptyString
+        date = event?.date ?? Date()
+        color = event?.color ?? .teal
+        dateType = event?.dateType ?? .day
+        sliderValue = findIndexForThis(dateType: dateType)
+    }
+
+    func clearEvent() {
+        event = nil
     }
 
     func createEvent(id: UUID?) -> Event {
@@ -132,21 +95,6 @@ final class AddOrEditEventSheetViewModel {
             dateType: dateType,
             color: color
         )
-    }
-
-    func extractEventData() {
-            let eventToUpdate = self.currentEvent ?? self.event
-            self.updateFieldsFrom(eventToUpdate)
-    }
-
-    func dismissAlertPrepare(action: @escaping () -> Void) {
-        DispatchQueue.main.async {
-            let oldEventID = self.event?.id
-            guard !self.canDismiss else { return }
-            let event = self.createEvent(id: oldEventID)
-            self.event = event
-            action()
-        }
     }
 
     func buttonAction() {
@@ -172,8 +120,6 @@ final class AddOrEditEventSheetViewModel {
 
     func makeCurrentEventNil() {
         screenMode = nil
-        currentEvent = nil
-        canDismiss = true
         event = nil
     }
 

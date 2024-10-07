@@ -14,9 +14,7 @@ final class EventInfoScreenViewModel {
     private (set) var allInfoForCurrentDate: [DateType: String]?
     let allDateTypes = DateType.allCases.reversed()
     let dateCalculator = DateCalculator()
-    var alertIsPresented = false
     var sheetIsOpened = false
-
     // MARK: - Calculated properties
     private (set) var event: Event {
         didSet {
