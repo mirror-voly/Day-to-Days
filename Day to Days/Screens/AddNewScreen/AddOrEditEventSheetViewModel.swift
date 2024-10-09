@@ -20,9 +20,7 @@ final class AddOrEditEventSheetViewModel {
     // MARK: - User fields
     var title = Constants.emptyString {
         didSet {
-            withAnimation {
-                addButtonIsVisible = title.isEmpty ? false : true
-            }
+            addButtonIsVisible = title.isEmpty ? false : true
         }
     }
     var info = Constants.emptyString
@@ -125,15 +123,11 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func setSliderValue(value: Double) {
-        withAnimation {
-            sliderValue = Double(value)
-        }
+        sliderValue = Double(value)
     }
 
     func setColor(color: Color) {
-        withAnimation {
-            self.color = color
-        }
+        self.color = color
     }
 
     func getColorForMenuItem(currentColor: ColorType) -> Color {

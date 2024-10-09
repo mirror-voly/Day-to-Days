@@ -71,11 +71,9 @@ final class EventsItemViewModel {
     }
 
     func toggleSelected() {
-        withAnimation {
-            isSelected.toggle()
-            if let uuid = mainScreenViewModel?.sortedEvents[index].id {
-                mainScreenViewModel?.toggleSelectedState(eventID: uuid)
-            }
+        isSelected.toggle()
+        if let uuid = mainScreenViewModel?.sortedEvents[index].id {
+            mainScreenViewModel?.toggleSelectedState(eventID: uuid)
         }
     }
 

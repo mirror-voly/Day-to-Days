@@ -53,7 +53,9 @@ struct EventInfoScreen: View {
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $viewModel.sheetIsOpened, onDismiss: {
-            viewModel.updateEditedEvent()
+            withAnimation {
+                viewModel.updateEditedEvent()
+            }
             WidgetManager.sendToWidgetsThis(Array(allEvents))
         }, content: {
             AddOrEditEventSheet(event: viewModel.event,

@@ -15,7 +15,9 @@ struct OverlayRectangle: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .clipShape(.rect(cornerRadius: Constraints.cornerRadius))
             .onTapGesture {
-                viewModel.toggleSelected()
+                withAnimation {
+                    viewModel.toggleSelected()
+                }
             }
     }
 }

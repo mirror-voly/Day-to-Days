@@ -12,8 +12,10 @@ struct AddEventFields: View {
     var body: some View {
         GroupBox {
             ClearableTextField(text: $viewModel.title, placeholder: "title")
+                .animation(.linear, value: viewModel.addButtonIsVisible)
             Divider()
             ClearableTextField(text: $viewModel.info, placeholder: "description")
+                .animation(.linear, value: viewModel.info.isEmpty)
         }
         // MARK: Date and color pickers
         GroupBox {

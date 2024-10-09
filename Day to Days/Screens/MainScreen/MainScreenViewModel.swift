@@ -105,7 +105,6 @@ final class MainScreenViewModel {
                         print("Removing error occurred: \(error.localizedDescription)")
                     }
                 })
-                    
             }
             self.makeSelectedEventsEmpty()
         }

@@ -15,7 +15,9 @@ struct ColorPicker: View {
             HStack(alignment: .center, content: {
                 ForEach(ColorType.allCases, id: \.self) { currentColor in
                     Button(action: {
-                        viewModel.setColor(color: currentColor.getColor)
+                        withAnimation {
+                            viewModel.setColor(color: currentColor.getColor)
+                        }
                     }, label: {
                         Image(systemName: "largecircle.fill.circle")
                             .font(.title)

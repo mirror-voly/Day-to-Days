@@ -13,7 +13,9 @@ extension DateTypeSlider {
             ForEach(0..<sum, id: \.self) { index in
                 VStack {
                     Button(action: {
-                        viewModel.setSliderValue(value: Double(index))
+                        withAnimation {
+                            viewModel.setSliderValue(value: Double(index))
+                        }
                     }, label: {
                         let needToColorize = index < step + 1
                         Circle()
