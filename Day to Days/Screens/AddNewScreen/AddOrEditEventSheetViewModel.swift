@@ -46,34 +46,6 @@ final class AddOrEditEventSheetViewModel {
         return Double(index)
     }
 
-    private func addEvent(event: Event) {
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.add(event)
-            }
-        } catch {
-            print("Adding error occurred: \(error.localizedDescription)")
-        }
-    }
-
-    private func editEvent(newEvent: Event) {
-        do {
-            let realm = try Realm()
-            if let eventToUpdate = realm.object(ofType: Event.self, forPrimaryKey: newEvent.id) {
-                try realm.write {
-                    eventToUpdate.title = newEvent.title
-                    eventToUpdate.info = newEvent.info
-                    eventToUpdate.date = newEvent.date
-                    eventToUpdate.dateType = newEvent.dateType
-                    eventToUpdate.color = newEvent.color
-                }
-            }
-        } catch {
-            print("Editing error occurred: \(error.localizedDescription)")
-        }
-    }
-
     func updateFields() {
         title = event?.title ?? Constants.emptyString
         info = event?.info ?? Constants.emptyString
@@ -101,9 +73,9 @@ final class AddOrEditEventSheetViewModel {
     func buttonAction() {
         let event = createEvent(id: event?.id)
         if screenMode == .edit {
-            editEvent(newEvent: event)
+            RealmManager.editEvent(newEvent: event)
         } else {
-            addEvent(event: event)
+            RealmManager.addEvent(event: event)
         }
     }
 

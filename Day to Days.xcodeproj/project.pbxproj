@@ -69,6 +69,7 @@
 		517517422CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
 		517517432CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
 		517577402CB69AD5005BFB8D /* SortEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5175773F2CB69AD5005BFB8D /* SortEvents.swift */; };
+		517577422CB69BF3005BFB8D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517577412CB69BF3005BFB8D /* RealmManager.swift */; };
 		5177245E2C9D5C880037143A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245D2C9D5C880037143A /* WidgetKit.framework */; };
 		517724602C9D5C880037143A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245F2C9D5C880037143A /* SwiftUI.framework */; };
 		517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724622C9D5C880037143A /* CounterWidgetBundle.swift */; };
@@ -174,6 +175,7 @@
 		5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataReturnType.swift; sourceTree = "<group>"; };
 		517517402CB19F36000D04C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5175773F2CB69AD5005BFB8D /* SortEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortEvents.swift; sourceTree = "<group>"; };
+		517577412CB69BF3005BFB8D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5177245D2C9D5C880037143A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5177245F2C9D5C880037143A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -402,6 +404,7 @@
 				516CBE5A2C8733D500202B93 /* Calculators */,
 				519195002C8CA6AA00F29C1B /* NewAlert.swift */,
 				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
+				517577412CB69BF3005BFB8D /* RealmManager.swift */,
 				5175773F2CB69AD5005BFB8D /* SortEvents.swift */,
 				51BD46202C9D7A2D00D7515F /* WidgetManager.swift */,
 				516C39A22C971B9E008EC3B8 /* Extensions */,
@@ -632,6 +635,7 @@
 				515617C62CAD97F60024C5EC /* SetEvent.intentdefinition in Sources */,
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
 				51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */,
+				517577422CB69BF3005BFB8D /* RealmManager.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
 				5168A31C2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,

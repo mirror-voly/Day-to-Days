@@ -77,16 +77,7 @@ final class MainScreenViewModel {
     func removeSelectedEvents() {
         if !self.noSelectedEvents {
             selectedEvents.forEach({ eventID in
-                do {
-                    let realm = try Realm()
-                    try realm.write {
-                        if let eventToDelete = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
-                            realm.delete(eventToDelete)
-                        }
-                    }
-                } catch {
-                    print("Removing error occurred: \(error.localizedDescription)")
-                }
+                RealmManager.removeEventBy(eventID: eventID)
             })
         }
         self.makeSelectedEventsEmpty()
