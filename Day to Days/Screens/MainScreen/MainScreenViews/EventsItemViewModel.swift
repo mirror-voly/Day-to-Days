@@ -11,11 +11,12 @@ import SwiftUI
 final class EventsItemViewModel {
     private let dateCalculator = DateCalculator()
     private var index: Int
+    private (set) var isVisible = false
     private (set) var timeData: [String: String]?
-    private (set) var localizedTimeState: String = Constants.emptyString
-    private (set) var number: String = Constants.emptyString
-    private (set) var localizedDateType: String = Constants.emptyString
-    private (set) var event: Event = Event() {
+    private (set) var localizedTimeState = Constants.emptyString
+    private (set) var number = Constants.emptyString
+    private (set) var localizedDateType = Constants.emptyString
+    private (set) var event = Event() {
         didSet {
             setTimeData(event: event)
         }
@@ -46,26 +47,21 @@ final class EventsItemViewModel {
     }
 
     func updateEvent() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            guard let mainScreenViewModel = mainScreenViewModel else { return }
-            event = mainScreenViewModel.sortedEvents[index]
-        }
+        guard let mainScreenViewModel = mainScreenViewModel else { return }
+        event = mainScreenViewModel.sortedEvents[index]
     }
 
     private func setTimeData(event: Event) {
-        DispatchQueue.main.async {
-            let timeData = self.dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
-            if let localizedTimeState = timeData[.localizedTimeState] {
-                self.localizedTimeState = localizedTimeState.capitalized
-            }
-            if let number = timeData[.dateNumber] {
-                self.number = number
-            }
-            if let localizedDateType = timeData[.localizedDateType] {
-                if timeData [.timeState] != TimeStateType.present.label {
-                    self.localizedDateType = localizedDateType
-                }
+        let timeData = self.dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
+        if let localizedTimeState = timeData[.localizedTimeState] {
+            self.localizedTimeState = localizedTimeState.capitalized
+        }
+        if let number = timeData[.dateNumber] {
+            self.number = number
+        }
+        if let localizedDateType = timeData[.localizedDateType] {
+            if timeData [.timeState] != TimeStateType.present.label {
+                self.localizedDateType = localizedDateType
             }
         }
     }
@@ -79,6 +75,13 @@ final class EventsItemViewModel {
 
     func changeSelectedToFalse() {
         isSelected = false
+    }
+
+    func isOutOfBounds(proxy: GeometryProxy) {
+        let frame = proxy.frame(in: .global)
+        let screenHeight = UIScreen.main.bounds.height
+        let limit = Constraints.frameBoundsLimit
+        isVisible = frame.maxY < limit || frame.minY + limit > screenHeight || frame.minY < limit
     }
 
     init(index: Int) {

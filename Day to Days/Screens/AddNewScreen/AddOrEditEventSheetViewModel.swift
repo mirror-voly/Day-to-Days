@@ -99,14 +99,11 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func buttonAction() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            let event = createEvent(id: event?.id)
-            if screenMode == .edit {
-                editEvent(newEvent: event)
-            } else {
-                addEvent(event: event)
-            }
+        let event = createEvent(id: event?.id)
+        if screenMode == .edit {
+            editEvent(newEvent: event)
+        } else {
+            addEvent(event: event)
         }
     }
 

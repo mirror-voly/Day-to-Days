@@ -90,24 +90,21 @@ final class MainScreenViewModel {
     }
 
     func removeSelectedEvents() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            if !self.noSelectedEvents {
-                selectedEvents.forEach({ eventID in
-                    do {
-                        let realm = try Realm()
-                        try realm.write {
-                            if let eventToDelete = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
-                                realm.delete(eventToDelete)
-                            }
+        if !self.noSelectedEvents {
+            selectedEvents.forEach({ eventID in
+                do {
+                    let realm = try Realm()
+                    try realm.write {
+                        if let eventToDelete = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
+                            realm.delete(eventToDelete)
                         }
-                    } catch {
-                        print("Removing error occurred: \(error.localizedDescription)")
                     }
-                })
-            }
-            self.makeSelectedEventsEmpty()
+                } catch {
+                    print("Removing error occurred: \(error.localizedDescription)")
+                }
+            })
         }
+        self.makeSelectedEventsEmpty()
     }
 
     func sortButtonAction(type: SortType) {
