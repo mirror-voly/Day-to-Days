@@ -17,6 +17,7 @@ final class MainScreenViewModel {
     private (set) var imageName = "arrow.up.circle"
     private (set) var editIsActivated = false
     private var events: Results<Event>?
+    private var alertManager: AlertManager?
 
     var sheetIsOpened = false
     var isAnimating = false
@@ -77,7 +78,10 @@ final class MainScreenViewModel {
     func removeSelectedEvents() {
         if !self.noSelectedEvents {
             selectedEvents.forEach({ eventID in
-                RealmManager.removeEventBy(eventID: eventID)
+                RealmManager.removeEventBy(eventID: eventID, completion: { [self] result in
+                    guard let alertManager = alertManager else { return }
+                    alertManager.getIdentifiebleErrorFrom(result: result)
+                })
             })
         }
         self.makeSelectedEventsEmpty()
@@ -92,10 +96,17 @@ final class MainScreenViewModel {
 
     func setEvents(allEvents: Results<Event>) {
         self.events = allEvents
-        WidgetManager.sendToWidgetsThis(Array(allEvents))
+        WidgetManager.sendToWidgetsThis(Array(allEvents), completion: { [self] result in
+            guard let alertManager = alertManager else { return }
+            alertManager.getIdentifiebleErrorFrom(result: result)
+        })
     }
 
     func setEditMode(set: Bool) {
         editIsActivated = set
+    }
+
+    func setAlertManager(alertManager: AlertManager) {
+        self.alertManager = alertManager
     }
 }

@@ -12,7 +12,7 @@ import RealmSwift
 final class AddOrEditEventSheetViewModel {
     private var screenMode: ScreenModeType?
     private var event: Event?
-
+    var alertManager: AlertManager?
     var popoverIsPresented = false
     var actionSheetIsPresented = false
     var aninmate: Bool = false
@@ -73,9 +73,15 @@ final class AddOrEditEventSheetViewModel {
     func buttonAction() {
         let event = createEvent(id: event?.id)
         if screenMode == .edit {
-            RealmManager.editEvent(newEvent: event)
+            RealmManager.editEvent(newEvent: event, completion: { [self] result in
+                guard let alertManager = alertManager else { return }
+                alertManager.getIdentifiebleErrorFrom(result: result)
+            })
         } else {
-            RealmManager.addEvent(event: event)
+            RealmManager.addEvent(event: event, completion: { [self] result in
+                guard let alertManager = alertManager else { return }
+                alertManager.getIdentifiebleErrorFrom(result: result)
+            })
         }
     }
 
@@ -109,5 +115,9 @@ final class AddOrEditEventSheetViewModel {
             actionSheetIsPresented = true
             dragOffset = .zero
         }
+    }
+
+    func setAlertManager(alertManager: AlertManager) {
+        self.alertManager = alertManager
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainScreen: View {
     @Environment(AddOrEditEventSheetViewModel.self) var sheetViewModel
+    @Environment(AlertManager.self) var alertManager
     @Bindable var viewModel: MainScreenViewModel
     // MARK: - View
     var body: some View {
@@ -39,5 +40,6 @@ struct MainScreen: View {
                 }
             }
         }
+        .environment(viewModel)
     }
 }

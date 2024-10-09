@@ -9,13 +9,25 @@ import SwiftUI
 
 @main
 struct DaytoDaysApp: App {
-    @State private var mainScreenViewModel = MainScreenViewModel()
+
+    @State private var alertManager = AlertManager()
     @State private var addViewModel = AddOrEditEventSheetViewModel()
+    @State private var mainScreenViewModel = MainScreenViewModel()
+
     var body: some Scene {
+
         WindowGroup {
             MainScreen(viewModel: mainScreenViewModel)
                 .environment(mainScreenViewModel)
                 .environment(addViewModel)
+                .environment(alertManager)
+                .alert(item: $alertManager.errorForAlert, content: { error in
+                    alertManager.showAlert(identifiable: error)
+                })
+                .onAppear {
+                    mainScreenViewModel.setAlertManager(alertManager: alertManager)
+                    addViewModel.setAlertManager(alertManager: alertManager)
+                }
         }
     }
 }

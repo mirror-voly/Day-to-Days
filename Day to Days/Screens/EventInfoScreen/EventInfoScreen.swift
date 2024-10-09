@@ -12,6 +12,7 @@ struct EventInfoScreen: View {
     @ObservedResults(Event.self) var allEvents
     @Environment(AddOrEditEventSheetViewModel.self) var sheetViewModel
     @Environment(\.dismiss) var dismiss
+    @Environment(AlertManager.self) var alertManager
     @Bindable var viewModel: EventInfoScreenViewModel
     // MARK: - View
     var body: some View {
@@ -54,9 +55,13 @@ struct EventInfoScreen: View {
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $viewModel.sheetIsOpened, onDismiss: {
             withAnimation {
-                viewModel.updateEditedEvent()
+                viewModel.updateEditedEvent(completion: { result in
+                    alertManager.getIdentifiebleErrorFrom(result: result)
+                })
             }
-            WidgetManager.sendToWidgetsThis(Array(allEvents))
+            WidgetManager.sendToWidgetsThis(Array(allEvents), completion: { result in
+                alertManager.getIdentifiebleErrorFrom(result: result)
+            })
         }, content: {
             AddOrEditEventSheet(event: viewModel.event,
                                 isOpened: $viewModel.sheetIsOpened,

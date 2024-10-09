@@ -27,15 +27,16 @@ final class EventInfoScreenViewModel {
         allInfoForCurrentDate = dateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
     }
 
-    func updateEditedEvent() {
+    func updateEditedEvent(completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()
             if let newEvent = realm.object(ofType: Event.self, forPrimaryKey: event.id) {
                 self.event = newEvent
                 getAllDateInfoFor(event: newEvent)
+                completion(.success(()))
             }
         } catch {
-            print("Finding event error occurred: \(error.localizedDescription)")
+            completion(.failure(error))
         }
     }
     // MARK: - Init

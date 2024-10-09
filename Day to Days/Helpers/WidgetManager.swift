@@ -18,7 +18,7 @@ final class WidgetManager {
                            color: event.color.getColorType)
     }
 
-    static func sendToWidgetsThis(_ events: [Event]) {
+    static func sendToWidgetsThis(_ events: [Event], completion: @escaping (Result<Void, Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
             var eventsForWidget: [EventForTransfer] = []
             for event in events {
@@ -28,12 +28,11 @@ final class WidgetManager {
                 let data = try JSONEncoder().encode(eventsForWidget)
                 if let userDefaults = UserDefaults(suiteName: Constants.suiteName) {
                     userDefaults.set(data, forKey: Constants.widgetStorage)
+                    completion(.success(()))
                     WidgetCenter.shared.reloadTimelines(ofKind: Constants.widgetKind)
-                } else {
-                    print("UserDefaults could not be initialized.")
                 }
             } catch {
-                print("Saving error occurred: \(error.localizedDescription)")
+                completion(.failure(error))
             }
         }
     }

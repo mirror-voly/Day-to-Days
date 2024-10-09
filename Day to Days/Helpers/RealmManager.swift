@@ -9,7 +9,7 @@ import RealmSwift
 import Foundation
 
 final class RealmManager {
-    static func removeEventBy(eventID: UUID) {
+    static func removeEventBy(eventID: UUID, completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()
             try realm.write {
@@ -18,22 +18,22 @@ final class RealmManager {
                 }
             }
         } catch {
-            print("Removing error occurred: \(error.localizedDescription)")
+            completion(.failure(error))
         }
     }
 
-    static func addEvent(event: Event) {
+    static func addEvent(event: Event, completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()
             try realm.write {
                 realm.add(event)
             }
         } catch {
-            print("Adding error occurred: \(error.localizedDescription)")
+            completion(.failure(error))
         }
     }
 
-    static func editEvent(newEvent: Event) {
+    static func editEvent(newEvent: Event, completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()
             if let eventToUpdate = realm.object(ofType: Event.self, forPrimaryKey: newEvent.id) {
@@ -46,7 +46,7 @@ final class RealmManager {
                 }
             }
         } catch {
-            print("Editing error occurred: \(error.localizedDescription)")
+            completion(.failure(error))
         }
     }
 }
