@@ -34,7 +34,9 @@ final class MainScreenViewModel {
     // MARK: - Calculated properties
     var sortedEvents: [Event] {
         guard let events = events else { return []}
-        let result: [Event] = sortResulsBy(allEvents: events, sortBy: sortBy, ascending: ascending).reversed()
+        let result: [Event] = SortEvents.sortResulsBy(allEvents: events,
+                                                      sortBy: sortBy,
+                                                      ascending: ascending).reversed()
         return result
     }
     var eventsIsEmpty: Bool {
@@ -47,23 +49,6 @@ final class MainScreenViewModel {
 
     private func removeFromSelectedEvents(eventID: UUID) {
         selectedEvents.remove(eventID)
-    }
-
-    private func sortResulsBy(allEvents: Results<Event>, sortBy: SortType, ascending: Bool) -> [Event] {
-        allEvents.sorted {
-            switch sortBy {
-            case .date:
-                let lhs = $0[keyPath: \Event.date] as Date
-                let rhs = $1[keyPath: \Event.date] as Date
-                return ascending ? lhs < rhs : lhs > rhs
-            case .title:
-                let lhs = $0[keyPath: \Event.title] as String
-                let rhs = $1[keyPath: \Event.title] as String
-                return ascending ? lhs < rhs : lhs > rhs
-            default:
-                return true
-            }
-        }
     }
 
     func toggleSelectedState(eventID: UUID) {

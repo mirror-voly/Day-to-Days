@@ -68,6 +68,7 @@
 		517517412CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
 		517517422CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
 		517517432CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
+		517577402CB69AD5005BFB8D /* SortEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5175773F2CB69AD5005BFB8D /* SortEvents.swift */; };
 		5177245E2C9D5C880037143A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245D2C9D5C880037143A /* WidgetKit.framework */; };
 		517724602C9D5C880037143A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245F2C9D5C880037143A /* SwiftUI.framework */; };
 		517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724622C9D5C880037143A /* CounterWidgetBundle.swift */; };
@@ -172,6 +173,7 @@
 		517122402CA59F850037974D /* ClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextField.swift; sourceTree = "<group>"; };
 		5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataReturnType.swift; sourceTree = "<group>"; };
 		517517402CB19F36000D04C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5175773F2CB69AD5005BFB8D /* SortEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortEvents.swift; sourceTree = "<group>"; };
 		5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5177245D2C9D5C880037143A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5177245F2C9D5C880037143A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -400,6 +402,7 @@
 				516CBE5A2C8733D500202B93 /* Calculators */,
 				519195002C8CA6AA00F29C1B /* NewAlert.swift */,
 				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
+				5175773F2CB69AD5005BFB8D /* SortEvents.swift */,
 				51BD46202C9D7A2D00D7515F /* WidgetManager.swift */,
 				516C39A22C971B9E008EC3B8 /* Extensions */,
 				51F911802C95D2DD00C625DC /* Enums */,
@@ -624,6 +627,7 @@
 				5128E0BF2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift in Sources */,
 				517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */,
 				516DD8042CAFCF96006C534C /* MainScreen+addNewButton.swift in Sources */,
+				517577402CB69AD5005BFB8D /* SortEvents.swift in Sources */,
 				517517412CB19F36000D04C4 /* Constants.swift in Sources */,
 				515617C62CAD97F60024C5EC /* SetEvent.intentdefinition in Sources */,
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
