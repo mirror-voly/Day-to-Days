@@ -9,8 +9,8 @@ import Foundation
 
 final class DateDifferenceCalculator {
 
-    let currentDate = Date()
-    let calendar = Calendar.current
+    private let currentDate = Date()
+    private let calendar = Calendar.current
 
     func daysFrom(date: Date) -> Int {
         let components = calendar.dateComponents([.day], from: Date(), to: date)

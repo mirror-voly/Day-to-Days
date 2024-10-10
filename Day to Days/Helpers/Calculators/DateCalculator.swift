@@ -12,6 +12,12 @@ final class DateCalculator {
     private let dateLocalization = DateLocalization()
     private let timeStateDeterminer = TimeStateDeterminer()
 
+    private func findFirstDateFromTheTopFor(date: Date, dateType: DateType) -> String {
+        let currentDate = dateInfoForThis(date: date, dateType: dateType)
+        guard let value = currentDate[dateType] else { return Constants.emptyString }
+        return value
+    }
+
     func dateInfoForThis(date: Date, dateType: DateType) -> [DateType: String] {
             let returnDate: [DateType: String]
             switch dateType {
@@ -57,11 +63,5 @@ final class DateCalculator {
                                                                     state: timeState, dateType: dateType)
         return [.timeState: timeState.label, .dateNumber: dateNumber,
                 .localizedDateType: localizedDateType, .localizedTimeState: localizedTimeState]
-    }
-
-    private func findFirstDateFromTheTopFor(date: Date, dateType: DateType) -> String {
-        let currentDate = dateInfoForThis(date: date, dateType: dateType)
-        guard let value = currentDate[dateType] else { return Constants.emptyString }
-        return value
     }
 }

@@ -9,9 +9,9 @@ import SwiftUI
 import RealmSwift
 
 struct EventInfoScreen: View {
-    @ObservedResults(Event.self) var allEvents
+    @ObservedResults(Event.self) private var allEvents
     @Environment(\.dismiss) var dismiss
-    @Environment(AlertManager.self) var alertManager
+    @Environment(AlertManager.self) private var alertManager
     @Bindable var viewModel: EventInfoScreenViewModel
     // MARK: - View
     var body: some View {

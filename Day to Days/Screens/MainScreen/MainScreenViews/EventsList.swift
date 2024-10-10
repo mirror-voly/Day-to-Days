@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventsList: View {
     @Environment(MainScreenViewModel.self) var viewModel
-    @ObservedResults(Event.self) var allEvents
+    @ObservedResults(Event.self) private var allEvents
 
     var body: some View {
         VStack {

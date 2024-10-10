@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventsListIsEmptyView: View {
-    @Environment(MainScreenViewModel.self) var viewModel
+    @Environment(MainScreenViewModel.self) private var viewModel
     var onAddNew: () -> Void
 
     var body: some View {

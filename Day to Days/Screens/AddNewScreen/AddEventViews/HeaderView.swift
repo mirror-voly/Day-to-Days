@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @Environment(AddOrEditEventSheetViewModel.self) var viewModel
-    @Environment(AlertManager.self) var alertManager
+    @Environment(AddOrEditEventSheetViewModel.self) private var viewModel
+    @Environment(AlertManager.self) private var alertManager
     @Binding var isOpened: Bool
 
     var body: some View {
