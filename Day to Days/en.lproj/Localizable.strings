@@ -60,4 +60,6 @@
 "week_help" = "Show days and weeks";
 "month_help" = "Show days, weeks and months";
 "year_help" = "Show days, weeks, months and years";
-"add_widget_help" = "Add this event to the widget";
+
+"setup" = "Setup";
+"tap" = "Tap and hold";

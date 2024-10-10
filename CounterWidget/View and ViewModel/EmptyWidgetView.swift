@@ -10,12 +10,12 @@ import SwiftUI
 struct EmptyWidgetView: View {
     var body: some View {
         Group {
-            Text("Setup")
+            Text("setup".localized)
                 .font(.title2)
             Divider()
             Image(systemName: "hand.tap")
                 .font(.title)
-            Text("Tap and hold")
+            Text("tap".localized)
                 .font(.footnote)
         }
         .minimumScaleFactor(Constraints.dateTextMinimumScaleFactor)
