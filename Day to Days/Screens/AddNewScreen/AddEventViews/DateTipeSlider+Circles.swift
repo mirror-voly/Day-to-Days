@@ -24,7 +24,7 @@ extension DateTypeSlider {
                     })
                     .containerShape(Rectangle())
                     .contextMenu {
-                        HelpContextMenu(helpText: viewModel.addHelpToTheButtonsBy(index))
+                        HelpContextMenu(helpText: viewModel.addHelpToButtonsBy(index))
                     }
                 }
                 .frame(width: Constraints.sliderCircleBig - 5)

@@ -428,10 +428,10 @@
 			isa = PBXGroup;
 			children = (
 				519FF10D2C8DA4A4002FA63A /* AddEventFields.swift */,
+				517122402CA59F850037974D /* ClearableTextField.swift */,
 				5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */,
 				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
 				510589FA2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift */,
-				517122402CA59F850037974D /* ClearableTextField.swift */,
 			);
 			path = AddEventViews;
 			sourceTree = "<group>";

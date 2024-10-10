@@ -8,7 +8,6 @@ import RealmSwift
 import SwiftUI
 
 struct MainScreen: View {
-    @Environment(AddOrEditEventSheetViewModel.self) var sheetViewModel
     @Environment(AlertManager.self) var alertManager
     @Bindable var viewModel: MainScreenViewModel
     // MARK: - View
@@ -29,8 +28,7 @@ struct MainScreen: View {
             .sheet(isPresented: $viewModel.sheetIsOpened) {
                 AddOrEditEventSheet(
                     isOpened: $viewModel.sheetIsOpened,
-                    viewModel: sheetViewModel
-                )
+                    screenMode: .add)
                 .interactiveDismissDisabled()
             }
             // MARK: Toolbar
@@ -40,6 +38,5 @@ struct MainScreen: View {
                 }
             }
         }
-        .environment(viewModel)
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct AddOrEditEventSheet: View {
-    @Bindable private var viewModel: AddOrEditEventSheetViewModel
+    @State private var viewModel = AddOrEditEventSheetViewModel()
     @Binding var isOpened: Bool
     // MARK: - View
     var body: some View {
@@ -41,7 +41,6 @@ struct AddOrEditEventSheet: View {
             Spacer()
         })
         .padding()
-        .onAppear(perform: { viewModel.updateFields() })
         // MARK: - ActionSheet guesture
         .offset(y: viewModel.dragOffset.height)
         .gesture(DragGesture()
@@ -59,19 +58,12 @@ struct AddOrEditEventSheet: View {
                 Text("сontinue".localized)
             })
         })
+        .environment(viewModel)
     }
 
-    init(event: Event, isOpened: Binding<Bool>,
-         viewModel: AddOrEditEventSheetViewModel) {
+    init(event: Event? = nil, isOpened: Binding<Bool>, screenMode: ScreenModeType) {
         self._isOpened = isOpened
-        self.viewModel = viewModel
-        viewModel.setEvent(event: event)
-    }
-
-    init(isOpened: Binding<Bool>,
-         viewModel: AddOrEditEventSheetViewModel) {
-        self._isOpened = isOpened
-        self.viewModel = viewModel
-        viewModel.clearEvent()
+        viewModel.setScreenMode(mode: screenMode)
+        viewModel.updateFieldsFrom(event)
     }
 }

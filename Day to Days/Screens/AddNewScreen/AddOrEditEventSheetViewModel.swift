@@ -11,11 +11,13 @@ import RealmSwift
 @Observable
 final class AddOrEditEventSheetViewModel {
     private var screenMode: ScreenModeType?
-    private var event: Event?
+    private var eventID: UUID?
     var alertManager: AlertManager?
+
     var popoverIsPresented = false
     var actionSheetIsPresented = false
-    var aninmate: Bool = false
+    var aninmateDateButton: Bool = false
+
     private (set) var dragOffset = CGSize.zero
     // MARK: - User fields
     var title = Constants.emptyString {
@@ -46,17 +48,15 @@ final class AddOrEditEventSheetViewModel {
         return Double(index)
     }
 
-    func updateFields() {
-        title = event?.title ?? Constants.emptyString
-        info = event?.info ?? Constants.emptyString
-        date = event?.date ?? Date()
-        color = event?.color ?? .gray
-        dateType = event?.dateType ?? .day
+    func updateFieldsFrom(_ event: Event?) {
+        guard let event = event else { return }
+        eventID = event.id
+        title = event.title
+        info = event.info
+        date = event.date
+        color = event.color
+        dateType = event.dateType
         sliderValue = findIndexForThis(dateType: dateType)
-    }
-
-    func clearEvent() {
-        event = nil
     }
 
     func createEvent(id: UUID?) -> Event {
@@ -71,7 +71,7 @@ final class AddOrEditEventSheetViewModel {
     }
 
     func buttonAction() {
-        let event = createEvent(id: event?.id)
+        let event = createEvent(id: eventID)
         if screenMode == .edit {
             RealmManager.editEvent(newEvent: event, completion: { [self] result in
                 guard let alertManager = alertManager else { return }
@@ -89,11 +89,7 @@ final class AddOrEditEventSheetViewModel {
         screenMode = mode
     }
 
-    func setEvent(event: Event) {
-        self.event = event
-    }
-
-    func addHelpToTheButtonsBy(_ index: Int) -> String {
+    func addHelpToButtonsBy(_ index: Int) -> String {
         return index < helpStrings.count ? helpStrings[index] : helpStrings.last!
     }
 

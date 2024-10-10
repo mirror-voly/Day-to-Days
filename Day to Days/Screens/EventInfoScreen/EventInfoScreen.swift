@@ -10,7 +10,6 @@ import RealmSwift
 
 struct EventInfoScreen: View {
     @ObservedResults(Event.self) var allEvents
-    @Environment(AddOrEditEventSheetViewModel.self) var sheetViewModel
     @Environment(\.dismiss) var dismiss
     @Environment(AlertManager.self) var alertManager
     @Bindable var viewModel: EventInfoScreenViewModel
@@ -65,7 +64,7 @@ struct EventInfoScreen: View {
         }, content: {
             AddOrEditEventSheet(event: viewModel.event,
                                 isOpened: $viewModel.sheetIsOpened,
-                                viewModel: sheetViewModel)
+                                screenMode: .edit)
             .interactiveDismissDisabled()
         })
         .toolbar(content: {

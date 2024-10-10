@@ -25,7 +25,6 @@ extension EventInfoScreen {
     var editButton: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
             Button {
-                sheetViewModel.setScreenMode(mode: .edit)
                 viewModel.sheetIsOpened = true
             } label: {
                 Circle()

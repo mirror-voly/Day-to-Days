@@ -12,7 +12,6 @@ extension MainScreen {
         Group {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    sheetViewModel.setScreenMode(mode: .add)
                     viewModel.sheetIsOpened = true
                 } label: {
                     Image(systemName: "plus.circle")

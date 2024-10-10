@@ -29,14 +29,14 @@ struct AddEventFields: View {
                 Button {
                     withAnimation {
                         viewModel.date = Date()
-                        viewModel.aninmate.toggle()
+                        viewModel.aninmateDateButton.toggle()
                     }
                 } label: {
                     Image(systemName: "arrow.2.circlepath.circle")
                         .tint(.primary)
                         .symbolRenderingMode(.hierarchical)
                         .font(.title2)
-                        .rotationEffect(Angle(degrees: viewModel.aninmate ? 180 : 0))
+                        .rotationEffect(Angle(degrees: viewModel.aninmateDateButton ? 180 : 0))
                 }
                 .contextMenu {
                     HelpContextMenu(helpText: "date_reset_help")
