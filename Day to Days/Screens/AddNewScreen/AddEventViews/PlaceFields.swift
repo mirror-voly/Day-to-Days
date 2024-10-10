@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddEventFields: View {
+struct PlaceFields: View {
     @Bindable var viewModel: AddOrEditEventSheetViewModel
     var body: some View {
         GroupBox {
@@ -36,7 +36,8 @@ struct AddEventFields: View {
                         .tint(.primary)
                         .symbolRenderingMode(.hierarchical)
                         .font(.title2)
-                        .rotationEffect(Angle(degrees: viewModel.aninmateDateButton ? 180 : 0))
+                        .rotationEffect(Angle(degrees: viewModel.aninmateDateButton ?
+                                              Constraints.rotationAngle : .zero))
                 }
                 .contextMenu {
                     HelpContextMenu(helpText: "date_reset_help")
@@ -44,7 +45,6 @@ struct AddEventFields: View {
             }
             Divider()
             ColorPicker(viewModel: viewModel)
-                .frame(height: 25)
         }
         GroupBox {
             DateTypeSlider()

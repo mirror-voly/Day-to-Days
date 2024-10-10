@@ -12,12 +12,9 @@ import RealmSwift
 final class AddOrEditEventSheetViewModel {
     private var screenMode: ScreenModeType?
     private var eventID: UUID?
-    var alertManager: AlertManager?
-
     var popoverIsPresented = false
     var actionSheetIsPresented = false
     var aninmateDateButton: Bool = false
-
     private (set) var dragOffset = CGSize.zero
     // MARK: - User fields
     var title = Constants.emptyString {
@@ -29,7 +26,7 @@ final class AddOrEditEventSheetViewModel {
     var date = Date()
     private (set) var dateType: DateType = .day
     private (set) var color: Color = .gray
-    private (set) var sliderValue: Double = 0 {
+    private (set) var sliderValue: Double = .zero {
         didSet {
             dateType = .allCases[Int(sliderValue)]
         }
@@ -70,17 +67,15 @@ final class AddOrEditEventSheetViewModel {
         )
     }
 
-    func buttonAction() {
+    func buttonAction(completion: @escaping (Result<Void, Error>) -> Void) {
         let event = createEvent(id: eventID)
         if screenMode == .edit {
-            RealmManager.editEvent(newEvent: event, completion: { [self] result in
-                guard let alertManager = alertManager else { return }
-                alertManager.getIdentifiebleErrorFrom(result: result)
+            RealmManager.editEvent(newEvent: event, completion: { result in
+                completion(result)
             })
         } else {
-            RealmManager.addEvent(event: event, completion: { [self] result in
-                guard let alertManager = alertManager else { return }
-                alertManager.getIdentifiebleErrorFrom(result: result)
+            RealmManager.addEvent(event: event, completion: { result in
+                completion(result)
             })
         }
     }
@@ -111,9 +106,5 @@ final class AddOrEditEventSheetViewModel {
             actionSheetIsPresented = true
             dragOffset = .zero
         }
-    }
-
-    func setAlertManager(alertManager: AlertManager) {
-        self.alertManager = alertManager
     }
 }

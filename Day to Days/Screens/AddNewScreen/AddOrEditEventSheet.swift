@@ -15,32 +15,12 @@ struct AddOrEditEventSheet: View {
     var body: some View {
         VStack(content: {
             GroupBox {
-                HStack {
-                    Text(viewModel.sheetTitle)
-                    Spacer()
-                    Button(action: {
-                        viewModel.buttonAction()
-                        isOpened = false
-                    }, label: {
-                        Text("done".localized)
-                    })
-                    .disabled(!viewModel.addButtonIsVisible)
-                    .opacity(viewModel.addButtonIsVisible ? Constraints.originalSize :
-                                Constraints.scaleColorItem)
-                    .tint(viewModel.color)
-                    .buttonStyle(BorderedButtonStyle())
-                    .foregroundStyle(.primary)
-                    .contextMenu {
-                        if !viewModel.addButtonIsVisible {
-                            HelpContextMenu(helpText: "add_button_help")
-                        }
-                    }
-                }
-                AddEventFields(viewModel: viewModel)
+                HeaderView(isOpened: $isOpened)
+                PlaceFields(viewModel: viewModel)
             }
+            .padding()
             Spacer()
         })
-        .padding()
         // MARK: - ActionSheet guesture
         .offset(y: viewModel.dragOffset.height)
         .gesture(DragGesture()

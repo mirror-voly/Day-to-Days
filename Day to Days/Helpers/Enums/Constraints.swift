@@ -27,7 +27,7 @@ enum Constraints {
     static let primaryOpacity: CGFloat = 0.8
     static let widgetNumberFontSize: CGFloat = 75
     static let widgetStackSpaser: CGFloat = 5
-    static let rotationAngle: CGFloat = 100
+    static let rotationAngle: CGFloat = 180
     static let scaleEffect: CGFloat = 1.1
     static let animationDuration: CGFloat = 3
     static let dividerWidth: CGFloat = 125

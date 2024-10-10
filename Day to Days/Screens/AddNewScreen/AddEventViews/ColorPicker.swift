@@ -46,5 +46,6 @@ struct ColorPicker: View {
         .contentMargins(Constraints.containerRelativeFrame, for: .scrollContent)
         .scrollIndicators(.hidden)
         .scrollTargetBehavior(.viewAligned)
+        .frame(height: Constraints.clearableTextFieldHeight)
     }
 }
