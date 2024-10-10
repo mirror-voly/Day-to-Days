@@ -8,7 +8,6 @@ import RealmSwift
 import SwiftUI
 
 struct MainScreen: View {
-    @Environment(AlertManager.self) private var alertManager
     @Bindable var viewModel: MainScreenViewModel
     // MARK: - View
     var body: some View {

@@ -12,7 +12,9 @@ extension EventsList {
     // MARK: Swipe Actions
     func deleteButton(for index: Int) -> some View {
         Button(role: .destructive) {
-            viewModel.removeEventBy(index)
+            viewModel.removeEventBy(index, completion: { result in
+                alertManager.getIdentifiebleErrorFrom(result: result)
+            })
         } label: {
             Label("delete".localized, systemImage: "trash")
         }

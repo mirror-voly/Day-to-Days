@@ -17,7 +17,6 @@ final class MainScreenViewModel {
     private (set) var imageName = "arrow.up.circle"
     private (set) var editIsActivated = false
     private var events: Results<Event>?
-    private var alertManager: AlertManager?
 
     var sheetIsOpened = false
     var isAnimating = false
@@ -69,18 +68,19 @@ final class MainScreenViewModel {
         setEditMode(set: false)
     }
 
-    func removeEventBy(_ index: Int) {
+    func removeEventBy(_ index: Int, completion: @escaping (Result<Void, Error>) -> Void) {
         let eventID = sortedEvents[index].id
         toggleSelection(eventID: eventID, isSelected: true)
-        removeSelectedEvents()
+        removeSelectedEvents(completion: { result in
+            completion(result)
+        })
     }
 
-    func removeSelectedEvents() {
+    func removeSelectedEvents(completion: @escaping (Result<Void, Error>) -> Void) {
         if !self.noSelectedEvents {
             selectedEvents.forEach({ eventID in
-                RealmManager.removeEventBy(eventID: eventID, completion: { [self] result in
-                    guard let alertManager = alertManager else { return }
-                    alertManager.getIdentifiebleErrorFrom(result: result)
+                RealmManager.removeEventBy(eventID: eventID, completion: { result in
+                    completion(result)
                 })
             })
         }
@@ -94,19 +94,14 @@ final class MainScreenViewModel {
         }
     }
 
-    func setEvents(allEvents: Results<Event>) {
+    func setEvents(allEvents: Results<Event>, completion: @escaping (Result<Void, Error>) -> Void) {
         self.events = allEvents
-        WidgetManager.sendToWidgetsThis(Array(allEvents), completion: { [self] result in
-            guard let alertManager = alertManager else { return }
-            alertManager.getIdentifiebleErrorFrom(result: result)
+        WidgetManager.sendToWidgetsThis(Array(allEvents), completion: { result in
+            completion(result)
         })
     }
 
     func setEditMode(set: Bool) {
         editIsActivated = set
-    }
-
-    func setAlertManager(alertManager: AlertManager) {
-        self.alertManager = alertManager
     }
 }

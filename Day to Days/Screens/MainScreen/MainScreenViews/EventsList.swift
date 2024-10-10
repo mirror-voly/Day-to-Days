@@ -8,6 +8,7 @@ import RealmSwift
 import SwiftUI
 
 struct EventsList: View {
+    @Environment(AlertManager.self) var alertManager
     @Environment(MainScreenViewModel.self) var viewModel
     @ObservedResults(Event.self) private var allEvents
 
@@ -50,10 +51,14 @@ struct EventsList: View {
             EventInfoScreen(event: event)
         }
         .onAppear(perform: {
-            viewModel.setEvents(allEvents: allEvents)
+            viewModel.setEvents(allEvents: allEvents, completion: { result in
+                alertManager.getIdentifiebleErrorFrom(result: result)
+            })
         })
         .onChange(of: allEvents.count) { _, _ in
-            viewModel.setEvents(allEvents: allEvents)
+            viewModel.setEvents(allEvents: allEvents, completion: { result in
+                alertManager.getIdentifiebleErrorFrom(result: result)
+            })
         }
     }
 }

@@ -22,10 +22,6 @@ struct DaytoDaysApp: App {
                 .alert(item: $alertManager.errorForAlert, content: { error in
                     alertManager.showAlert(identifiable: error)
                 })
-                .onAppear {
-                    mainScreenViewModel.setAlertManager(alertManager: alertManager)
-//                    addViewModel.setAlertManager(alertManager: alertManager)
-                }
         }
     }
 }

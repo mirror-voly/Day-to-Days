@@ -33,7 +33,9 @@ extension EventsList {
         Group {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    viewModel.removeSelectedEvents()
+                    viewModel.removeSelectedEvents(completion: { result in
+                        alertManager.getIdentifiebleErrorFrom(result: result)
+                    })
                 } label: {
                     Text(viewModel.noSelectedEvents ? "done".localized : "delete_selected".localized)
                 }
