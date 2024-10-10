@@ -8,7 +8,7 @@ import RealmSwift
 import SwiftUI
 
 struct MainScreen: View {
-    @Bindable var viewModel: MainScreenViewModel
+    @State var viewModel = MainScreenViewModel()
     // MARK: - View
     var body: some View {
         NavigationStack {
@@ -36,6 +36,7 @@ struct MainScreen: View {
                     addNewButton
                 }
             }
+            .environment(viewModel)
         }
     }
 }

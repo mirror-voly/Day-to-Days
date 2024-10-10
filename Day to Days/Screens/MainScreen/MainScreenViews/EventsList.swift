@@ -50,13 +50,10 @@ struct EventsList: View {
         .navigationDestination(for: Event.self) { event in
             EventInfoScreen(event: event)
         }
-        .onAppear(perform: {
-            viewModel.setEvents(allEvents: allEvents, completion: { result in
-                alertManager.getIdentifiebleErrorFrom(result: result)
-            })
-        })
+        .onAppear(perform: { viewModel.setEvents(allEvents: allEvents) })
         .onChange(of: allEvents.count) { _, _ in
-            viewModel.setEvents(allEvents: allEvents, completion: { result in
+            viewModel.setEvents(allEvents: allEvents)
+            WidgetManager.sendToWidgetsThis(Array(allEvents), completion: { result in
                 alertManager.getIdentifiebleErrorFrom(result: result)
             })
         }

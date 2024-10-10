@@ -11,13 +11,11 @@ import SwiftUI
 struct DaytoDaysApp: App {
 
     @State private var alertManager = AlertManager()
-    @State private var mainScreenViewModel = MainScreenViewModel()
 
     var body: some Scene {
 
         WindowGroup {
-            MainScreen(viewModel: mainScreenViewModel)
-                .environment(mainScreenViewModel)
+            MainScreen()
                 .environment(alertManager)
                 .alert(item: $alertManager.errorForAlert, content: { error in
                     alertManager.showAlert(identifiable: error)

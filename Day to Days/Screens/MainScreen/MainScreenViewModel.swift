@@ -19,7 +19,7 @@ final class MainScreenViewModel {
     private var events: Results<Event>?
 
     var sheetIsOpened = false
-    var isAnimating = false
+    var emptyViewIsAnimating = false
 
     private (set) var ascending = true {
         didSet {
@@ -34,10 +34,7 @@ final class MainScreenViewModel {
     // MARK: - Calculated properties
     var sortedEvents: [Event] {
         guard let events = events else { return []}
-        let result: [Event] = SortEvents.sortResulsBy(allEvents: events,
-                                                      sortBy: sortBy,
-                                                      ascending: ascending).reversed()
-        return result
+        return SortEvents.sortResulsBy(allEvents: events, sortBy: sortBy, ascending: ascending).reversed()
     }
     var eventsIsEmpty: Bool {
         sortedEvents.isEmpty
@@ -94,11 +91,8 @@ final class MainScreenViewModel {
         }
     }
 
-    func setEvents(allEvents: Results<Event>, completion: @escaping (Result<Void, Error>) -> Void) {
+    func setEvents(allEvents: Results<Event>) {
         self.events = allEvents
-        WidgetManager.sendToWidgetsThis(Array(allEvents), completion: { result in
-            completion(result)
-        })
     }
 
     func setEditMode(set: Bool) {

@@ -39,22 +39,22 @@ struct EventsListIsEmptyView: View {
         }
         .background(LinearGradient(gradient: Gradient(colors: [.purple, .brown]),
                                    startPoint: .top, endPoint: .bottom)
-            .rotationEffect(Angle(degrees: viewModel.isAnimating ? .zero : Constraints.rotationAngle))
+            .rotationEffect(Angle(degrees: viewModel.emptyViewIsAnimating ? .zero : Constraints.rotationAngle))
         )
         .clipShape(Circle())
-        .shadow(color: Color.primary, radius: viewModel.isAnimating ?
+        .shadow(color: Color.primary, radius: viewModel.emptyViewIsAnimating ?
                 Constraints.shadowRadius * 2 : Constraints.shadowRadius)
-        .scaleEffect(viewModel.isAnimating ? Constraints.scaleEffect : Constraints.originalSize)
+        .scaleEffect(viewModel.emptyViewIsAnimating ? Constraints.scaleEffect : Constraints.originalSize)
         .animation(
             Animation.easeInOut(duration: Constraints.animationDuration)
                 .repeatForever(autoreverses: true),
-            value: viewModel.isAnimating
+            value: viewModel.emptyViewIsAnimating
         )
         .onAppear {
-            viewModel.isAnimating = true
+            viewModel.emptyViewIsAnimating = true
         }
         .onDisappear(perform: {
-            viewModel.isAnimating = false
+            viewModel.emptyViewIsAnimating = false
         })
         .padding(.top, Constraints.emptyViewPaddingToTheTop)
     }
