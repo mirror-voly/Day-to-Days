@@ -10,29 +10,15 @@ import SwiftUI
 @Observable
 final class EventsItemViewModel {
     private let dateCalculator = DateCalculator()
-    private var index: Int
     private (set) var isVisible = false
     private (set) var timeData: [String: String]?
     private (set) var localizedTimeState = Constants.emptyString
     private (set) var number = Constants.emptyString
     private (set) var localizedDateType = Constants.emptyString
-    private (set) var event = Event() {
-        didSet {
-            setTimeData(event: event)
-        }
-    }
-    private var mainScreenViewModel: MainScreenViewModel? {
-        didSet {
-            updateEvent()
-        }
-    }
-    private (set) var isSelected = false {
-        didSet {
-            guard let mainScreenViewModel = mainScreenViewModel else { return }
-            mainScreenViewModel.toggleSelection(eventID: event.id,
-                                                isSelected: isSelected)
-        }
-    }
+
+    private var mainScreenViewModel: MainScreenViewModel
+    private (set) var event: Event
+    private (set) var isSelected = false
     var fillColor: Color {
         isSelected ? .primary : .colorScheme
     }
@@ -40,15 +26,6 @@ final class EventsItemViewModel {
     var selectedColor: Color {
         isSelected ? Color.primary.opacity(Constants.selectedOpacity) :
         Color.primary.opacity(Constants.notSelectedOpacity)
-    }
-
-    func setMainViewModel(_ viewModel: MainScreenViewModel) {
-        self.mainScreenViewModel = viewModel
-    }
-
-    func updateEvent() {
-        guard let mainScreenViewModel = mainScreenViewModel else { return }
-        event = mainScreenViewModel.sortedEvents[index]
     }
 
     private func setTimeData(event: Event) {
@@ -68,9 +45,8 @@ final class EventsItemViewModel {
 
     func toggleSelected() {
         isSelected.toggle()
-        if let uuid = mainScreenViewModel?.sortedEvents[index].id {
-            mainScreenViewModel?.toggleSelectedState(eventID: uuid)
-        }
+        mainScreenViewModel.toggleSelectedState(eventID: event.id)
+        mainScreenViewModel.toggleSelection(eventID: event.id, isSelected: isSelected)
     }
 
     func changeSelectedToFalse() {
@@ -84,7 +60,9 @@ final class EventsItemViewModel {
         isVisible = frame.maxY < limit || frame.minY + limit > screenHeight || frame.minY < limit
     }
 
-    init(index: Int) {
-        self.index = index
+    init(event: Event, mainScreenViewModel: MainScreenViewModel) {
+        self.event = event
+        self.mainScreenViewModel = mainScreenViewModel
+        self.setTimeData(event: event)
     }
 }

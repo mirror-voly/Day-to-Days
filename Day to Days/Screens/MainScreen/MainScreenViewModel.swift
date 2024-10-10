@@ -65,9 +65,8 @@ final class MainScreenViewModel {
         setEditMode(set: false)
     }
 
-    func removeEventBy(_ index: Int, completion: @escaping (Result<Void, Error>) -> Void) {
-        let eventID = sortedEvents[index].id
-        toggleSelection(eventID: eventID, isSelected: true)
+    func removeEventBy(_ eventID: UUID, completion: @escaping (Result<Void, Error>) -> Void) {
+        insertToSelectedEvents(eventID: eventID)
         removeSelectedEvents(completion: { result in
             completion(result)
         })

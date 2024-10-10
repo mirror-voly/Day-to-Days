@@ -11,10 +11,10 @@ import RealmSwift
 @Observable
 final class EventInfoScreenViewModel {
     private (set) var allInfoForCurrentDate: [DateType: String]?
-    let allDateTypes = DateType.allCases.reversed()
-    let dateCalculator = DateCalculator()
     private (set) var event: Event
     var sheetIsOpened = false
+    let allDateTypes = DateType.allCases.reversed()
+    let dateCalculator = DateCalculator()
     // MARK: - Calculated properties
     var localizedTimeState: String {
         dateCalculator.getLocalizedTimeState(date: event.date, dateType: event.dateType).capitalized

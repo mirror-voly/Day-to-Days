@@ -15,8 +15,8 @@ struct EventsList: View {
     var body: some View {
         VStack {
             List {
-                ForEach(viewModel.sortedEvents.indices, id: \.self) { index in
-                    EventsItemView(index: index)
+                ForEach(viewModel.sortedEvents) { event in
+                    EventsItemView(event: event, mainScreenViewModel: viewModel)
                         .background(
                             Group {
                                 if !viewModel.editIsActivated {
@@ -24,13 +24,13 @@ struct EventsList: View {
                                         // Bugfix to NavigationLink element if it selected after coming back
                                         Button(Constants.emptyString) {}
                                         NavigationLink(Constants.emptyString,
-                                                       value: viewModel.sortedEvents[index]).opacity(.zero)
+                                                       value: event).opacity(.zero)
                                     }
                                 }
                             })
                         .swipeActions {
                             if !viewModel.editIsActivated {
-                                deleteButton(for: index)
+                                deleteButton(event.id)
                                 multipleSelectionButton()
                             }
                         }

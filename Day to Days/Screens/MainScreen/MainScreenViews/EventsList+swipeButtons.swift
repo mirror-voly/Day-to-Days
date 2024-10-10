@@ -10,9 +10,9 @@ import SwiftUI
 // MARK: - Toolbar Items
 extension EventsList {
     // MARK: Swipe Actions
-    func deleteButton(for index: Int) -> some View {
+    func deleteButton(_ eventID: UUID) -> some View {
         Button(role: .destructive) {
-            viewModel.removeEventBy(index, completion: { result in
+            viewModel.removeEventBy(eventID, completion: { result in
                 alertManager.getIdentifiebleErrorFrom(result: result)
             })
         } label: {

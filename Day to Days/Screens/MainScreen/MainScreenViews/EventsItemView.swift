@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventsItemView: View {
-    @Environment(MainScreenViewModel.self) private var mainScreenViewModel
+    private var mainScreenViewModel: MainScreenViewModel
     @State private var viewModel: EventsItemViewModel
 
     var body: some View {
@@ -49,16 +49,11 @@ struct EventsItemView: View {
                 OverlayRectangle()
             }
         }
-        .onChange(of: mainScreenViewModel.sortedEvents, { _, _ in
-            viewModel.updateEvent()
-        })
-        .onAppear {
-            viewModel.setMainViewModel(mainScreenViewModel)
-        }
         .environment(viewModel)
     }
 
-    init(index: Int) {
-        _viewModel = State(wrappedValue: EventsItemViewModel(index: index))
+    init(event: Event, mainScreenViewModel: MainScreenViewModel) {
+        self.viewModel = EventsItemViewModel(event: event, mainScreenViewModel: mainScreenViewModel)
+        self.mainScreenViewModel = mainScreenViewModel
     }
 }
