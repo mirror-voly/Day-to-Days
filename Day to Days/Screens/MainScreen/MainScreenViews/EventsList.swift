@@ -15,7 +15,7 @@ struct EventsList: View {
     var body: some View {
         VStack {
             List {
-                ForEach(viewModel.sortedEvents) { event in
+                ForEach(viewModel.sortedEvents, id: \.self) { event in
                     EventsItemView(event: event, mainScreenViewModel: viewModel)
                         .background(
                             Group {

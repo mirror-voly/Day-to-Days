@@ -10,8 +10,6 @@ import SwiftUI
 @Observable
 final class EventsItemViewModel {
     private let dateCalculator = DateCalculator()
-    private (set) var isVisible = false
-    private (set) var timeData: [String: String]?
     private (set) var localizedTimeState = Constants.emptyString
     private (set) var number = Constants.emptyString
     private (set) var localizedDateType = Constants.emptyString
@@ -19,6 +17,8 @@ final class EventsItemViewModel {
     private var mainScreenViewModel: MainScreenViewModel
     private (set) var event: Event
     private (set) var isSelected = false
+    private (set) var isVisible = false
+
     var fillColor: Color {
         isSelected ? .primary : .colorScheme
     }
