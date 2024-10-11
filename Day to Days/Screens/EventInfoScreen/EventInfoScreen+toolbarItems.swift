@@ -38,4 +38,21 @@ extension EventInfoScreen {
             }
         }
     }
+    
+    var notificationSettingsButton: some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                viewModel.sheetIsOpened = true
+            } label: {
+                Circle()
+                    .fill(.white)
+                    .frame(width: Constraints.eventInfoButtonSize, height: Constraints.eventInfoButtonSize)
+                    .overlay(Image(systemName: "bell.fill")
+                        .fontWeight(.semibold))
+            }
+            .contextMenu {
+                HelpContextMenu(helpText: "edit_event")
+            }
+        }
+    }
 }
