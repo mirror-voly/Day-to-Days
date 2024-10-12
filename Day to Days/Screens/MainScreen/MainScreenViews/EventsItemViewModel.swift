@@ -10,15 +10,12 @@ import SwiftUI
 @Observable
 final class EventsItemViewModel {
     private let dateCalculator = DateCalculator()
-    private (set) var localizedTimeState = Constants.emptyString
-    private (set) var number = Constants.emptyString
-    private (set) var localizedDateType = Constants.emptyString
-
     private var mainScreenViewModel: MainScreenViewModel
     private (set) var event: Event
     private (set) var isSelected = false
     private (set) var isVisible = false
-
+    private let timeData: [TimeDataReturnType: String]
+    // MARK: - Calculated properties
     var fillColor: Color {
         isSelected ? .primary : .colorScheme
     }
@@ -28,21 +25,21 @@ final class EventsItemViewModel {
         Color.primary.opacity(Constants.notSelectedOpacity)
     }
 
-    private func setTimeData(event: Event) {
-        let timeData = self.dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
-        if let localizedTimeState = timeData[.localizedTimeState] {
-            self.localizedTimeState = localizedTimeState.capitalized
-        }
-        if let number = timeData[.dateNumber] {
-            self.number = number
-        }
-        if let localizedDateType = timeData[.localizedDateType] {
-            if timeData [.timeState] != TimeStateType.present.label {
-                self.localizedDateType = localizedDateType
-            }
-        }
+    var localizedTimeState: String {
+        timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
     }
 
+    var number: String {
+        timeData[.dateNumber] ?? Constants.emptyString
+    }
+
+    var localizedDateType: String {
+        guard timeData[.timeState] == TimeStateType.present.label else {
+            return timeData[.localizedDateType] ?? Constants.emptyString
+        }
+        return Constants.emptyString
+    }
+    // MARK: - Functions
     func toggleSelected() {
         isSelected.toggle()
         mainScreenViewModel.toggleSelectedState(eventID: event.id)
@@ -63,6 +60,6 @@ final class EventsItemViewModel {
     init(event: Event, mainScreenViewModel: MainScreenViewModel) {
         self.event = event
         self.mainScreenViewModel = mainScreenViewModel
-        self.setTimeData(event: event)
+        self.timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
     }
 }

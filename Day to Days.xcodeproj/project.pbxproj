@@ -35,6 +35,7 @@
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		51665A022C905E2700468301 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
 		51674AD12CB909630061A416 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51674AD02CB909630061A416 /* NotificationSettingsView.swift */; };
+		51674AD42CB92A870061A416 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51674AD32CB92A870061A416 /* NotificationManager.swift */; };
 		5168A3142CAEAAD600E42A7E /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */; };
 		5168A3152CAEC73800E42A7E /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		5168A3162CAEC8BD00E42A7E /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
@@ -153,6 +154,7 @@
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
 		51665A012C905E2700468301 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
 		51674AD02CB909630061A416 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		51674AD32CB92A870061A416 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5168A30F2CAE844400E42A7E /* SetEventItent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SetEventItent.entitlements; sourceTree = "<group>"; };
 		5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
 		5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CapitalizedFirst.swift"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				516CBE422C87247000202B93 /* DaytoDaysApp.swift */,
 				516CBE552C87296E00202B93 /* Models */,
 				516CBE5B2C8733E000202B93 /* Screens */,
+				51674AD22CB918960061A416 /* NotificationSetupScreen */,
 				5178F4952C8AE70700DF45D4 /* Helpers */,
 				516CBE462C87247100202B93 /* Assets.xcassets */,
 				516CBE482C87247100202B93 /* Preview Content */,
@@ -415,6 +418,7 @@
 			children = (
 				516CBE5A2C8733D500202B93 /* Calculators */,
 				519195002C8CA6AA00F29C1B /* AlertManager.swift */,
+				51674AD32CB92A870061A416 /* NotificationManager.swift */,
 				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
 				517577412CB69BF3005BFB8D /* RealmManager.swift */,
 				5175773F2CB69AD5005BFB8D /* SortEvents.swift */,
@@ -432,7 +436,6 @@
 				51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */,
 				51058A002C9C5F1A00CA612F /* DateInfoView.swift */,
 				510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */,
-				51674AD22CB918960061A416 /* NotificationSetupScreen */,
 			);
 			path = EventInfoScreen;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				519FF10E2C8DA4A4002FA63A /* PlaceFields.swift in Sources */,
 				516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */,
 				5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */,
+				51674AD42CB92A870061A416 /* NotificationManager.swift in Sources */,
 				510589FF2C9C5E1400CA612F /* EventsList+swipeButtons.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				51D4A4EC2CB7F09E00FD18A3 /* HeaderView.swift in Sources */,

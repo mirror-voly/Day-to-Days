@@ -12,7 +12,6 @@ import RealmSwift
 final class AddOrEditEventSheetViewModel {
     private var screenMode: ScreenModeType?
     private var eventID: UUID?
-    var popoverIsPresented = false
     var actionSheetIsPresented = false
     var aninmateDateButton: Bool = false
     private (set) var dragOffset = CGSize.zero
