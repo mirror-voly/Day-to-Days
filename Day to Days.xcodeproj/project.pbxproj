@@ -83,6 +83,8 @@
 		5179F2702C8E16B10027B0F1 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */; };
 		517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */; };
 		517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517DF9512C997CAE0007D924 /* ScreenModeType.swift */; };
+		518277C12CBAA01200B774C3 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518277C02CBAA01200B774C3 /* DayOfWeek.swift */; };
+		518277C32CBAA74300B774C3 /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518277C22CBAA74300B774C3 /* NotificationSettingsViewModel.swift */; };
 		5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */; };
 		518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518289102C8849AB00676F0E /* View+HideKeyboard.swift */; };
 		519195012C8CA6AA00F29C1B /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519195002C8CA6AA00F29C1B /* AlertManager.swift */; };
@@ -193,6 +195,8 @@
 		5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheetViewModel.swift; sourceTree = "<group>"; };
 		517DF9512C997CAE0007D924 /* ScreenModeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenModeType.swift; sourceTree = "<group>"; };
+		518277C02CBAA01200B774C3 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
+		518277C22CBAA74300B774C3 /* NotificationSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewModel.swift; sourceTree = "<group>"; };
 		5182890E2C883CC000676F0E /* AddOrEditEventSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheet.swift; sourceTree = "<group>"; };
 		518289102C8849AB00676F0E /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 		519195002C8CA6AA00F29C1B /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				51674AD02CB909630061A416 /* NotificationSettingsView.swift */,
+				518277C22CBAA74300B774C3 /* NotificationSettingsViewModel.swift */,
 			);
 			path = NotificationSetupScreen;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				51F9117E2C95D2CA00C625DC /* SortType.swift */,
 				517DF9512C997CAE0007D924 /* ScreenModeType.swift */,
 				5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */,
+				518277C02CBAA01200B774C3 /* DayOfWeek.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -645,6 +651,7 @@
 				51674AD42CB92A870061A416 /* NotificationManager.swift in Sources */,
 				510589FF2C9C5E1400CA612F /* EventsList+swipeButtons.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
+				518277C12CBAA01200B774C3 /* DayOfWeek.swift in Sources */,
 				51D4A4EC2CB7F09E00FD18A3 /* HeaderView.swift in Sources */,
 				5128E0BF2CAAD7DB00F68CA2 /* DateDifferenceCalculator.swift in Sources */,
 				517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */,
@@ -669,6 +676,7 @@
 				516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */,
 				5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */,
 				510589FB2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift in Sources */,
+				518277C32CBAA74300B774C3 /* NotificationSettingsViewModel.swift in Sources */,
 				51674AD12CB909630061A416 /* NotificationSettingsView.swift in Sources */,
 				519195012C8CA6AA00F29C1B /* AlertManager.swift in Sources */,
 				5175173D2CB19ACE000D04C4 /* TimeDataReturnType.swift in Sources */,

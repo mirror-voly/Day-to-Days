@@ -8,25 +8,8 @@
 import SwiftUI
 
 struct NotificationSettingsView: View {
-
-    enum DayOfWeek: CaseIterable {
-        case monday
-        case tuesday
-        case wednesday
-        case thursday
-        case friday
-        case saturday
-        case sunday
-    }
-
-    let event: Event
-    @State var date = Date()
-    @State var dateType: DateType = .day
-    @State var dayOfWeak: DayOfWeek = .monday
-    @State var menuItemsIsPresented = false
-    @State var doneButtonIsDisabled = true
+    @State var viewModel: NotificationSettingsViewModel
     @Environment(AlertManager.self) var alertManager
-    let notificationManager = NotificationManager()
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -34,18 +17,13 @@ struct NotificationSettingsView: View {
             HStack {
                 Spacer()
                 Button("done".localized) {
-//                    notificationManager.sheduleNotification()
+                    viewModel.notificationManager.scheduleDaylyNotification(for: viewModel.date, event: viewModel.event)
                     dismiss()
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(doneButtonIsDisabled)
-                .onAppear(perform: {
-                    notificationManager.requestPermitions {
-                        doneButtonIsDisabled = false
-                    }
-                })
+                .disabled(viewModel.doneButtonIsDisabled)
                 .contextMenu {
-                    if doneButtonIsDisabled {
+                    if viewModel.doneButtonIsDisabled {
                         HelpContextMenu(helpText: "notification_done_button_help")
                     }
                 }
@@ -54,43 +32,46 @@ struct NotificationSettingsView: View {
                 HStack(content: {
                     Text("Show notification every")
                     Spacer()
-                    Menu(String(describing: dateType).capitalized, content: {
+                    Menu(String(describing: viewModel.dateType).capitalized, content: {
                         ForEach(DateType.allCases, id: \.self) { type in
                             Button(String(describing: type).capitalized) {
-                                dateType = type
+                                viewModel.dateType = type
                             }
                         }
                     })
                 })
                 Divider()
-                switch dateType {
+                switch viewModel.dateType {
                 case .day:
-                    DatePicker("Time", selection: $date, displayedComponents: .hourAndMinute)
+                    DatePicker("Time", selection: $viewModel.date, displayedComponents: .hourAndMinute)
                 case .week:
                     HStack {
                         Text("Day of week")
                         Spacer()
-                        Menu((String(describing: dayOfWeak).capitalized), content: {
+                        Menu((String(describing: viewModel.dayOfWeak).capitalized), content: {
                             ForEach(DayOfWeek.allCases, id: \.self) { type in
                                 Button(String(describing: type).capitalized) {
-                                    dayOfWeak = type
+                                    viewModel.dayOfWeak = type
                                 }
                             }
                         })
-                        DatePicker("", selection: $date, displayedComponents: .hourAndMinute)
+                        DatePicker("", selection: $viewModel.date, displayedComponents: .hourAndMinute)
                             .frame(width: 80)
                     }
                 case .month:
-                    DatePicker("Day of month", selection: $date)
+                    DatePicker("Day of month", selection: $viewModel.date)
                         .datePickerStyle(.compact)
                 case .year:
-                    DatePicker("Day of year", selection: $date)
+                    DatePicker("Day of year", selection: $viewModel.date)
                         .datePickerStyle(.compact)
                 }
             }
             Spacer()
         }
         .padding()
+    }
+    init(event: Event) {
+        self.viewModel = NotificationSettingsViewModel(event: event)
     }
 }
 
