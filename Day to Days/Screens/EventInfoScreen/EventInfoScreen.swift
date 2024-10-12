@@ -68,7 +68,7 @@ struct EventInfoScreen: View {
         })
         .sheet(isPresented: $viewModel.notificationSheetIsOpened, content: {
             NotificationSettingsView(event: viewModel.event)
-                .presentationDetents([.height(200), .medium])
+                .presentationDetents([.height(200)])
         })
         .toolbar(content: {
             backButton

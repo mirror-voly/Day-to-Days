@@ -36,15 +36,19 @@ struct NotificationSettingsView: View {
             }
             GroupBox {
                 HStack(content: {
-                    Text("Show notification every")
+                    Text("Show notifications every")
                     Spacer()
                     Menu(String(describing: viewModel.dateType).capitalized, content: {
                         ForEach(DateType.allCases, id: \.self) { type in
-                            Button(String(describing: type).capitalized) {
+                            Button(String(describing: type).capitalized,
+                                   systemImage: viewModel.dateType == type ? "smallcircle.filled.circle" : "circle") {
                                 viewModel.dateType = type
                             }
                         }
                     })
+                    .buttonStyle(.bordered)
+                    .tint(.secondary)
+                    .foregroundStyle(.primary)
                 })
                 Divider()
                 switch viewModel.dateType {
@@ -56,11 +60,15 @@ struct NotificationSettingsView: View {
                         Spacer()
                         Menu((String(describing: viewModel.dayOfWeak).capitalized), content: {
                             ForEach(DayOfWeek.allCases, id: \.self) { type in
-                                Button(String(describing: type).capitalized) {
+                                Button(String(describing: type).capitalized,
+                                       systemImage: viewModel.dayOfWeak == type ? "smallcircle.filled.circle" : "circle") {
                                     viewModel.dayOfWeak = type
                                 }
                             }
                         })
+                        .buttonStyle(.bordered)
+                        .tint(.secondary)
+                        .foregroundStyle(.primary)
                         DatePicker("", selection: $viewModel.date, displayedComponents: .hourAndMinute)
                             .frame(width: 80)
                     }

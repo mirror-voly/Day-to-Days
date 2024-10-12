@@ -8,7 +8,8 @@
 import Foundation
 @Observable
 final class NotificationSettingsViewModel {
-    let notificationManager = NotificationManager()
+    private let dateCalculator: DateCalculator
+    private let notificationManager: NotificationManager
     let event: Event
     var date = Date()
     var dateType: DateType = .day
@@ -43,11 +44,13 @@ final class NotificationSettingsViewModel {
     }
 
     init(event: Event) {
+        self.dateCalculator = DateCalculator()
+        self.notificationManager = NotificationManager(dateCalculator: dateCalculator)
         self.event = event
         notificationManager.requestPermitions {
             self.doneButtonIsDisabled = false
         }
         isRemoveButtonIsDisabled()
-        //        self.dayOfWeak = dayOfWeak
+        dayOfWeak = dateCalculator.getCurrentDayOfWeek()
     }
 }

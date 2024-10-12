@@ -9,8 +9,8 @@ import Foundation
 import NotificationCenter
 
 final class NotificationManager {
-    let calendar = Calendar.current
-    private let dateCalculator = DateCalculator()
+    private let calendar = Calendar.current
+    private let dateCalculator: DateCalculator
 
     func requestPermitions(complition: @escaping () -> Void) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, _ in
@@ -18,9 +18,9 @@ final class NotificationManager {
         }
     }
 
-    func removeAllScheduledNotifications() {
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-    }
+//    func removeAllScheduledNotifications() {
+//        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+//    }
 
     func removeScheduledNotification(with identifier: String) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
@@ -104,5 +104,9 @@ final class NotificationManager {
                 print("Error adding notification: \(error.localizedDescription)")
             }
         }
+    }
+
+    init(dateCalculator: DateCalculator) {
+        self.dateCalculator = dateCalculator
     }
 }
