@@ -10,40 +10,29 @@ import SwiftUI
 @Observable
 final class EventsItemViewModel {
     private let dateCalculator = DateCalculator()
-    private var mainScreenViewModel: MainScreenViewModel
-    private (set) var event: Event
+    private let mainScreenViewModel: MainScreenViewModel
+    private let eventID: UUID
+    let localizedTimeState: String
+    let number: String
+    let localizedDateType: String
+    let color: Color
+    let title: String
     private (set) var isSelected = false
     private (set) var isVisible = false
-    private let timeData: [TimeDataReturnType: String]
     // MARK: - Calculated properties
-    var fillColor: Color {
+    var circleHoleColor: Color {
         isSelected ? .primary : .colorScheme
     }
 
-    var selectedColor: Color {
+    var selectedOverlayColor: Color {
         isSelected ? Color.primary.opacity(Constants.selectedOpacity) :
         Color.primary.opacity(Constants.notSelectedOpacity)
-    }
-
-    var localizedTimeState: String {
-        timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
-    }
-
-    var number: String {
-        timeData[.dateNumber] ?? Constants.emptyString
-    }
-
-    var localizedDateType: String {
-        guard timeData[.timeState] == TimeStateType.present.label else {
-            return timeData[.localizedDateType] ?? Constants.emptyString
-        }
-        return Constants.emptyString
     }
     // MARK: - Functions
     func toggleSelected() {
         isSelected.toggle()
-        mainScreenViewModel.toggleSelectedState(eventID: event.id)
-        mainScreenViewModel.toggleSelection(eventID: event.id, isSelected: isSelected)
+        mainScreenViewModel.toggleSelectedState(eventID: eventID)
+        mainScreenViewModel.toggleSelection(eventID: eventID, isSelected: isSelected)
     }
 
     func changeSelectedToFalse() {
@@ -58,8 +47,15 @@ final class EventsItemViewModel {
     }
 
     init(event: Event, mainScreenViewModel: MainScreenViewModel) {
-        self.event = event
+        self.eventID = event.id
+        self.color = event.color
+        self.title = event.title
         self.mainScreenViewModel = mainScreenViewModel
-        self.timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
+        let timeData: [TimeDataReturnType: String] = dateCalculator.allTimeDataFor(date: event.date,
+                                                                                   dateType: event.dateType)
+        self.localizedTimeState = timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
+        self.number = timeData[.dateNumber] ?? Constants.emptyString
+        self.localizedDateType = (timeData[.timeState] != TimeStateType.present.label ?
+                                  timeData[.localizedDateType]: Constants.emptyString) ?? Constants.emptyString
     }
 }

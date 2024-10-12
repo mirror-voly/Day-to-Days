@@ -15,7 +15,7 @@ struct DayCounterWithShortInfoView: View {
                 Text(viewModel.localizedTimeState)
                 Divider()
                 Text(viewModel.number)
-                    .foregroundStyle(viewModel.event.color)
+                    .foregroundStyle(viewModel.color)
                     .bold()
                     .font(.title3)
                 Text(viewModel.localizedDateType)
