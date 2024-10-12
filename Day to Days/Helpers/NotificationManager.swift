@@ -18,6 +18,21 @@ final class NotificationManager {
         }
     }
 
+    func removeAllScheduledNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
+
+    func removeScheduledNotification(with identifier: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+    }
+
+    func checkIfNotificationIsScheduled(with identifier: String, completion: @escaping (Bool) -> Void) {
+        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+            let isScheduled = requests.contains { $0.identifier == identifier }
+            completion(isScheduled)
+        }
+    }
+
     private func makeTimeDataString(date: Date, dateType: DateType) -> String {
         let timeData = dateCalculator.allTimeDataFor(date: date, dateType: dateType)
         let localizedTimeState = timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
@@ -37,9 +52,9 @@ final class NotificationManager {
 
     func scheduleDaylyNotification(for date: Date, event: Event) {
         let content = makeContent(event: event)
-        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        let components = calendar.dateComponents([.hour, .minute], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: event.id.uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
@@ -50,11 +65,11 @@ final class NotificationManager {
 
     func scheduleWeeklyNotification(for date: Date, event: Event, weekDay: DayOfWeek) {
         let content = makeContent(event: event)
-        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        var components = calendar.dateComponents([.hour, .minute], from: date)
         components.weekday = weekDay.rawValue
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: event.id.uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
@@ -63,13 +78,12 @@ final class NotificationManager {
         }
     }
 
-    func scheduleMonthlyNotification(on date: Date, on day: Int, event: Event) {
+    func scheduleMonthlyNotification(on date: Date, event: Event) {
         let content = makeContent(event: event)
-        var components = calendar.dateComponents([.year, .month, .hour, .minute], from: date)
-        components.day = day
-
+        var components = calendar.dateComponents([.month, .hour, .minute], from: date)
+        components.day = calendar.component(.day, from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: event.id.uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
@@ -80,9 +94,10 @@ final class NotificationManager {
 
     func scheduleYearlyNotification(on date: Date, event: Event) {
         let content = makeContent(event: event)
-        var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        components.year = nil
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        let request = UNNotificationRequest(identifier: event.id.uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {

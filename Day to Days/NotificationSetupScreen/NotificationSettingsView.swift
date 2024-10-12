@@ -15,18 +15,24 @@ struct NotificationSettingsView: View {
     var body: some View {
         VStack {
             HStack {
-                Spacer()
-                Button("done".localized) {
-                    viewModel.notificationManager.scheduleDaylyNotification(for: viewModel.date, event: viewModel.event)
-                    dismiss()
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(viewModel.doneButtonIsDisabled)
-                .contextMenu {
-                    if viewModel.doneButtonIsDisabled {
-                        HelpContextMenu(helpText: "notification_done_button_help")
+                Group {
+                    Button("Remove") {
+                        viewModel.removeButtonAction()
+                    }
+                    .disabled(viewModel.removeButtonIsDisabled)
+                    Spacer()
+                    Button("done".localized) {
+                        viewModel.doneButtonAction()
+                        dismiss()
+                    }
+                    .disabled(viewModel.doneButtonIsDisabled)
+                    .contextMenu {
+                        if viewModel.doneButtonIsDisabled {
+                            HelpContextMenu(helpText: "notification_done_button_help")
+                        }
                     }
                 }
+                .buttonStyle(.borderedProminent)
             }
             GroupBox {
                 HStack(content: {
