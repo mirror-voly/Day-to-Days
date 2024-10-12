@@ -60,6 +60,8 @@
 "week_help" = "Show days and weeks";
 "month_help" = "Show days, weeks and months";
 "year_help" = "Show days, weeks, months and years";
+"notification_button_help" = "Setup notifications";
+"notification_done_button_help" = "Need an authorization for notifications";
 
 "setup" = "Setup";
 "tap" = "Tap and hold";

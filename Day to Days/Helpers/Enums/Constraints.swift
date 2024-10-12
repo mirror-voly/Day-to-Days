@@ -38,4 +38,5 @@ enum Constraints {
     static let dragGestureDistance: CGFloat = 100
     static let listItemAnimationScale: CGFloat = 0.5
     static let frameBoundsLimit: CGFloat = 70
+    static let eventsItemViewHeight: CGFloat = 115
 }

@@ -43,7 +43,7 @@ struct EventsItemView: View {
                          Constraints.listItemAnimationScale: Constraints.originalSize)
             .animation(.linear, value: viewModel.isVisible)
         }
-        .frame(height: 115)
+        .frame(height: Constraints.eventsItemViewHeight)
         .overlay(alignment: .center) {
             if mainScreenViewModel.editIsActivated {
                 OverlayRectangle()
