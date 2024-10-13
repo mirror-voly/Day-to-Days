@@ -40,6 +40,11 @@
 "color_indigo" = "Indigo";
 "color_gray" = "Gray";
 
+"year" = "Year";
+"month" = "Month";
+"week" = "Week";
+"day" = "Day";
+
 "date_label_years" = "years";
 "date_label_months" = "months";
 "date_label_weeks" = "weeks";
@@ -72,3 +77,11 @@
 "day_of_week" = "Day of week";
 "day_of_month" = "Day of month";
 "day_of_year" = "Day of year";
+
+"monday" = "Monday";
+"tuesday" = "Tuesday";
+"wednesday" = "Wednesday";
+"thursday" = "Thursday";
+"friday" = "Friday";
+"saturday" = "Saturday";
+"sunday" = "Sunday";

@@ -38,9 +38,9 @@ struct NotificationSettingsView: View {
                 HStack(content: {
                     Text("show_notifications_every".localized)
                     Spacer()
-                    Menu(String(describing: viewModel.dateType).capitalized, content: {
+                    Menu(String(describing: viewModel.dateType).localized, content: {
                         ForEach(DateType.allCases, id: \.self) { type in
-                            Button(String(describing: type).capitalized,
+                            Button(String(describing: type).localized,
                                    systemImage: viewModel.dateType == type ? "smallcircle.filled.circle" : "circle") {
                                 viewModel.dateType = type
                             }
@@ -58,9 +58,9 @@ struct NotificationSettingsView: View {
                     HStack {
                         Text("day_of_week".localized)
                         Spacer()
-                        Menu((String(describing: viewModel.dayOfWeak).capitalized), content: {
+                        Menu((String(describing: viewModel.dayOfWeak).localized), content: {
                             ForEach(DayOfWeek.allCases, id: \.self) { type in
-                                Button(String(describing: type).capitalized,
+                                Button(String(describing: type).localized,
                                        systemImage: viewModel.dayOfWeak == type ? "smallcircle.filled.circle" : "circle") {
                                     viewModel.dayOfWeak = type
                                 }
