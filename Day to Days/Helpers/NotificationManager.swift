@@ -59,7 +59,7 @@ final class NotificationManager {
                 guard let decoded = decodeData(data: data, completion: { result in
                     completion(result)
                 }) else { return }
-                scheduleNotification(dateType: decoded.dateType, date: decoded.date, event: event, dayOfWeak: DateCalculator.getCurrentDayOfWeek(date: decoded.date), completion: { result in
+                scheduleNotification(dateType: decoded.dateType, date: decoded.date, event: event, dayOfWeek: DateCalculator.getCurrentDayOfWeek(date: decoded.date), completion: { result in
                     completion(result)
                 })
             }
@@ -73,7 +73,7 @@ final class NotificationManager {
         }
     }
 
-    static private func makeTimeDataString(date: Date, dateType: DateType) -> String {
+    private static func makeTimeDataString(date: Date, dateType: DateType) -> String {
         let dateCalculator = DateCalculator()
         let timeData = dateCalculator.allTimeDataFor(date: date, dateType: dateType)
         let localizedTimeState = timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
@@ -83,7 +83,7 @@ final class NotificationManager {
         return "\(localizedTimeState) \(number) \(localizedDateType)"
     }
 
-    static private func makeContent(event: Event) -> UNMutableNotificationContent {
+    private static func makeContent(event: Event) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = event.title
         content.subtitle = makeTimeDataString(date: event.date, dateType: event.dateType)
@@ -91,7 +91,9 @@ final class NotificationManager {
         return content
     }
 
-    static private func scheduleDaylyNotification(for date: Date, event: Event) {
+    private static func scheduleDaylyNotification(for date: Date,
+                                                  event: Event,
+                                                  completion: @escaping (Result<Void, Error>) -> Void) {
         let calendar = Calendar.current
         let content = makeContent(event: event)
         let components = calendar.dateComponents([.hour, .minute], from: date)
@@ -100,28 +102,33 @@ final class NotificationManager {
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("Error adding notification: \(error.localizedDescription)")
+                completion(.failure(error))
             }
         }
     }
 
-    static private func scheduleWeeklyNotification(for date: Date, event: Event, dayOfWeak: DayOfWeek) {
+    private static func scheduleWeeklyNotification(for date: Date,
+                                                   event: Event,
+                                                   dayOfWeek: DayOfWeek,
+                                                   completion: @escaping (Result<Void, Error>) -> Void) {
         let calendar = Calendar.current
         let content = makeContent(event: event)
         var components = calendar.dateComponents([.hour, .minute], from: date)
-        components.weekday = dayOfWeak.rawValue
+        components.weekday = dayOfWeek.rawValue
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
         let request = UNNotificationRequest(identifier: event.id.uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("Error adding notification: \(error.localizedDescription)")
+                completion(.failure(error))
             }
         }
     }
 
-    static private func scheduleMonthlyNotification(on date: Date, event: Event) {
+    private static func scheduleMonthlyNotification(on date: Date,
+                                                    event: Event,
+                                                    completion: @escaping (Result<Void, Error>) -> Void) {
         let calendar = Calendar.current
         let content = makeContent(event: event)
         var components = calendar.dateComponents([.month, .hour, .minute], from: date)
@@ -131,12 +138,14 @@ final class NotificationManager {
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("Error adding notification: \(error.localizedDescription)")
+                completion(.failure(error))
             }
         }
     }
 
-    static private func scheduleYearlyNotification(on date: Date, event: Event) {
+    private static func scheduleYearlyNotification(on date: Date,
+                                                   event: Event,
+                                                   completion: @escaping (Result<Void, Error>) -> Void) {
         let calendar = Calendar.current
         let content = makeContent(event: event)
         var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
@@ -146,7 +155,7 @@ final class NotificationManager {
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("Error adding notification: \(error.localizedDescription)")
+                completion(.failure(error))
             }
         }
     }
@@ -154,22 +163,27 @@ final class NotificationManager {
     static func scheduleNotification(dateType: DateType,
                                      date: Date,
                                      event: Event,
-                                     dayOfWeak: DayOfWeek?,
+                                     dayOfWeek: DayOfWeek?,
                                      completion: @escaping (Result<Void, Error>) -> Void) {
+        let scheduleCompletion: (Result<Void, Error>) -> Void = { result in
+            completion(result)
+        }
+        
         switch dateType {
         case .day:
-            scheduleDaylyNotification(for: date, event: event)
+            scheduleDaylyNotification(for: date, event: event, completion: scheduleCompletion)
         case .week:
-            guard let dayOfWeak = dayOfWeak else { return }
-            scheduleWeeklyNotification(for: date, event: event, dayOfWeak: dayOfWeak)
+            guard let dayOfWeek = dayOfWeek else { return }
+            scheduleWeeklyNotification(for: date, event: event, dayOfWeek: dayOfWeek, completion: scheduleCompletion)
         case .month:
-            scheduleMonthlyNotification(on: date, event: event)
+            scheduleMonthlyNotification(on: date, event: event, completion: scheduleCompletion)
         case .year:
-            scheduleYearlyNotification(on: date, event: event)
+            scheduleYearlyNotification(on: date, event: event, completion: scheduleCompletion)
         }
+        
         encodeAndSaveNotificationSettings(eventID: event.id.uuidString,
-                                          notificationSettings: NotificationSettings(dateType: dateType, date: date), completion: { result in
-            completion(result)
-        })
+                                          notificationSettings: NotificationSettings(dateType: dateType, date: date),
+                                          completion: scheduleCompletion)
     }
+
 }

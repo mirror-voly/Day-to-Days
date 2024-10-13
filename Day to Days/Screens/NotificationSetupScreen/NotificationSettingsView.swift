@@ -60,11 +60,11 @@ struct NotificationSettingsView: View {
                     HStack {
                         Text("day_of_week".localized)
                         Spacer()
-                        Menu((String(describing: viewModel.dayOfWeak).localized), content: {
+                        Menu((String(describing: viewModel.dayOfWeek).localized), content: {
                             ForEach(DayOfWeek.allCases, id: \.self) { type in
                                 Button(String(describing: type).localized,
-                                       systemImage: viewModel.dayOfWeak == type ? "smallcircle.filled.circle" : "circle") {
-                                    viewModel.dayOfWeak = type
+                                       systemImage: viewModel.dayOfWeek == type ? "smallcircle.filled.circle" : "circle") {
+                                    viewModel.dayOfWeek = type
                                 }
                             }
                         })

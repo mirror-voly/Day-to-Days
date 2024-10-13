@@ -11,7 +11,7 @@ final class NotificationSettingsViewModel {
     let event: Event
     var date = Date()
     var dateType: DateType = .day
-    var dayOfWeak: DayOfWeek = .monday
+    var dayOfWeek: DayOfWeek = .monday
     var menuItemsIsPresented = false
     private (set) var doneButtonIsDisabled = true
     private (set) var removeButtonIsDisabled = true
@@ -31,7 +31,7 @@ final class NotificationSettingsViewModel {
         NotificationManager.scheduleNotification(dateType: dateType,
                                                  date: date,
                                                  event: event,
-                                                 dayOfWeak: dateType == .week ? dayOfWeak : nil,
+                                                 dayOfWeek: dateType == .week ? dayOfWeek : nil,
                                                  completion: { result in
             completion(result)
         })
@@ -44,6 +44,6 @@ final class NotificationSettingsViewModel {
             self.doneButtonIsDisabled = false
         }
         isRemoveButtonIsDisabled()
-        dayOfWeak = DateCalculator.getCurrentDayOfWeek(date: Date())
+        dayOfWeek = DateCalculator.getCurrentDayOfWeek(date: Date())
     }
 }
