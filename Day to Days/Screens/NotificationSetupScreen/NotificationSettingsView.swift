@@ -22,7 +22,9 @@ struct NotificationSettingsView: View {
                     .disabled(viewModel.removeButtonIsDisabled)
                     Spacer()
                     Button("done".localized) {
-                        viewModel.doneButtonAction()
+                        viewModel.doneButtonAction(completion: { result in
+                            alertManager.getIdentifiebleErrorFrom(result: result)
+                        })
                         dismiss()
                     }
                     .disabled(viewModel.doneButtonIsDisabled)

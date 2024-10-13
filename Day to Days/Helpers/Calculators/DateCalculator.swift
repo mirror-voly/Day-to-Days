@@ -65,9 +65,9 @@ final class DateCalculator {
                 .localizedDateType: localizedDateType, .localizedTimeState: localizedTimeState]
     }
 
-    func getCurrentDayOfWeek() -> DayOfWeek {
+    static func getCurrentDayOfWeek(date: Date) -> DayOfWeek {
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.weekday], from: Date())
+        let components = calendar.dateComponents([.weekday], from: date)
         let number = components.weekday ?? 1
         return DayOfWeek(rawValue: number) ?? .monday
     }

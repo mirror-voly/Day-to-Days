@@ -45,6 +45,7 @@
 "week" = "Week";
 "day" = "Day";
 
+// TODO: remove this
 "date_label_years" = "years";
 "date_label_months" = "months";
 "date_label_weeks" = "weeks";
@@ -72,7 +73,7 @@
 "tap" = "Tap and hold";
 
 "remove" = "Remove";
-"show_notifications_every" = "Show notifications every";
+"show_notifications_every" = "Notifications every";
 "time" = "Time";
 "day_of_week" = "Day of week";
 "day_of_month" = "Day of month";
