@@ -16,7 +16,7 @@ struct NotificationSettingsView: View {
         VStack {
             HStack {
                 Group {
-                    Button("Remove") {
+                    Button("remove".localized) {
                         viewModel.removeButtonAction()
                     }
                     .disabled(viewModel.removeButtonIsDisabled)
@@ -36,7 +36,7 @@ struct NotificationSettingsView: View {
             }
             GroupBox {
                 HStack(content: {
-                    Text("Show notifications every")
+                    Text("show_notifications_every".localized)
                     Spacer()
                     Menu(String(describing: viewModel.dateType).capitalized, content: {
                         ForEach(DateType.allCases, id: \.self) { type in
@@ -53,10 +53,10 @@ struct NotificationSettingsView: View {
                 Divider()
                 switch viewModel.dateType {
                 case .day:
-                    DatePicker("Time", selection: $viewModel.date, displayedComponents: .hourAndMinute)
+                    DatePicker("time".localized, selection: $viewModel.date, displayedComponents: .hourAndMinute)
                 case .week:
                     HStack {
-                        Text("Day of week")
+                        Text("day_of_week".localized)
                         Spacer()
                         Menu((String(describing: viewModel.dayOfWeak).capitalized), content: {
                             ForEach(DayOfWeek.allCases, id: \.self) { type in
@@ -70,13 +70,13 @@ struct NotificationSettingsView: View {
                         .tint(.secondary)
                         .foregroundStyle(.primary)
                         DatePicker("", selection: $viewModel.date, displayedComponents: .hourAndMinute)
-                            .frame(width: 80)
+                            .frame(width: Constraints.notificationDateWidth)
                     }
                 case .month:
-                    DatePicker("Day of month", selection: $viewModel.date)
+                    DatePicker("day_of_month".localized, selection: $viewModel.date)
                         .datePickerStyle(.compact)
                 case .year:
-                    DatePicker("Day of year", selection: $viewModel.date)
+                    DatePicker("day_of_year".localized, selection: $viewModel.date)
                         .datePickerStyle(.compact)
                 }
             }
