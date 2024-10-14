@@ -86,8 +86,9 @@ final class NotificationManager {
     private static func makeContent(event: Event) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = event.title
-        content.subtitle = makeTimeDataString(date: event.date, dateType: event.dateType)
+        content.subtitle = event.id.uuidString /*makeTimeDataString(date: event.date, dateType: event.dateType)*/
         content.sound = .default
+        content.categoryIdentifier = "myNotificationCategory"
         return content
     }
 
@@ -97,7 +98,8 @@ final class NotificationManager {
         let calendar = Calendar.current
         let content = makeContent(event: event)
         let components = calendar.dateComponents([.hour, .minute], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: event.id.uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
