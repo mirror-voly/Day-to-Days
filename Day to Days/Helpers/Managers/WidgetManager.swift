@@ -18,8 +18,8 @@ final class WidgetManager {
                            color: event.color.getColorType)
     }
 
-    static func sendToWidgetsThis(_ events: [Event], completion: @escaping (Result<Void, Error>) -> Void) {
-        DispatchQueue.global(qos: .background).async {
+    static func sendEventsToOverTargets(_ events: [Event], completion: @escaping (Result<Void, Error>) -> Void) {
+		DispatchQueue.global(qos: .utility).async {
             var eventsForWidget: [EventForTransfer] = []
             for event in events {
                 eventsForWidget.append(makeEventsForTransfer(event: event))

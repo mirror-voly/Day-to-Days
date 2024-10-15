@@ -57,7 +57,7 @@ struct EventInfoScreen: View {
                     alertManager.getIdentifiebleErrorFrom(result: result)
                 })
             }
-            WidgetManager.sendToWidgetsThis(Array(allEvents), completion: { result in
+            WidgetManager.sendEventsToOverTargets(Array(allEvents), completion: { result in
                 alertManager.getIdentifiebleErrorFrom(result: result)
             })
         }, content: {

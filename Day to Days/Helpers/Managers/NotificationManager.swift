@@ -16,23 +16,25 @@ final class NotificationManager {
         }
     }
 
-    static func removeScheduledNotification(eventStringID: String) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [eventStringID])
-        guard let userDefaults = UserDefaults(suiteName: Constants.suiteName) else { return }
-        userDefaults.removeObject(forKey: eventStringID)
-    }
+	static func removeScheduledNotification(eventStringID: String) {
+		UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [eventStringID])
+		guard let userDefaults = UserDefaults(suiteName: Constants.suiteName) else { return }
+		userDefaults.removeObject(forKey: eventStringID)
+	}
 
     private static func encodeAndSaveNotificationSettings(eventID: String,
                                    notificationSettings: NotificationSettings,
                                    completion: @escaping (Result<Void, Error>) -> Void) {
-        do {
-            let data = try JSONEncoder().encode(notificationSettings)
-            if let userDefaults = UserDefaults(suiteName: Constants.suiteName) {
-                userDefaults.set(data, forKey: eventID)
-            }
-        } catch {
-            completion(.failure(error))
-        }
+		DispatchQueue.global(qos: .utility).async {
+			do {
+				let data = try JSONEncoder().encode(notificationSettings)
+				if let userDefaults = UserDefaults(suiteName: Constants.suiteName) {
+					userDefaults.set(data, forKey: eventID)
+				}
+			} catch {
+				completion(.failure(error))
+			}
+		}
     }
 
     private static func decodeData(data: Data, completion: @escaping (Result<Void, Error>) -> Void) -> NotificationSettings? {
@@ -47,23 +49,25 @@ final class NotificationManager {
     }
 
     static func updateNotificatioIfNeeded(event: Event,
-                                          completion: @escaping (Result<Void, Error>) -> Void) {
-        checkIfNotificationIsScheduled(with: event.id.uuidString) { scheduled in
-            if scheduled {
-                guard let userDefaults = UserDefaults(suiteName: Constants.suiteName) else { return }
-                guard let data = userDefaults.data(forKey: event.id.uuidString) else { return }
-                guard let decoded = decodeData(data: data, completion: { result in
-                    completion(result)
-                }) else { return }
-                scheduleNotification(dateType: decoded.dateType,
-                                     date: decoded.date,
-                                     event: event, dayOfWeek: DateCalculator.getCurrentDayOfWeek(date: decoded.date),
-                                     detailed: decoded.detailed, completion: { result in
-                    completion(result)
-                })
-            }
-        }
-    }
+										  completion: @escaping (Result<Void, Error>) -> Void) {
+		DispatchQueue.global(qos: .utility).async {
+			checkIfNotificationIsScheduled(with: event.id.uuidString) { scheduled in
+				if scheduled {
+					guard let userDefaults = UserDefaults(suiteName: Constants.suiteName) else { return }
+					guard let data = userDefaults.data(forKey: event.id.uuidString) else { return }
+					guard let decoded = decodeData(data: data, completion: { result in
+						completion(result)
+					}) else { return }
+					scheduleNotification(dateType: decoded.dateType,
+										 date: decoded.date,
+										 event: event, dayOfWeek: DateCalculator.getCurrentDayOfWeek(date: decoded.date),
+										 detailed: decoded.detailed, completion: { result in
+						completion(result)
+					})
+				}
+			}
+		}
+	}
 
     static func checkIfNotificationIsScheduled(with identifier: String, completion: @escaping (Bool) -> Void) {
         UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
@@ -157,29 +161,30 @@ final class NotificationManager {
                                      event: Event,
                                      dayOfWeek: DayOfWeek?,
                                      detailed: Bool,
-                                     completion: @escaping (Result<Void, Error>) -> Void) {
-        let scheduleCompletion: (Result<Void, Error>) -> Void = { result in
-            completion(result)
-        }
-
-        switch dateType {
-        case .day:
-            scheduleDaylyNotification(for: date, event: event, detailed: detailed, completion: scheduleCompletion)
-        case .week:
-            guard let dayOfWeek = dayOfWeek else { return }
-            scheduleWeeklyNotification(for: date, event: event, dayOfWeek: dayOfWeek,
-                                       detailed: detailed, completion: scheduleCompletion)
-        case .month:
-            scheduleMonthlyNotification(on: date, event: event, detailed: detailed, completion: scheduleCompletion)
-        case .year:
-            scheduleYearlyNotification(on: date, event: event, detailed: detailed, completion: scheduleCompletion)
-        }
-
-        encodeAndSaveNotificationSettings(eventID: event.id.uuidString,
-                                          notificationSettings: NotificationSettings(dateType: dateType,
-                                                                                     date: date,
-                                                                                     detailed: detailed),
-                                          completion: scheduleCompletion)
-    }
-
+									 completion: @escaping (Result<Void, Error>) -> Void) {
+		DispatchQueue.global(qos: .utility).async {
+			let scheduleCompletion: (Result<Void, Error>) -> Void = { result in
+				completion(result)
+			}
+			
+			switch dateType {
+				case .day:
+					scheduleDaylyNotification(for: date, event: event, detailed: detailed, completion: scheduleCompletion)
+				case .week:
+					guard let dayOfWeek = dayOfWeek else { return }
+					scheduleWeeklyNotification(for: date, event: event, dayOfWeek: dayOfWeek,
+											   detailed: detailed, completion: scheduleCompletion)
+				case .month:
+					scheduleMonthlyNotification(on: date, event: event, detailed: detailed, completion: scheduleCompletion)
+				case .year:
+					scheduleYearlyNotification(on: date, event: event, detailed: detailed, completion: scheduleCompletion)
+			}
+			
+			encodeAndSaveNotificationSettings(eventID: event.id.uuidString,
+											  notificationSettings: NotificationSettings(dateType: dateType,
+																						 date: date,
+																						 detailed: detailed),
+											  completion: scheduleCompletion)
+		}
+	}
 }

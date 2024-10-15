@@ -53,7 +53,7 @@ struct EventsList: View {
         .onAppear(perform: { viewModel.setEvents(allEvents: allEvents) })
         .onChange(of: allEvents.count) { _, _ in
             viewModel.setEvents(allEvents: allEvents)
-            WidgetManager.sendToWidgetsThis(Array(allEvents), completion: { result in
+            WidgetManager.sendEventsToOverTargets(Array(allEvents), completion: { result in
                 alertManager.getIdentifiebleErrorFrom(result: result)
             })
         }
