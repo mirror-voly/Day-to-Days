@@ -7,7 +7,7 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>UNNotificationExtensionCategory</key>
-			<string>minimalisticNotificationCategory</string>
+			<string>maximizedNotificationCategory</string>
 			<key>UNNotificationExtensionInitialContentSizeRatio</key>
 			<real>1</real>
 		</dict>

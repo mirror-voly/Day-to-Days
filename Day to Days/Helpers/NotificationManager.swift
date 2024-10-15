@@ -78,7 +78,8 @@ final class NotificationManager {
         content.title = event.title
         content.subtitle = "open_for_details".localized
         content.sound = .default
-        content.categoryIdentifier = "myNotificationCategory"
+//        content.categoryIdentifier = "minimalisticNotificationCategory"
+        content.categoryIdentifier = "maximizedNotificationCategory"
         return content
     }
 
@@ -160,7 +161,7 @@ final class NotificationManager {
         let scheduleCompletion: (Result<Void, Error>) -> Void = { result in
             completion(result)
         }
-        
+
         switch dateType {
         case .day:
             scheduleDaylyNotification(for: date, event: event, completion: scheduleCompletion)
