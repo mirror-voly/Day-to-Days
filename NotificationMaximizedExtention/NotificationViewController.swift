@@ -11,7 +11,7 @@ import UserNotificationsUI
 
 class NotificationViewController: UIViewController {
     let dateCalculator = DateCalculator()
-    
+
     @IBOutlet var labelFirst: UILabel?
     @IBOutlet var labelSecond: UILabel?
     @IBOutlet var labelThird: UILabel?
@@ -21,10 +21,9 @@ class NotificationViewController: UIViewController {
     @IBOutlet var labelSeventh: UILabel?
     @IBOutlet var labelEighth: UILabel?
     @IBOutlet var labelNinth: UILabel?
-    
     @IBOutlet var eventTitleLabel: UILabel!
     @IBOutlet var eventDateLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()

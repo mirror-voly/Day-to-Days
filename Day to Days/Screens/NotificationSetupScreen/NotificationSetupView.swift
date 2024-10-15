@@ -43,7 +43,8 @@ struct NotificationSetupView: View {
                     Menu(String(describing: viewModel.dateType).localized, content: {
                         ForEach(DateType.allCases, id: \.self) { type in
                             Button(String(describing: type).localized,
-                                   systemImage: viewModel.dateType == type ? "smallcircle.filled.circle" : "circle") {
+                                   systemImage: viewModel.dateType == type ?
+                                   "smallcircle.filled.circle" : "circle") {
                                 viewModel.dateType = type
                             }
                         }
@@ -63,7 +64,8 @@ struct NotificationSetupView: View {
                         Menu((String(describing: viewModel.dayOfWeek).localized), content: {
                             ForEach(DayOfWeek.allCases, id: \.self) { type in
                                 Button(String(describing: type).localized,
-                                       systemImage: viewModel.dayOfWeek == type ? "smallcircle.filled.circle" : "circle") {
+                                       systemImage: viewModel.dayOfWeek == type ?
+                                       "smallcircle.filled.circle" : "circle") {
                                     viewModel.dayOfWeek = type
                                 }
                             }

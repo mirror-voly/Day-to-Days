@@ -46,7 +46,7 @@ class NotificationViewController: UIViewController {
 }
 
 extension NotificationViewController: UNNotificationContentExtension {
-    
+
     func didReceive(_ notification: UNNotification) {
         guard let event = setInfo(title: notification.request.content.title) else { return }
         let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
