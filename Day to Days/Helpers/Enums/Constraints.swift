@@ -41,4 +41,7 @@ enum Constraints {
     static let eventsItemViewHeight: CGFloat = 115
     static let notificationDateWidth: CGFloat = 80
     static let notificationSetupViewHeight: CGFloat = 250
+    static let notificationSmallFontSize: CGFloat = 15
+    static let notificationMediumFontSize: CGFloat = 25
+    static let notificationBigFontSize: CGFloat = 55
 }

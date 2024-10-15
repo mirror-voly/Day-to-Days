@@ -82,7 +82,7 @@ struct NotificationSetupView: View {
                         .datePickerStyle(.compact)
                 }
                 Divider()
-                Toggle("Show all information", isOn: $viewModel.toggleDetailedValue)
+                Toggle("show_all_information".localized, isOn: $viewModel.toggleDetailedValue)
             }
             Spacer()
         }

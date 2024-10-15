@@ -17,11 +17,14 @@ class NotificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        labelFirst?.font = .systemFont(ofSize: 17)
-        labelSecond?.font = .boldSystemFont(ofSize: 55)
+        setupLabels()
+    }
+
+    private func setupLabels() {
+        labelSecond?.font = .boldSystemFont(ofSize: Constraints.notificationBigFontSize)
         labelSecond?.clipsToBounds = false
         labelThird?.textColor = .gray
-        labelThird?.font = .italicSystemFont(ofSize: 15)
+        labelThird?.font = .italicSystemFont(ofSize: Constraints.notificationSmallFontSize)
     }
 
     private func decodeData(data: Data) -> [EventForTransfer]? {
@@ -32,7 +35,7 @@ class NotificationViewController: UIViewController {
             return nil
         }
     }
-    
+
     private func setInfo(title: String) -> EventForTransfer? {
         let userDefaults = UserDefaults(suiteName: Constants.suiteName)
         guard let data = userDefaults?.data(forKey: Constants.widgetStorage) else { return nil }

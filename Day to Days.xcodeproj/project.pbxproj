@@ -53,6 +53,8 @@
 		516CBE542C87296400202B93 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE532C87296400202B93 /* Event.swift */; };
 		516CBE592C87339F00202B93 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE582C87339F00202B93 /* MainScreenViewModel.swift */; };
 		516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE5C2C87403600202B93 /* EventsItemView.swift */; };
+		516CC4442CBEA73A008106FF /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Constraints.swift */; };
+		516CC4452CBEA73C008106FF /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FF10B2C8D9F46002FA63A /* Constraints.swift */; };
 		516D20192CBC2E8900346805 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B72E7C2CBC248B00560B2F /* NotificationViewController.swift */; };
 		516D201E2CBC2FFF00346805 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
 		516DD8042CAFCF96006C534C /* MainScreen+addNewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD8032CAFCF96006C534C /* MainScreen+addNewButton.swift */; };
@@ -904,6 +906,7 @@
 				517831892CBE5CDC00C91C83 /* DateType.swift in Sources */,
 				517831782CBE5C1E00C91C83 /* NotificationViewController.swift in Sources */,
 				517831902CBE5D4900C91C83 /* Constants.swift in Sources */,
+				516CC4442CBEA73A008106FF /* Constraints.swift in Sources */,
 				517831872CBE5CC800C91C83 /* DateDifferenceCalculator.swift in Sources */,
 				517831852CBE5CC000C91C83 /* TimeStateDeterminer.swift in Sources */,
 				5178318E2CBE5CFA00C91C83 /* String+Localized.swift in Sources */,
@@ -924,6 +927,7 @@
 				517831682CBCF34900C91C83 /* DateDifferenceCalculator.swift in Sources */,
 				5178315E2CBCF07900C91C83 /* ColorType.swift in Sources */,
 				516D201E2CBC2FFF00346805 /* Constants.swift in Sources */,
+				516CC4452CBEA73C008106FF /* Constraints.swift in Sources */,
 				5178316B2CBCF37400C91C83 /* TimeStateDeterminer.swift in Sources */,
 				5178316D2CBCF38800C91C83 /* DayOfWeek.swift in Sources */,
 				517831662CBCF2F400C91C83 /* String+Localized.swift in Sources */,
