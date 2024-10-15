@@ -42,11 +42,6 @@
 "week" = "Неделю";
 "day" = "День";
 
-"date_label_years" = "годы";
-"date_label_months" = "месяцы";
-"date_label_weeks" = "недели";
-"date_label_days" = "дни";
-
 "delete_selected" = "Удалить выбранные";
 "delete" = "Удалить";
 "multiple_selection" = "Выбрать \n несколько";
@@ -74,7 +69,7 @@
 "day_of_week" = "День недели";
 "day_of_month" = "День месяца";
 "day_of_year" = "День года";
-"show_all_information" = "Показать подробно";
+"show_all_information" = "Подробное уведомление";
 "open_for_details" = "Раскрыть уведомление ↓";
 
 "monday" = "Понедельник";

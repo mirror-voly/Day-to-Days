@@ -55,7 +55,7 @@ final class EventsItemViewModel {
                                                                                    dateType: event.dateType)
         self.localizedTimeState = timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
         self.number = timeData[.dateNumber] ?? Constants.emptyString
-        self.localizedDateType = (timeData[.timeState] != TimeStateType.present.label ?
+        self.localizedDateType = (timeData[.timeState] != String(describing: TimeStateType.present) ?
                                   timeData[.localizedDateType]: Constants.emptyString) ?? Constants.emptyString
     }
 }

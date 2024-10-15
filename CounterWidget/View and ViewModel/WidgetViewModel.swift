@@ -21,7 +21,7 @@ final class WidgetViewModel {
         let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
         localizedTimeState = timeData[.localizedTimeState] ?? Constants.emptyString
         number = timeData[.dateNumber] ?? Constants.emptyString
-        if timeData[.timeState] != TimeStateType.present.label {
+        if timeData[.timeState] != String(describing: TimeStateType.present) {
             localizedDateType = timeData[.localizedDateType] ?? Constants.emptyString
         }
         color = event.color.getColor

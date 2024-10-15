@@ -12,11 +12,4 @@ enum TimeStateType {
     case future
     case present
 
-    var label: String {
-        switch self {
-        case .past: return "passed".localized
-        case .future: return "left".localized
-        case .present: return "today".localized
-        }
-    }
 }

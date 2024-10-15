@@ -71,7 +71,7 @@ final class DateLocalization {
         if languageCode == "ru" {
             return localizeTimeStateInRussian(for: countInt, state: state, dateType: dateType)
         } else {
-            return state.label
+			return String(describing: state)
         }
     }
 }

@@ -52,7 +52,7 @@ extension NotificationViewController: UNNotificationContentExtension {
         let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
         self.labelFirst?.text = timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
         self.labelSecond?.text = timeData[.dateNumber] ?? Constants.emptyString
-        if timeData[.timeState] != TimeStateType.present.label {
+        if timeData[.timeState] != String(describing: TimeStateType.present) {
             self.labelThird?.text = timeData[.localizedDateType] ?? Constants.emptyString
         }
     }

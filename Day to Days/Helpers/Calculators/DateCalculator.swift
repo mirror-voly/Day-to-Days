@@ -43,7 +43,7 @@ final class DateCalculator {
         case "en":
             return dateLocalization.getEnglishLocalization(for: absCount, dateType: dateType)
         default:
-            return dateType.label
+            return String(describing: dateType)
         }
     }
 
@@ -61,7 +61,7 @@ final class DateCalculator {
         let localizedDateType = localizeIt(for: dateNumber, dateType: dateType)
         let localizedTimeState = dateLocalization.localizeTimeState(for: dateNumber,
                                                                     state: timeState, dateType: dateType)
-        return [.timeState: timeState.label, .dateNumber: dateNumber,
+        return [.timeState: String(describing: timeState), .dateNumber: dateNumber,
                 .localizedDateType: localizedDateType, .localizedTimeState: localizedTimeState]
     }
 
