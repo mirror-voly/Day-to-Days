@@ -73,20 +73,10 @@ final class NotificationManager {
         }
     }
 
-    private static func makeTimeDataString(date: Date, dateType: DateType) -> String {
-        let dateCalculator = DateCalculator()
-        let timeData = dateCalculator.allTimeDataFor(date: date, dateType: dateType)
-        let localizedTimeState = timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
-        let number = timeData[.dateNumber] ?? Constants.emptyString
-        let localizedDateType = (timeData[.timeState] != TimeStateType.present.label ?
-                                  timeData[.localizedDateType]: Constants.emptyString) ?? Constants.emptyString
-        return "\(localizedTimeState) \(number) \(localizedDateType)"
-    }
-
     private static func makeContent(event: Event) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = event.title
-        content.subtitle = event.id.uuidString /*makeTimeDataString(date: event.date, dateType: event.dateType)*/
+        content.subtitle = "open_for_details".localized
         content.sound = .default
         content.categoryIdentifier = "myNotificationCategory"
         return content
@@ -99,7 +89,7 @@ final class NotificationManager {
         let content = makeContent(event: event)
         let components = calendar.dateComponents([.hour, .minute], from: date)
 //        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7, repeats: false)
         let request = UNNotificationRequest(identifier: event.id.uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in

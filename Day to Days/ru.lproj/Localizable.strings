@@ -74,6 +74,7 @@
 "day_of_week" = "День недели";
 "day_of_month" = "День месяца";
 "day_of_year" = "День года";
+"open_for_details" = "Раскрыть уведомление ↓";
 
 "monday" = "Понедельник";
 "tuesday" = "Вторник";

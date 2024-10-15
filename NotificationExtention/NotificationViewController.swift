@@ -9,43 +9,47 @@ import UIKit
 import UserNotifications
 import UserNotificationsUI
 
-class NotificationViewController: UIViewController, UNNotificationContentExtension {
-    
+class NotificationViewController: UIViewController {
+    let dateCalculator = DateCalculator()
     @IBOutlet var labelFirst: UILabel?
     @IBOutlet var labelSecond: UILabel?
     @IBOutlet var labelThird: UILabel?
-    //    private var data: NotificationSettings?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any required interface initialization here.
+        labelFirst?.font = .systemFont(ofSize: 17)
+        labelSecond?.font = .boldSystemFont(ofSize: 80)
+        labelThird?.textColor = .gray
+        labelThird?.font = .italicSystemFont(ofSize: 15)
+    }
+
+    private func decodeData(data: Data) -> [EventForTransfer]? {
+        do {
+            let decoded = try JSONDecoder().decode([EventForTransfer].self, from: data)
+            return decoded
+        } catch {
+            return nil
+        }
     }
     
-    func didReceive(_ notification: UNNotification) {
-        self.labelFirst?.text = notification.request.content.title
-        self.labelSecond?.text = notification.request.content.subtitle
-        self.labelThird?.text = notification.request.content.subtitle
+    private func setInfo(title: String) -> EventForTransfer? {
+        let userDefaults = UserDefaults(suiteName: Constants.suiteName)
+        guard let data = userDefaults?.data(forKey: Constants.widgetStorage) else { return nil }
+        let decoded = decodeData(data: data)
+        guard let event: EventForTransfer = decoded?.first(where: {$0.title == title}) else { return nil }
+        return event
     }
-    //
-//    private func decodeData(data: Data, completion: @escaping (Result<Void, Error>) -> Void) -> [EventForTransfer]? {
-//        do {
-//            let decoded = try JSONDecoder().decode([EventForTransfer].self, from: data)
-//            completion(.success(()))
-//            return decoded
-//        } catch {
-//            completion(.failure(error))
-//            return nil
-//        }
-//    }
-//    
-//    func setInfo(eventID: String, completion: @escaping (Result<Void, Error>) -> Void) -> EventForTransfer? {
-//        guard let userDefaults = UserDefaults(suiteName: Constants.suiteName) else { return nil }
-//        guard let data = userDefaults.data(forKey: Constants.widgetStorage) else { return nil }
-//        guard let decoded = decodeData(data: data, completion: { result in
-//            completion(result)
-//        }) else { return nil }
-//        if let event: EventForTransfer = decoded.first(where: {$0.id.uuidString == eventID}) {
-//            return event
-//        }
-//        return nil
-//    }
+}
+
+extension NotificationViewController: UNNotificationContentExtension {
+    
+    func didReceive(_ notification: UNNotification) {
+        guard let event = setInfo(title: notification.request.content.title) else { return }
+        let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
+        self.labelFirst?.text = timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
+        self.labelSecond?.text = timeData[.dateNumber] ?? Constants.emptyString
+        if timeData[.timeState] != TimeStateType.present.label {
+            self.labelThird?.text = timeData[.localizedDateType] ?? Constants.emptyString
+        }
+    }
 }
