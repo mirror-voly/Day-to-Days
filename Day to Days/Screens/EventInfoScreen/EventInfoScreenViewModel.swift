@@ -12,7 +12,8 @@ import RealmSwift
 final class EventInfoScreenViewModel {
     private (set) var allInfoForCurrentDate: [DateType: String]?
     private (set) var event: Event
-    var sheetIsOpened = false
+    var editSheetIsOpened = false
+    var notificationSheetIsOpened = false
     let allDateTypes = DateType.allCases.reversed()
     let dateCalculator = DateCalculator()
     // MARK: - Calculated properties

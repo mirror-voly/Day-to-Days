@@ -34,7 +34,7 @@ final class DateCalculator {
         }
 
     func localizeIt(for count: String, dateType: DateType) -> String {
-        guard let countInt = Int(count) else { return "error" }
+        guard let countInt = Int(count) else { return "" }
         let absCount = abs(countInt)
         let languageCode = Locale.current.language.languageCode?.identifier
         switch languageCode {
@@ -63,5 +63,12 @@ final class DateCalculator {
                                                                     state: timeState, dateType: dateType)
         return [.timeState: timeState.label, .dateNumber: dateNumber,
                 .localizedDateType: localizedDateType, .localizedTimeState: localizedTimeState]
+    }
+
+    static func getCurrentDayOfWeek(date: Date) -> DayOfWeek {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.weekday], from: date)
+        let number = components.weekday ?? 1
+        return DayOfWeek(rawValue: number) ?? .monday
     }
 }

@@ -37,6 +37,11 @@
 "color_indigo" = "Индиго";
 "color_gray" = "Серый";
 
+"year" = "Год";
+"month" = "Месяц";
+"week" = "Неделю";
+"day" = "День";
+
 "date_label_years" = "годы";
 "date_label_months" = "месяцы";
 "date_label_weeks" = "недели";
@@ -57,6 +62,25 @@
 "week_help" = "Отобразить дни и недели";
 "month_help" = "Отобразить дни, недели и месяцы";
 "year_help" = "Отобразить дни, недели, месяцы и годы";
+"notification_button_help" = "Установить нотификации";
+"notification_done_button_help" = "Нужно разрешение на уведомления";
 
 "setup" = "Установка";
 "tap" = "Нажать и удерживать";
+
+"remove" = "Удалить";
+"show_notifications_every" = "Уведомлять через";
+"time" = "Время";
+"day_of_week" = "День недели";
+"day_of_month" = "День месяца";
+"day_of_year" = "День года";
+"show_all_information" = "Показать подробно";
+"open_for_details" = "Раскрыть уведомление ↓";
+
+"monday" = "Понедельник";
+"tuesday" = "Вторник";
+"wednesday" = "Среда";
+"thursday" = "Четверг";
+"friday" = "Пятница";
+"saturday" = "Суббота";
+"sunday" = "Воскресенье";

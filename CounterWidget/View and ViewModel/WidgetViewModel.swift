@@ -10,25 +10,19 @@ import SwiftUI
 @Observable
 final class WidgetViewModel {
     private let dateCalculator = DateCalculator()
-    private (set) var eventTitle: String = Constants.emptyString
-    private (set) var localizedTimeState: String = Constants.emptyString
-    private (set) var number: String = Constants.emptyString
-    private (set) var localizedDateType: String = Constants.emptyString
+    private (set) var inList = false
+    private (set) var eventTitle = Constants.emptyString
+    private (set) var localizedTimeState = Constants.emptyString
+    private (set) var number = Constants.emptyString
+    private (set) var localizedDateType = Constants.emptyString
     private (set) var color: Color = .brown
-    private (set) var inList: Bool = false
 
-    private func fillFieldsWith(_ event: EventForTransfer) {
-        let timeData = self.dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
-        if let localizedTimeState = timeData[.localizedTimeState] {
-            self.localizedTimeState = localizedTimeState
-        }
-        if let number = timeData[.dateNumber] {
-            self.number = number
-        }
-        if let localizedDateType = timeData[.localizedDateType] {
-            if timeData [.timeState] != TimeStateType.present.label {
-                self.localizedDateType = localizedDateType
-            }
+    private func setAllEventProperties(_ event: EventForTransfer) {
+        let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
+        localizedTimeState = timeData[.localizedTimeState] ?? Constants.emptyString
+        number = timeData[.dateNumber] ?? Constants.emptyString
+        if timeData[.timeState] != TimeStateType.present.label {
+            localizedDateType = timeData[.localizedDateType] ?? Constants.emptyString
         }
         color = event.color.getColor
         eventTitle = event.title
@@ -36,7 +30,7 @@ final class WidgetViewModel {
     
     private func searchForEvent(events: [EventForTransfer], eventID: String) {
         if let eventInList = events.first(where: { $0.id.uuidString == eventID }) {
-            fillFieldsWith(eventInList)
+            setAllEventProperties(eventInList)
             self.inList = true
         }
     }

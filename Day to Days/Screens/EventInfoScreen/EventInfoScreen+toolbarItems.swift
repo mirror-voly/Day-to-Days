@@ -25,7 +25,7 @@ extension EventInfoScreen {
     var editButton: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
             Button {
-                viewModel.sheetIsOpened = true
+                viewModel.editSheetIsOpened = true
             } label: {
                 Circle()
                     .fill(.white)
@@ -35,6 +35,23 @@ extension EventInfoScreen {
             }
             .contextMenu {
                 HelpContextMenu(helpText: "edit_event")
+            }
+        }
+    }
+
+    var notificationSettingsButton: some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                viewModel.notificationSheetIsOpened = true
+            } label: {
+                Circle()
+                    .fill(.white)
+                    .frame(width: Constraints.eventInfoButtonSize, height: Constraints.eventInfoButtonSize)
+                    .overlay(Image(systemName: "bell.fill")
+                        .fontWeight(.semibold))
+            }
+            .contextMenu {
+                HelpContextMenu(helpText: "notification_button_help")
             }
         }
     }

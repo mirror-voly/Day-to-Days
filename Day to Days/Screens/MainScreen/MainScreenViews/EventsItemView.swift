@@ -16,10 +16,10 @@ struct EventsItemView: View {
             HStack {
                 // MARK: Circle
                 Circle()
-                    .fill(viewModel.event.color)
+                    .fill(viewModel.color)
                     .overlay(
                         Circle()
-                            .fill(viewModel.fillColor)
+                            .fill(viewModel.circleHoleColor)
                             .frame(width: Constraints.eventsItemViewCicleHoleSize))
                     .frame(width: Constraints.eventsItemViewCicleSize)
                     .padding()
@@ -27,7 +27,7 @@ struct EventsItemView: View {
                         guard !newValue else { return }
                         viewModel.changeSelectedToFalse()
                     }
-                Text(viewModel.event.title)
+                Text(viewModel.title)
                     .font(.title2)
                 Spacer()
                 // MARK: Counter
@@ -43,7 +43,7 @@ struct EventsItemView: View {
                          Constraints.listItemAnimationScale: Constraints.originalSize)
             .animation(.linear, value: viewModel.isVisible)
         }
-        .frame(height: 115)
+        .frame(height: Constraints.eventsItemViewHeight)
         .overlay(alignment: .center) {
             if mainScreenViewModel.editIsActivated {
                 OverlayRectangle()

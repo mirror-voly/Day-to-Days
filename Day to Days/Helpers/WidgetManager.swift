@@ -9,7 +9,7 @@ import UIKit
 import WidgetKit
 
 final class WidgetManager {
-
+// TODO: private static
     static private func makeEventsForTransfer(event: Event) -> EventForTransfer {
         return EventForTransfer(name: event.title,
                            id: event.id,

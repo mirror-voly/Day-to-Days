@@ -40,6 +40,12 @@
 "color_indigo" = "Indigo";
 "color_gray" = "Gray";
 
+"year" = "Year";
+"month" = "Month";
+"week" = "Week";
+"day" = "Day";
+
+// TODO: remove this
 "date_label_years" = "years";
 "date_label_months" = "months";
 "date_label_weeks" = "weeks";
@@ -60,6 +66,26 @@
 "week_help" = "Show days and weeks";
 "month_help" = "Show days, weeks and months";
 "year_help" = "Show days, weeks, months and years";
+"notification_button_help" = "Setup notifications";
+"notification_done_button_help" = "Need an authorization for notifications";
 
 "setup" = "Setup";
 "tap" = "Tap and hold";
+
+"remove" = "Remove";
+"show_notifications_every" = "Notifications every";
+"time" = "Time";
+"day_of_week" = "Day of week";
+"day_of_month" = "Day of month";
+"day_of_year" = "Day of year";
+"show_all_information" = "Show detailed";
+"open_for_details" = "Expand notification ↓";
+
+
+"monday" = "Monday";
+"tuesday" = "Tuesday";
+"wednesday" = "Wednesday";
+"thursday" = "Thursday";
+"friday" = "Friday";
+"saturday" = "Saturday";
+"sunday" = "Sunday";

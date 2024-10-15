@@ -51,7 +51,7 @@ struct EventInfoScreen: View {
         .toolbarBackground(viewModel.event.color, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
-        .sheet(isPresented: $viewModel.sheetIsOpened, onDismiss: {
+        .sheet(isPresented: $viewModel.editSheetIsOpened, onDismiss: {
             withAnimation {
                 viewModel.updateEditedEvent(completion: { result in
                     alertManager.getIdentifiebleErrorFrom(result: result)
@@ -62,12 +62,17 @@ struct EventInfoScreen: View {
             })
         }, content: {
             AddOrEditEventSheet(event: viewModel.event,
-                                isOpened: $viewModel.sheetIsOpened,
+                                isOpened: $viewModel.editSheetIsOpened,
                                 screenMode: .edit)
             .interactiveDismissDisabled()
         })
+        .sheet(isPresented: $viewModel.notificationSheetIsOpened, content: {
+            NotificationSetupView(event: viewModel.event)
+                .presentationDetents([.height(Constraints.notificationSetupViewHeight)])
+        })
         .toolbar(content: {
             backButton
+            notificationSettingsButton
             editButton
         })
         .tint(viewModel.event.color)

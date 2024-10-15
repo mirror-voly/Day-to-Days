@@ -10,43 +10,29 @@ import SwiftUI
 @Observable
 final class EventsItemViewModel {
     private let dateCalculator = DateCalculator()
-    private (set) var localizedTimeState = Constants.emptyString
-    private (set) var number = Constants.emptyString
-    private (set) var localizedDateType = Constants.emptyString
-
-    private var mainScreenViewModel: MainScreenViewModel
-    private (set) var event: Event
+    private let mainScreenViewModel: MainScreenViewModel
+    private let eventID: UUID
+    let localizedTimeState: String
+    let number: String
+    let localizedDateType: String
+    let color: Color
+    let title: String
     private (set) var isSelected = false
     private (set) var isVisible = false
-
-    var fillColor: Color {
+    // MARK: - Calculated properties
+    var circleHoleColor: Color {
         isSelected ? .primary : .colorScheme
     }
 
-    var selectedColor: Color {
+    var selectedOverlayColor: Color {
         isSelected ? Color.primary.opacity(Constants.selectedOpacity) :
         Color.primary.opacity(Constants.notSelectedOpacity)
     }
-
-    private func setTimeData(event: Event) {
-        let timeData = self.dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
-        if let localizedTimeState = timeData[.localizedTimeState] {
-            self.localizedTimeState = localizedTimeState.capitalized
-        }
-        if let number = timeData[.dateNumber] {
-            self.number = number
-        }
-        if let localizedDateType = timeData[.localizedDateType] {
-            if timeData [.timeState] != TimeStateType.present.label {
-                self.localizedDateType = localizedDateType
-            }
-        }
-    }
-
+    // MARK: - Functions
     func toggleSelected() {
         isSelected.toggle()
-        mainScreenViewModel.toggleSelectedState(eventID: event.id)
-        mainScreenViewModel.toggleSelection(eventID: event.id, isSelected: isSelected)
+        mainScreenViewModel.toggleSelectedState(eventID: eventID)
+        mainScreenViewModel.toggleSelection(eventID: eventID, isSelected: isSelected)
     }
 
     func changeSelectedToFalse() {
@@ -61,8 +47,15 @@ final class EventsItemViewModel {
     }
 
     init(event: Event, mainScreenViewModel: MainScreenViewModel) {
-        self.event = event
+        self.eventID = event.id
+        self.color = event.color
+        self.title = event.title
         self.mainScreenViewModel = mainScreenViewModel
-        self.setTimeData(event: event)
+        let timeData: [TimeDataReturnType: String] = dateCalculator.allTimeDataFor(date: event.date,
+                                                                                   dateType: event.dateType)
+        self.localizedTimeState = timeData[.localizedTimeState]?.capitalized ?? Constants.emptyString
+        self.number = timeData[.dateNumber] ?? Constants.emptyString
+        self.localizedDateType = (timeData[.timeState] != TimeStateType.present.label ?
+                                  timeData[.localizedDateType]: Constants.emptyString) ?? Constants.emptyString
     }
 }

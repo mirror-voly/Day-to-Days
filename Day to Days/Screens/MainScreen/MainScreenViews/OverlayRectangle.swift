@@ -11,7 +11,7 @@ struct OverlayRectangle: View {
     @Environment(EventsItemViewModel.self) private var viewModel
     var body: some View {
         Rectangle()
-            .fill(viewModel.selectedColor)
+            .fill(viewModel.selectedOverlayColor)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .clipShape(.rect(cornerRadius: Constraints.cornerRadius))
             .onTapGesture {
