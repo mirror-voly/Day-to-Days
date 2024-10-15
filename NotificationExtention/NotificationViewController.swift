@@ -18,7 +18,8 @@ class NotificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         labelFirst?.font = .systemFont(ofSize: 17)
-        labelSecond?.font = .boldSystemFont(ofSize: 80)
+        labelSecond?.font = .boldSystemFont(ofSize: 55)
+        labelSecond?.clipsToBounds = false
         labelThird?.textColor = .gray
         labelThird?.font = .italicSystemFont(ofSize: 15)
     }

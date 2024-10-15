@@ -13,6 +13,7 @@ final class NotificationSettingsViewModel {
     var dateType: DateType = .day
     var dayOfWeek: DayOfWeek = .monday
     var menuItemsIsPresented = false
+    var toggleDetailedValue = true
     private (set) var doneButtonIsDisabled = true
     private (set) var removeButtonIsDisabled = true
 
@@ -32,6 +33,7 @@ final class NotificationSettingsViewModel {
                                                  date: date,
                                                  event: event,
                                                  dayOfWeek: dateType == .week ? dayOfWeek : nil,
+                                                 detailed: toggleDetailedValue,
                                                  completion: { result in
             completion(result)
         })

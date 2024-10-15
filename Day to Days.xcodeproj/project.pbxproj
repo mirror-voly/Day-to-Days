@@ -34,7 +34,7 @@
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		51665A022C905E2700468301 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
-		51674AD12CB909630061A416 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51674AD02CB909630061A416 /* NotificationSettingsView.swift */; };
+		51674AD12CB909630061A416 /* NotificationSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51674AD02CB909630061A416 /* NotificationSetupView.swift */; };
 		51674AD42CB92A870061A416 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51674AD32CB92A870061A416 /* NotificationManager.swift */; };
 		5168A3142CAEAAD600E42A7E /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */; };
 		5168A3152CAEC73800E42A7E /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
@@ -209,7 +209,7 @@
 		516659F82C90324C00468301 /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
 		51665A012C905E2700468301 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
-		51674AD02CB909630061A416 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		51674AD02CB909630061A416 /* NotificationSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetupView.swift; sourceTree = "<group>"; };
 		51674AD32CB92A870061A416 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5168A30F2CAE844400E42A7E /* SetEventItent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SetEventItent.entitlements; sourceTree = "<group>"; };
 		5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
@@ -340,7 +340,7 @@
 		51674AD22CB918960061A416 /* NotificationSetupScreen */ = {
 			isa = PBXGroup;
 			children = (
-				51674AD02CB909630061A416 /* NotificationSettingsView.swift */,
+				51674AD02CB909630061A416 /* NotificationSetupView.swift */,
 				518277C22CBAA74300B774C3 /* NotificationSettingsViewModel.swift */,
 			);
 			path = NotificationSetupScreen;
@@ -854,7 +854,7 @@
 				5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */,
 				510589FB2C9C5C5F00CA612F /* DateTipeSlider+Circles.swift in Sources */,
 				518277C32CBAA74300B774C3 /* NotificationSettingsViewModel.swift in Sources */,
-				51674AD12CB909630061A416 /* NotificationSettingsView.swift in Sources */,
+				51674AD12CB909630061A416 /* NotificationSetupView.swift in Sources */,
 				519195012C8CA6AA00F29C1B /* AlertManager.swift in Sources */,
 				5175173D2CB19ACE000D04C4 /* TimeDataReturnType.swift in Sources */,
 				5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */,

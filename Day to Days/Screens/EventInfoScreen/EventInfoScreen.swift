@@ -67,8 +67,8 @@ struct EventInfoScreen: View {
             .interactiveDismissDisabled()
         })
         .sheet(isPresented: $viewModel.notificationSheetIsOpened, content: {
-            NotificationSettingsView(event: viewModel.event)
-                .presentationDetents([.height(200)])
+            NotificationSetupView(event: viewModel.event)
+                .presentationDetents([.height(Constraints.notificationSetupViewHeight)])
         })
         .toolbar(content: {
             backButton

@@ -11,40 +11,41 @@
         <scene sceneID="cwh-vc-ff4">
             <objects>
                 <viewController id="M4Y-Lb-cyx" userLabel="Notification View Controller" customClass="NotificationViewController" customModule="NotificationExtention" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" insetsLayoutMarginsFromSafeArea="NO" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lj9-N2-rVB">
-                                <rect key="frame" x="145" y="98" width="129" height="40.333333333333343"/>
+                            <stackView autoresizesSubviews="NO" opaque="NO" contentMode="center" horizontalHuggingPriority="150" verticalHuggingPriority="150" horizontalCompressionResistancePriority="200" verticalCompressionResistancePriority="200" distribution="fillProportionally" alignment="center" id="Lj9-N2-rVB">
+                                <rect key="frame" x="0.0" y="55" width="300" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42" userLabel="LabelFirst">
-                                        <rect key="frame" x="0.0" y="0.0" width="129" height="20.333333333333332"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42" userLabel="LabelFirst">
+                                        <rect key="frame" x="0.0" y="9.9999999999999982" width="300" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="rRu-mt-gu5" userLabel="LableSecond">
-                                        <rect key="frame" x="0.0" y="30.333333333333314" width="129" height="0.0"/>
+                                        <rect key="frame" x="300" y="20" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="0yF-Is-Unt" userLabel="LableThird">
-                                        <rect key="frame" x="0.0" y="40.333333333333314" width="129" height="0.0"/>
+                                        <rect key="frame" x="300" y="20" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="n3M-LM-qnd"/>
                             </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="2BE-c3-nQJ"/>
                         <constraints>
-                            <constraint firstItem="Lj9-N2-rVB" firstAttribute="centerX" secondItem="2BE-c3-nQJ" secondAttribute="centerX" id="4Yk-Pc-jFs"/>
-                            <constraint firstItem="Lj9-N2-rVB" firstAttribute="centerY" secondItem="2BE-c3-nQJ" secondAttribute="centerY" id="4Z1-5g-INE"/>
+                            <constraint firstItem="Lj9-N2-rVB" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="8dX-na-PIc"/>
+                            <constraint firstItem="Lj9-N2-rVB" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="UIX-84-8V2"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="300"/>
+                    <size key="freeformSize" width="300" height="150"/>
                     <connections>
                         <outlet property="labelFirst" destination="GcN-lo-r42" id="yC0-Kl-2e1"/>
                         <outlet property="labelSecond" destination="rRu-mt-gu5" id="JMl-gV-CkA"/>

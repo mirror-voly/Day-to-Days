@@ -1,5 +1,5 @@
 //
-//  NotificationSettingsView.swift
+//  NotificationSetupView.swift
 //  Day to Days
 //
 //  Created by mix on 11.10.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NotificationSettingsView: View {
+struct NotificationSetupView: View {
     @State var viewModel: NotificationSettingsViewModel
     @Environment(AlertManager.self) var alertManager
     @Environment(\.dismiss) var dismiss
@@ -81,6 +81,8 @@ struct NotificationSettingsView: View {
                     DatePicker("day_of_year".localized, selection: $viewModel.date)
                         .datePickerStyle(.compact)
                 }
+                Divider()
+                Toggle("Show all information", isOn: $viewModel.toggleDetailedValue)
             }
             Spacer()
         }
@@ -92,5 +94,5 @@ struct NotificationSettingsView: View {
 }
 
 #Preview {
-    NotificationSettingsView(event: Event())
+    NotificationSetupView(event: Event())
 }

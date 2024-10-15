@@ -59,7 +59,10 @@ final class NotificationManager {
                 guard let decoded = decodeData(data: data, completion: { result in
                     completion(result)
                 }) else { return }
-                scheduleNotification(dateType: decoded.dateType, date: decoded.date, event: event, dayOfWeek: DateCalculator.getCurrentDayOfWeek(date: decoded.date), completion: { result in
+                scheduleNotification(dateType: decoded.dateType,
+                                     date: decoded.date,
+                                     event: event, dayOfWeek: DateCalculator.getCurrentDayOfWeek(date: decoded.date),
+                                     detailed: decoded.detailed, completion: { result in
                     completion(result)
                 })
             }
@@ -73,21 +76,21 @@ final class NotificationManager {
         }
     }
 
-    private static func makeContent(event: Event) -> UNMutableNotificationContent {
+    private static func makeContent(event: Event, detailed: Bool) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = event.title
         content.subtitle = "open_for_details".localized
         content.sound = .default
-//        content.categoryIdentifier = "minimalisticNotificationCategory"
-        content.categoryIdentifier = "maximizedNotificationCategory"
+        content.categoryIdentifier = detailed ? "maximizedNotificationCategory" : "minimalisticNotificationCategory"
         return content
     }
 
     private static func scheduleDaylyNotification(for date: Date,
                                                   event: Event,
+                                                  detailed: Bool,
                                                   completion: @escaping (Result<Void, Error>) -> Void) {
         let calendar = Calendar.current
-        let content = makeContent(event: event)
+        let content = makeContent(event: event, detailed: detailed)
         let components = calendar.dateComponents([.hour, .minute], from: date)
 //        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7, repeats: false)
@@ -103,9 +106,10 @@ final class NotificationManager {
     private static func scheduleWeeklyNotification(for date: Date,
                                                    event: Event,
                                                    dayOfWeek: DayOfWeek,
+                                                   detailed: Bool,
                                                    completion: @escaping (Result<Void, Error>) -> Void) {
         let calendar = Calendar.current
-        let content = makeContent(event: event)
+        let content = makeContent(event: event, detailed: detailed)
         var components = calendar.dateComponents([.hour, .minute], from: date)
         components.weekday = dayOfWeek.rawValue
 
@@ -121,9 +125,10 @@ final class NotificationManager {
 
     private static func scheduleMonthlyNotification(on date: Date,
                                                     event: Event,
+                                                    detailed: Bool,
                                                     completion: @escaping (Result<Void, Error>) -> Void) {
         let calendar = Calendar.current
-        let content = makeContent(event: event)
+        let content = makeContent(event: event, detailed: detailed)
         var components = calendar.dateComponents([.month, .hour, .minute], from: date)
         components.day = calendar.component(.day, from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
@@ -138,9 +143,10 @@ final class NotificationManager {
 
     private static func scheduleYearlyNotification(on date: Date,
                                                    event: Event,
+                                                   detailed: Bool,
                                                    completion: @escaping (Result<Void, Error>) -> Void) {
         let calendar = Calendar.current
-        let content = makeContent(event: event)
+        let content = makeContent(event: event, detailed: detailed)
         var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
         components.year = nil
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
@@ -157,6 +163,7 @@ final class NotificationManager {
                                      date: Date,
                                      event: Event,
                                      dayOfWeek: DayOfWeek?,
+                                     detailed: Bool,
                                      completion: @escaping (Result<Void, Error>) -> Void) {
         let scheduleCompletion: (Result<Void, Error>) -> Void = { result in
             completion(result)
@@ -164,18 +171,20 @@ final class NotificationManager {
 
         switch dateType {
         case .day:
-            scheduleDaylyNotification(for: date, event: event, completion: scheduleCompletion)
+            scheduleDaylyNotification(for: date, event: event, detailed: detailed, completion: scheduleCompletion)
         case .week:
             guard let dayOfWeek = dayOfWeek else { return }
-            scheduleWeeklyNotification(for: date, event: event, dayOfWeek: dayOfWeek, completion: scheduleCompletion)
+            scheduleWeeklyNotification(for: date, event: event, dayOfWeek: dayOfWeek, detailed: detailed, completion: scheduleCompletion)
         case .month:
-            scheduleMonthlyNotification(on: date, event: event, completion: scheduleCompletion)
+            scheduleMonthlyNotification(on: date, event: event, detailed: detailed, completion: scheduleCompletion)
         case .year:
-            scheduleYearlyNotification(on: date, event: event, completion: scheduleCompletion)
+            scheduleYearlyNotification(on: date, event: event, detailed: detailed, completion: scheduleCompletion)
         }
         
         encodeAndSaveNotificationSettings(eventID: event.id.uuidString,
-                                          notificationSettings: NotificationSettings(dateType: dateType, date: date),
+                                          notificationSettings: NotificationSettings(dateType: dateType,
+                                                                                     date: date,
+                                                                                     detailed: detailed),
                                           completion: scheduleCompletion)
     }
 

@@ -34,7 +34,7 @@ final class DateCalculator {
         }
 
     func localizeIt(for count: String, dateType: DateType) -> String {
-        guard let countInt = Int(count) else { return "error" }
+        guard let countInt = Int(count) else { return "" }
         let absCount = abs(countInt)
         let languageCode = Locale.current.language.languageCode?.identifier
         switch languageCode {
