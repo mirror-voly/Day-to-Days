@@ -53,7 +53,7 @@ struct EventInfoScreen: View {
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $viewModel.editSheetIsOpened, onDismiss: {
             withAnimation {
-                viewModel.updateEditedEvent(completion: { result in
+                viewModel.updateEditedEventOnDismiss(completion: { result in
                     alertManager.getIdentifiebleErrorFrom(result: result)
                 })
             }

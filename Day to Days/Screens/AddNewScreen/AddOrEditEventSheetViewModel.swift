@@ -75,7 +75,6 @@ final class AddOrEditEventSheetViewModel {
 
     func buttonAction(completion: @escaping (Result<Void, Error>) -> Void) {
         let event = createEvent(id: eventID)
-		print(event)
         if screenMode == .edit {
             RealmManager.editEvent(newEvent: event, completion: { result in
                 completion(result)

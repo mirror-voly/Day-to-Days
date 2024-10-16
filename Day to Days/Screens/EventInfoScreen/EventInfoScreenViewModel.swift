@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 @Observable
 final class EventInfoScreenViewModel {
@@ -27,19 +26,15 @@ final class EventInfoScreenViewModel {
     private func getAllDateInfoFor(event: Event) {
         allInfoForCurrentDate = dateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
     }
-// TODO: Move to manager
-    func updateEditedEvent(completion: @escaping (Result<Void, Error>) -> Void) {
-        do {
-            let realm = try Realm()
-            if let newEvent = realm.object(ofType: Event.self, forPrimaryKey: event.id) {
-                self.event = newEvent
-                getAllDateInfoFor(event: newEvent)
-                completion(.success(()))
-            }
-        } catch {
-            completion(.failure(error))
-        }
-    }
+
+	func updateEditedEventOnDismiss(completion: @escaping (Result<Void, Error>) -> Void) {
+		guard let newEvent = RealmManager.findEditedEvent(eventID: event.id, completion:  { result in
+			completion(result)
+		}) else { return }
+		self.event = newEvent
+		getAllDateInfoFor(event: newEvent)
+	}
+
     // MARK: - Init
     init(event: Event) {
         self.event = event

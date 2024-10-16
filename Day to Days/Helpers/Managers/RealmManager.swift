@@ -56,4 +56,17 @@ final class RealmManager {
             completion(.failure(error))
         }
     }
+
+	static func findEditedEvent(eventID: UUID, completion: @escaping (Result<Void, Error>) -> Void) -> Event? {
+		do {
+			let realm = try Realm()
+			if let newEvent = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
+				completion(.success(()))
+				return newEvent
+			}
+		} catch {
+			completion(.failure(error))
+		}
+		return nil
+	}
 }
