@@ -18,20 +18,20 @@ final class DateCalculator {
         return value
     }
 
-    func dateInfoForThis(date: Date, dateType: DateType) -> [DateType: String] {
-            let returnDate: [DateType: String]
-            switch dateType {
-            case .day:
-                returnDate = [.day: String(dateDifferenceCalculator.daysFrom(date: date))]
-            case .week:
-                returnDate = dateDifferenceCalculator.weeksFrom(date: date)
-            case .month:
-                returnDate = dateDifferenceCalculator.monthsFrom(date: date)
-            case .year:
-                returnDate = dateDifferenceCalculator.yearsFrom(date: date)
-            }
-            return returnDate
-        }
+	func dateInfoForThis(date: Date, dateType: DateType) -> [DateType: String] {
+		let returnDate: [DateType: String]
+		switch dateType {
+			case .day:
+				returnDate = [.day: String(dateDifferenceCalculator.daysFrom(date: date))]
+			case .week:
+				returnDate = dateDifferenceCalculator.weeksFrom(date: date)
+			case .month:
+				returnDate = dateDifferenceCalculator.monthsFrom(date: date)
+			case .year:
+				returnDate = dateDifferenceCalculator.yearsFrom(date: date)
+		}
+		return returnDate
+	}
 
     func localizeIt(for count: String, dateType: DateType) -> String {
         guard let countInt = Int(count) else { return "" }

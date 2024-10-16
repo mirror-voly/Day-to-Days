@@ -17,7 +17,7 @@ final class NotificationSettingsViewModel {
     private (set) var doneButtonIsDisabled = true
     private (set) var removeButtonIsDisabled = true
 
-    func isRemoveButtonIsDisabled() {
+    func checkIsAbleToRemove() {
         NotificationManager.checkIfNotificationIsScheduled(with: event.id.uuidString) { result in
             self.removeButtonIsDisabled = !result
         }
@@ -25,7 +25,7 @@ final class NotificationSettingsViewModel {
 
     func removeButtonAction() {
         NotificationManager.removeScheduledNotification(eventStringID: event.id.uuidString)
-        isRemoveButtonIsDisabled()
+        checkIsAbleToRemove()
     }
 
     func doneButtonAction(completion: @escaping (Result<Void, Error>) -> Void) {
@@ -45,7 +45,7 @@ final class NotificationSettingsViewModel {
         NotificationManager.requestPermitions {
             self.doneButtonIsDisabled = false
         }
-        isRemoveButtonIsDisabled()
+        checkIsAbleToRemove()
         dayOfWeek = DateCalculator.getCurrentDayOfWeek(date: Date())
     }
 }

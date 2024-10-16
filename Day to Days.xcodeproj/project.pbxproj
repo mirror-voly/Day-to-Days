@@ -77,6 +77,9 @@
 		517517432CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
 		517577402CB69AD5005BFB8D /* SortEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5175773F2CB69AD5005BFB8D /* SortEvents.swift */; };
 		517577422CB69BF3005BFB8D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517577412CB69BF3005BFB8D /* RealmManager.swift */; };
+		5176B6E52CBF85780010FB4F /* NotificationSetupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176B6E42CBF85780010FB4F /* NotificationSetupHeader.swift */; };
+		5176B6E72CBF866F0010FB4F /* NotificationSetupDateTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176B6E62CBF866F0010FB4F /* NotificationSetupDateTypeSelector.swift */; };
+		5176B6E92CBF86DB0010FB4F /* NotificationSetupDatePickerSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176B6E82CBF86DB0010FB4F /* NotificationSetupDatePickerSwitch.swift */; };
 		5177245E2C9D5C880037143A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245D2C9D5C880037143A /* WidgetKit.framework */; };
 		517724602C9D5C880037143A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5177245F2C9D5C880037143A /* SwiftUI.framework */; };
 		517724632C9D5C880037143A /* CounterWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724622C9D5C880037143A /* CounterWidgetBundle.swift */; };
@@ -241,6 +244,9 @@
 		517517402CB19F36000D04C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5175773F2CB69AD5005BFB8D /* SortEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortEvents.swift; sourceTree = "<group>"; };
 		517577412CB69BF3005BFB8D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		5176B6E42CBF85780010FB4F /* NotificationSetupHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetupHeader.swift; sourceTree = "<group>"; };
+		5176B6E62CBF866F0010FB4F /* NotificationSetupDateTypeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetupDateTypeSelector.swift; sourceTree = "<group>"; };
+		5176B6E82CBF86DB0010FB4F /* NotificationSetupDatePickerSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetupDatePickerSwitch.swift; sourceTree = "<group>"; };
 		5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5177245D2C9D5C880037143A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5177245F2C9D5C880037143A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -343,6 +349,9 @@
 			isa = PBXGroup;
 			children = (
 				51674AD02CB909630061A416 /* NotificationSetupView.swift */,
+				5176B6E42CBF85780010FB4F /* NotificationSetupHeader.swift */,
+				5176B6E62CBF866F0010FB4F /* NotificationSetupDateTypeSelector.swift */,
+				5176B6E82CBF86DB0010FB4F /* NotificationSetupDatePickerSwitch.swift */,
 				518277C22CBAA74300B774C3 /* NotificationSettingsViewModel.swift */,
 			);
 			path = NotificationSetupScreen;
@@ -816,9 +825,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5176B6E52CBF85780010FB4F /* NotificationSetupHeader.swift in Sources */,
 				517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */,
 				517122412CA59F850037974D /* ClearableTextField.swift in Sources */,
 				51C623682CAAB14C00CF58B4 /* EventForTransfer.swift in Sources */,
+				5176B6E92CBF86DB0010FB4F /* NotificationSetupDatePickerSwitch.swift in Sources */,
 				51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */,
 				515617DF2CADC57E0024C5EC /* IntentHandler.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
@@ -834,6 +845,7 @@
 				519FF10E2C8DA4A4002FA63A /* PlaceFields.swift in Sources */,
 				516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */,
 				5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */,
+				5176B6E72CBF866F0010FB4F /* NotificationSetupDateTypeSelector.swift in Sources */,
 				51674AD42CB92A870061A416 /* NotificationManager.swift in Sources */,
 				510589FF2C9C5E1400CA612F /* EventsList+swipeButtons.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,

@@ -9,8 +9,8 @@ import UIKit
 import WidgetKit
 
 final class WidgetManager {
-// TODO: private static
-    static private func makeEventsForTransfer(event: Event) -> EventForTransfer {
+
+	private static func makeEventsForTransfer(event: Event) -> EventForTransfer {
         return EventForTransfer(name: event.title,
                            id: event.id,
                            date: event.date,
@@ -18,7 +18,7 @@ final class WidgetManager {
                            color: event.color.getColorType)
     }
 
-    static func sendToWidgetsThis(_ events: [Event], completion: @escaping (Result<Void, Error>) -> Void) {
+    static func sendToOtherTargetsThis(_ events: [Event], completion: @escaping (Result<Void, Error>) -> Void) {
 		DispatchQueue.global(qos: .utility).async {
             var eventsForWidget: [EventForTransfer] = []
             for event in events {

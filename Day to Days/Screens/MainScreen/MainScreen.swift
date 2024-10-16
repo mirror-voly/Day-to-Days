@@ -4,7 +4,6 @@
 //
 //  Created by mix on 03.09.2024.
 //
-import RealmSwift
 import SwiftUI
 
 struct MainScreen: View {

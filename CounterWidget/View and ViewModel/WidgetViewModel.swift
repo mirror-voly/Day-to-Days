@@ -22,7 +22,8 @@ final class WidgetViewModel {
         localizedTimeState = timeData[.localizedTimeState] ?? Constants.emptyString
         number = timeData[.dateNumber] ?? Constants.emptyString
         if timeData[.timeState] != TimeStateType.present.label {
-            localizedDateType = timeData[.localizedDateType] ?? Constants.emptyString
+			let dateType = timeData[.localizedDateType] ?? Constants.emptyString
+            localizedDateType = dateType + " "
         }
         color = event.color.getColor
         eventTitle = event.title

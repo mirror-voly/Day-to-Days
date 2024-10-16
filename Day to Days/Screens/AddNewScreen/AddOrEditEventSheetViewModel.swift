@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 @Observable
 final class AddOrEditEventSheetViewModel {
     private var screenMode: ScreenModeType?
     private var eventID: UUID?
     var actionSheetIsPresented = false
-    var aninmateDateButton: Bool = false
+    var aninmateDateButton = false
+	var addButtonIsVisible = false
     private (set) var dragOffset = CGSize.zero
     // MARK: - User fields
     var title = Constants.emptyString {
@@ -37,7 +37,14 @@ final class AddOrEditEventSheetViewModel {
     var sheetTitle: String {
         screenMode == .edit ? "edit_event".localized: "new_event".localized
     }
-    var addButtonIsVisible = false
+	private var dateStart: Date {
+		let calendar = Calendar.current
+		var components = calendar.dateComponents([.year, .month, .day], from: date)
+		components.hour = 0
+		components.minute = 0
+		components.second = 0
+		return calendar.date(from: components) ?? date
+	}
     // MARK: - Functions
     private func findIndexForThis(dateType: DateType) -> Double { // for slider value
         guard let index = DateType.allCases.firstIndex(of: dateType) else { return .zero }
@@ -60,7 +67,7 @@ final class AddOrEditEventSheetViewModel {
             id: id ?? UUID(),
             title: title,
             info: info,
-            date: date,
+            date: dateStart,
             dateType: dateType,
             color: color
         )
@@ -68,6 +75,7 @@ final class AddOrEditEventSheetViewModel {
 
     func buttonAction(completion: @escaping (Result<Void, Error>) -> Void) {
         let event = createEvent(id: eventID)
+		print(event)
         if screenMode == .edit {
             RealmManager.editEvent(newEvent: event, completion: { result in
                 completion(result)

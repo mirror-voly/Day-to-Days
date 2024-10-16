@@ -27,7 +27,7 @@ final class EventInfoScreenViewModel {
     private func getAllDateInfoFor(event: Event) {
         allInfoForCurrentDate = dateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
     }
-
+// TODO: Move to manager
     func updateEditedEvent(completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()

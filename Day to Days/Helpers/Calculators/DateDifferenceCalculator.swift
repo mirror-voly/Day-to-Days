@@ -13,7 +13,7 @@ final class DateDifferenceCalculator {
     private let calendar = Calendar.current
 
     func daysFrom(date: Date) -> Int {
-        let components = calendar.dateComponents([.day], from: Date(), to: date)
+        let components = calendar.dateComponents([.day], from: date, to: Date())
         return abs(components.day ?? 0)
     }
 

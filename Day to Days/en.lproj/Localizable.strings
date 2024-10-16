@@ -45,7 +45,6 @@
 "week" = "Week";
 "day" = "Day";
 
-// TODO: remove this
 "date_label_years" = "years";
 "date_label_months" = "months";
 "date_label_weeks" = "weeks";
@@ -78,7 +77,7 @@
 "day_of_week" = "Day of week";
 "day_of_month" = "Day of month";
 "day_of_year" = "Day of year";
-"show_all_information" = "Show detailed";
+"show_all_information" = "Detailed notifications";
 "open_for_details" = "Expand notification ↓";
 
 
