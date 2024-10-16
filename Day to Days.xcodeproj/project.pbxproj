@@ -487,6 +487,17 @@
 			path = MainScreenViews;
 			sourceTree = "<group>";
 		};
+		5176B6E32CBF82320010FB4F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				519195002C8CA6AA00F29C1B /* AlertManager.swift */,
+				51BD46202C9D7A2D00D7515F /* WidgetManager.swift */,
+				51674AD32CB92A870061A416 /* NotificationManager.swift */,
+				517577412CB69BF3005BFB8D /* RealmManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		5177245C2C9D5C880037143A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,11 +538,8 @@
 			isa = PBXGroup;
 			children = (
 				516CBE5A2C8733D500202B93 /* Calculators */,
-				519195002C8CA6AA00F29C1B /* AlertManager.swift */,
-				51BD46202C9D7A2D00D7515F /* WidgetManager.swift */,
-				51674AD32CB92A870061A416 /* NotificationManager.swift */,
+				5176B6E32CBF82320010FB4F /* Managers */,
 				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
-				517577412CB69BF3005BFB8D /* RealmManager.swift */,
 				5175773F2CB69AD5005BFB8D /* SortEvents.swift */,
 				516C39A22C971B9E008EC3B8 /* Extensions */,
 				51F911802C95D2DD00C625DC /* Enums */,
