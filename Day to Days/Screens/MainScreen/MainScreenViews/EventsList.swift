@@ -37,19 +37,8 @@ struct EventsList: View {
 				.listRowSeparator(.visible)
 			}
 			.listStyle(.plain)
-			.onOpenURL(perform: { url in
-				print(url)
-				guard let urlHost = url.host() else { return }
-				guard let eventID = UUID(uuidString: urlHost) else { return }
-				guard let event = RealmManager.findEditedEvent(eventID: eventID, completion: { result in
-					alertManager.getIdentifiebleErrorFrom(result: result)
-				}) else { return }
-				print(event)
-				viewModel.path.append(event)
-				print(viewModel.path)
-			})
 		}
-
+		// MARK: - Toolbar elements
 		.toolbar {
 			if viewModel.noSelectedEvents && !viewModel.eventsIsEmpty {
 				sortMenu
@@ -58,9 +47,18 @@ struct EventsList: View {
 				editModeToolbar
 			}
 		}
+		// MARK: - NavigationStack path opener
 		.navigationDestination(for: Event.self) { event in
 			EventInfoScreen(event: event)
 		}
+		.onOpenURL(perform: { url in
+			URLPathOpener.findEventByURL(url: url,
+										 events: viewModel.sortedEvents,
+										 completion: { event in
+				viewModel.path.append(event)
+			})
+		})
+		// MARK: - Update
 		.onAppear(perform: { viewModel.setEvents(allEvents: allEvents) })
 		.onChange(of: allEvents.count) { _, _ in
 			viewModel.setEvents(allEvents: allEvents)

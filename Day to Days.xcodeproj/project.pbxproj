@@ -86,6 +86,7 @@
 		517724672C9D5C880037143A /* CounterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724662C9D5C880037143A /* CounterWidget.swift */; };
 		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
 		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		517803142CC0E2ED00D5C9B1 /* URLPathOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803132CC0E2ED00D5C9B1 /* URLPathOpener.swift */; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
 		5178315E2CBCF07900C91C83 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
 		517831612CBCF19B00C91C83 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
@@ -254,6 +255,7 @@
 		517724662C9D5C880037143A /* CounterWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidget.swift; sourceTree = "<group>"; };
 		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		517803132CC0E2ED00D5C9B1 /* URLPathOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPathOpener.swift; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
 		517831732CBE5C1E00C91C83 /* NotificationMaximizedExtention.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationMaximizedExtention.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		517831772CBE5C1E00C91C83 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				5176B6E32CBF82320010FB4F /* Managers */,
 				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
 				5175773F2CB69AD5005BFB8D /* SortEvents.swift */,
+				517803132CC0E2ED00D5C9B1 /* URLPathOpener.swift */,
 				516C39A22C971B9E008EC3B8 /* Extensions */,
 				51F911802C95D2DD00C625DC /* Enums */,
 			);
@@ -864,6 +867,7 @@
 				5168A31C2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */,
 				5169BECD2CBBBBB00023A223 /* NotificationSettings.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
+				517803142CC0E2ED00D5C9B1 /* URLPathOpener.swift in Sources */,
 				5128E0BB2CAAD76400F68CA2 /* TimeStateDeterminer.swift in Sources */,
 				5179F2702C8E16B10027B0F1 /* ColorPicker.swift in Sources */,
 				5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */,
