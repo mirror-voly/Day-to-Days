@@ -92,8 +92,7 @@ final class NotificationManager {
 		let calendar = Calendar.current
 		let content = makeContent(event: event, detailed: detailed)
 		let components = calendar.dateComponents([.hour, .minute], from: date)
-//		let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7, repeats: false)
+		let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
 		let request = UNNotificationRequest(identifier: event.id.uuidString, content: content, trigger: trigger)
 		
 		UNUserNotificationCenter.current().add(request) { error in
