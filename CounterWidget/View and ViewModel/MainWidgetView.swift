@@ -33,6 +33,7 @@ struct MainWidgetView: View {
                 .lineLimit(1)
             }
             .ignoresSafeArea()
+			.widgetURL(viewModel.url)
     }
     init(viewModel: WidgetViewModel) {
         self.viewModel = viewModel

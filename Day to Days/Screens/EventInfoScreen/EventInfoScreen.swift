@@ -13,6 +13,7 @@ struct EventInfoScreen: View {
     @Environment(\.dismiss) var dismiss
     @Environment(AlertManager.self) private var alertManager
     @Bindable var viewModel: EventInfoScreenViewModel
+	let notificationManager: NotificationManager
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading, content: {
@@ -63,11 +64,13 @@ struct EventInfoScreen: View {
         }, content: {
             AddOrEditEventSheet(event: viewModel.event,
                                 isOpened: $viewModel.editSheetIsOpened,
-                                screenMode: .edit)
+								screenMode: .edit,
+								notificationManager: notificationManager)
             .interactiveDismissDisabled()
         })
         .sheet(isPresented: $viewModel.notificationSheetIsOpened, content: {
-            NotificationSetupView(event: viewModel.event)
+			NotificationSetupView(event: viewModel.event,
+								  notificationManager: notificationManager)
                 .presentationDetents([.height(Constraints.notificationSetupViewHeight)])
         })
         .toolbar(content: {
@@ -78,7 +81,8 @@ struct EventInfoScreen: View {
         .tint(viewModel.event.color)
     }
 
-    init(event: Event) {
+	init(event: Event, notificationManager: NotificationManager) {
         self.viewModel = EventInfoScreenViewModel(event: event)
+		self.notificationManager = notificationManager
     }
 }

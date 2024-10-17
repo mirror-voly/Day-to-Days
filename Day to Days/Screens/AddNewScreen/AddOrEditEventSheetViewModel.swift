@@ -9,6 +9,7 @@ import SwiftUI
 
 @Observable
 final class AddOrEditEventSheetViewModel {
+	let notificationManager: NotificationManager
     private var screenMode: ScreenModeType?
     private var eventID: UUID?
     var actionSheetIsPresented = false
@@ -76,8 +77,15 @@ final class AddOrEditEventSheetViewModel {
     func buttonAction(completion: @escaping (Result<Void, Error>) -> Void) {
         let event = createEvent(id: eventID)
         if screenMode == .edit {
-            RealmManager.editEvent(newEvent: event, completion: { result in
-                completion(result)
+			RealmManager.editEvent(newEvent: event, completion: { [self] result in
+				switch result {
+					case .success(()):
+						notificationManager.updateNotificatioIfNeeded(event: event, completion: { result in
+							completion(result)
+						})
+					case .failure(let error):
+						completion(result)
+				}
             })
         } else {
             RealmManager.addEvent(event: event, completion: { result in
@@ -113,4 +121,8 @@ final class AddOrEditEventSheetViewModel {
             dragOffset = .zero
         }
     }
+
+	init(notificationManager: NotificationManager) {
+		self.notificationManager = notificationManager
+	}
 }

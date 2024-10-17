@@ -15,7 +15,6 @@ final class RealmManager {
             try realm.write {
                 if let eventToDelete = realm.object(ofType: Event.self, forPrimaryKey: eventID) {
                     realm.delete(eventToDelete)
-                    NotificationManager.removeScheduledNotification(eventStringID: eventID.uuidString)
                     completion(.success(()))
                 }
             }
@@ -48,9 +47,6 @@ final class RealmManager {
                     eventToUpdate.color = newEvent.color
                     completion(.success(()))
                 }
-                NotificationManager.updateNotificatioIfNeeded(event: newEvent, completion: { result in
-                    completion(result)
-                })
             }
         } catch {
             completion(.failure(error))

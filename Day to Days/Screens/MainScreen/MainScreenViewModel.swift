@@ -10,14 +10,17 @@ import SwiftUI
 @Observable
 final class MainScreenViewModel {
     // MARK: - Private variables
+	let notificationManager: NotificationManager
     private (set) var selectedState: [UUID: Bool] = [:]
+	private (set) var editIsActivated = false
     private (set) var noSelectedEvents = true
     private (set) var navigationLinkIsPresented = false
     private (set) var sortBy: SortType = .none
     private (set) var imageName = "arrow.up.circle"
-    private (set) var editIsActivated = false
+    
     private var events: Results<Event>?
 
+	var path = NavigationPath()
     var sheetIsOpened = false
     var emptyViewIsAnimating = false
 
@@ -75,8 +78,13 @@ final class MainScreenViewModel {
     func removeSelectedEvents(completion: @escaping (Result<Void, Error>) -> Void) {
         if !self.noSelectedEvents {
             selectedEvents.forEach({ eventID in
-                RealmManager.removeEventBy(eventID: eventID, completion: { result in
-                    completion(result)
+				RealmManager.removeEventBy(eventID: eventID, completion: { [self] result in
+					switch result {
+						case .success(()):
+							notificationManager.removeScheduledNotification(eventStringID: eventID.uuidString)
+						case .failure(let error):
+							completion(result)
+					}
                 })
             })
         }
@@ -97,4 +105,8 @@ final class MainScreenViewModel {
     func setEditMode(set: Bool) {
         editIsActivated = set
     }
+	
+	init(notificationManager: NotificationManager) {
+		self.notificationManager = notificationManager
+	}
 }

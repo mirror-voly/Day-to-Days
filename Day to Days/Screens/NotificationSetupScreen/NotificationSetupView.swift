@@ -28,7 +28,7 @@ struct NotificationSetupView: View {
 		.environment(viewModel)
     }
 
-    init(event: Event) {
-        self.viewModel = NotificationSettingsViewModel(event: event)
+    init(event: Event, notificationManager: NotificationManager) {
+		self.viewModel = NotificationSettingsViewModel(event: event, notificationManager: notificationManager)
     }
 }

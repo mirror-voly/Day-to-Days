@@ -8,6 +8,7 @@
 import Foundation
 @Observable
 final class NotificationSettingsViewModel {
+	let notificationManager: NotificationManager
     let event: Event
     var date = Date()
     var dateType: DateType = .day
@@ -18,18 +19,18 @@ final class NotificationSettingsViewModel {
     private (set) var removeButtonIsDisabled = true
 
     func checkIsAbleToRemove() {
-        NotificationManager.checkIfNotificationIsScheduled(with: event.id.uuidString) { result in
+		notificationManager.checkIfNotificationIsScheduled(with: event.id.uuidString) { result in
             self.removeButtonIsDisabled = !result
         }
     }
 
     func removeButtonAction() {
-        NotificationManager.removeScheduledNotification(eventStringID: event.id.uuidString)
+		notificationManager.removeScheduledNotification(eventStringID: event.id.uuidString)
         checkIsAbleToRemove()
     }
 
     func doneButtonAction(completion: @escaping (Result<Void, Error>) -> Void) {
-        NotificationManager.scheduleNotification(dateType: dateType,
+		notificationManager.scheduleNotification(dateType: dateType,
                                                  date: date,
                                                  event: event,
                                                  dayOfWeek: dateType == .week ? dayOfWeek : nil,
@@ -40,9 +41,10 @@ final class NotificationSettingsViewModel {
 
     }
 
-    init(event: Event) {
+    init(event: Event, notificationManager: NotificationManager) {
         self.event = event
-        NotificationManager.requestPermitions {
+		self.notificationManager = notificationManager
+		notificationManager.requestPermitions {
             self.doneButtonIsDisabled = false
         }
         checkIsAbleToRemove()
