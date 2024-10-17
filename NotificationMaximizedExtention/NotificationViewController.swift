@@ -63,7 +63,7 @@ class NotificationViewController: UIViewController {
 extension NotificationViewController: UNNotificationContentExtension {
 
     func didReceive(_ notification: UNNotification) {
-		if let eventID = notification.request.content.userInfo["deepLink"] as? String {
+		if let eventID = notification.request.content.userInfo[Constants.deepLink] as? String {
 			guard let event = searchTransferEvent.findEventByID(eventID) else { return }
 			self.eventTitleLabel.text = event.title
 			self.eventDateLabel.text = event.date.formatted(Date.FormatStyle() .year().month().day())

@@ -9,8 +9,8 @@ import Foundation
 import UserNotifications
 
 final class NotificationDelegate: NSObject {
-	weak var viewModel: MainScreenViewModel?
-	let notificationCenter = UNUserNotificationCenter.current()
+	private weak var viewModel: MainScreenViewModel?
+	private let notificationCenter = UNUserNotificationCenter.current()
 	
 	func setViewModel(_ viewModel: MainScreenViewModel) {
 		self.viewModel = viewModel
@@ -29,7 +29,7 @@ extension NotificationDelegate: UNUserNotificationCenterDelegate  {
 								withCompletionHandler completionHandler: @escaping () -> Void) {
 
 		let userInfo = response.notification.request.content.userInfo
-		if let deepLink = userInfo["deepLink"] as? String {
+		if let deepLink = userInfo[Constants.deepLink] as? String {
 			let eventID = UUID(uuidString: deepLink)
 			if let event = viewModel?.sortedEvents.first(where: {$0.id == eventID }) {
 				viewModel?.path.append(event)

@@ -10,15 +10,11 @@ import Foundation
 final class LoadTransferEvent {
 	private let userDefaults = UserDefaults(suiteName: Constants.suiteName)
 	
-	private func loadEvents() -> Data? {
-		userDefaults?.data(forKey: Constants.widgetStorage)
-	}
-	
 	func findEventByID(_ eventIDString: String) -> EventForTransfer? {
-		guard let data = loadEvents() else { return nil }
+		guard let data = userDefaults?.data(forKey: Constants.widgetStorage) else { return nil }
 		do {
 			let decoded = try JSONDecoder().decode([EventForTransfer].self, from: data)
-			guard let eventID = UUID(uuidString: eventIDString) else { return nil }
+			let eventID = UUID(uuidString: eventIDString)
 			let event = decoded.first(where: { $0.id == eventID })
 			return event
 		} catch {
