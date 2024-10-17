@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct AddOrEditEventSheet: View {
-    @State private var viewModel = AddOrEditEventSheetViewModel()
+	@State private var viewModel: AddOrEditEventSheetViewModel
     @Binding var isOpened: Bool
     // MARK: - View
     var body: some View {
@@ -41,8 +41,9 @@ struct AddOrEditEventSheet: View {
         .environment(viewModel)
     }
 
-    init(event: Event? = nil, isOpened: Binding<Bool>, screenMode: ScreenModeType) {
+    init(event: Event? = nil, isOpened: Binding<Bool>, screenMode: ScreenModeType, notificationManager: NotificationManager) {
         self._isOpened = isOpened
+		self.viewModel = AddOrEditEventSheetViewModel(notificationManager: notificationManager)
         viewModel.setScreenMode(mode: screenMode)
         viewModel.updateFieldsFrom(event)
     }

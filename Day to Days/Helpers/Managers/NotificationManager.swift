@@ -9,19 +9,19 @@ import Foundation
 import NotificationCenter
 
 final class NotificationManager {
-	static func requestPermitions(complition: @escaping () -> Void) {
+	func requestPermitions(complition: @escaping () -> Void) {
 		UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, _ in
 			if success { complition() }
 		}
 	}
 	
-	static func removeScheduledNotification(eventStringID: String) {
+	func removeScheduledNotification(eventStringID: String) {
 		UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [eventStringID])
 		guard let userDefaults = UserDefaults(suiteName: Constants.suiteName) else { return }
 		userDefaults.removeObject(forKey: eventStringID)
 	}
 	
-	private static func encodeAndSaveNotificationSettings(eventID: String,
+	private func encodeAndSaveNotificationSettings(eventID: String,
 														  notificationSettings: NotificationSettings,
 														  completion: @escaping (Result<Void, Error>) -> Void) {
 		DispatchQueue.global(qos: .utility).async {
@@ -36,7 +36,7 @@ final class NotificationManager {
 		}
 	}
 	
-	private static func decodeData(data: Data, completion: @escaping (Result<Void, Error>) -> Void) -> NotificationSettings? {
+	private func decodeData(data: Data, completion: @escaping (Result<Void, Error>) -> Void) -> NotificationSettings? {
 		do {
 			let decoded = try JSONDecoder().decode(NotificationSettings.self, from: data)
 			completion(.success(()))
@@ -47,10 +47,10 @@ final class NotificationManager {
 		}
 	}
 	
-	static func updateNotificatioIfNeeded(event: Event,
+	func updateNotificatioIfNeeded(event: Event,
 										  completion: @escaping (Result<Void, Error>) -> Void) {
-		DispatchQueue.global(qos: .utility).async {
-			checkIfNotificationIsScheduled(with: event.id.uuidString) { scheduled in
+		DispatchQueue.global(qos: .utility).async { [self] in
+			checkIfNotificationIsScheduled(with: event.id.uuidString) { [self] scheduled in
 				if scheduled {
 					guard let userDefaults = UserDefaults(suiteName: Constants.suiteName) else { return }
 					guard let data = userDefaults.data(forKey: event.id.uuidString) else { return }
@@ -68,24 +68,24 @@ final class NotificationManager {
 		}
 	}
 	
-	static func checkIfNotificationIsScheduled(with identifier: String, completion: @escaping (Bool) -> Void) {
+	func checkIfNotificationIsScheduled(with identifier: String, completion: @escaping (Bool) -> Void) {
 		UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
 			let isScheduled = requests.contains { $0.identifier == identifier }
 			completion(isScheduled)
 		}
 	}
 	
-	private static func makeContent(event: Event, detailed: Bool) -> UNMutableNotificationContent {
+	private func makeContent(event: Event, detailed: Bool) -> UNMutableNotificationContent {
 		let content = UNMutableNotificationContent()
 		content.title = event.title
 		content.subtitle = "open_for_details".localized
-		content.userInfo = ["deepLink":event.id.uuidString]
+		content.userInfo = [Constants.deepLink: event.id.uuidString]
 		content.sound = .default
-		content.categoryIdentifier = detailed ? "maximizedNotificationCategory" : "minimalisticNotificationCategory"
+		content.categoryIdentifier = detailed ? Constants.maxiNotification : Constants.minimNotification
 		return content
 	}
 	
-	private static func scheduleDaylyNotification(for date: Date,
+	private func scheduleDaylyNotification(for date: Date,
 												  event: Event,
 												  detailed: Bool,
 												  completion: @escaping (Result<Void, Error>) -> Void) {
@@ -103,7 +103,7 @@ final class NotificationManager {
 		}
 	}
 	
-	private static func scheduleWeeklyNotification(for date: Date,
+	private func scheduleWeeklyNotification(for date: Date,
 												   event: Event,
 												   dayOfWeek: DayOfWeek,
 												   detailed: Bool,
@@ -123,7 +123,7 @@ final class NotificationManager {
 		}
 	}
 	
-	private static func scheduleMonthlyNotification(on date: Date,
+	private func scheduleMonthlyNotification(on date: Date,
 													event: Event,
 													detailed: Bool,
 													completion: @escaping (Result<Void, Error>) -> Void) {
@@ -140,7 +140,7 @@ final class NotificationManager {
 		}
 	}
 	
-	private static func scheduleYearlyNotification(on date: Date,
+	private func scheduleYearlyNotification(on date: Date,
 												   event: Event,
 												   detailed: Bool,
 												   completion: @escaping (Result<Void, Error>) -> Void) {
@@ -157,13 +157,13 @@ final class NotificationManager {
 		}
 	}
 	
-	static func scheduleNotification(dateType: DateType,
+	func scheduleNotification(dateType: DateType,
 									 date: Date,
 									 event: Event,
 									 dayOfWeek: DayOfWeek?,
 									 detailed: Bool,
 									 completion: @escaping (Result<Void, Error>) -> Void) {
-		DispatchQueue.global(qos: .utility).async {
+		DispatchQueue.global(qos: .utility).async { [self] in
 			let scheduleCompletion: (Result<Void, Error>) -> Void = { result in
 				completion(result)
 			}

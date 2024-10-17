@@ -9,11 +9,12 @@ import SwiftUI
 struct MainScreen: View {
 	@State var viewModel: MainScreenViewModel
 	let notifiation: NotificationDelegate
+	let notificationManager: NotificationManager
     // MARK: - View
     var body: some View {
 		NavigationStack(path: $viewModel.path) {
             VStack(alignment: .center) {
-                EventsList()
+                EventsList(notificationManager: notificationManager)
                     .overlay {
                         if viewModel.eventsIsEmpty {
                             EventsListIsEmptyView(onAddNew: {
@@ -27,7 +28,8 @@ struct MainScreen: View {
             .sheet(isPresented: $viewModel.sheetIsOpened) {
                 AddOrEditEventSheet(
                     isOpened: $viewModel.sheetIsOpened,
-                    screenMode: .add)
+					screenMode: .add,
+					notificationManager: notificationManager)
                 .interactiveDismissDisabled()
             }
             // MARK: Toolbar
@@ -41,7 +43,8 @@ struct MainScreen: View {
     }
 
 	init() {
-		let viewModel = MainScreenViewModel()
+		self.notificationManager = NotificationManager()
+		let viewModel = MainScreenViewModel(notificationManager: notificationManager)
 		self.viewModel = viewModel
 		self.notifiation = NotificationDelegate()
 		notifiation.setViewModel(viewModel)

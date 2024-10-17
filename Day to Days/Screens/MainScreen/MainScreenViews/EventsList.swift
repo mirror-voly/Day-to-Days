@@ -11,7 +11,7 @@ struct EventsList: View {
     @Environment(AlertManager.self) var alertManager
     @Environment(MainScreenViewModel.self) var viewModel
     @ObservedResults(Event.self) private var allEvents
-
+	let notificationManager: NotificationManager
 	var body: some View {
 		VStack {
 			List {
@@ -49,7 +49,7 @@ struct EventsList: View {
 		}
 		// MARK: - NavigationStack path opener
 		.navigationDestination(for: Event.self) { event in
-			EventInfoScreen(event: event)
+			EventInfoScreen(event: event, notificationManager: notificationManager)
 		}
 		.onOpenURL(perform: { url in
 			EventSearch.findEventByURL(url: url,
@@ -66,5 +66,8 @@ struct EventsList: View {
 				alertManager.getIdentifiebleErrorFrom(result: result)
 			})
 		}
+	}
+	init(notificationManager: NotificationManager) {
+		self.notificationManager = notificationManager
 	}
 }
