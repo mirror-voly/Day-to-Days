@@ -10,6 +10,7 @@ import SwiftUI
 @Observable
 final class MainScreenViewModel {
     // MARK: - Private variables
+	
     private (set) var selectedState: [UUID: Bool] = [:]
     private (set) var noSelectedEvents = true
     private (set) var navigationLinkIsPresented = false
@@ -18,6 +19,7 @@ final class MainScreenViewModel {
     private (set) var editIsActivated = false
     private var events: Results<Event>?
 
+	var path = NavigationPath()
     var sheetIsOpened = false
     var emptyViewIsAnimating = false
 

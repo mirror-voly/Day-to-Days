@@ -13,6 +13,9 @@ final class EventForTransfer: Codable {
     let date: Date
     let dateType: DateType
     let color: ColorType
+	var url: URL {
+		URL(string: "daycounterapp://\(id)")!
+	}
 
     init(name: String, id: UUID, date: Date, dateType: DateType, color: ColorType) {
         self.title = name

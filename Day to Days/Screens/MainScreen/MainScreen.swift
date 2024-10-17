@@ -10,7 +10,7 @@ struct MainScreen: View {
     @State var viewModel = MainScreenViewModel()
     // MARK: - View
     var body: some View {
-        NavigationStack {
+		NavigationStack(path: $viewModel.path) {
             VStack(alignment: .center) {
                 EventsList()
                     .overlay {

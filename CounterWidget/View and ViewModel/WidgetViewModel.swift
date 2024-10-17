@@ -16,6 +16,7 @@ final class WidgetViewModel {
     private (set) var number = Constants.emptyString
     private (set) var localizedDateType = Constants.emptyString
     private (set) var color: Color = .brown
+	private (set) var url: URL?
 
     private func setAllEventProperties(_ event: EventForTransfer) {
         let timeData = dateCalculator.allTimeDataFor(date: event.date, dateType: event.dateType)
@@ -27,6 +28,7 @@ final class WidgetViewModel {
         }
         color = event.color.getColor
         eventTitle = event.title
+		url = event.url
     }
     
     private func searchForEvent(events: [EventForTransfer], eventID: String) {
