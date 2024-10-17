@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class URLPathOpener {
+final class EventSearch {
 
 	static func findEventByURL(url: URL, events: [Event], completion: (Event) -> Void) {
 		guard let urlHost = url.host(), let eventID = UUID(uuidString: urlHost) else { return }

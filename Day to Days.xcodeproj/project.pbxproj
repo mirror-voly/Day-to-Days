@@ -86,7 +86,7 @@
 		517724672C9D5C880037143A /* CounterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724662C9D5C880037143A /* CounterWidget.swift */; };
 		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
 		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		517803142CC0E2ED00D5C9B1 /* URLPathOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803132CC0E2ED00D5C9B1 /* URLPathOpener.swift */; };
+		517803142CC0E2ED00D5C9B1 /* EventSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803132CC0E2ED00D5C9B1 /* EventSearch.swift */; };
 		517803162CC0F0BC00D5C9B1 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
 		5178315E2CBCF07900C91C83 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
@@ -144,6 +144,8 @@
 		51C623682CAAB14C00CF58B4 /* EventForTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventForTransfer.swift */; };
 		51C6236A2CAAB2D300CF58B4 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE562C872FAA00202B93 /* DateCalculator.swift */; };
 		51D4A4EC2CB7F09E00FD18A3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D4A4EB2CB7F09E00FD18A3 /* HeaderView.swift */; };
+		51DE8B912CC14DAB00859AA7 /* LoadTransferEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */; };
+		51DE8B922CC14DAC00859AA7 /* LoadTransferEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */; };
 		51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9117E2C95D2CA00C625DC /* SortType.swift */; };
 /* End PBXBuildFile section */
 
@@ -256,7 +258,7 @@
 		517724662C9D5C880037143A /* CounterWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidget.swift; sourceTree = "<group>"; };
 		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		517803132CC0E2ED00D5C9B1 /* URLPathOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPathOpener.swift; sourceTree = "<group>"; };
+		517803132CC0E2ED00D5C9B1 /* EventSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearch.swift; sourceTree = "<group>"; };
 		517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
 		517831732CBE5C1E00C91C83 /* NotificationMaximizedExtention.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationMaximizedExtention.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +290,7 @@
 		51BD46262C9D908B00D7515F /* MainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetView.swift; sourceTree = "<group>"; };
 		51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
 		51D4A4EB2CB7F09E00FD18A3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTransferEvent.swift; sourceTree = "<group>"; };
 		51F9117E2C95D2CA00C625DC /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -555,7 +558,8 @@
 				5176B6E32CBF82320010FB4F /* Managers */,
 				5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */,
 				5175773F2CB69AD5005BFB8D /* SortEvents.swift */,
-				517803132CC0E2ED00D5C9B1 /* URLPathOpener.swift */,
+				517803132CC0E2ED00D5C9B1 /* EventSearch.swift */,
+				51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */,
 				516C39A22C971B9E008EC3B8 /* Extensions */,
 				51F911802C95D2DD00C625DC /* Enums */,
 			);
@@ -870,7 +874,7 @@
 				5168A31C2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */,
 				5169BECD2CBBBBB00023A223 /* NotificationSettings.swift in Sources */,
 				516CBE542C87296400202B93 /* Event.swift in Sources */,
-				517803142CC0E2ED00D5C9B1 /* URLPathOpener.swift in Sources */,
+				517803142CC0E2ED00D5C9B1 /* EventSearch.swift in Sources */,
 				5128E0BB2CAAD76400F68CA2 /* TimeStateDeterminer.swift in Sources */,
 				5179F2702C8E16B10027B0F1 /* ColorPicker.swift in Sources */,
 				5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */,
@@ -936,6 +940,7 @@
 				517831902CBE5D4900C91C83 /* Constants.swift in Sources */,
 				516CC4442CBEA73A008106FF /* Constraints.swift in Sources */,
 				517831872CBE5CC800C91C83 /* DateDifferenceCalculator.swift in Sources */,
+				51DE8B912CC14DAB00859AA7 /* LoadTransferEvent.swift in Sources */,
 				517831852CBE5CC000C91C83 /* TimeStateDeterminer.swift in Sources */,
 				5178318E2CBE5CFA00C91C83 /* String+Localized.swift in Sources */,
 				517831842CBE5CBC00C91C83 /* DateCalculator.swift in Sources */,
@@ -957,6 +962,7 @@
 				516D201E2CBC2FFF00346805 /* Constants.swift in Sources */,
 				516CC4452CBEA73C008106FF /* Constraints.swift in Sources */,
 				5178316B2CBCF37400C91C83 /* TimeStateDeterminer.swift in Sources */,
+				51DE8B922CC14DAC00859AA7 /* LoadTransferEvent.swift in Sources */,
 				5178316D2CBCF38800C91C83 /* DayOfWeek.swift in Sources */,
 				517831662CBCF2F400C91C83 /* String+Localized.swift in Sources */,
 				5178316E2CBCF39500C91C83 /* TimeDataReturnType.swift in Sources */,

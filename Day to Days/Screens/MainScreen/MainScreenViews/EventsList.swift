@@ -52,7 +52,7 @@ struct EventsList: View {
 			EventInfoScreen(event: event)
 		}
 		.onOpenURL(perform: { url in
-			URLPathOpener.findEventByURL(url: url,
+			EventSearch.findEventByURL(url: url,
 										 events: viewModel.sortedEvents,
 										 completion: { event in
 				viewModel.path.append(event)
