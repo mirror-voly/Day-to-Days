@@ -87,6 +87,7 @@
 		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
 		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		517803142CC0E2ED00D5C9B1 /* URLPathOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803132CC0E2ED00D5C9B1 /* URLPathOpener.swift */; };
+		517803162CC0F0BC00D5C9B1 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
 		5178315E2CBCF07900C91C83 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
 		517831612CBCF19B00C91C83 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
@@ -256,6 +257,7 @@
 		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		517803132CC0E2ED00D5C9B1 /* URLPathOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPathOpener.swift; sourceTree = "<group>"; };
+		517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
 		517831732CBE5C1E00C91C83 /* NotificationMaximizedExtention.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationMaximizedExtention.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		517831772CBE5C1E00C91C83 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				519195002C8CA6AA00F29C1B /* AlertManager.swift */,
 				51BD46202C9D7A2D00D7515F /* WidgetManager.swift */,
 				51674AD32CB92A870061A416 /* NotificationManager.swift */,
+				517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */,
 				517577412CB69BF3005BFB8D /* RealmManager.swift */,
 			);
 			path = Managers;
@@ -885,6 +888,7 @@
 				5175173D2CB19ACE000D04C4 /* TimeDataReturnType.swift in Sources */,
 				5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */,
 				516659F92C90324C00468301 /* DateType.swift in Sources */,
+				517803162CC0F0BC00D5C9B1 /* NotificationDelegate.swift in Sources */,
 				519FF10C2C8D9F46002FA63A /* Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1106,7 +1110,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1238,6 +1242,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Day to Days/Preview Content\"";
 				DEVELOPMENT_TEAM = WLC984U9MC;
 				ENABLE_PREVIEWS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Day-to-Days-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Days counter";
@@ -1256,6 +1261,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "onlyMe.Day-to-Days";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1437,7 +1443,7 @@
 				515617D82CAD98740024C5EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		516CBE3A2C87247000202B93 /* Build configuration list for PBXProject "Day to Days" */ = {
 			isa = XCConfigurationList;
@@ -1446,7 +1452,7 @@
 				516CBE4C2C87247100202B93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		516CBE4D2C87247100202B93 /* Build configuration list for PBXNativeTarget "Day to Days" */ = {
 			isa = XCConfigurationList;
@@ -1455,7 +1461,7 @@
 				516CBE4F2C87247100202B93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		517724732C9D5C8A0037143A /* Build configuration list for PBXNativeTarget "CounterWidgetExtension" */ = {
 			isa = XCConfigurationList;
@@ -1464,7 +1470,7 @@
 				517724722C9D5C8A0037143A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		517831802CBE5C1E00C91C83 /* Build configuration list for PBXNativeTarget "NotificationMaximizedExtention" */ = {
 			isa = XCConfigurationList;
@@ -1473,7 +1479,7 @@
 				517831822CBE5C1E00C91C83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		51B72E872CBC248B00560B2F /* Build configuration list for PBXNativeTarget "NotificationExtention" */ = {
 			isa = XCConfigurationList;
@@ -1482,7 +1488,7 @@
 				51B72E862CBC248B00560B2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

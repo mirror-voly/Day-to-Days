@@ -12,11 +12,12 @@ final class MainScreenViewModel {
     // MARK: - Private variables
 	
     private (set) var selectedState: [UUID: Bool] = [:]
+	private (set) var editIsActivated = false
     private (set) var noSelectedEvents = true
     private (set) var navigationLinkIsPresented = false
     private (set) var sortBy: SortType = .none
     private (set) var imageName = "arrow.up.circle"
-    private (set) var editIsActivated = false
+    
     private var events: Results<Event>?
 
 	var path = NavigationPath()

@@ -9,7 +9,6 @@ import Foundation
 import NotificationCenter
 
 final class NotificationManager {
-	
 	static func requestPermitions(complition: @escaping () -> Void) {
 		UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, _ in
 			if success { complition() }
@@ -80,6 +79,7 @@ final class NotificationManager {
 		let content = UNMutableNotificationContent()
 		content.title = event.title
 		content.subtitle = "open_for_details".localized
+		content.userInfo = ["deepLink":event.id.uuidString]
 		content.sound = .default
 		content.categoryIdentifier = detailed ? "maximizedNotificationCategory" : "minimalisticNotificationCategory"
 		return content
@@ -92,7 +92,8 @@ final class NotificationManager {
 		let calendar = Calendar.current
 		let content = makeContent(event: event, detailed: detailed)
 		let components = calendar.dateComponents([.hour, .minute], from: date)
-		let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+//		let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7, repeats: false)
 		let request = UNNotificationRequest(identifier: event.id.uuidString, content: content, trigger: trigger)
 		
 		UNUserNotificationCenter.current().add(request) { error in

@@ -7,7 +7,8 @@
 import SwiftUI
 
 struct MainScreen: View {
-    @State var viewModel = MainScreenViewModel()
+	@State var viewModel: MainScreenViewModel
+	let notifiation: NotificationDelegate
     // MARK: - View
     var body: some View {
 		NavigationStack(path: $viewModel.path) {
@@ -38,4 +39,11 @@ struct MainScreen: View {
             .environment(viewModel)
         }
     }
+
+	init() {
+		let viewModel = MainScreenViewModel()
+		self.viewModel = viewModel
+		self.notifiation = NotificationDelegate()
+		notifiation.setViewModel(viewModel)
+	}
 }

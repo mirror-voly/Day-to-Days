@@ -66,6 +66,5 @@ struct EventsList: View {
 				alertManager.getIdentifiebleErrorFrom(result: result)
 			})
 		}
-
 	}
 }
