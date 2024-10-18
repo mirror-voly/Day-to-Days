@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 @Observable
 final class AddOrEditEventSheetViewModel {
 	let notificationManager: NotificationManager
     private var screenMode: ScreenModeType?
     private var eventID: UUID?
+	var photoItem: PhotosPickerItem?
+	var photoItemIsNotEmpty: Bool {
+		photoItem == nil ? false : true 
+	}
+
     var actionSheetIsPresented = false
     var aninmateDateButton = false
 	var addButtonIsVisible = false

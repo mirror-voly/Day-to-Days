@@ -31,6 +31,7 @@
 		515617DB2CADBDC50024C5EC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515617D02CAD98740024C5EC /* IntentHandler.swift */; };
 		515617DD2CADC2A30024C5EC /* EventForTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BD46232C9D839B00D7515F /* EventForTransfer.swift */; };
 		515617DF2CADC57E0024C5EC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515617D02CAD98740024C5EC /* IntentHandler.swift */; };
+		516350152CC2B0AB003D54C0 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516350142CC2B0AA003D54C0 /* PhotoPickerView.swift */; };
 		516659F92C90324C00468301 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659F82C90324C00468301 /* DateType.swift */; };
 		51665A002C9051BF00468301 /* Color+colorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516659FF2C9051BF00468301 /* Color+colorType.swift */; };
 		51665A022C905E2700468301 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
@@ -215,6 +216,7 @@
 		515617CD2CAD98740024C5EC /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		515617D02CAD98740024C5EC /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		515617D22CAD98740024C5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		516350142CC2B0AA003D54C0 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		516659F82C90324C00468301 /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
 		516659FF2C9051BF00468301 /* Color+colorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+colorType.swift"; sourceTree = "<group>"; };
 		51665A012C905E2700468301 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 			children = (
 				51D4A4EB2CB7F09E00FD18A3 /* HeaderView.swift */,
 				519FF10D2C8DA4A4002FA63A /* PlaceFields.swift */,
+				516350142CC2B0AA003D54C0 /* PhotoPickerView.swift */,
 				517122402CA59F850037974D /* ClearableTextField.swift */,
 				5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */,
 				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
@@ -878,6 +881,7 @@
 				5128E0BB2CAAD76400F68CA2 /* TimeStateDeterminer.swift in Sources */,
 				5179F2702C8E16B10027B0F1 /* ColorPicker.swift in Sources */,
 				5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */,
+				516350152CC2B0AB003D54C0 /* PhotoPickerView.swift in Sources */,
 				51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */,
 				510589FD2C9C5DA700CA612F /* EventsList+toolbar.swift in Sources */,
 				51058A012C9C5F1A00CA612F /* DateInfoView.swift in Sources */,
