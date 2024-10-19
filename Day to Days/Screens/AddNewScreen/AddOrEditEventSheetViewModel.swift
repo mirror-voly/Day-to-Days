@@ -13,10 +13,15 @@ final class AddOrEditEventSheetViewModel {
 	let notificationManager: NotificationManager
     private var screenMode: ScreenModeType?
     private var eventID: UUID?
-	var photoItem: PhotosPickerItem?
-	var photoItemIsNotEmpty: Bool {
-		photoItem == nil ? false : true 
+
+	var photoItem: PhotosPickerItem? {
+		didSet {
+			makePhotoData()
+			photoItemIsNotEmpty = photoItem == nil ? false : true
+		}
 	}
+	private (set) var photoItemIsNotEmpty = false
+	private var photoData: Data?
 
     var actionSheetIsPresented = false
     var aninmateDateButton = false
@@ -57,6 +62,22 @@ final class AddOrEditEventSheetViewModel {
         guard let index = DateType.allCases.firstIndex(of: dateType) else { return .zero }
         return Double(index)
     }
+	
+	private func makePhotoData() {
+		guard let photoItem = photoItem else { 
+			self.photoData = nil
+			return 
+		}
+		photoItem.loadTransferable(type: Data.self) { result in
+			switch result {
+			case .success(let data):
+				self.photoData = data
+			case .failure(let error):
+				print("Error loading photo data: \(error)")
+				self.photoData = nil
+			}
+		}
+	}
 
     func updateFieldsFrom(_ event: Event?) {
         guard let event = event else { return }
@@ -67,6 +88,7 @@ final class AddOrEditEventSheetViewModel {
         color = event.color
         dateType = event.dateType
         sliderValue = findIndexForThis(dateType: dateType)
+		photoItemIsNotEmpty = (event.imageData != nil)
     }
 
     func createEvent(id: UUID?) -> Event {
@@ -76,7 +98,8 @@ final class AddOrEditEventSheetViewModel {
             info: info,
             date: dateStart,
             dateType: dateType,
-            color: color
+            color: color,
+			imageData: photoData
         )
     }
 
@@ -127,6 +150,10 @@ final class AddOrEditEventSheetViewModel {
             dragOffset = .zero
         }
     }
+	
+	func clearImage() {
+		photoItem = nil
+	}
 
 	init(notificationManager: NotificationManager) {
 		self.notificationManager = notificationManager

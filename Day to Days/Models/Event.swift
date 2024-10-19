@@ -16,10 +16,11 @@ class Event: Object, Identifiable {
     @Persisted var date: Date = Date()
     @Persisted var dateTypeData: Data?
     @Persisted var colorTypeData: Data?
-
+	@Persisted var imageData: Data?
+	
     var dateType: DateType {
         get {
-            guard let data = dateTypeData else { return .day}
+            guard let data = dateTypeData else { return .day }
             return DateType.fromData(data) ?? .day
         }
         set {
@@ -38,21 +39,23 @@ class Event: Object, Identifiable {
         }
     }
 
-    init(id: UUID = UUID(), title: String, info: String, date: Date, dateType: DateType, color: Color) {
+	init(id: UUID = UUID(), title: String, info: String, date: Date, dateType: DateType, color: Color, imageData: Data?) {
         self.id = id
         self.title = title
         self.info = info
         self.date = date
         self.dateTypeData = dateType.toData()
         self.colorTypeData = color.getColorType.toData()
+		self.imageData = imageData
     }
 
-    init(title: String, info: String, date: Date, dateType: DateType, color: Color) {
+    init(title: String, info: String, date: Date, dateType: DateType, color: Color, imageData: Data?) {
         self.title = title
         self.info = info
         self.date = date
         self.dateTypeData = dateType.toData()
         self.colorTypeData = color.getColorType.toData()
+		self.imageData = imageData
     }
 
     override class func primaryKey() -> String? {

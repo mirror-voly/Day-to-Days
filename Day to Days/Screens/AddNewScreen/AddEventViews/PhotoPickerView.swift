@@ -17,7 +17,7 @@ struct PhotoPickerView: View {
 			if viewModel.photoItemIsNotEmpty {
 				Button { 
 					withAnimation { 
-						viewModel.photoItem = nil
+						viewModel.clearImage()
 					}
 				} label: { 
 					Image(systemName: "clear")
