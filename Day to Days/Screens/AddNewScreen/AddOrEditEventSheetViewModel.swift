@@ -72,8 +72,7 @@ final class AddOrEditEventSheetViewModel {
 			switch result {
 			case .success(let data):
 				self.photoData = data
-			case .failure(let error):
-				print("Error loading photo data: \(error)")
+			case .failure(_):
 				self.photoData = nil
 			}
 		}
@@ -89,6 +88,7 @@ final class AddOrEditEventSheetViewModel {
         dateType = event.dateType
         sliderValue = findIndexForThis(dateType: dateType)
 		photoItemIsNotEmpty = (event.imageData != nil)
+		photoData = event.imageData
     }
 
     func createEvent(id: UUID?) -> Event {

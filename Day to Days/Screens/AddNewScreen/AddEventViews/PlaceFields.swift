@@ -25,6 +25,7 @@ struct PlaceFields: View {
 		}
         // MARK: Date and color pickers
         GroupBox {
+			// TODO: Refactore this part
             HStack {
                 DatePicker("date".localized, selection: $viewModel.date, displayedComponents: .date)
                     .datePickerStyle(.compact)

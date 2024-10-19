@@ -15,7 +15,7 @@ extension EventInfoScreen {
             } label: {
                 Circle()
                     .fill(.white)
-                    .frame(width: Constraints.eventInfoButtonSize, height: Constraints.eventInfoButtonSize)
+                    .frame(width: Constraints.buttonSize, height: Constraints.buttonSize)
                     .overlay(Image(systemName: "chevron.backward")
                         .fontWeight(.semibold))
             }
@@ -29,7 +29,7 @@ extension EventInfoScreen {
             } label: {
                 Circle()
                     .fill(.white)
-                    .frame(width: Constraints.eventInfoButtonSize, height: Constraints.eventInfoButtonSize)
+                    .frame(width: Constraints.buttonSize, height: Constraints.buttonSize)
                     .overlay(Image(systemName: "pencil")
                         .fontWeight(.semibold))
             }
@@ -46,7 +46,7 @@ extension EventInfoScreen {
             } label: {
                 Circle()
                     .fill(.white)
-                    .frame(width: Constraints.eventInfoButtonSize, height: Constraints.eventInfoButtonSize)
+                    .frame(width: Constraints.buttonSize, height: Constraints.buttonSize)
                     .overlay(Image(systemName: "bell.fill")
                         .fontWeight(.semibold))
             }

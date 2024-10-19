@@ -11,8 +11,10 @@ import SwiftUI
 final class EventInfoScreenViewModel {
     private (set) var allInfoForCurrentDate: [DateType: String]?
     private (set) var event: Event
+	var toolBarVisibility: Visibility = .visible
     var editSheetIsOpened = false
     var notificationSheetIsOpened = false
+	var overlay: Image?
     let allDateTypes = DateType.allCases.reversed()
     let dateCalculator = DateCalculator()
     // MARK: - Calculated properties

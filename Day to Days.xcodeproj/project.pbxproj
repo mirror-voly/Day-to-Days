@@ -47,6 +47,7 @@
 		5168A31D2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */; };
 		5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168C42A2C898095002CEAAC /* DateTypeSlider.swift */; };
 		5169BECD2CBBBBB00023A223 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5169BECC2CBBBBB00023A223 /* NotificationSettings.swift */; };
+		516C5D2C2CC3D9E7006943FE /* ImageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C5D2B2CC3D9E7006943FE /* ImageOverlayView.swift */; };
 		516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE422C87247000202B93 /* DaytoDaysApp.swift */; };
 		516CBE452C87247000202B93 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE442C87247000202B93 /* MainScreen.swift */; };
 		516CBE472C87247100202B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516CBE462C87247100202B93 /* Assets.xcassets */; };
@@ -227,6 +228,7 @@
 		5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CapitalizedFirst.swift"; sourceTree = "<group>"; };
 		5168C42A2C898095002CEAAC /* DateTypeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTypeSlider.swift; sourceTree = "<group>"; };
 		5169BECC2CBBBBB00023A223 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		516C5D2B2CC3D9E7006943FE /* ImageOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayView.swift; sourceTree = "<group>"; };
 		516CBE3F2C87247000202B93 /* Day to Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Day to Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		516CBE422C87247000202B93 /* DaytoDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaytoDaysApp.swift; sourceTree = "<group>"; };
 		516CBE442C87247000202B93 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
@@ -572,6 +574,7 @@
 			isa = PBXGroup;
 			children = (
 				5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */,
+				516C5D2B2CC3D9E7006943FE /* ImageOverlayView.swift */,
 				51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */,
 				51058A002C9C5F1A00CA612F /* DateInfoView.swift */,
 				510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */,
@@ -847,6 +850,7 @@
 				515617DF2CADC57E0024C5EC /* IntentHandler.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
 				510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */,
+				516C5D2C2CC3D9E7006943FE /* ImageOverlayView.swift in Sources */,
 				51C623672CAAB0CE00CF58B4 /* DateCalculator.swift in Sources */,
 				513522BC2CA2D57A00FA685D /* OverlayRectangle.swift in Sources */,
 				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,

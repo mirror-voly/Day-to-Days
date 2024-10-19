@@ -8,13 +8,10 @@
 import Foundation
 
 enum Constraints {
-    static let buttonSpaсerMinimize: CGFloat = 0
-    static let buttonSpaсerMaximize: CGFloat = 40
-    static let addButtonsize: CGFloat = 40
+    static let buttonSize: CGFloat = 40
     static let sliderCircleSmall: CGFloat = 15
     static let sliderCircleBig: CGFloat = 30
     static let sliderTextPadding: CGFloat = 7
-    static let eventInfoButtonSize: CGFloat = 35
     static let eventDateTableSize: CGFloat = 100
     static let eventsItemViewCicleSize: CGFloat = 25
     static let eventsItemViewCicleHoleSize: CGFloat = 10
@@ -24,7 +21,7 @@ enum Constraints {
     static let shadowRadius: CGFloat = 10
     static let emptyViewPaddingToTheTop: CGFloat = -60
     static let emptyViewFrameSize: CGFloat = 200
-    static let primaryOpacity: CGFloat = 0.8
+    static let primaryOpacity: CGFloat = 0.9
     static let widgetNumberFontSize: CGFloat = 75
     static let widgetStackSpaser: CGFloat = 5
     static let rotationAngle: CGFloat = 180
@@ -44,4 +41,5 @@ enum Constraints {
     static let notificationSmallFontSize: CGFloat = 15
     static let notificationMediumFontSize: CGFloat = 25
     static let notificationBigFontSize: CGFloat = 55
+	static let scalePower: CGFloat = 5
 }

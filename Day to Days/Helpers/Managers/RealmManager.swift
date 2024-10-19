@@ -45,6 +45,7 @@ final class RealmManager {
                     eventToUpdate.date = newEvent.date
                     eventToUpdate.dateType = newEvent.dateType
                     eventToUpdate.color = newEvent.color
+					eventToUpdate.imageData = newEvent.imageData
                     completion(.success(()))
                 }
             }
