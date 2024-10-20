@@ -36,7 +36,7 @@ struct ImageOverlayView: View {
 						}
 				}
 				.defaultScrollAnchor(.center)
-				.overlay {
+				.overlay(alignment: .bottomTrailing) {
 					zoomOverlayButtons
 				}
 				.onAppear(perform: {

@@ -9,27 +9,24 @@ import SwiftUI
 
 extension ImageOverlayView {
 	var zoomOverlayButtons: some View {
-		Group {
-			VStack {
-				Group {
-					Button { 
-						self.viewModel.scale = viewModel.scale * Constraints.scaleEffect
-					} label: { 
-						Text("+")
-							.frame(maxWidth: .infinity, maxHeight: .infinity)
-					}
-					Button { 
-						self.viewModel.scale = viewModel.scale / Constraints.scaleEffect
-					} label: { 
-						Text("-")	
-							.frame(maxWidth: .infinity, maxHeight: .infinity)
-					}
+		VStack {
+			Group {
+				Button { 
+					self.viewModel.scale = viewModel.scale * Constraints.scaleEffect
+				} label: { 
+					Text("+")
+						.frame(maxWidth: .infinity, maxHeight: .infinity)
 				}
-				.frame(width: Constraints.buttonSize, height: Constraints.buttonSize)
-				.buttonStyle(BorderedButtonStyle())
+				Button { 
+					self.viewModel.scale = viewModel.scale / Constraints.scaleEffect
+				} label: { 
+					Text("-")	
+						.frame(maxWidth: .infinity, maxHeight: .infinity)
+				}
 			}
-			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-			.padding()
+			.frame(width: Constraints.buttonSize, height: Constraints.buttonSize)
+			.buttonStyle(BorderedButtonStyle())
 		}
+		.padding()
 	}
 }
