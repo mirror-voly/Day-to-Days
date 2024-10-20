@@ -12,12 +12,12 @@ struct EventInfoScreen: View {
     @ObservedResults(Event.self) private var allEvents
     @Environment(\.dismiss) var dismiss
     @Environment(AlertManager.self) private var alertManager
-    @Bindable var viewModel: EventInfoScreenViewModel
+    @State var viewModel: EventInfoScreenViewModel
 	let notificationManager: NotificationManager
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading, content: {
-            GroupBox {
+            GroupBox() {
                 HStack(alignment: .top, content: {
                     VStack(alignment: .leading, content: {
                         Text(viewModel.event.title)
@@ -42,8 +42,12 @@ struct EventInfoScreen: View {
                         }
                     }
                     .frame(width: Constraints.eventDateTableSize)
+					.shadow(color: .secondary, radius: 1)
                 })
             }
+			if let imageData = viewModel.event.imageData {
+				ImageButtonView(imageData: imageData)
+			}
             Spacer()
         })
         .padding()
@@ -52,6 +56,7 @@ struct EventInfoScreen: View {
         .toolbarBackground(viewModel.event.color, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
+		.toolbar(viewModel.toolBarVisibility)
         .sheet(isPresented: $viewModel.editSheetIsOpened, onDismiss: {
             withAnimation {
                 viewModel.updateEditedEventOnDismiss(completion: { result in
@@ -73,12 +78,16 @@ struct EventInfoScreen: View {
 								  notificationManager: notificationManager)
                 .presentationDetents([.height(Constraints.notificationSetupViewHeight)])
         })
+		.overlay(content: { 
+			ImageOverlayView()
+		})
         .toolbar(content: {
             backButton
             notificationSettingsButton
             editButton
         })
         .tint(viewModel.event.color)
+		.environment(viewModel)
     }
 
 	init(event: Event, notificationManager: NotificationManager) {
