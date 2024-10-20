@@ -46,6 +46,8 @@
 		5168A31C2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */; };
 		5168A31D2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */; };
 		5168C42B2C898095002CEAAC /* DateTypeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168C42A2C898095002CEAAC /* DateTypeSlider.swift */; };
+		5168D2B22CC522E200098882 /* ImageButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168D2B12CC522E200098882 /* ImageButtonView.swift */; };
+		5168D2B42CC529A200098882 /* ImageOverlayView+zoomOverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168D2B32CC529A200098882 /* ImageOverlayView+zoomOverlayButtons.swift */; };
 		5169BECD2CBBBBB00023A223 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5169BECC2CBBBBB00023A223 /* NotificationSettings.swift */; };
 		516C5D2C2CC3D9E7006943FE /* ImageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C5D2B2CC3D9E7006943FE /* ImageOverlayView.swift */; };
 		516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516CBE422C87247000202B93 /* DaytoDaysApp.swift */; };
@@ -227,6 +229,8 @@
 		5168A3132CAEAAD600E42A7E /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
 		5168A31B2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CapitalizedFirst.swift"; sourceTree = "<group>"; };
 		5168C42A2C898095002CEAAC /* DateTypeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTypeSlider.swift; sourceTree = "<group>"; };
+		5168D2B12CC522E200098882 /* ImageButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonView.swift; sourceTree = "<group>"; };
+		5168D2B32CC529A200098882 /* ImageOverlayView+zoomOverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageOverlayView+zoomOverlayButtons.swift"; sourceTree = "<group>"; };
 		5169BECC2CBBBBB00023A223 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		516C5D2B2CC3D9E7006943FE /* ImageOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayView.swift; sourceTree = "<group>"; };
 		516CBE3F2C87247000202B93 /* Day to Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Day to Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -387,6 +391,15 @@
 				516CBE582C87339F00202B93 /* MainScreenViewModel.swift */,
 			);
 			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		5168D2B52CC529FC00098882 /* Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				516C5D2B2CC3D9E7006943FE /* ImageOverlayView.swift */,
+				5168D2B32CC529A200098882 /* ImageOverlayView+zoomOverlayButtons.swift */,
+			);
+			path = Overlay;
 			sourceTree = "<group>";
 		};
 		516C39A22C971B9E008EC3B8 /* Extensions */ = {
@@ -574,10 +587,11 @@
 			isa = PBXGroup;
 			children = (
 				5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */,
-				516C5D2B2CC3D9E7006943FE /* ImageOverlayView.swift */,
 				51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */,
 				51058A002C9C5F1A00CA612F /* DateInfoView.swift */,
+				5168D2B12CC522E200098882 /* ImageButtonView.swift */,
 				510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */,
+				5168D2B52CC529FC00098882 /* Overlay */,
 			);
 			path = EventInfoScreen;
 			sourceTree = "<group>";
@@ -844,6 +858,7 @@
 				5176B6E52CBF85780010FB4F /* NotificationSetupHeader.swift in Sources */,
 				517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */,
 				517122412CA59F850037974D /* ClearableTextField.swift in Sources */,
+				5168D2B42CC529A200098882 /* ImageOverlayView+zoomOverlayButtons.swift in Sources */,
 				51C623682CAAB14C00CF58B4 /* EventForTransfer.swift in Sources */,
 				5176B6E92CBF86DB0010FB4F /* NotificationSetupDatePickerSwitch.swift in Sources */,
 				51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */,
@@ -855,6 +870,7 @@
 				513522BC2CA2D57A00FA685D /* OverlayRectangle.swift in Sources */,
 				516CBE452C87247000202B93 /* MainScreen.swift in Sources */,
 				5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */,
+				5168D2B22CC522E200098882 /* ImageButtonView.swift in Sources */,
 				5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */,
 				516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */,
 				51665A022C905E2700468301 /* ColorType.swift in Sources */,

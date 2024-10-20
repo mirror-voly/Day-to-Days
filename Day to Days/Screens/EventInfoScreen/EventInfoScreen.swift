@@ -45,19 +45,8 @@ struct EventInfoScreen: View {
 					.shadow(color: .secondary, radius: 1)
                 })
             }
-			if let image = viewModel.event.imageData {
-				GroupBox {
-					Button { 
-						viewModel.overlay = Image(uiImage: UIImage(data: image)!)
-					} label: { 
-						Image(uiImage: UIImage(data: image)!)
-							.resizable()
-							.clipShape(RoundedRectangle(cornerRadius: Constraints.cornerRadius))
-							.padding()
-							.aspectRatio(contentMode: ContentMode.fit)
-							.shadow(color: .black, radius: Constraints.shadowRadius, y: Constraints.shadowRadius)
-					}
-				}
+			if let imageData = viewModel.event.imageData {
+				ImageButtonView(imageData: imageData)
 			}
             Spacer()
         })

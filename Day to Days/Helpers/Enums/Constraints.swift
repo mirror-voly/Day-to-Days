@@ -41,5 +41,5 @@ enum Constraints {
     static let notificationSmallFontSize: CGFloat = 15
     static let notificationMediumFontSize: CGFloat = 25
     static let notificationBigFontSize: CGFloat = 55
-	static let scalePower: CGFloat = 5
+	static let scalePower: CGFloat = 2
 }
