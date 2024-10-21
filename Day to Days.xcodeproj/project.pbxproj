@@ -90,6 +90,7 @@
 		517724672C9D5C880037143A /* CounterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517724662C9D5C880037143A /* CounterWidget.swift */; };
 		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
 		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		51779BDE2CC6679800DF73EC /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51779BDD2CC6679800DF73EC /* DatePickerView.swift */; };
 		517803142CC0E2ED00D5C9B1 /* EventSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803132CC0E2ED00D5C9B1 /* EventSearch.swift */; };
 		517803162CC0F0BC00D5C9B1 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
@@ -266,6 +267,7 @@
 		517724662C9D5C880037143A /* CounterWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterWidget.swift; sourceTree = "<group>"; };
 		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51779BDD2CC6679800DF73EC /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		517803132CC0E2ED00D5C9B1 /* EventSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearch.swift; sourceTree = "<group>"; };
 		517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 				51D4A4EB2CB7F09E00FD18A3 /* HeaderView.swift */,
 				519FF10D2C8DA4A4002FA63A /* PlaceFields.swift */,
 				516350142CC2B0AA003D54C0 /* PhotoPickerView.swift */,
+				51779BDD2CC6679800DF73EC /* DatePickerView.swift */,
 				517122402CA59F850037974D /* ClearableTextField.swift */,
 				5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */,
 				5168C42A2C898095002CEAAC /* DateTypeSlider.swift */,
@@ -893,6 +896,7 @@
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
 				51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */,
 				517577422CB69BF3005BFB8D /* RealmManager.swift in Sources */,
+				51779BDE2CC6679800DF73EC /* DatePickerView.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,
 				5168A31C2CAEDE5A00E42A7E /* String+CapitalizedFirst.swift in Sources */,
 				5169BECD2CBBBBB00023A223 /* NotificationSettings.swift in Sources */,

@@ -25,31 +25,7 @@ struct PlaceFields: View {
 		}
         // MARK: Date and color pickers
         GroupBox {
-			// TODO: Refactore this part
-            HStack {
-                DatePicker("date".localized, selection: $viewModel.date, displayedComponents: .date)
-                    .datePickerStyle(.compact)
-                    .contextMenu {
-                        HelpContextMenu(helpText: "date_help")
-                    }
-                    .contentTransition(.numericText())
-                Button {
-                    withAnimation {
-                        viewModel.date = Date()
-                        viewModel.aninmateDateButton.toggle()
-                    }
-                } label: {
-                    Image(systemName: "arrow.2.circlepath.circle")
-                        .tint(.primary)
-                        .symbolRenderingMode(.hierarchical)
-                        .font(.title2)
-                        .rotationEffect(Angle(degrees: viewModel.aninmateDateButton ?
-                                              Constraints.rotationAngle : .zero))
-                }
-                .contextMenu {
-                    HelpContextMenu(helpText: "date_reset_help")
-                }
-            }
+			DatePickerView(viewModel: viewModel)
             Divider()
             ColorPicker(viewModel: viewModel)
         }
