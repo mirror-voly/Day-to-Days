@@ -9,13 +9,20 @@ import SwiftUI
 
 @Observable
 final class EventInfoScreenViewModel {
+	
+	enum EventInfoScreenSheetType {
+		case edit, notificatiom, share, non
+	}
+	
     private (set) var allInfoForCurrentDate: [DateType: String]?
     private (set) var event: Event
 	var scale = Constraints.originalSize
 	var toolBarVisibility: Visibility = .visible
+	
     var editSheetIsOpened = false
     var notificationSheetIsOpened = false
-
+	var shareSheetIsOpened = false
+	
 	var overlay: Image?
     let allDateTypes = DateType.allCases.reversed()
     let dateCalculator = DateCalculator()

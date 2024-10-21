@@ -31,18 +31,7 @@ struct EventInfoScreen: View {
                     })
                     Spacer()
                     // MARK: Date presenter
-                    GroupBox {
-                        Text(viewModel.localizedTimeState)
-                            .font(.subheadline)
-                        Divider()
-                        ForEach(viewModel.allDateTypes, id: \.self) { dateTypeKey in
-                            if let number = viewModel.allInfoForCurrentDate?[dateTypeKey] {
-                                DateInfoView(number: number, dateType: dateTypeKey, viewModel: viewModel)
-                            }
-                        }
-                    }
-                    .frame(width: Constraints.eventDateTableSize)
-					.shadow(color: .secondary, radius: 1)
+					DateRowsView()
                 })
             }
 			if let imageData = viewModel.event.imageData {
@@ -78,6 +67,9 @@ struct EventInfoScreen: View {
 								  notificationManager: notificationManager)
                 .presentationDetents([.height(Constraints.notificationSetupViewHeight)])
         })
+		.sheet(isPresented: $viewModel.shareSheetIsOpened, content: {
+			ShareImageScreen()
+		})
 		.overlay(content: { 
 			ImageOverlayView()
 		})
