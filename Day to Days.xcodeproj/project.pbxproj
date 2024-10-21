@@ -92,7 +92,6 @@
 		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		51779BDE2CC6679800DF73EC /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51779BDD2CC6679800DF73EC /* DatePickerView.swift */; };
 		51779BE02CC6720F00DF73EC /* ShareImageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51779BDF2CC6720F00DF73EC /* ShareImageScreen.swift */; };
-		51779BE42CC684FE00DF73EC /* DateRowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51779BE32CC684FE00DF73EC /* DateRowsView.swift */; };
 		517803142CC0E2ED00D5C9B1 /* EventSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803132CC0E2ED00D5C9B1 /* EventSearch.swift */; };
 		517803162CC0F0BC00D5C9B1 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
@@ -271,7 +270,6 @@
 		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51779BDD2CC6679800DF73EC /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		51779BDF2CC6720F00DF73EC /* ShareImageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareImageScreen.swift; sourceTree = "<group>"; };
-		51779BE32CC684FE00DF73EC /* DateRowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRowsView.swift; sourceTree = "<group>"; };
 		517803132CC0E2ED00D5C9B1 /* EventSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearch.swift; sourceTree = "<group>"; };
 		517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
@@ -594,7 +592,6 @@
 			children = (
 				5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */,
 				51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */,
-				51779BE32CC684FE00DF73EC /* DateRowsView.swift */,
 				51058A002C9C5F1A00CA612F /* DateInfoView.swift */,
 				5168D2B12CC522E200098882 /* ImageButtonView.swift */,
 				51779BDF2CC6720F00DF73EC /* ShareImageScreen.swift */,
@@ -883,7 +880,6 @@
 				5168D2B22CC522E200098882 /* ImageButtonView.swift in Sources */,
 				5182890F2C883CC000676F0E /* AddOrEditEventSheet.swift in Sources */,
 				516CBE5D2C87403600202B93 /* EventsItemView.swift in Sources */,
-				51779BE42CC684FE00DF73EC /* DateRowsView.swift in Sources */,
 				51665A022C905E2700468301 /* ColorType.swift in Sources */,
 				5128E0BD2CAAD7A100F68CA2 /* DateLocalization.swift in Sources */,
 				519FF10E2C8DA4A4002FA63A /* PlaceFields.swift in Sources */,
@@ -1251,7 +1247,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Day-to-Days-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Days counter";
+				INFOPLIST_KEY_CFBundleDisplayName = "Day to days";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1287,7 +1283,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Day-to-Days-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Days counter";
+				INFOPLIST_KEY_CFBundleDisplayName = "Day to days";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

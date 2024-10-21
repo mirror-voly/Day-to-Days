@@ -17,7 +17,7 @@ struct EventInfoScreen: View {
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading, content: {
-            GroupBox() {
+            GroupBox {
                 HStack(alignment: .top, content: {
                     VStack(alignment: .leading, content: {
                         Text(viewModel.event.title)
@@ -30,8 +30,18 @@ struct EventInfoScreen: View {
                         Text(viewModel.info)
                     })
                     Spacer()
-                    // MARK: Date presenter
-					DateRowsView()
+					GroupBox {
+						Text(viewModel.localizedTimeState)
+							.font(.subheadline)
+						Divider()
+						ForEach(viewModel.allDateTypes, id: \.self) { dateTypeKey in
+							if let number = viewModel.allInfoForCurrentDate?[dateTypeKey] {
+								DateInfoView(number: number, dateType: dateTypeKey, viewModel: viewModel)
+							}
+						}
+					}
+					.frame(width: Constraints.eventDateTableSize)
+					.shadow(color: .secondary, radius: 1)
                 })
             }
 			if let imageData = viewModel.event.imageData {
