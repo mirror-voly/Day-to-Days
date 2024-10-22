@@ -49,11 +49,24 @@ extension EventInfoScreen {
 					Image(systemName: "bell.fill")
 				}
 				Button {
-					viewModel.shareSheetIsOpened = true
+					let renderer = ImageRenderer(content: ShareImageView(title: viewModel.event.title,
+																		   localizedTimeState: viewModel.localizedTimeState,
+																		   dateTypes: viewModel.allDateTypes,
+																		   allInfoForCurrentDate: viewModel.allInfoForCurrentDate,
+																		   dateCalculator: viewModel.dateCalculator,
+																		   color: viewModel.event.color))
+					renderer.scale = 2
+					
+					if let image = renderer.cgImage {
+						viewModel.overlay = Image(decorative: image, scale: 1)
+					} else {
+						print("Ошибка: Не удалось создать cgImage из ImageRenderer.")
+					}
 				} label: {
 					Text("share_button".localized)
 					Image(systemName: "square.and.arrow.up")
 				}
+
 			} label: {
 				Circle()
 					.fill(.white)

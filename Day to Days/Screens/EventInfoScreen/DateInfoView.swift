@@ -26,8 +26,8 @@ struct DateInfoView: View {
         .frame(maxWidth: .infinity)
     }
 
-    init(number: String, dateType: DateType, viewModel: EventInfoScreenViewModel) {
+	init(number: String, dateType: DateType, dateCalculator: DateCalculator) {
         self.number = number
-        self.label = viewModel.dateCalculator.localizeIt(for: number, dateType: dateType)
+        self.label = dateCalculator.localizeIt(for: number, dateType: dateType)
     }
 }

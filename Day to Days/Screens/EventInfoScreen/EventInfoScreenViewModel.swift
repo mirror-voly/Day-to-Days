@@ -10,11 +10,7 @@ import SwiftUI
 @Observable
 final class EventInfoScreenViewModel {
 	
-	enum EventInfoScreenSheetType {
-		case edit, notificatiom, share, non
-	}
-	
-    private (set) var allInfoForCurrentDate: [DateType: String]?
+    private (set) var allInfoForCurrentDate: [DateType: String]
     private (set) var event: Event
 	var scale = Constraints.originalSize
 	var toolBarVisibility: Visibility = .visible
@@ -24,8 +20,8 @@ final class EventInfoScreenViewModel {
 	var shareSheetIsOpened = false
 	
 	var overlay: Image?
-    let allDateTypes = DateType.allCases.reversed()
-    let dateCalculator = DateCalculator()
+	let allDateTypes = DateType.allCases.reversed()
+	let dateCalculator: DateCalculator
     // MARK: - Calculated properties
     var localizedTimeState: String {
         dateCalculator.getLocalizedTimeState(date: event.date, dateType: event.dateType).capitalized
@@ -49,6 +45,7 @@ final class EventInfoScreenViewModel {
     // MARK: - Init
     init(event: Event) {
         self.event = event
-        getAllDateInfoFor(event: event)
+		self.dateCalculator = DateCalculator()
+		allInfoForCurrentDate = dateCalculator.dateInfoForThis(date: event.date, dateType: event.dateType)
     }
 }

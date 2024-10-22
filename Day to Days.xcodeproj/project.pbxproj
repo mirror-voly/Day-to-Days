@@ -91,7 +91,7 @@
 		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
 		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		51779BDE2CC6679800DF73EC /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51779BDD2CC6679800DF73EC /* DatePickerView.swift */; };
-		51779BE02CC6720F00DF73EC /* ShareImageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51779BDF2CC6720F00DF73EC /* ShareImageScreen.swift */; };
+		51779BE02CC6720F00DF73EC /* ShareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51779BDF2CC6720F00DF73EC /* ShareImageView.swift */; };
 		517803142CC0E2ED00D5C9B1 /* EventSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803132CC0E2ED00D5C9B1 /* EventSearch.swift */; };
 		517803162CC0F0BC00D5C9B1 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
@@ -269,7 +269,7 @@
 		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51779BDD2CC6679800DF73EC /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
-		51779BDF2CC6720F00DF73EC /* ShareImageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareImageScreen.swift; sourceTree = "<group>"; };
+		51779BDF2CC6720F00DF73EC /* ShareImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareImageView.swift; sourceTree = "<group>"; };
 		517803132CC0E2ED00D5C9B1 /* EventSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearch.swift; sourceTree = "<group>"; };
 		517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
@@ -594,7 +594,7 @@
 				51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */,
 				51058A002C9C5F1A00CA612F /* DateInfoView.swift */,
 				5168D2B12CC522E200098882 /* ImageButtonView.swift */,
-				51779BDF2CC6720F00DF73EC /* ShareImageScreen.swift */,
+				51779BDF2CC6720F00DF73EC /* ShareImageView.swift */,
 				510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */,
 				5168D2B52CC529FC00098882 /* Overlay */,
 			);
@@ -868,7 +868,7 @@
 				51C623682CAAB14C00CF58B4 /* EventForTransfer.swift in Sources */,
 				5176B6E92CBF86DB0010FB4F /* NotificationSetupDatePickerSwitch.swift in Sources */,
 				51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */,
-				51779BE02CC6720F00DF73EC /* ShareImageScreen.swift in Sources */,
+				51779BE02CC6720F00DF73EC /* ShareImageView.swift in Sources */,
 				515617DF2CADC57E0024C5EC /* IntentHandler.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
 				510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */,

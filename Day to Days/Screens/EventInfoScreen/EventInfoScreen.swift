@@ -14,6 +14,7 @@ struct EventInfoScreen: View {
     @Environment(AlertManager.self) private var alertManager
     @State var viewModel: EventInfoScreenViewModel
 	let notificationManager: NotificationManager
+
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading, content: {
@@ -35,8 +36,8 @@ struct EventInfoScreen: View {
 							.font(.subheadline)
 						Divider()
 						ForEach(viewModel.allDateTypes, id: \.self) { dateTypeKey in
-							if let number = viewModel.allInfoForCurrentDate?[dateTypeKey] {
-								DateInfoView(number: number, dateType: dateTypeKey, viewModel: viewModel)
+							if let number = viewModel.allInfoForCurrentDate[dateTypeKey] {
+								DateInfoView(number: number, dateType: dateTypeKey, dateCalculator: viewModel.dateCalculator)
 							}
 						}
 					}
@@ -55,7 +56,14 @@ struct EventInfoScreen: View {
         .toolbarBackground(viewModel.event.color, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
+		
 		.toolbar(viewModel.toolBarVisibility)
+		.toolbar(content: {
+			backButton
+			notificationSettingsButton
+			editButton
+		})
+		
         .sheet(isPresented: $viewModel.editSheetIsOpened, onDismiss: {
             withAnimation {
                 viewModel.updateEditedEventOnDismiss(completion: { result in
@@ -77,17 +85,11 @@ struct EventInfoScreen: View {
 								  notificationManager: notificationManager)
                 .presentationDetents([.height(Constraints.notificationSetupViewHeight)])
         })
-		.sheet(isPresented: $viewModel.shareSheetIsOpened, content: {
-			ShareImageScreen()
-		})
-		.overlay(content: { 
+
+		.overlay(content: {
 			ImageOverlayView()
 		})
-        .toolbar(content: {
-            backButton
-            notificationSettingsButton
-            editButton
-        })
+		
         .tint(viewModel.event.color)
 		.environment(viewModel)
     }
