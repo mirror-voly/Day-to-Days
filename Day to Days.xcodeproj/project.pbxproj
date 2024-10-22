@@ -152,6 +152,7 @@
 		51D4A4EC2CB7F09E00FD18A3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D4A4EB2CB7F09E00FD18A3 /* HeaderView.swift */; };
 		51DE8B912CC14DAB00859AA7 /* LoadTransferEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */; };
 		51DE8B922CC14DAC00859AA7 /* LoadTransferEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */; };
+		51E9E4AB2CC7A82300CD0F15 /* RenderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E9E4AA2CC7A82300CD0F15 /* RenderImage.swift */; };
 		51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9117E2C95D2CA00C625DC /* SortType.swift */; };
 /* End PBXBuildFile section */
 
@@ -303,6 +304,7 @@
 		51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
 		51D4A4EB2CB7F09E00FD18A3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTransferEvent.swift; sourceTree = "<group>"; };
+		51E9E4AA2CC7A82300CD0F15 /* RenderImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderImage.swift; sourceTree = "<group>"; };
 		51F9117E2C95D2CA00C625DC /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -581,6 +583,7 @@
 				5175773F2CB69AD5005BFB8D /* SortEvents.swift */,
 				517803132CC0E2ED00D5C9B1 /* EventSearch.swift */,
 				51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */,
+				51E9E4AC2CC7CA8F00CD0F15 /* ImagGenerator */,
 				516C39A22C971B9E008EC3B8 /* Extensions */,
 				51F911802C95D2DD00C625DC /* Enums */,
 			);
@@ -594,7 +597,6 @@
 				51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */,
 				51058A002C9C5F1A00CA612F /* DateInfoView.swift */,
 				5168D2B12CC522E200098882 /* ImageButtonView.swift */,
-				51779BDF2CC6720F00DF73EC /* ShareImageView.swift */,
 				510E6B962C9AF38400B0430C /* EventInfoScreenViewModel.swift */,
 				5168D2B52CC529FC00098882 /* Overlay */,
 			);
@@ -625,6 +627,15 @@
 				51B72E812CBC248B00560B2F /* Info.plist */,
 			);
 			path = NotificationExtention;
+			sourceTree = "<group>";
+		};
+		51E9E4AC2CC7CA8F00CD0F15 /* ImagGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				51E9E4AA2CC7A82300CD0F15 /* RenderImage.swift */,
+				51779BDF2CC6720F00DF73EC /* ShareImageView.swift */,
+			);
+			path = ImagGenerator;
 			sourceTree = "<group>";
 		};
 		51F911802C95D2DD00C625DC /* Enums */ = {
@@ -872,6 +883,7 @@
 				515617DF2CADC57E0024C5EC /* IntentHandler.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
 				510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */,
+				51E9E4AB2CC7A82300CD0F15 /* RenderImage.swift in Sources */,
 				516C5D2C2CC3D9E7006943FE /* ImageOverlayView.swift in Sources */,
 				51C623672CAAB0CE00CF58B4 /* DateCalculator.swift in Sources */,
 				513522BC2CA2D57A00FA685D /* OverlayRectangle.swift in Sources */,

@@ -11,10 +11,9 @@ import RealmSwift
 struct EventInfoScreen: View {
     @ObservedResults(Event.self) private var allEvents
     @Environment(\.dismiss) var dismiss
-    @Environment(AlertManager.self) private var alertManager
+    @Environment(AlertManager.self) var alertManager
     @State var viewModel: EventInfoScreenViewModel
 	let notificationManager: NotificationManager
-
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading, content: {
@@ -60,7 +59,7 @@ struct EventInfoScreen: View {
 		.toolbar(viewModel.toolBarVisibility)
 		.toolbar(content: {
 			backButton
-			notificationSettingsButton
+			moreSettingsButton
 			editButton
 		})
 		
@@ -95,7 +94,7 @@ struct EventInfoScreen: View {
     }
 
 	init(event: Event, notificationManager: NotificationManager) {
-        self.viewModel = EventInfoScreenViewModel(event: event)
+        self.viewModel = EventInfoScreenViewModel(event: event, imageGenerator: ImageGenerator(), dateCalculator: DateCalculator())
 		self.notificationManager = notificationManager
     }
 }

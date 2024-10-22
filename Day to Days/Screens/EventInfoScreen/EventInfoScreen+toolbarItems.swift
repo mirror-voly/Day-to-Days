@@ -39,7 +39,7 @@ extension EventInfoScreen {
         }
     }
 
-    var notificationSettingsButton: some ToolbarContent {
+    var moreSettingsButton: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
 			Menu { 
 				Button {
@@ -49,19 +49,9 @@ extension EventInfoScreen {
 					Image(systemName: "bell.fill")
 				}
 				Button {
-					let renderer = ImageRenderer(content: ShareImageView(title: viewModel.event.title,
-																		   localizedTimeState: viewModel.localizedTimeState,
-																		   dateTypes: viewModel.allDateTypes,
-																		   allInfoForCurrentDate: viewModel.allInfoForCurrentDate,
-																		   dateCalculator: viewModel.dateCalculator,
-																		   color: viewModel.event.color))
-					renderer.scale = 2
-					
-					if let image = renderer.cgImage {
-						viewModel.overlay = Image(decorative: image, scale: 1)
-					} else {
-						print("Ошибка: Не удалось создать cgImage из ImageRenderer.")
-					}
+						viewModel.shareButtonAction(completion: { result in
+							alertManager.getIdentifiebleErrorFrom(result: result)
+						})
 				} label: {
 					Text("share_button".localized)
 					Image(systemName: "square.and.arrow.up")
