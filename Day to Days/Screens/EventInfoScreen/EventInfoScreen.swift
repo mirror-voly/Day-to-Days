@@ -44,8 +44,8 @@ struct EventInfoScreen: View {
 					.shadow(color: .secondary, radius: 1)
                 })
             }
-			if let imageData = viewModel.event.imageData {
-				ImageButtonView(imageData: imageData)
+			if viewModel.withImage {
+				ImageButtonView()
 			}
             Spacer()
         })

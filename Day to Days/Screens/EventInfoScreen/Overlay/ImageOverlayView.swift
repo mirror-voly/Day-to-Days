@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageOverlayView: View {
 	@Environment(EventInfoScreenViewModel.self) var viewModel
-
+	
 	var body: some View {
 		GeometryReader { proxy in
 			if let image = viewModel.overlay {
@@ -30,17 +30,20 @@ struct ImageOverlayView: View {
 						)
 						.onTapGesture {
 							withAnimation { 
-								self.viewModel.overlay = nil
-								self.viewModel.toolBarVisibility = .visible
+								viewModel.closeOverlay()
 							}
 						}
 				}
 				.defaultScrollAnchor(.center)
 				.overlay(alignment: .bottomTrailing) {
-					zoomOverlayButtons
+					if !viewModel.isImageForShare {
+						zoomOverlayButtons
+					} else {
+						ShareLink(item: image, preview: SharePreview(viewModel.event.title, image: image))
+							.frame(maxWidth: .infinity, alignment: .center)
+					}
 				}
 				.onAppear(perform: {
-					viewModel.toolBarVisibility = .hidden
 					self.viewModel.scale = Constraints.originalSize
 				})
 			}

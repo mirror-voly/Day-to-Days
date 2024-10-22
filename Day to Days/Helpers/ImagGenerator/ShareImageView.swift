@@ -55,7 +55,7 @@ struct ShareImageView: View {
 							Text("to")
 							Text("Days")
 						}
-						.foregroundStyle(.red)
+						.foregroundStyle(.white)
 						.fontWeight(.ultraLight)
 					}
 					.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)

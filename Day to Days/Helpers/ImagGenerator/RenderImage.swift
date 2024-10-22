@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageGenerator {
+final class ImageGenerator {
 	
 	func makeImage(content: some View, completion: @escaping (Result<Image, Error>) -> Void){
 		DispatchQueue.main.async {
