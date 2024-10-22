@@ -12,9 +12,9 @@ struct ImageGenerator {
 	func makeImage(content: some View, completion: @escaping (Result<Image, Error>) -> Void){
 		DispatchQueue.main.async {
 			let renderer = ImageRenderer(content: content)
-			renderer.scale = 2
+			renderer.scale = Constraints.renderScale
 			if let image = renderer.cgImage {
-				completion(.success(Image(decorative: image, scale: 1)))
+				completion(.success(Image(decorative: image, scale: Constraints.renderScale)))
 			}
 		}
 

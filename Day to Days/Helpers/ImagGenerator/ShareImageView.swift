@@ -21,10 +21,9 @@ struct ShareImageView: View {
 			VStack(alignment: .leading) {
 				Text(title)
 					.foregroundStyle(.white)
-					.lineLimit(2)
 					.multilineTextAlignment(.center)
 					.frame(maxWidth: .infinity)
-					.frame(height: 50)
+					.frame(height: Constraints.shareCentralInageFontSize)
 					.padding(.horizontal)
 					.background(.black.secondary)
 					.shadow(color: .black, radius: Constraints.shadowRadius)
@@ -36,16 +35,16 @@ struct ShareImageView: View {
 					Circle()
 						.fill(.white)
 						.shadow(color: .black, radius: Constraints.shadowRadius)
-					VStack(spacing: 2) {
+					VStack(spacing: Constraints.originalSize) {
 						Image(systemName: "birthday.cake.fill")
-							.font(.system(size: 50))
+							.font(.system(size: Constraints.shareCentralInageFontSize))
 							.frame(maxWidth: .infinity)
 							.foregroundStyle(.yellow)
 						Text(localizedTimeState)
 							.foregroundStyle(.white)
 							.font(.footnote)
 							.bold()
-							.padding(.horizontal, 6)
+							.padding(.horizontal, Constraints.shareHorizontalPadding)
 							.background(.yellow)
 							.clipShape(.capsule)
 					}
@@ -61,8 +60,8 @@ struct ShareImageView: View {
 					}
 					.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
 				}
-				.frame(height: 120)
-				.padding(.horizontal, 6)
+				.frame(height: Constraints.shareCentralPartSize)
+				.padding(.horizontal, Constraints.shareHorizontalPadding)
 				
 				Spacer()
 				
@@ -82,6 +81,6 @@ struct ShareImageView: View {
 			.background(color)
 			.clipShape(RoundedRectangle(cornerRadius: Constraints.cornerRadius))
 		}
-		.frame(width: 300, height: 300)
+		.frame(width: Constraints.renderedImageSize, height: Constraints.renderedImageSize)
 	}
 }
