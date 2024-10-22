@@ -9,25 +9,23 @@ import SwiftUI
 
 struct ImageButtonView: View {
 	@Environment(EventInfoScreenViewModel.self) private var viewModel
-	let imageData: Data
 	
     var body: some View {
-		if let uiImage = UIImage(data: imageData) {
-			GroupBox {
-				Button {
-					withAnimation { 
-						viewModel.overlay = Image(uiImage: uiImage)
+		if let image = viewModel.buttonImage {
+				GroupBox {
+					Button {
+						withAnimation { 
+							viewModel.setOverlayImage(image: nil, isImageForShare: false)
+						}
+					} label: { 
+						image
+							.resizable()
+							.clipShape(RoundedRectangle(cornerRadius: Constraints.cornerRadius))
+							.padding()
+							.aspectRatio(contentMode: ContentMode.fit)
+							.shadow(color: .black, radius: Constraints.shadowRadius, y: Constraints.shadowRadius)
 					}
-				} label: { 
-					Image(uiImage: uiImage)
-						.resizable()
-						.clipShape(RoundedRectangle(cornerRadius: Constraints.cornerRadius))
-						.padding()
-						.aspectRatio(contentMode: ContentMode.fit)
-						.shadow(color: .black, radius: Constraints.shadowRadius, y: Constraints.shadowRadius)
 				}
-			}
 		}
-
     }
 }

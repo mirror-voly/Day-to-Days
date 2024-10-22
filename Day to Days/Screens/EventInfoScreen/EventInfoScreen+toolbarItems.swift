@@ -39,20 +39,33 @@ extension EventInfoScreen {
         }
     }
 
-    var notificationSettingsButton: some ToolbarContent {
+    var moreSettingsButton: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                viewModel.notificationSheetIsOpened = true
-            } label: {
-                Circle()
-                    .fill(.white)
-                    .frame(width: Constraints.buttonSize, height: Constraints.buttonSize)
-                    .overlay(Image(systemName: "bell.fill")
-                        .fontWeight(.semibold))
-            }
-            .contextMenu {
-                HelpContextMenu(helpText: "notification_button_help")
-            }
+			Menu { 
+				Button {
+					viewModel.notificationSheetIsOpened = true
+				} label: {
+					Text("notification_button".localized)
+					Image(systemName: "bell.fill")
+				}
+				Button {
+						viewModel.shareButtonAction(completion: { result in
+							alertManager.getIdentifiebleErrorFrom(result: result)
+						})
+				} label: {
+					Text("share_button".localized)
+					Image(systemName: "square.and.arrow.up")
+				}
+
+			} label: {
+				Circle()
+					.fill(.white)
+					.frame(width: Constraints.buttonSize, height: Constraints.buttonSize)
+					.overlay(Text("•••")
+						.fontWeight(.semibold))
+			}
+
+            
         }
     }
 }

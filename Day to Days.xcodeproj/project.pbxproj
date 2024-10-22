@@ -91,6 +91,7 @@
 		5177246B2C9D5C8A0037143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177246A2C9D5C8A0037143A /* Assets.xcassets */; };
 		5177246F2C9D5C8A0037143A /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5177245B2C9D5C880037143A /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		51779BDE2CC6679800DF73EC /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51779BDD2CC6679800DF73EC /* DatePickerView.swift */; };
+		51779BE02CC6720F00DF73EC /* ShareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51779BDF2CC6720F00DF73EC /* ShareImageView.swift */; };
 		517803142CC0E2ED00D5C9B1 /* EventSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803132CC0E2ED00D5C9B1 /* EventSearch.swift */; };
 		517803162CC0F0BC00D5C9B1 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */; };
 		51781F042C9C593F008E213A /* EventInfoScreen+toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */; };
@@ -151,6 +152,7 @@
 		51D4A4EC2CB7F09E00FD18A3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D4A4EB2CB7F09E00FD18A3 /* HeaderView.swift */; };
 		51DE8B912CC14DAB00859AA7 /* LoadTransferEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */; };
 		51DE8B922CC14DAC00859AA7 /* LoadTransferEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */; };
+		51E9E4AB2CC7A82300CD0F15 /* RenderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E9E4AA2CC7A82300CD0F15 /* RenderImage.swift */; };
 		51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9117E2C95D2CA00C625DC /* SortType.swift */; };
 /* End PBXBuildFile section */
 
@@ -268,6 +270,7 @@
 		5177246A2C9D5C8A0037143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5177246C2C9D5C8A0037143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51779BDD2CC6679800DF73EC /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		51779BDF2CC6720F00DF73EC /* ShareImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareImageView.swift; sourceTree = "<group>"; };
 		517803132CC0E2ED00D5C9B1 /* EventSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearch.swift; sourceTree = "<group>"; };
 		517803152CC0F0BC00D5C9B1 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		51781F032C9C593F008E213A /* EventInfoScreen+toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventInfoScreen+toolbarItems.swift"; sourceTree = "<group>"; };
@@ -301,6 +304,7 @@
 		51BD462D2C9D95C100D7515F /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
 		51D4A4EB2CB7F09E00FD18A3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTransferEvent.swift; sourceTree = "<group>"; };
+		51E9E4AA2CC7A82300CD0F15 /* RenderImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderImage.swift; sourceTree = "<group>"; };
 		51F9117E2C95D2CA00C625DC /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -579,6 +583,7 @@
 				5175773F2CB69AD5005BFB8D /* SortEvents.swift */,
 				517803132CC0E2ED00D5C9B1 /* EventSearch.swift */,
 				51DE8B8D2CC14A0900859AA7 /* LoadTransferEvent.swift */,
+				51E9E4AC2CC7CA8F00CD0F15 /* ImagGenerator */,
 				516C39A22C971B9E008EC3B8 /* Extensions */,
 				51F911802C95D2DD00C625DC /* Enums */,
 			);
@@ -622,6 +627,15 @@
 				51B72E812CBC248B00560B2F /* Info.plist */,
 			);
 			path = NotificationExtention;
+			sourceTree = "<group>";
+		};
+		51E9E4AC2CC7CA8F00CD0F15 /* ImagGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				51E9E4AA2CC7A82300CD0F15 /* RenderImage.swift */,
+				51779BDF2CC6720F00DF73EC /* ShareImageView.swift */,
+			);
+			path = ImagGenerator;
 			sourceTree = "<group>";
 		};
 		51F911802C95D2DD00C625DC /* Enums */ = {
@@ -865,9 +879,11 @@
 				51C623682CAAB14C00CF58B4 /* EventForTransfer.swift in Sources */,
 				5176B6E92CBF86DB0010FB4F /* NotificationSetupDatePickerSwitch.swift in Sources */,
 				51F9117F2C95D2CA00C625DC /* SortType.swift in Sources */,
+				51779BE02CC6720F00DF73EC /* ShareImageView.swift in Sources */,
 				515617DF2CADC57E0024C5EC /* IntentHandler.swift in Sources */,
 				51665A002C9051BF00468301 /* Color+colorType.swift in Sources */,
 				510E6B992C9B1E8A00B0430C /* EventsItemViewModel.swift in Sources */,
+				51E9E4AB2CC7A82300CD0F15 /* RenderImage.swift in Sources */,
 				516C5D2C2CC3D9E7006943FE /* ImageOverlayView.swift in Sources */,
 				51C623672CAAB0CE00CF58B4 /* DateCalculator.swift in Sources */,
 				513522BC2CA2D57A00FA685D /* OverlayRectangle.swift in Sources */,
@@ -1243,7 +1259,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Day-to-Days-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Days counter";
+				INFOPLIST_KEY_CFBundleDisplayName = "Day to days";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1279,7 +1295,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Day-to-Days-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Days counter";
+				INFOPLIST_KEY_CFBundleDisplayName = "Day to days";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

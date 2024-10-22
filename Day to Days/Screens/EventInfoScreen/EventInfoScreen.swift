@@ -11,13 +11,13 @@ import RealmSwift
 struct EventInfoScreen: View {
     @ObservedResults(Event.self) private var allEvents
     @Environment(\.dismiss) var dismiss
-    @Environment(AlertManager.self) private var alertManager
+    @Environment(AlertManager.self) var alertManager
     @State var viewModel: EventInfoScreenViewModel
 	let notificationManager: NotificationManager
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading, content: {
-            GroupBox() {
+            GroupBox {
                 HStack(alignment: .top, content: {
                     VStack(alignment: .leading, content: {
                         Text(viewModel.event.title)
@@ -30,23 +30,22 @@ struct EventInfoScreen: View {
                         Text(viewModel.info)
                     })
                     Spacer()
-                    // MARK: Date presenter
-                    GroupBox {
-                        Text(viewModel.localizedTimeState)
-                            .font(.subheadline)
-                        Divider()
-                        ForEach(viewModel.allDateTypes, id: \.self) { dateTypeKey in
-                            if let number = viewModel.allInfoForCurrentDate?[dateTypeKey] {
-                                DateInfoView(number: number, dateType: dateTypeKey, viewModel: viewModel)
-                            }
-                        }
-                    }
-                    .frame(width: Constraints.eventDateTableSize)
+					GroupBox {
+						Text(viewModel.localizedTimeState)
+							.font(.subheadline)
+						Divider()
+						ForEach(viewModel.allDateTypes, id: \.self) { dateTypeKey in
+							if let number = viewModel.allInfoForCurrentDate[dateTypeKey] {
+								DateInfoView(number: number, dateType: dateTypeKey, dateCalculator: viewModel.dateCalculator)
+							}
+						}
+					}
+					.frame(width: Constraints.eventDateTableSize)
 					.shadow(color: .secondary, radius: 1)
                 })
             }
-			if let imageData = viewModel.event.imageData {
-				ImageButtonView(imageData: imageData)
+			if viewModel.withImage {
+				ImageButtonView()
 			}
             Spacer()
         })
@@ -56,7 +55,14 @@ struct EventInfoScreen: View {
         .toolbarBackground(viewModel.event.color, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
+		
 		.toolbar(viewModel.toolBarVisibility)
+		.toolbar(content: {
+			backButton
+			moreSettingsButton
+			editButton
+		})
+		
         .sheet(isPresented: $viewModel.editSheetIsOpened, onDismiss: {
             withAnimation {
                 viewModel.updateEditedEventOnDismiss(completion: { result in
@@ -78,20 +84,17 @@ struct EventInfoScreen: View {
 								  notificationManager: notificationManager)
                 .presentationDetents([.height(Constraints.notificationSetupViewHeight)])
         })
-		.overlay(content: { 
+
+		.overlay(content: {
 			ImageOverlayView()
 		})
-        .toolbar(content: {
-            backButton
-            notificationSettingsButton
-            editButton
-        })
+		
         .tint(viewModel.event.color)
 		.environment(viewModel)
     }
 
 	init(event: Event, notificationManager: NotificationManager) {
-        self.viewModel = EventInfoScreenViewModel(event: event)
+        self.viewModel = EventInfoScreenViewModel(event: event, imageGenerator: ImageGenerator(), dateCalculator: DateCalculator())
 		self.notificationManager = notificationManager
     }
 }
