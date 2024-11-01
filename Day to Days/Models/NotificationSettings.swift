@@ -11,7 +11,7 @@ final class NotificationSettings: Codable {
     let dateType: DateType
     let date: Date
     let detailed: Bool
-    
+
     init(dateType: DateType, date: Date, detailed: Bool) {
         self.dateType = dateType
         self.date = date

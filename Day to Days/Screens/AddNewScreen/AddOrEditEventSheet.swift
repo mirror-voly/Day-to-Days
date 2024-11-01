@@ -21,6 +21,8 @@ struct AddOrEditEventSheet: View {
             .padding()
             Spacer()
         })
+		.background(BackgroundView(isPresented: false)
+			.opacity(0.1))
         // MARK: - ActionSheet guesture
         .offset(y: viewModel.dragOffset.height)
         .gesture(DragGesture()

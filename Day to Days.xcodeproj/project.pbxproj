@@ -74,6 +74,7 @@
 		5170CC602C92E67600A9380B /* TimeStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5F2C92E67600A9380B /* TimeStateType.swift */; };
 		517122412CA59F850037974D /* ClearableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517122402CA59F850037974D /* ClearableTextField.swift */; };
 		517282962C90CCCE00D09AC4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517282952C90CCCE00D09AC4 /* RealmSwift */; };
+		5173722F2CD51CBB0005DC27 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5173722E2CD51CBB0005DC27 /* BackgroundView.swift */; };
 		5175173D2CB19ACE000D04C4 /* TimeDataReturnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */; };
 		5175173E2CB19CAF000D04C4 /* TimeDataReturnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */; };
 		517517412CB19F36000D04C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
@@ -255,6 +256,7 @@
 		5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpContextMenu.swift; sourceTree = "<group>"; };
 		5170CC5F2C92E67600A9380B /* TimeStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStateType.swift; sourceTree = "<group>"; };
 		517122402CA59F850037974D /* ClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextField.swift; sourceTree = "<group>"; };
+		5173722E2CD51CBB0005DC27 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		5175173C2CB19ACE000D04C4 /* TimeDataReturnType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataReturnType.swift; sourceTree = "<group>"; };
 		517517402CB19F36000D04C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5175773F2CB69AD5005BFB8D /* SortEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortEvents.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				513522BB2CA2D57A00FA685D /* OverlayRectangle.swift */,
 				51058A022C9C608D00CA612F /* DayCounterWithShortInfoView.swift */,
 				516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */,
+				5173722E2CD51CBB0005DC27 /* BackgroundView.swift */,
 			);
 			path = MainScreenViews;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				515617C62CAD97F60024C5EC /* SetEvent.intentdefinition in Sources */,
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
 				51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */,
+				5173722F2CD51CBB0005DC27 /* BackgroundView.swift in Sources */,
 				517577422CB69BF3005BFB8D /* RealmManager.swift in Sources */,
 				51779BDE2CC6679800DF73EC /* DatePickerView.swift in Sources */,
 				516CBE432C87247000202B93 /* DaytoDaysApp.swift in Sources */,

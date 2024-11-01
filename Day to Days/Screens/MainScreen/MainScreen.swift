@@ -13,33 +13,38 @@ struct MainScreen: View {
     // MARK: - View
     var body: some View {
 		NavigationStack(path: $viewModel.path) {
-            VStack(alignment: .center) {
-                EventsList(notificationManager: notificationManager)
-                    .overlay {
-                        if viewModel.eventsIsEmpty {
-                            EventsListIsEmptyView(onAddNew: {
-                                viewModel.sheetIsOpened = true
-                            })
-                        }
-                    }
-            }
-            .navigationTitle("events".localized)
-            // MARK: Sheet
-            .sheet(isPresented: $viewModel.sheetIsOpened) {
-                AddOrEditEventSheet(
-                    isOpened: $viewModel.sheetIsOpened,
+			VStack(alignment: .center) {
+				EventsList(notificationManager: notificationManager)
+					.overlay {
+						if viewModel.eventsIsEmpty {
+							EventsListIsEmptyView(onAddNew: {
+								viewModel.sheetIsOpened = true
+							})
+						}
+					}
+			}
+			.navigationTitle("events".localized)
+			// MARK: Sheet
+			.sheet(isPresented: $viewModel.sheetIsOpened) {
+				AddOrEditEventSheet(
+					isOpened: $viewModel.sheetIsOpened,
 					screenMode: .add,
 					notificationManager: notificationManager)
-                .interactiveDismissDisabled()
-            }
-            // MARK: Toolbar
-            .toolbar {
-                if viewModel.noSelectedEvents && !viewModel.eventsIsEmpty {
-                    addNewButton
-                }
-            }
-            .environment(viewModel)
-        }
+				.interactiveDismissDisabled()
+			}
+			// MARK: Toolbar
+			.toolbar {
+				if viewModel.noSelectedEvents && !viewModel.eventsIsEmpty {
+					addNewButton
+				}
+			}
+			.environment(viewModel)
+			
+		}
+		.opacity(0.9)
+		.background(
+			BackgroundView(isPresented: viewModel.eventsIsEmpty)
+		)
     }
 
 	init() {
