@@ -4,7 +4,7 @@ Features:
 - Widgets (with interactive selection of displayed content).
 - Localization (2 languages).
 - Several targets.
-- Alerts is used for showing errors.
+- Alerts for showing errors.
 - Working with an image gallery.
 - Share button (generate an image for current data and send).
 - Notification and widgets with the ability to go to the application via deep-link.
@@ -31,3 +31,6 @@ Stack: SwiftUI, MVVM, Realm, WidgetKit, DispatchQueue, UserDefaults, Notificatio
 - Auto-updating data views.
 
 ![Dinamic theme](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_185033106.gif)
+- Share functionality (generate picture from current data)
+
+![Share](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_181413579.gif)
