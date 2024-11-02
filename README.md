@@ -25,7 +25,7 @@ Stack: SwiftUI, MVVM, Realm, WidgetKit, DispatchQueue, UserDefaults, Notificatio
 - Multi-selection.
 
 ![Selection](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_183603284.gif)
-- Notifications (with current data for now).
+- Notifications (with current data for now), light and dark color scheme.
 
 ![Notifications](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_184727456.gif)
 - Auto-updating data views.
