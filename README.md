@@ -9,21 +9,23 @@ Features:
 - Share button (generate an image for current data and send).
 - Notification and widgets with the ability to go to the application via deep-link.
 - Realm database.
+
 Stack: SwiftUI, MVVM, Realm, WidgetKit, DispatchQueue, UserDefaults, NotificationCenter.
 
-- Animated start screen.
+
+- Dinamic and intaractive interface.
 
 ![Animated intarface](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_185553722.gif)
-- Donamic interface.
+- Animated list scrolling.
 
 ![List scroll effects](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_180318678.gif)
-- Individual color settings.
+- Individual color settings for events.
 
 ![Fluid colors](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_182353378.gif)
-- Multi-selectin.
+- Multi-selection.
 
 ![Selection](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_183603284.gif)
-- Notifications (with dynamic updated view).
+- Notifications (with current data for now).
 
 ![Notifications](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_184727456.gif)
 - Auto-updating data views.
