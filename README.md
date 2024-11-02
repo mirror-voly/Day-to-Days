@@ -31,6 +31,6 @@ Stack: SwiftUI, MVVM, Realm, WidgetKit, DispatchQueue, UserDefaults, Notificatio
 - Auto-updating data views.
 
 ![Dinamic theme](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_185033106.gif)
-- Share functionality (generate picture from current data)
+- Share functionality (generate picture from current date)
 
 ![Share](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_181413579.gif)
