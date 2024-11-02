@@ -13,6 +13,12 @@ Stack: SwiftUI, MVVM, Realm, WidgetKit, DispatchQueue, UserDefaults, Notificatio
 
 ![Animated intarface](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_185553722.gif)
 
-![List scroll effects]((https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_180318678.gif)
+![List scroll effects](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_180318678.gif)
 
 ![Fluid colors](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_182353378.gif)
+
+![Selection](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_183603284.gif)
+
+![Notifications](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_184727456.gif)
+
+![Dinamic theme](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_185033106.gif)
