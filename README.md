@@ -19,7 +19,7 @@ Stack: SwiftUI, MVVM, Realm, WidgetKit, DispatchQueue, UserDefaults, Notificatio
 - Animated list scrolling.
 
 ![List scroll effects](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_180318678.gif)
-- Individual color settings for events.
+- Individual color settings for events and image viewer.
 
 ![Fluid colors](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_182353378.gif)
 - Multi-selection.
