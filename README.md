@@ -12,14 +12,20 @@ Features:
 Stack: SwiftUI, MVVM, Realm, WidgetKit, DispatchQueue, UserDefaults, NotificationCenter.
 
 - Animated start screen.
+
 ![Animated intarface](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_185553722.gif)
 - Donamic interface.
+
 ![List scroll effects](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_180318678.gif)
 - Individual color settings.
+
 ![Fluid colors](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_182353378.gif)
 - Multi-selectin.
+
 ![Selection](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_183603284.gif)
 - Notifications (with dynamic updated view).
+
 ![Notifications](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_184727456.gif)
 - Auto-updating data views.
+
 ![Dinamic theme](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_185033106.gif)
