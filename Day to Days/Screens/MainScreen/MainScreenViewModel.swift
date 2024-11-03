@@ -16,19 +16,18 @@ final class MainScreenViewModel {
     private (set) var noSelectedEvents = true
     private (set) var navigationLinkIsPresented = false
     private (set) var sortBy: SortType = .none
-    private (set) var imageName = "arrow.up.circle"
+	var imageName: String {
+		ascending ? "arrow.up.circle" : "arrow.down.circle"
+	}
     
     private var events: Results<Event>?
 
 	var path = NavigationPath()
     var sheetIsOpened = false
     var emptyViewIsAnimating = false
+	var settingsFullScreenCover = true
 
-    private (set) var ascending = true {
-        didSet {
-            imageName = ascending ? "arrow.up.circle" : "arrow.down.circle"
-        }
-    }
+    private (set) var ascending = true
     private var selectedEvents: Set<UUID> = [] {
         didSet {
             noSelectedEvents = selectedEvents.isEmpty
