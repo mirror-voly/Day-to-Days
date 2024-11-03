@@ -68,6 +68,7 @@
 		516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
 		516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */; };
 		516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9D2C8D9AF00095A646 /* EventsList.swift */; };
+		516FDC622CD7CE9B00226F57 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FDC612CD7CE9B00226F57 /* SettingsScreen.swift */; };
 		5170CC592C92ADE600A9380B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
 		5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
 		5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */; };
@@ -249,6 +250,7 @@
 		516DD8032CAFCF96006C534C /* MainScreen+addNewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainScreen+addNewButton.swift"; sourceTree = "<group>"; };
 		516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListIsEmpyView.swift; sourceTree = "<group>"; };
 		516F0C9D2C8D9AF00095A646 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
+		516FDC612CD7CE9B00226F57 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		5170054E2CBC2A8700BF13B5 /* NotificationExtention.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationExtention.entitlements; sourceTree = "<group>"; };
 		5170CC582C92ADE600A9380B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5170CC5A2C92AE0C00A9380B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				5168C4292C898037002CEAAC /* AddNewScreen */,
 				5178F4982C8AF80F00DF45D4 /* EventInfoScreen */,
 				51674AD22CB918960061A416 /* NotificationSetupScreen */,
+				516FDC612CD7CE9B00226F57 /* SettingsScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -903,6 +906,7 @@
 				5176B6E72CBF866F0010FB4F /* NotificationSetupDateTypeSelector.swift in Sources */,
 				51674AD42CB92A870061A416 /* NotificationManager.swift in Sources */,
 				510589FF2C9C5E1400CA612F /* EventsList+swipeButtons.swift in Sources */,
+				516FDC622CD7CE9B00226F57 /* SettingsScreen.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				518277C12CBAA01200B774C3 /* DayOfWeek.swift in Sources */,
 				51D4A4EC2CB7F09E00FD18A3 /* HeaderView.swift in Sources */,

@@ -38,6 +38,9 @@ struct MainScreen: View {
 					addNewButton
 				}
 			}
+			.fullScreenCover(isPresented: $viewModel.settingsFullScreenCover, content: {
+				SettingsScreen()
+			})
 			.environment(viewModel)
 			
 		}
