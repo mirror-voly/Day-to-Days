@@ -18,4 +18,5 @@ enum Constants {
 	static let deepLink = "deepLink"
 	static let maxiNotification = "maximizedNotificationCategory"
 	static let minimNotification = "minimalisticNotificationCategory"
+	static let url = URL(string: "https://github.com/mirror-voly/Day-to-Days")!
 }

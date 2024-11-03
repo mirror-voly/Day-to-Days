@@ -11,24 +11,15 @@ import SwiftUI
 extension EventsList {
     var sortMenu: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
-            Menu {
-                ForEach(SortType.allCases, id: \.self) { sortType in
-                    Button(role: .cancel) {
-                        viewModel.sortButtonAction(type: sortType)
-                    } label: {
-                        HStack {
-                            Text(sortType.rawValue.localized)
-                            Image(systemName: sortType != .none ? viewModel.imageName : "dot.circle")
-                        }
-                    }
-                }
+            Button {
+				viewModel.settingsFullScreenCover = true
             } label: {
-                Image(systemName: "arrow.up.arrow.down.circle")
+                Image(systemName: "gearshape.fill")
                     .foregroundStyle(.gray)
             }
         }
     }
-
+	
     var editModeToolbar: some ToolbarContent {
         Group {
             ToolbarItem(placement: .topBarLeading) {
