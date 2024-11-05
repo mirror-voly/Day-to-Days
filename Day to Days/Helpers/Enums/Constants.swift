@@ -14,6 +14,7 @@ enum Constants {
     static let emptyString = ""
     static let widgetKind = "CounterWidget"
     static let widgetStorage = "counters"
+	static let settingsStorage = "settings"
     static let suiteName = "group.onlyMe.Day-to-Days.CounterWidget"
 	static let deepLink = "deepLink"
 	static let maxiNotification = "maximizedNotificationCategory"

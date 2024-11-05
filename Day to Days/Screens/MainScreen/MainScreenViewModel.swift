@@ -11,21 +11,25 @@ import SwiftUI
 final class MainScreenViewModel {
     // MARK: - Private variables
 	let notificationManager: NotificationManager
+	let settingsManager: SettingsManager
     private (set) var selectedState: [UUID: Bool] = [:]
 	private (set) var editIsActivated = false
     private (set) var noSelectedEvents = true
     private (set) var navigationLinkIsPresented = false
     private (set) var sortBy: SortType = .none
-	var imageName: String {
+	var imageSortIcon: String {
 		ascending ? "arrow.up.circle" : "arrow.down.circle"
 	}
-    
+	var imageSortIconReversed: String {
+		ascending ? "arrow.down.circle" : "arrow.up.circle"
+	}
+	
     private var events: Results<Event>?
 
 	var path = NavigationPath()
     var sheetIsOpened = false
     var emptyViewIsAnimating = false
-	var settingsFullScreenCover = true
+	var settingsFullScreenCover = false
 
     private (set) var ascending = true
     private var selectedEvents: Set<UUID> = [] {
@@ -90,12 +94,26 @@ final class MainScreenViewModel {
         self.makeSelectedEventsEmpty()
     }
 
-    func sortButtonAction(type: SortType) {
+    func sortButtonAction(type: SortType, completion: @escaping (Result<Void, Error>) -> Void) {
         sortBy = type
+		
         if type != .none {
             ascending.toggle()
         }
+		
+		settingsManager.saveSettings(sortType: type, ascending: ascending, completion: { result in
+			completion((result))
+		})
     }
+	
+	func setLoadedSettings(completion: @escaping (Result<Void, Error>) -> Void) {
+		let settings = settingsManager.loadSettings { result in
+			completion((result))
+		}
+		guard let settings = settings else { return }
+			sortBy = settings.sortType
+			ascending = settings.ascending
+	}
 
     func setEvents(allEvents: Results<Event>) {
         self.events = allEvents
@@ -105,7 +123,8 @@ final class MainScreenViewModel {
         editIsActivated = set
     }
 	
-	init(notificationManager: NotificationManager) {
+	init(notificationManager: NotificationManager, settingsManager: SettingsManager) {
+		self.settingsManager = settingsManager
 		self.notificationManager = notificationManager
 	}
 }
