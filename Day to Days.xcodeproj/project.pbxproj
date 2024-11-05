@@ -68,6 +68,7 @@
 		516DE0A92CA028FD00E83E1D /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665A012C905E2700468301 /* ColorType.swift */; };
 		516F0C9C2C8D98920095A646 /* EventsListIsEmpyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */; };
 		516F0C9E2C8D9AF00095A646 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F0C9D2C8D9AF00095A646 /* EventsList.swift */; };
+		516FDC622CD7CE9B00226F57 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FDC612CD7CE9B00226F57 /* SettingsScreen.swift */; };
 		5170CC592C92ADE600A9380B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5170CC572C92ADE600A9380B /* Localizable.strings */; };
 		5170CC5C2C92B15200A9380B /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5B2C92B15200A9380B /* String+Localized.swift */; };
 		5170CC5E2C92CD8800A9380B /* HelpContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170CC5D2C92CD8800A9380B /* HelpContextMenu.swift */; };
@@ -128,6 +129,8 @@
 		517831902CBE5D4900C91C83 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517517402CB19F36000D04C4 /* Constants.swift */; };
 		5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */; };
 		5179F2702C8E16B10027B0F1 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */; };
+		517BD5D72CDA2E9C00EE543A /* SettingsForSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517BD5D62CDA2E9C00EE543A /* SettingsForSave.swift */; };
+		517BD5D92CDA327F00EE543A /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517BD5D82CDA327F00EE543A /* SettingsManager.swift */; };
 		517DF9502C997C250007D924 /* AddOrEditEventSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */; };
 		517DF9522C997CAE0007D924 /* ScreenModeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517DF9512C997CAE0007D924 /* ScreenModeType.swift */; };
 		518277C12CBAA01200B774C3 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518277C02CBAA01200B774C3 /* DayOfWeek.swift */; };
@@ -249,6 +252,7 @@
 		516DD8032CAFCF96006C534C /* MainScreen+addNewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainScreen+addNewButton.swift"; sourceTree = "<group>"; };
 		516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListIsEmpyView.swift; sourceTree = "<group>"; };
 		516F0C9D2C8D9AF00095A646 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
+		516FDC612CD7CE9B00226F57 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		5170054E2CBC2A8700BF13B5 /* NotificationExtention.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationExtention.entitlements; sourceTree = "<group>"; };
 		5170CC582C92ADE600A9380B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5170CC5A2C92AE0C00A9380B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 		517831832CBE5C3100C91C83 /* NotificationMaximizedExtention.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationMaximizedExtention.entitlements; sourceTree = "<group>"; };
 		5178F4992C8AF85800DF45D4 /* EventInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoScreen.swift; sourceTree = "<group>"; };
 		5179F26F2C8E16B10027B0F1 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		517BD5D62CDA2E9C00EE543A /* SettingsForSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsForSave.swift; sourceTree = "<group>"; };
+		517BD5D82CDA327F00EE543A /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		517DF94F2C997C250007D924 /* AddOrEditEventSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditEventSheetViewModel.swift; sourceTree = "<group>"; };
 		517DF9512C997CAE0007D924 /* ScreenModeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenModeType.swift; sourceTree = "<group>"; };
 		518277C02CBAA01200B774C3 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
@@ -477,6 +483,7 @@
 				516CBE532C87296400202B93 /* Event.swift */,
 				51BD46232C9D839B00D7515F /* EventForTransfer.swift */,
 				5169BECC2CBBBBB00023A223 /* NotificationSettings.swift */,
+				517BD5D62CDA2E9C00EE543A /* SettingsForSave.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -525,6 +532,7 @@
 				51058A022C9C608D00CA612F /* DayCounterWithShortInfoView.swift */,
 				516F0C9B2C8D98920095A646 /* EventsListIsEmpyView.swift */,
 				5173722E2CD51CBB0005DC27 /* BackgroundView.swift */,
+				516FDC612CD7CE9B00226F57 /* SettingsScreen.swift */,
 			);
 			path = MainScreenViews;
 			sourceTree = "<group>";
@@ -536,6 +544,7 @@
 				51BD46202C9D7A2D00D7515F /* WidgetManager.swift */,
 				51674AD32CB92A870061A416 /* NotificationManager.swift */,
 				517577412CB69BF3005BFB8D /* RealmManager.swift */,
+				517BD5D82CDA327F00EE543A /* SettingsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -903,6 +912,7 @@
 				5176B6E72CBF866F0010FB4F /* NotificationSetupDateTypeSelector.swift in Sources */,
 				51674AD42CB92A870061A416 /* NotificationManager.swift in Sources */,
 				510589FF2C9C5E1400CA612F /* EventsList+swipeButtons.swift in Sources */,
+				516FDC622CD7CE9B00226F57 /* SettingsScreen.swift in Sources */,
 				518289112C8849AB00676F0E /* View+HideKeyboard.swift in Sources */,
 				518277C12CBAA01200B774C3 /* DayOfWeek.swift in Sources */,
 				51D4A4EC2CB7F09E00FD18A3 /* HeaderView.swift in Sources */,
@@ -914,6 +924,7 @@
 				515617C62CAD97F60024C5EC /* SetEvent.intentdefinition in Sources */,
 				510E6B972C9AF38400B0430C /* EventInfoScreenViewModel.swift in Sources */,
 				51058A032C9C608D00CA612F /* DayCounterWithShortInfoView.swift in Sources */,
+				517BD5D72CDA2E9C00EE543A /* SettingsForSave.swift in Sources */,
 				5173722F2CD51CBB0005DC27 /* BackgroundView.swift in Sources */,
 				517577422CB69BF3005BFB8D /* RealmManager.swift in Sources */,
 				51779BDE2CC6679800DF73EC /* DatePickerView.swift in Sources */,
@@ -939,6 +950,7 @@
 				519195012C8CA6AA00F29C1B /* AlertManager.swift in Sources */,
 				5175173D2CB19ACE000D04C4 /* TimeDataReturnType.swift in Sources */,
 				5178F49A2C8AF85800DF45D4 /* EventInfoScreen.swift in Sources */,
+				517BD5D92CDA327F00EE543A /* SettingsManager.swift in Sources */,
 				516659F92C90324C00468301 /* DateType.swift in Sources */,
 				517803162CC0F0BC00D5C9B1 /* NotificationDelegate.swift in Sources */,
 				519FF10C2C8D9F46002FA63A /* Constraints.swift in Sources */,
