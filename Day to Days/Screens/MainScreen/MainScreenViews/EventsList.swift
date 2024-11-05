@@ -59,7 +59,12 @@ struct EventsList: View {
 			})
 		})
 		// MARK: - Update
-		.onAppear(perform: { viewModel.setEvents(allEvents: allEvents) })
+		.onAppear(perform: { 
+			viewModel.setEvents(allEvents: allEvents) 
+			viewModel.setLoadedSettings { result in
+				alertManager.getIdentifiebleErrorFrom(result: result)
+			}
+		})
 		.onChange(of: allEvents.count) { _, _ in
 			viewModel.setEvents(allEvents: allEvents)
 			WidgetManager.sendToOtherTargetsThis(Array(allEvents), completion: { result in

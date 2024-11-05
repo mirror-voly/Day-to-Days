@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsScreen: View {
 	
 	@Environment(MainScreenViewModel.self) private var viewModel
+	@Environment(AlertManager.self) var alertManager
 	
     var body: some View {
 		List {
@@ -22,25 +23,27 @@ struct SettingsScreen: View {
 					Menu {
 						ForEach(SortType.allCases, id: \.self) { sortType in
 							Button(role: .cancel) {
-								viewModel.sortButtonAction(type: sortType)
+								viewModel.sortButtonAction(type: sortType, completion: { result in
+									alertManager.getIdentifiebleErrorFrom(result: result)
+								})
 							} label: {
 								HStack {
 									Text(sortType.rawValue.localized)
-									Image(systemName: sortType != .none ? viewModel.imageName : "dot.circle")
+									Image(systemName: sortType != .none ? viewModel.imageSortIconReversed : "dot.circle")
 								}
 							}
 						}
 					} label: {
 						HStack {
 							Text(viewModel.sortBy.rawValue.capitalized)
-							Image(systemName: viewModel.sortBy != .none ? viewModel.imageName : "dot.circle")
+							Image(systemName: viewModel.sortBy != .none ? viewModel.imageSortIcon : "dot.circle")
 						}
 					}
 					.buttonStyle(.borderedProminent)
 					.tint(.gray)
 				}
 
-				Button("On GitHub") { 
+				Button("Code on GitHub") {
 					UIApplication.shared.open(Constants.url)
 				}
 				.bold()

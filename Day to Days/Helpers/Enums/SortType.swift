@@ -5,7 +5,7 @@
 //  Created by mix on 14.09.2024.
 //
 
-enum SortType: String, CaseIterable {
+enum SortType: String, CaseIterable, Codable{
     case date = "date"
     case title = "title"
     case none = "default"

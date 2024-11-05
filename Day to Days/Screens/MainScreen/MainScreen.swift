@@ -38,7 +38,7 @@ struct MainScreen: View {
 					addNewButton
 				}
 			}
-			.fullScreenCover(isPresented: $viewModel.settingsFullScreenCover, content: {
+			.sheet(isPresented: $viewModel.settingsFullScreenCover, content: {
 				SettingsScreen()
 			})
 			.environment(viewModel)
@@ -52,7 +52,8 @@ struct MainScreen: View {
 
 	init() {
 		self.notificationManager = NotificationManager()
-		let viewModel = MainScreenViewModel(notificationManager: notificationManager)
+		let settingsManager = SettingsManager()
+		let viewModel = MainScreenViewModel(notificationManager: notificationManager, settingsManager: settingsManager)
 		self.viewModel = viewModel
 		self.notifiation = NotificationDelegate()
 		notifiation.setViewModel(viewModel)
