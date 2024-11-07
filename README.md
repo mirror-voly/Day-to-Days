@@ -13,7 +13,7 @@ Features:
 Stack: SwiftUI, MVVM, Realm, WidgetKit, DispatchQueue, UserDefaults, NotificationCenter.
 
 
-- Dinamic and intaractive interface.
+- Dynamic and intaractive interface.
 
 ![Animated intarface](https://github.com/mirror-voly/Day-to-Days/blob/main/Presentation/InShot_20241102_185553722.gif)
 - Animated list scrolling.
